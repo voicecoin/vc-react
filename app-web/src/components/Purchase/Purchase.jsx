@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
 
-import 'Purchase./css';
+import './Purchase.css';
 
 class Purchase extends Component {
   render() {
-    return (
-      <div>
+    const style = {
+      header: {
 
+      }
+    }
+
+    return (
+      <div>  
+        {/***** header *****/}
+        {/***** header *****/}
+        {/***** header *****/}
+        <div style={style.header}>
+
+
+        </div>
+        {/***** container *****/}
+        {/***** container *****/}
+        {/***** container *****/}
+        <div style={style.container}>
+
+        
+        </div>
       </div>
     );
   }
