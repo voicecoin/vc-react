@@ -56,6 +56,10 @@ body{
   float: left
 }
 
+.s-text{
+  font-size: 12px !important;
+}
+
 .app-btn{
   color: white;
   width: 150px;

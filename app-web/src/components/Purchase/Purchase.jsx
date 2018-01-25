@@ -13,20 +13,25 @@ import './Purchase.css';
 
 class Purchase extends Component {
   render() {
+	const style={
+		text:{
+			marginBottom: '10px'
+		}
+	}
 
     return (
       <div>
         <div className="pur-tab">
-			<Col md={8} mdOffset={1} xs={12}>
-				<div className='left'>PURCHASE TOKENS WITH</div>
+			<Col md={8} mdOffset={1}  xsOffset={1} xs={10}>
+				<div className='left s-text'>PURCHASE TOKENS WITH</div>
 				<div className="app-btn f-left">BITCOIN</div>
 				<div className="app-btn f-left">LITECOIN</div>
 				<div className="app-btn f-left">RIPPLE</div>
 				<div className="app-btn f-left">FLAT</div>
 			</Col> 
 
-			<Col md={3} xs={12}>
-				<div className='left'>VERIFY YOUR IDENTITY</div>
+			<Col md={3} mdOffset={0} xsOffset={1} xs={10}>
+				<div className='left s-text'>VERIFY YOUR IDENTITY</div>
 				<div className="app-btn f-left bg-red">VERIFICATION</div>
 			</Col> 
 		</div>
@@ -95,22 +100,30 @@ class Purchase extends Component {
 			</div>
 
 			<div className="pur-coins of">
-				<Col mdOffset={1} md={2} className="app-card f-left bg-light-blue white pur-l-card">
+				<Col mdOffset={1} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
 					<div>Bitcoin</div>
 					<div>$0.00 USD</div>
 					<div>0.00000000 Coins</div>
 				</Col>
-				<Col md={2} className="app-card f-left bg-light-blue white pur-l-card">
-					
+				<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
+					<div>Bitcoin</div>
+					<div>$0.00 USD</div>
+					<div>0.00000000 Coins</div>
 				</Col>
-				<Col md={2} className="app-card f-left bg-light-blue white pur-l-card">
-					
+				<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
+					<div>Bitcoin</div>	
+					<div>$0.00 USD</div>
+					<div>0.00000000 Coins</div>
 				</Col>
-				<Col md={2} className="app-card f-left bg-light-blue white pur-l-card">
-					
+				<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
+					<div>Bitcoin</div>
+					<div>$0.00 USD</div>
+					<div>0.00000000 Coins</div>
 				</Col>
-				<Col md={2} className="app-card f-left bg-light-blue white pur-l-card">
-					
+				<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
+					<div>Bitcoin</div>
+					<div>$0.00 USD</div>
+					<div>0.00000000 Coins</div>
 				</Col>
 			</div>
 
