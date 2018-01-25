@@ -87,20 +87,10 @@ class Home extends Component {
 						<Col md={4} style={style.menu.logo} >
 							VC Token
 						</Col>
-						<Col mdOffset={4} md={4} style={style.menu.items} >
-
-							{/* <Col md={2} style={style.menu.item}>
-								About
-							</Col>
-							<Col md={2} style={style.menu.item}>
-								Service
-							</Col>
-							<Col md={2} style={style.menu.item}>
-								Pricing
-							</Col> */}
-							<Col md={12} style={style.menu.item}>
+						<Col mdOffset={4} md={2} style={style.menu.items} >
+							<div style={style.menu.item} className='f-right m-right-20'>
 								LOG OUT
-							</Col>
+							</div>
 
 						</Col>
 					</div>
@@ -136,6 +126,7 @@ class Home extends Component {
 					<Row style={style.main} className='no-margin'>
 						<Sign/>
 						{/* <Purchase/> */}
+						{/* <Verif/> */}
 					</Row>
 				</div>	
 			</div>

@@ -21,7 +21,7 @@ class Purchase extends Component {
 
     return (
       <div>
-        <div className="pur-tab">
+        <div className="app-tab">
 			<Col md={8} mdOffset={1}  xsOffset={1} xs={10}>
 				<div className='left s-text m-bottom'>PURCHASE TOKENS WITH</div>
 				<div className="app-btn f-left">BITCOIN</div>

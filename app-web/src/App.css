@@ -41,6 +41,10 @@ body{
   background-color: #72b6e7 !important;
 }
 
+.bg-white{
+  background-color: #fff;
+}
+
 .left{
   text-align: left;
 }
@@ -57,8 +61,16 @@ body{
   padding: 0px;
 }
 
+.p-r-50{
+  padding-right: 50px;
+}
+
 .f-left{
   float: left
+}
+
+.f-right{
+  float: right
 }
 
 .m-bottom{
@@ -69,8 +81,20 @@ body{
   margin-bottom: 20px;
 }
 
+.m-bottom-40{
+  margin-bottom: 40px;
+}
+
 .m-top{
   margin-top: 10px;
+}
+
+.m-top-20{
+  margin-top: 20px;
+}
+
+.m-right-20{
+  margin-right: 20px
 }
 
 .s-text{
@@ -93,21 +117,9 @@ body{
   font-weight: bold;
 }
 
-.app-btn{
-  color: white;
-  width: 150px;
-  height: 50px;
-  display: inline-block;
-  background-color: #0065ae;
-  padding: 15px 0px;
-  margin-right: 5px;
-  margin-bottom: 5px;
-  border-radius: 2px;
-  font-size: 14px;
-  transition: 0.3s
-}
-
-.app-btn:hover{
-  cursor: pointer;
+.app-tab{
   background-color: #3b96d5;
+  opacity: 0.9;
+  overflow: auto;
+  padding: 15px 0px;
 }

@@ -8,10 +8,7 @@ export default {
             null)
     },
 
-    sign: (username, pwd) => {
-        return HTTP.post('/token?username=' +
-            username + '&password=' +
-            pwd,
-            null)
+    sign: (data) => {
+        return HTTP.post('/cf/Account', data)
     }
 }

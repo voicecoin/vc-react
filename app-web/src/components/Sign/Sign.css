@@ -1,22 +1,3 @@
-.input-addon{
-    background-color: transparent;
-    border-right: none !important;
-    /* border-color: #fff; */
-}
-
-.input-basic{
-    background-color: transparent;
-    border-left: none;
-    /* border-color: #fff; */
-    box-shadow: none;
-    font-size: 14px !important;
-}
-
-.input-basic:focus{
-    box-shadow: none;
-    border-color: #ccc;
-}
-
 .sign-btn{
     height: 50px;
     border-radius: 2px;

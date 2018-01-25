@@ -7,11 +7,13 @@ class Countdown extends Component {
     render(){
         const style = {
             block: {
+                display: 'inline-block',
                 height: '110px',
                 width: '120px',
                 backgroundColor: '#3398dcb3',
                 border: '1px solid #ffffff33',
-                marginBottom: '10px'
+                marginBottom: '10px',
+                marginRight: '20px'
             },
             number: {
                 fontSize: '42px',
@@ -26,31 +28,25 @@ class Countdown extends Component {
         return (
             <div>
                 <Row>
-                    <Col md={2} mdOffset={2} xsOffset={1} xs={3}>
+                    <Col mdOffset={2} md={8} xsOffset={1} xs={10}>
                         <div style={style.block}>
                             <div style={style.number}>36</div>
                             <div style={style.text}>DAYS</div>
                         </div>
-                    </Col>
 
-                    <Col md={2} xsOffset={0} xs={3}>
                         <div style={style.block}>
                             <div style={style.number}>36</div>
                             <div style={style.text}>HOURS</div>
                         </div>
-                    </Col>
 
-                    <Col md={2} xsOffset={0} xs={3}>
                         <div style={style.block}>
                             <div style={style.number}>36</div>
-                            <div style={style.text}>MINUTES</div>
+                            <div style={style.text}>HOURS</div>
                         </div>
-                    </Col>
 
-                    <Col md={2} mdOffset={0} xsOffset={4} xs={3}>
                         <div style={style.block}>
                             <div style={style.number}>36</div>
-                            <div style={style.text}>SECONDS</div>
+                            <div style={style.text}>HOURS</div>
                         </div>
                     </Col>
                 </Row>
