@@ -26,7 +26,7 @@ class Countdown extends Component {
         return (
             <div>
                 <Row>
-                    <Col md={2} mdOffset={2} xsOffset={2} xs={3}>
+                    <Col md={2} mdOffset={2} xsOffset={1} xs={3}>
                         <div style={style.block}>
                             <div style={style.number}>36</div>
                             <div style={style.text}>DAYS</div>
@@ -47,7 +47,7 @@ class Countdown extends Component {
                         </div>
                     </Col>
 
-                    <Col md={2} mdOffset={0} xsOffset={5} xs={3}>
+                    <Col md={2} mdOffset={0} xsOffset={4} xs={3}>
                         <div style={style.block}>
                             <div style={style.number}>36</div>
                             <div style={style.text}>SECONDS</div>

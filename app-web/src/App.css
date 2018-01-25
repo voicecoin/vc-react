@@ -1,6 +1,7 @@
 body{
   height: 100%;
   width: 100%;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .App {
@@ -26,6 +27,10 @@ body{
 
 .dark-grey{
   color: #999;
+}
+
+.black{
+  color: #000;
 }
 
 .bg-red{
@@ -56,8 +61,36 @@ body{
   float: left
 }
 
+.m-bottom{
+  margin-bottom: 5px;
+}
+
+.m-bottom-20{
+  margin-bottom: 20px;
+}
+
+.m-top{
+  margin-top: 10px;
+}
+
 .s-text{
   font-size: 12px !important;
+}
+
+.n-text{
+  font-size: 18px !important;
+}
+
+.b-text{
+  font-size: 24px !important;
+}
+
+.light{
+  font-weight: 300;
+}
+
+.bold{
+  font-weight: bold;
 }
 
 .app-btn{
@@ -71,6 +104,7 @@ body{
   margin-bottom: 5px;
   border-radius: 2px;
   font-size: 14px;
+  transition: 0.3s
 }
 
 .app-btn:hover{
