@@ -105,7 +105,7 @@ class Home extends Component {
 					{/***** content *****/}
 					{/***** content *****/}
 					<Row style={style.wrapper.content} className='no-margin'>
-						<Col mdOffset={2} md={8}>
+						<Col mdOffset={3} md={6}>
 							<p className='h-wrapper-header'>PROGRESSIVE COIN SALES (BIQ)</p>
 							<div className="h-wrapper-progress">
 								<div className="progress-bar">

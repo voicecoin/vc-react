@@ -57,26 +57,26 @@ class Sign extends Component {
 
 		log: {
 			opacity: '0.95',
-			height: '500px',
-			padding: '0px 20px',
+			height: '650px',
+			padding: '50px 100px',
 			backgroundColor: '#3b96d5',
 			borderRadius: '2px 0px 0px 2px',
 			header: {
-			fontSize: '24px',
-			margin: '30px 0 30px 0px',
+			fontSize: '30px',
+			margin: '30px 0 50px 0px',
 			textAlign:'left'
 			}
 		},
 
 		sign: {
 			backgroundColor: '#fff',
-			height: '500px',
-			padding: '0px 20px',
+			height: '650px',
+			padding: '50px 100px',
 			borderRadius: '0px 2px 2px 0px',
 			header: {
 				color: '#3b96d5',
-				fontSize: '24px',
-				margin: '30px 0 30px 0px',
+				fontSize: '30px',
+				margin: '30px 0 50px 0px',
 				textAlign:'left'
 			}
 			
@@ -96,8 +96,7 @@ class Sign extends Component {
 				</InputGroup.Addon>
 				<FormControl 
 				type="text" 
-				className='input-basic' 
-				placeholder='email'
+				className='input-basic white' 
 				value={this.state.email}
 				onChange={(e) => this.handleChange(e, 'logEmail')}/>
 			</InputGroup>
@@ -108,8 +107,7 @@ class Sign extends Component {
 				</InputGroup.Addon>
 				<FormControl 
 				type="text" 
-				className='input-basic' 
-				placeholder='password'
+				className='input-basic white' 
 				value={this.state.pwd}
 				onChange={(e) => this.handleChange(e, 'logPwd')}/>
 			</InputGroup>
@@ -120,7 +118,7 @@ class Sign extends Component {
 
         </Col>
 
-        <Col mdOffset={0} md={4} xsOffset={1} xs={10}style={style.sign}>
+        <Col mdOffset={0} md={4} xsOffset={1} xs={10} style={style.sign}>
 			<div style={style.sign.header}> 
 				Register
 			</div>
@@ -164,11 +162,11 @@ class Sign extends Component {
 				</InputGroup>
 			</div>
 
-			<div className='app-checkbox' >
+			<div className='app-checkbox left' >
 				<Checkbox>I have read and accept the White Paper</Checkbox>
 			</div>
 
-			<div className='app-checkbox'>
+			<div className='app-checkbox left m-bottom-20'>
 				<Checkbox>Remember me</Checkbox>
 			</div>
 
