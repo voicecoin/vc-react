@@ -5,5 +5,71 @@ body{
 
 .App {
   text-align: center;
+  letter-spacing: 0.5px;
+}
 
+.of{
+  overflow: auto
+}
+
+.white{
+  color: white !important;
+}
+
+.light-blue{
+  color: #72b6e7;
+}
+
+.grey{
+  color: #aaa;
+}
+
+.dark-grey{
+  color: #999;
+}
+
+.bg-red{
+  background-color: #f00 !important;
+}
+
+.bg-light-blue{
+  background-color: #72b6e7 !important;
+}
+
+.left{
+  text-align: left;
+}
+
+.center{
+  text-align: center !important;
+}
+
+.no-margin{
+	margin: 0px;
+}
+
+.no-padding{
+  padding: 0px;
+}
+
+.f-left{
+  float: left
+}
+
+.app-btn{
+  color: white;
+  width: 150px;
+  height: 50px;
+  display: inline-block;
+  background-color: #0065ae;
+  padding: 15px 0px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+  font-size: 14px;
+}
+
+.app-btn:hover{
+  cursor: pointer;
+  background-color: #3b96d5;
 }

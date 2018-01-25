@@ -34,12 +34,6 @@ class Sign extends Component {
 			},
 			input: {
 			marginBottom: '30px'
-			},
-			btn: {
-				height: '40px',
-				borderRadius: '2px',
-				backgroundColor: '#0065ae',
-				paddingTop: '10px'
 			}
 		},
 		sign: {
@@ -67,28 +61,29 @@ class Sign extends Component {
 
     return (
       <div style={style.wrapper}>
-        <Col mdOffset={2} md={4} xsOffset={2} xs={8} style={style.log}>
+		<Col 
+		mdOffset={2} 
+		md={4} 
+		xsOffset={2} 
+		xs={8} 
+		style={style.log}>
 			<div style={style.log.header}> 
 				Login
 			</div>
 
-			<div>
-				<InputGroup style={style.log.input}>
-					<InputGroup.Addon>
-					@					
-					</InputGroup.Addon>
-					<FormControl type="text" />
-				</InputGroup>
-			</div>
+			<InputGroup style={style.log.input} bsSize="large">
+				<InputGroup.Addon className='input-addon'>
+					<Glyphicon glyph="envelope" className='white'/>				
+				</InputGroup.Addon>
+				<FormControl type="text" className='input-basic' placeholder='email'/>
+			</InputGroup>
 
-			<div style={style.log.input}>
-				<InputGroup>
-					<InputGroup.Addon>
-						<Glyphicon glyph="star" />
-					</InputGroup.Addon>
-					<FormControl type="text" />
-				</InputGroup>
-			</div>
+			<InputGroup style={style.log.input} bsSize="large">
+				<InputGroup.Addon className='input-addon'>
+					<Glyphicon glyph="lock" className='white'/>
+				</InputGroup.Addon>
+				<FormControl type="text" className='input-basic' placeholder='password'/>
+			</InputGroup>
 
 			<div style={style.log.btn} className='sign-btn'>
 				LOGIN
@@ -102,29 +97,29 @@ class Sign extends Component {
 			</div>
 
 			<div>
-				<InputGroup style={style.sign.input}>
-					<InputGroup.Addon>
-					@
+				<InputGroup style={style.sign.input} bsSize="large">
+					<InputGroup.Addon className='input-addon grey'>
+						<Glyphicon glyph="pencil"/>				
 					</InputGroup.Addon>
-					<FormControl type="text" />
+					<FormControl type="text" className='input-basic'/>
 				</InputGroup>
 			</div>
 
 			<div style={style.sign.input}>
-				<InputGroup>
-					<InputGroup.Addon>
-						<Glyphicon glyph="star" />
+				<InputGroup bsSize="large">
+					<InputGroup.Addon className='input-addon grey'>
+					<Glyphicon glyph="envelope"/>				
 					</InputGroup.Addon>
-					<FormControl type="text" />
+					<FormControl type="text" className='input-basic'/>
 				</InputGroup>
 			</div>
 
 			<div style={style.sign.input}>
-				<InputGroup>
-					<InputGroup.Addon>
-						<Glyphicon glyph="star" />
+				<InputGroup bsSize="large">
+					<InputGroup.Addon className='input-addon grey'>
+						<Glyphicon glyph="lock" />
 					</InputGroup.Addon>
-					<FormControl type="text" />
+					<FormControl type="text" className='input-basic'/>
 				</InputGroup>
 			</div>
 

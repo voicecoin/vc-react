@@ -4,6 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import Verif from '../../components/Verif/Verif'
 import Purchase from '../../components/Purchase/Purchase'
 import Sign from '../../components/Sign/Sign'
+import Countdown from '../../components/Countdown/Countdown'
 //style
 import './Home.css';
 import Img from '../../vendor/img/vc.jpg'
@@ -51,7 +52,6 @@ class Home extends Component {
 				}
 			},
 			wrapper: {
-				paddingBottom: '30px',
 				color: '#fff',
 				backgroundImage: "url(" + Img+ ")",
 				backgroundSize: 'cover',
@@ -87,9 +87,9 @@ class Home extends Component {
 						<Col md={4} style={style.menu.logo} >
 							VC Token
 						</Col>
-						<Col mdOffset={2} md={6} style={style.menu.items} >
+						<Col mdOffset={4} md={4} style={style.menu.items} >
 
-							<Col md={2} style={style.menu.item}>
+							{/* <Col md={2} style={style.menu.item}>
 								About
 							</Col>
 							<Col md={2} style={style.menu.item}>
@@ -97,9 +97,9 @@ class Home extends Component {
 							</Col>
 							<Col md={2} style={style.menu.item}>
 								Pricing
-							</Col>
-							<Col md={2} style={style.menu.item}>
-								FAQ
+							</Col> */}
+							<Col md={12} style={style.menu.item}>
+								LOG OUT
 							</Col>
 
 						</Col>
@@ -111,6 +111,9 @@ class Home extends Component {
 				{/***** wrapper *****/}
 				{/***** wrapper *****/}
 				<div style={style.wrapper}>
+					{/***** content *****/}
+					{/***** content *****/}
+					{/***** content *****/}
 					<Row style={style.wrapper.content} className='no-margin'>
 						<Col mdOffset={2} md={8}>
 							<p className='h-wrapper-header'>PROGRESSIVE COIN SALES (BIQ)</p>
@@ -122,20 +125,17 @@ class Home extends Component {
 							</div>
 							<p className='h-wrapper-text'>PRE-ICO PROGRESSIVE COIN SALES (TOKENS)</p>
 							<div className="h-countdown">
-								countdown
+								<Countdown/>
 							</div>
-							<p className='h-wrapper-text'>TIME LEFT IN PUBLIC PRE-ICO</p>
+							<p className='h-wrapper-text center'>TIME LEFT IN PUBLIC PRE-ICO</p>
 						</Col>
 					</Row>
 					{/***** main *****/}
 					{/***** main *****/}
 					{/***** main *****/}
-					{/***** main *****/}
-					{/***** main *****/}
 					<Row style={style.main} className='no-margin'>
-
-						<Sign/>
-						
+						{/* <Sign/> */}
+						<Purchase/>
 					</Row>
 				</div>	
 			</div>

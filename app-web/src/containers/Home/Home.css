@@ -1,7 +1,8 @@
+
 .h-wrapper-header{
     font-size: 26px;
-    margin-top: 60px;
-    margin-bottom: 20px;
+    margin-top: 80px;
+    margin-bottom: 40px;
 }
 
 .h-wrapper-text{
@@ -18,7 +19,7 @@
 }
 
 .h-countdown{
-    margin-top: 20px;
+    margin: 40px 0px 20px 0px;
 }
 
 .progress-bar{
@@ -26,6 +27,10 @@
     height: 20px;
     background-color: #0065ae;
 }
-.no-margin{
-	margin: 0px;
+
+.app-card{
+    border: 1px solid #eee;
+    border-radius: 2px;
+    padding: 20px 10px;
+    margin-bottom: 30px;
 }
