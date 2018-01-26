@@ -46,24 +46,31 @@
     border-radius: 2px;
     font-size: 14px;
     transition: 0.3s
-  }
+}
   
-  .app-btn:hover{
+.app-btn:hover{
     cursor: pointer;
     background-color: #3b96d5;
-  }
+}
 
-  .app-input{
+.app-input{
       margin-bottom: 30px;
-  }
+}
 
-  .app-checkbox{
+.app-checkbox{
     color: #aaa;
     textAlign: left;
     transition: 0.3s
+}
+
+.app-tab{
+    background-color: #3b96d5;
+    opacity: 0.9;
+    overflow: auto;
+    padding: 15px 0px;
   }
 
-  .input-addon{
+.input-addon{
     background-color: transparent;
     border-right: none !important;
     /* border-color: #fff; */

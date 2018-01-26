@@ -3,8 +3,64 @@ import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 class Countdown extends Component {
+    constructor(props){
+        super(props);
 
-    render(){
+        this.state = {
+            days: '0',
+            hours: '0',
+            minutes: '0',
+            seconds: '0',
+            timeinterval: ''
+        }
+    }
+
+    componentDidMount(){
+        
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(this.props.endDate !== nextProps.endDate){
+            this.updateClock(nextProps.endDate);
+            this.state.timeinterval = setInterval(this.updateClock.bind(this, nextProps.endDate), 1000)
+        }
+    }
+
+    /****** app func ******/
+    /****** app func ******/
+    /****** app func ******/
+    updateClock = (endtime) => {
+        let temp = Date.parse(endtime) - Date.parse(new Date())
+
+        let t = getTimeRemaining(temp);
+    
+        this.setState({ days: t.days });
+        this.setState({ hours: t.hours });
+        this.setState({ minutes: t.minutes });
+        this.setState({ seconds: t.seconds });
+    
+        if (t.total <= 0) {
+          clearInterval(this.state.timeinterval);
+        }
+
+        function getTimeRemaining(t){
+            var seconds = Math.floor( (t/1000) % 60 );
+            var minutes = Math.floor( (t/1000/60) % 60 );
+            var hours = Math.floor( (t/(1000*60*60)) % 24 );
+            var days = Math.floor( t/(1000*60*60*24) );
+    
+            return {
+                'total': t,
+                'days': days,
+                'hours': hours,
+                'minutes': minutes,
+                'seconds': seconds
+            };
+        }
+    }
+
+
+    render() {
         const style = {
             block: {
                 display: 'inline-block',
@@ -30,23 +86,23 @@ class Countdown extends Component {
                 <Row>
                     <Col mdOffset={2} md={8} xsOffset={1} xs={10}>
                         <div style={style.block}>
-                            <div style={style.number}>36</div>
+                            <div style={style.number}>{this.state.days}</div>
                             <div style={style.text}>DAYS</div>
                         </div>
 
                         <div style={style.block}>
-                            <div style={style.number}>36</div>
+                            <div style={style.number}>{this.state.hours}</div>
                             <div style={style.text}>HOURS</div>
                         </div>
 
                         <div style={style.block}>
-                            <div style={style.number}>36</div>
-                            <div style={style.text}>HOURS</div>
+                            <div style={style.number}>{this.state.minutes}</div>
+                            <div style={style.text}>MINUTES</div>
                         </div>
 
                         <div style={style.block}>
-                            <div style={style.number}>36</div>
-                            <div style={style.text}>HOURS</div>
+                            <div style={style.number}>{this.state.seconds}</div>
+                            <div style={style.text}>SECONDS</div>
                         </div>
                     </Col>
                 </Row>

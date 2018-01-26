@@ -45,21 +45,20 @@ class Sign extends Component {
 	}
 
 	signup(){
-
-		// let data = {
-		// 	fullName: this.state.signName,
-		// 	email: this.state.signEmail,
-		// 	password: this.state.signPwd
-		// }
-		// signApi.sign(data).then(function(data){
-		// 	console.log(data)
-		// })
+		let data = {
+			fullName: this.state.signName,
+			email: this.state.signEmail,
+			password: this.state.signPwd
+		}
+		signApi.sign(data).then(function(data){
+			alert('successed!')
+		})
 	}
 
 	login(){
 		signApi.login(this.state.logEmail, this.state.logPwd)
 		.then(function(data){
-			console.log(data)
+			alert('successed!')
 		})
 	}
 	
@@ -76,7 +75,7 @@ class Sign extends Component {
 		log: {
 			opacity: '0.95',
 			height: '650px',
-			padding: '50px 100px',
+			padding: '3% 5%',
 			backgroundColor: '#3b96d5',
 			borderRadius: '2px 0px 0px 2px',
 			header: {
@@ -89,7 +88,7 @@ class Sign extends Component {
 		sign: {
 			backgroundColor: '#fff',
 			height: '650px',
-			padding: '50px 100px',
+			padding: '3% 5%',
 			borderRadius: '0px 2px 2px 0px',
 			header: {
 				color: '#3b96d5',
@@ -109,23 +108,25 @@ class Sign extends Component {
 			</div>
 
 			<InputGroup className='app-input' bsSize="large">
-				<InputGroup.Addon className='input-addon'>
+				<InputGroup.Addon className='input-addon border-white'>
 					<Glyphicon glyph="envelope" className='white'/>				
 				</InputGroup.Addon>
 				<FormControl 
+				placeholder='Please enter the email'
 				type="email" 
-				className='input-basic white' 
+				className='input-basic white ph-white border-white' 
 				value={this.state.email}
 				onChange={(e) => this.handleChange(e, 'logEmail')}/>
 			</InputGroup>
 
 			<InputGroup className='app-input' bsSize="large">
-				<InputGroup.Addon className='input-addon'>
+				<InputGroup.Addon className='input-addon border-white'>
 					<Glyphicon glyph="lock" className='white'/>
 				</InputGroup.Addon>
 				<FormControl 
 				type="password" 
-				className='input-basic white' 
+				className='input-basic white ph-white border-white'
+				placeholder='Please enter the password' 
 				value={this.state.pwd}
 				onChange={(e) => this.handleChange(e, 'logPwd')}/>
 			</InputGroup>
@@ -151,7 +152,8 @@ class Sign extends Component {
 						</InputGroup.Addon>
 						<FormControl 
 						type="text" 
-						className='input-basic'
+						className='input-basic ph-grey'
+						placeholder='Please enter the username'
 						value={this.state.signName}
 						onChange={(e) => this.handleChange(e, 'signName')}/>
 					</InputGroup>
@@ -167,7 +169,8 @@ class Sign extends Component {
 						</InputGroup.Addon>
 						<FormControl 
 						type="email" 
-						className='input-basic'
+						className='input-basic ph-grey'
+						placeholder='please enter the email'
 						value={this.state.signEmail}
 						onChange={(e) => this.handleChange(e, 'signEmail')}/>
 					</InputGroup>
@@ -182,7 +185,8 @@ class Sign extends Component {
 						</InputGroup.Addon>
 						<FormControl 
 						type="password" 
-						className='input-basic'
+						className='input-basic ph-grey'
+						placeholder='please enter the password'
 						value={this.state.signPwd}
 						onChange={(e) => this.handleChange(e, 'signPwd')}/>
 					</InputGroup>

@@ -1,5 +1,5 @@
 let config = {
-    dataUrl: 'http://2c9327ab.ngrok.io'
+    dataUrl: 'http://7b59f9e3.ngrok.io'
 };
 
 if(config.env == 'development') {

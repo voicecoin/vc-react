@@ -109,6 +109,22 @@ body{
   font-size: 24px !important;
 }
 
+.ph-white::-webkit-input-placeholder{
+  color: white
+}
+
+.ph-black::-webkit-input-placeholder{
+   color: black
+}
+
+.ph-grey::-webkit-input-placeholder{
+  color: #ccc;
+}
+
+.border-white{
+  border-color: #fff !important;
+}
+
 .light{
   font-weight: 300;
 }
@@ -117,9 +133,3 @@ body{
   font-weight: bold;
 }
 
-.app-tab{
-  background-color: #3b96d5;
-  opacity: 0.9;
-  overflow: auto;
-  padding: 15px 0px;
-}

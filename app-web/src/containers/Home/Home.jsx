@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
+//router
+import HomeRoute from './router'
 //components
 import Verif from '../../components/Verif/Verif'
 import Purchase from '../../components/Purchase/Purchase'
 import Sign from '../../components/Sign/Sign'
 import Countdown from '../../components/Countdown/Countdown'
+//service
+import homeApi from './api'
 //style
 import './Home.css';
 import Img from '../../vendor/img/vc.jpg'
@@ -14,8 +18,21 @@ class Home extends Component {
 		super();
 
 		this.state = {
-			flag: true
+			info: {},
 		}
+
+		let self = this
+		homeApi.IcoInfo().then(function(data){
+			console.log(data)
+
+			self.setState({
+				info: data
+			})
+		})
+	}
+
+	componentWillMount(){
+
 	}
 
 	changeMainTab(){
@@ -89,10 +106,9 @@ class Home extends Component {
 							VC Token
 						</Col>
 						<Col mdOffset={4} md={2} style={style.menu.items} >
-							<div style={style.menu.item} className='f-right m-right-20'>
+							<div style={style.menu.item} className='f-right m-right-20 bold'>
 								LOG OUT
 							</div>
-
 						</Col>
 					</div>
 				</Row>
@@ -108,15 +124,17 @@ class Home extends Component {
 					<Row style={style.wrapper.content} className='no-margin'>
 						<Col mdOffset={3} md={6}>
 							<p className='h-wrapper-header'>PROGRESSIVE COIN SALES (BIQ)</p>
+
 							<div className="h-wrapper-progress">
 								<div className="progress-bar">
 									<div className="raiseAmount">
 									</div>
 								</div>
 							</div>
+
 							<p className='h-wrapper-text'>PRE-ICO PROGRESSIVE COIN SALES (TOKENS)</p>
 							<div className="h-countdown">
-								<Countdown/>
+								<Countdown endDate={this.state.info.startDate}/>
 							</div>
 							<p className='h-wrapper-text center'>TIME LEFT IN PUBLIC PRE-ICO</p>
 						</Col>
@@ -125,9 +143,9 @@ class Home extends Component {
 					{/***** main *****/}
 					{/***** main *****/}
 					<Row style={style.main} className='no-margin'>
-						{/* <Sign/> */}
+						<Sign/>
 						{/* <Purchase/> */}
-						<Verif/>
+						{/* <Verif/> */}
 					</Row>
 				</div>	
 			</div>
