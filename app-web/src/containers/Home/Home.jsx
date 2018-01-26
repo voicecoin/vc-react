@@ -55,6 +55,7 @@ class Home extends Component {
 				color: '#fff',
 				backgroundImage: "url(" + Img+ ")",
 				backgroundSize: 'cover',
+				paddingBottom: '50px',
 				content: {
 					marginBottom: '50px'
 				},

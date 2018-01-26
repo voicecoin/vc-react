@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+//libs
 import { Grid, 
 		Row, 
 		Col, 
@@ -27,15 +28,32 @@ class Sign extends Component {
 		}
 	}
 
+	validateEmail(email){
+		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    	return re.test(String(email).toLowerCase());
+	}
+
+	validatePwd(pwd){
+		
+	}
+
+	getEmailValidationState(){
+		if(this.state.signEmail === '')return null
+		if(this.validateEmail(this.state.signEmail)){
+			return 'success'
+		}else return 'error'
+	}
+
 	signup(){
-		let data = {
-			fullName: this.state.signName,
-			email: this.state.signEmail,
-			password: this.state.signPwd
-		}
-		signApi.sign(data).then(function(data){
-			console.log(data)
-		})
+
+		// let data = {
+		// 	fullName: this.state.signName,
+		// 	email: this.state.signEmail,
+		// 	password: this.state.signPwd
+		// }
+		// signApi.sign(data).then(function(data){
+		// 	console.log(data)
+		// })
 	}
 
 	login(){
@@ -95,7 +113,7 @@ class Sign extends Component {
 					<Glyphicon glyph="envelope" className='white'/>				
 				</InputGroup.Addon>
 				<FormControl 
-				type="text" 
+				type="email" 
 				className='input-basic white' 
 				value={this.state.email}
 				onChange={(e) => this.handleChange(e, 'logEmail')}/>
@@ -106,7 +124,7 @@ class Sign extends Component {
 					<Glyphicon glyph="lock" className='white'/>
 				</InputGroup.Addon>
 				<FormControl 
-				type="text" 
+				type="password" 
 				className='input-basic white' 
 				value={this.state.pwd}
 				onChange={(e) => this.handleChange(e, 'logPwd')}/>
@@ -124,51 +142,60 @@ class Sign extends Component {
 			</div>
 
 			<div>
-				<InputGroup className='app-input' style={style.sign.input} bsSize="large">
-					<InputGroup.Addon className='input-addon grey'>
-						<Glyphicon glyph="pencil"/>				
-					</InputGroup.Addon>
-					<FormControl 
-					type="text" 
-					className='input-basic'
-					value={this.state.signName}
-					onChange={(e) => this.handleChange(e, 'signName')}/>
-				</InputGroup>
+				<FormGroup>
+					<InputGroup 
+					className='app-input' 
+					style={style.sign.input} bsSize="large">
+						<InputGroup.Addon className='input-addon grey'>
+							<Glyphicon glyph="pencil"/>				
+						</InputGroup.Addon>
+						<FormControl 
+						type="text" 
+						className='input-basic'
+						value={this.state.signName}
+						onChange={(e) => this.handleChange(e, 'signName')}/>
+					</InputGroup>
+				</FormGroup>
+			</div>
+			
+
+			<div className='app-input'>
+				<FormGroup validationState={this.getEmailValidationState()}>
+					<InputGroup bsSize="large">
+						<InputGroup.Addon className='input-addon grey'>
+						<Glyphicon glyph="envelope"/>				
+						</InputGroup.Addon>
+						<FormControl 
+						type="email" 
+						className='input-basic'
+						value={this.state.signEmail}
+						onChange={(e) => this.handleChange(e, 'signEmail')}/>
+					</InputGroup>
+				</FormGroup>
 			</div>
 
 			<div className='app-input'>
-				<InputGroup bsSize="large">
-					<InputGroup.Addon className='input-addon grey'>
-					<Glyphicon glyph="envelope"/>				
-					</InputGroup.Addon>
-					<FormControl 
-					type="text" 
-					className='input-basic'
-					value={this.state.signEmail}
-					onChange={(e) => this.handleChange(e, 'signEmail')}/>
-				</InputGroup>
+				<FormGroup>
+					<InputGroup bsSize="large">
+						<InputGroup.Addon className='input-addon grey'>
+							<Glyphicon glyph="lock" />
+						</InputGroup.Addon>
+						<FormControl 
+						type="password" 
+						className='input-basic'
+						value={this.state.signPwd}
+						onChange={(e) => this.handleChange(e, 'signPwd')}/>
+					</InputGroup>
+				</FormGroup>
 			</div>
 
-			<div className='app-input'>
-				<InputGroup bsSize="large">
-					<InputGroup.Addon className='input-addon grey'>
-						<Glyphicon glyph="lock" />
-					</InputGroup.Addon>
-					<FormControl 
-					type="text" 
-					className='input-basic'
-					value={this.state.signPwd}
-					onChange={(e) => this.handleChange(e, 'signPwd')}/>
-				</InputGroup>
-			</div>
-
-			<div className='app-checkbox left' >
+			<div className='app-checkbox left m-bottom-20' >
 				<Checkbox>I have read and accept the White Paper</Checkbox>
 			</div>
 
-			<div className='app-checkbox left m-bottom-20'>
+			{/* <div className='app-checkbox left m-bottom-20'>
 				<Checkbox>Remember me</Checkbox>
-			</div>
+			</div> */}
 
 			<div style={style.sign.btn} className='sign-btn' onClick={this.signup.bind(this)}>
 				REGISTER

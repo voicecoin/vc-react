@@ -51,17 +51,9 @@ class Residence extends Component {
 					<Col md={6} xs={12}>
 						<Col md={12} xs={12} className='left p-r-50 m-bottom-20' >
 							<FormGroup
-							controlId="formBasicText"
-							validationState={this.getValidationState()}
-							 
-							>
+							controlId="formControlsFile">
 								<ControlLabel className='grey m-bottom'>PROOF OF RESIDENCE</ControlLabel>
-								<FormControl
-									componentClass="select"
-									className='input-noaddon'
-								>
-									<option value="select">Choose file...</option>
-									<option value="other">...</option>
+								<FormControl type="file">
 								</FormControl>
 							</FormGroup>
 						</Col>
