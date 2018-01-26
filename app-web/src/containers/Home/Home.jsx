@@ -124,9 +124,9 @@ class Home extends Component {
 					{/***** main *****/}
 					{/***** main *****/}
 					<Row style={style.main} className='no-margin'>
-						<Sign/>
+						{/* <Sign/> */}
 						{/* <Purchase/> */}
-						{/* <Verif/> */}
+						<Verif/>
 					</Row>
 				</div>	
 			</div>
