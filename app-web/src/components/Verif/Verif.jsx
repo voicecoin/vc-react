@@ -11,6 +11,8 @@ import { Row,
 	HelpBlock
 } from 'react-bootstrap';
 
+import Header from '../Header/Header'
+
 import Declar from './components/Declar'
 import Indent from './components/Indent'
 import Residence from './components/Residence'
@@ -36,46 +38,87 @@ class Verif extends Component {
 		else if (length > 5) return 'warning';
 		else if (length > 0) return 'error';
 		return null;
-	  }
+	}
 	
-	  handleChange(e) {
+	handleChange(e) {
 		this.setState({ value: e.target.value });
-	  }
+	}
 
+	jumpToPurchase = () => {
+		this.props.history.push('./purchase')
+	}
 
-  render() {
-    const style = {
-      header: {
+	logout = () => {
+		this.props.history.push('./')
+	}
 
-      },
-      container: {
-        
-      }
-    }
+	render() {
+		const style = {
+			menu: {
+				color: '#fff',
+				backgroundColor: '#0065ae',
+				height: '60px',
+				// logo
+				// logo
+				// logo
+				logo: {
+					paddingTop: '20px',
+					height: '100%',
+					float: 'left'
+				},
+				// items
+				// items
+				// items
+				items: {
+					padding: '0px',
+					height: '100%'
+				},
+				item: {
+					paddingTop: '20px',
+					height: '100%',
+					display: 'InlineBlock',
+				}
+			}
+		}
 
-    return (
-      <div>
-        <div className="app-tab">
-			<Col md={10} mdOffset={1}  xsOffset={1} xs={10}>
-				<div className='left s-text m-bottom'>PURCHASE TOKENS WITH</div>
-				<div className="app-btn f-left">BITCOIN</div>
-			</Col> 
-        </div>
+		return (
+			<div>
+				<Row className='no-margin'>
+					<div style={style.menu}>
+						<Col md={4} style={style.menu.logo} >
+							VC Token
+						</Col>
+						<Col mdOffset={4} md={2} style={style.menu.items} >
+							<div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>
+								LOG OUT
+							</div>
+						</Col>
+					</div>
+				</Row>
 
-		<div className="ver-main of bg-white">
-			<Personal/>
+				<Header/>
+				
+				<div className="app-tab">
+					<Col md={10} mdOffset={1}  xsOffset={1} xs={10}>
+						<div className='left s-text m-bottom'>PURCHASE TOKENS WITH</div>
+						<div className="app-btn f-left" onClick={this.jumpToPurchase}>BITCOIN</div>
+					</Col> 
+				</div>
 
-			<Indent/>
+				<div className="ver-main of bg-white">
+					<Personal/>
 
-			<Declar/>
+					<Indent/>
 
-			<Residence/>
+					<Declar/>
 
-			<Document/>
-		</div>
-      </div>
-    );
-  }
+					<Residence/>
+
+					<Document/>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default Verif;

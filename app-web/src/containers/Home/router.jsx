@@ -14,10 +14,9 @@ export default () =>
 	(
 		<Router>
 			<Switch>
-				<Route path='/login' exact component={Login}></Route>
-				<Route path='/' exact component={Main}></Route>
-				<Route path='/home' exact component={Home}></Route>
-				<Route path='/wk' exact component={Flow}></Route>
+				<Route path='/' exact component={Sign}></Route>
+				<Route path='/purchase' exact component={Purchase}></Route>
+				<Route path='/verification' exact component={Verif}></Route>
 			</Switch>	
 		</Router>
 	)

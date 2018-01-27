@@ -10,6 +10,8 @@ import { Grid,
 		Glyphicon,
 		Checkbox } from 'react-bootstrap';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome'
+
+import Header from '../Header/Header'
 //services
 import signApi from './services/api'
 //style
@@ -51,14 +53,16 @@ class Sign extends Component {
 			password: this.state.signPwd
 		}
 		signApi.sign(data).then(function(data){
-			alert('successed!')
+			alert('Sign up successed!')
 		})
 	}
 
-	login(){
+	login = () => {
+		let self = this;
 		signApi.login(this.state.logEmail, this.state.logPwd)
 		.then(function(data){
-			alert('successed!')
+			alert('Login successed!')
+			self.props.history.push('/purchase')
 		})
 	}
 	
@@ -68,6 +72,32 @@ class Sign extends Component {
 
   render() {
     const style = {
+		menu: {
+			color: '#fff',
+			backgroundColor: '#0065ae',
+			height: '60px',
+			// logo
+			// logo
+			// logo
+			logo: {
+				paddingTop: '20px',
+				height: '100%',
+				float: 'left'
+			},
+			// items
+			// items
+			// items
+			items: {
+				padding: '0px',
+				height: '100%'
+			},
+			item: {
+				paddingTop: '20px',
+				height: '100%',
+				display: 'InlineBlock',
+			}
+		},
+
 		wrapper: {
 			color: '#fff'
 		},
@@ -101,113 +131,131 @@ class Sign extends Component {
     }
 
     return (
-      <div style={style.wrapper}>
-		<Col mdOffset={2} md={4} xsOffset={1} xs={10} style={style.log}>
-			<div style={style.log.header}> 
-				Login
-			</div>
+		<div className='of'>
+			<Row className='no-margin'>
+				<div style={style.menu}>
+					<Col md={4} style={style.menu.logo} >
+						VC Token
+					</Col>
+					<Col mdOffset={4} md={2} style={style.menu.items} >
+						<div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>
+							LOG OUT
+						</div>
+					</Col>
+				</div>
+			</Row>
 
-			<InputGroup className='app-input' bsSize="large">
-				<InputGroup.Addon className='input-addon border-white'>
-					<Glyphicon glyph="envelope" className='white'/>				
-				</InputGroup.Addon>
-				<FormControl 
-				placeholder='Please enter the email'
-				type="email" 
-				className='input-basic white ph-white border-white' 
-				value={this.state.email}
-				onChange={(e) => this.handleChange(e, 'logEmail')}/>
-			</InputGroup>
+			<Header/>
 
-			<InputGroup className='app-input' bsSize="large">
-				<InputGroup.Addon className='input-addon border-white'>
-					<Glyphicon glyph="lock" className='white'/>
-				</InputGroup.Addon>
-				<FormControl 
-				type="password" 
-				className='input-basic white ph-white border-white'
-				placeholder='Please enter the password' 
-				value={this.state.pwd}
-				onChange={(e) => this.handleChange(e, 'logPwd')}/>
-			</InputGroup>
+			<div style={style.wrapper}>
+				<Col mdOffset={2} md={4} xsOffset={1} xs={10} style={style.log}>
+					<div style={style.log.header}> 
+						Login
+					</div>
 
-			<div style={style.log.btn} className='sign-btn' onClick={this.login.bind(this)}>
-				LOGIN
-			</div>
-
-        </Col>
-
-        <Col mdOffset={0} md={4} xsOffset={1} xs={10} style={style.sign}>
-			<div style={style.sign.header}> 
-				Register
-			</div>
-
-			<div>
-				<FormGroup>
-					<InputGroup 
-					className='app-input' 
-					style={style.sign.input} bsSize="large">
-						<InputGroup.Addon className='input-addon grey'>
-							<Glyphicon glyph="pencil"/>				
+					<InputGroup className='app-input' bsSize="large">
+						<InputGroup.Addon className='input-addon border-white'>
+							<Glyphicon glyph="envelope" className='white'/>				
 						</InputGroup.Addon>
 						<FormControl 
-						type="text" 
-						className='input-basic ph-grey'
-						placeholder='Please enter the username'
-						value={this.state.signName}
-						onChange={(e) => this.handleChange(e, 'signName')}/>
-					</InputGroup>
-				</FormGroup>
-			</div>
-			
-
-			<div className='app-input'>
-				<FormGroup validationState={this.getEmailValidationState()}>
-					<InputGroup bsSize="large">
-						<InputGroup.Addon className='input-addon grey'>
-						<Glyphicon glyph="envelope"/>				
-						</InputGroup.Addon>
-						<FormControl 
+						placeholder='Please enter the email'
 						type="email" 
-						className='input-basic ph-grey'
-						placeholder='please enter the email'
-						value={this.state.signEmail}
-						onChange={(e) => this.handleChange(e, 'signEmail')}/>
+						className='input-basic white ph-white border-white' 
+						value={this.state.email}
+						onChange={(e) => this.handleChange(e, 'logEmail')}/>
 					</InputGroup>
-				</FormGroup>
-			</div>
 
-			<div className='app-input'>
-				<FormGroup>
-					<InputGroup bsSize="large">
-						<InputGroup.Addon className='input-addon grey'>
-							<Glyphicon glyph="lock" />
+					<InputGroup className='app-input' bsSize="large">
+						<InputGroup.Addon className='input-addon border-white'>
+							<Glyphicon glyph="lock" className='white'/>
 						</InputGroup.Addon>
 						<FormControl 
 						type="password" 
-						className='input-basic ph-grey'
-						placeholder='please enter the password'
-						value={this.state.signPwd}
-						onChange={(e) => this.handleChange(e, 'signPwd')}/>
+						className='input-basic white ph-white border-white'
+						placeholder='Please enter the password' 
+						value={this.state.pwd}
+						onChange={(e) => this.handleChange(e, 'logPwd')}/>
 					</InputGroup>
-				</FormGroup>
+
+					<div style={style.log.btn} className='sign-btn' onClick={this.login.bind(this)}>
+						LOGIN
+					</div>
+
+				</Col>
+
+				<Col mdOffset={0} md={4} xsOffset={1} xs={10} style={style.sign}>
+					<div style={style.sign.header}> 
+						Register
+					</div>
+
+					<div>
+						<FormGroup>
+							<InputGroup 
+							className='app-input' 
+							style={style.sign.input} bsSize="large">
+								<InputGroup.Addon className='input-addon grey'>
+									<Glyphicon glyph="pencil"/>				
+								</InputGroup.Addon>
+								<FormControl 
+								type="text" 
+								className='input-basic ph-grey'
+								placeholder='Please enter the username'
+								value={this.state.signName}
+								onChange={(e) => this.handleChange(e, 'signName')}/>
+							</InputGroup>
+						</FormGroup>
+					</div>
+					
+
+					<div className='app-input'>
+						<FormGroup validationState={this.getEmailValidationState()}>
+							<InputGroup bsSize="large">
+								<InputGroup.Addon className='input-addon grey'>
+								<Glyphicon glyph="envelope"/>				
+								</InputGroup.Addon>
+								<FormControl 
+								type="email" 
+								className='input-basic ph-grey'
+								placeholder='please enter the email'
+								value={this.state.signEmail}
+								onChange={(e) => this.handleChange(e, 'signEmail')}/>
+							</InputGroup>
+						</FormGroup>
+					</div>
+
+					<div className='app-input'>
+						<FormGroup>
+							<InputGroup bsSize="large">
+								<InputGroup.Addon className='input-addon grey'>
+									<Glyphicon glyph="lock" />
+								</InputGroup.Addon>
+								<FormControl 
+								type="password" 
+								className='input-basic ph-grey'
+								placeholder='please enter the password'
+								value={this.state.signPwd}
+								onChange={(e) => this.handleChange(e, 'signPwd')}/>
+							</InputGroup>
+						</FormGroup>
+					</div>
+
+					<div className='app-checkbox left m-bottom-20' >
+						<Checkbox>I have read and accept the White Paper</Checkbox>
+					</div>
+
+					{/* <div className='app-checkbox left m-bottom-20'>
+						<Checkbox>Remember me</Checkbox>
+					</div> */}
+
+					<div style={style.sign.btn} className='sign-btn' onClick={this.signup.bind(this)}>
+						REGISTER
+					</div>
+
+				</Col>
+			
 			</div>
-
-			<div className='app-checkbox left m-bottom-20' >
-				<Checkbox>I have read and accept the White Paper</Checkbox>
-			</div>
-
-			{/* <div className='app-checkbox left m-bottom-20'>
-				<Checkbox>Remember me</Checkbox>
-			</div> */}
-
-			<div style={style.sign.btn} className='sign-btn' onClick={this.signup.bind(this)}>
-				REGISTER
-			</div>
-
-        </Col>
-        
-      </div>
+		</div>
+      
     );
   }
 }

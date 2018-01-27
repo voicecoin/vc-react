@@ -1,7 +1,7 @@
 import { HTTP } from '../../util/http'
 
 export default {
-    IcoInfo: () => {
+    getIcoInfo: () => {
         return HTTP.get('/v1/IcoInfo')
     }
 }
