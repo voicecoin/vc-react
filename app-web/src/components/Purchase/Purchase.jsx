@@ -12,6 +12,7 @@ import { Row,
 import Header from '../Header/Header'
 
 import './Purchase.css';
+import Logo from '../../vendor/img/logo.png'
 
 class Purchase extends Component {
 	constructor(){
@@ -39,12 +40,12 @@ class Purchase extends Component {
 			menu: {
 				color: '#fff',
 				backgroundColor: '#0065ae',
-				height: '60px',
+				height: '70px',
 				// logo
 				// logo
 				// logo
 				logo: {
-					paddingTop: '20px',
+					paddingTop: '10px',
 					height: '100%',
 					float: 'left'
 				},
@@ -69,7 +70,7 @@ class Purchase extends Component {
 			<Row className='no-margin'>
 				<div style={style.menu}>
 					<Col md={4} style={style.menu.logo} >
-						VC Token
+						<img src={Logo} alt="#"/>
 					</Col>
 					<Col mdOffset={4} md={2} style={style.menu.items} >
 						{this.state.showLogout ? <div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>LOG OUT</div> : null}

@@ -38,7 +38,7 @@ class Indent extends Component {
 
 	render(){
 		return (
-			<div className="ver-indent">
+			<div className="ver-indent of">
 				<Col 
 				mdOffset={1} 
 				md={10} 
@@ -228,6 +228,15 @@ class Indent extends Component {
 					</Col>
 
 				</Col>	
+
+				<Col 
+				mdOffset={8} 
+				md={3} 
+				xsOffset={1}
+				xs={10}
+				>
+					<div className='verif-save-btn bg-blue white m-bottom-40'>SAVE SECTION</div>
+				</Col>
 			</div>
 		)
 	}

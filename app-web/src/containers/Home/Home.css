@@ -1,31 +1,4 @@
-.h-wrapper-header{
-    font-size: 30px;
-    margin-top: 100px;
-    margin-bottom: 60px;
-}
 
-.h-wrapper-text{
-    font-size: 12px;
-    text-align: left;
-    margin-top: 5px;
-}
-
-.h-wrapper-progress{
-    margin-top: 10px;
-    margin-bottom: 25px;
-    height: 20px;
-    background-color: #fff;
-}
-
-.h-countdown{
-    margin: 40px 0px 20px 0px;
-}
-
-.progress-bar{
-    position: relative !important;
-    height: 20px;
-    background-color: #0065ae;
-}
 
 .app-card{
     border: 1px solid #eee;
@@ -96,4 +69,7 @@
 .input-noaddon:focus{
     box-shadow: none;
     border-color: #ccc;
+}
+
+.home-menu-logo{
 }

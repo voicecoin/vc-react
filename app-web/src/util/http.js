@@ -41,5 +41,5 @@ HTTP.interceptors.response.use(function(response){
 		// iView.Message.error(response.statusText);
 	}
 
-	return Promise.reject(response.statusText);
+	return Promise.reject(response);
 });

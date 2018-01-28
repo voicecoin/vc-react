@@ -20,6 +20,7 @@ import Document from './components/Document'
 import Personal from './components/Personal'
 
 import './Verif.css';
+import Logo from '../../vendor/img/logo.png'
 
 class Verif extends Component {
 	constructor(props, context) {
@@ -58,14 +59,14 @@ class Verif extends Component {
 			menu: {
 				color: '#fff',
 				backgroundColor: '#0065ae',
-				height: '60px',
+				height: '70px',
 				// logo
 				// logo
 				// logo
 				logo: {
-					paddingTop: '20px',
+					paddingTop: '10px',
 					height: '100%',
-					float: 'left'
+					float: 'left',
 				},
 				// items
 				// items
@@ -87,7 +88,7 @@ class Verif extends Component {
 				<Row className='no-margin'>
 					<div style={style.menu}>
 						<Col md={4} style={style.menu.logo} >
-							VC Token
+							<img src={Logo} alt="#"/>
 						</Col>
 						<Col mdOffset={4} md={2} style={style.menu.items} >
 							{this.state.showLogout ? <div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>LOG OUT</div> : null}
@@ -104,7 +105,7 @@ class Verif extends Component {
 					</Col> 
 				</div>
 
-				<div className="ver-main of bg-white">
+				<div className="ver-main of bg-white of">
 					<Personal/>
 
 					<Indent/>

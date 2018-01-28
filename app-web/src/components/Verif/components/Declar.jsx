@@ -38,7 +38,7 @@ class Declar extends Component {
 
 	render(){
 		return (
-			<div className="ver-declar">
+			<div className="ver-declar of">
 				<Col 
 				mdOffset={1} 
 				md={10} 
@@ -103,7 +103,16 @@ class Declar extends Component {
 						</p>
 					</Col>
 
-				</Col>	
+				</Col>
+
+				<Col 
+				mdOffset={8} 
+				md={3} 
+				xsOffset={1}
+				xs={10}
+				>
+					<div className='verif-save-btn bg-blue white m-bottom-40'>SAVE SECTION</div>
+				</Col>
 			</div>
 		)
 	}

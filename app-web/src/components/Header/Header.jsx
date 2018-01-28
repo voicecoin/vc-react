@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-
+//component
 import Countdown from '../Countdown/Countdown'
-
+//api
 import headerApi from './api'
 //style
 import './Header.css';
@@ -14,6 +14,7 @@ class Header extends Component {
 
 		this.state = {
 			info: {},
+			barWidth: '50px'
 		}
 
 		let self = this
@@ -35,10 +36,17 @@ class Header extends Component {
 		const style = {
             wrapper: {
 				color: '#fff',
-                paddingBottom: '50px',
+                paddingBottom: '30px',
 				content: {
 					marginBottom: '50px'
 				}
+			},
+			
+			progressBar: {
+				display: 'inline-block',
+				position: 'relative !important',
+				width: this.state.barWidth,
+				height: '20px'
 			}
 		}
 
@@ -51,9 +59,8 @@ class Header extends Component {
 					<Row style={style.wrapper.content} className='no-margin'>
 						<Col mdOffset={3} md={6}>
 							<p className='h-wrapper-header'>PROGRESSIVE COIN SALES (BIQ)</p>
-
-							<div className="h-wrapper-progress">
-								<div className="progress-bar">
+							<div className="h-wrapper-progress ">
+								<div className='bg-blue f-left' style={style.progressBar}>
 									<div className="raiseAmount">
 									</div>
 								</div>

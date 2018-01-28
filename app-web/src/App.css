@@ -54,7 +54,7 @@ body{
 }
 
 .left{
-  text-align: left;
+  text-align: left !important;
 }
 
 .center{
@@ -149,3 +149,7 @@ body{
   font-weight: bold;
 }
 
+
+.pointer:hover{
+  cursor: pointer;
+}

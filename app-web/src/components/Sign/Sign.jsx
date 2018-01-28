@@ -8,6 +8,8 @@ import { Grid,
 		FormControl, 
 		InputGroup, 
 		Glyphicon,
+		Modal,
+		Button,
 		Checkbox } from 'react-bootstrap';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome'
 
@@ -16,6 +18,7 @@ import Header from '../Header/Header'
 import signApi from './services/api'
 //style
 import './Sign.css';
+import Logo from '../../vendor/img/logo.png'
 
 class Sign extends Component {
 	constructor(){
@@ -27,8 +30,29 @@ class Sign extends Component {
 			signName: '',
 			signEmail: '',
 			signPwd: '',
-			showLogout: false
+			showLogout: false,
+			show: false
 		}
+	}
+
+	componentDidMount(){
+		let self = this;
+		if(this.props.match.params.key){
+			signApi.activate(this.props.match.params.key)
+			.then(function(data){
+				self.handleShow();
+			})
+		}
+	}
+
+
+	handleHide = () => {
+		this.setState({ show: false });
+		this.props.history.push('../')
+	  }
+	
+	handleShow = () => {
+		this.setState({ show: true });
 	}
 
 	validateEmail(email){
@@ -64,6 +88,8 @@ class Sign extends Component {
 		.then(function(data){
 			alert('Login successed!')
 			self.props.history.push('/purchase')
+		}, function(data){
+			alert(data.data)
 		})
 	}
 	
@@ -76,18 +102,12 @@ class Sign extends Component {
 		menu: {
 			color: '#fff',
 			backgroundColor: '#0065ae',
-			height: '60px',
-			// logo
-			// logo
-			// logo
+			height: '70px',
 			logo: {
-				paddingTop: '20px',
+				paddingTop: '10px',
 				height: '100%',
 				float: 'left'
 			},
-			// items
-			// items
-			// items
 			items: {
 				padding: '0px',
 				height: '100%'
@@ -136,7 +156,7 @@ class Sign extends Component {
 			<Row className='no-margin'>
 				<div style={style.menu}>
 					<Col md={4} style={style.menu.logo} >
-						VC Token
+						<img className='home-menu-logo' src={Logo} alt="#"/>
 					</Col>
 					<Col mdOffset={4} md={2} style={style.menu.items} >
 						{this.state.showLogout ? <div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>LOG OUT</div> : null}
@@ -253,6 +273,24 @@ class Sign extends Component {
 				</Col>
 			
 			</div>
+			
+			<Modal
+			show={this.state.show}
+			onHide={this.handleHide}
+			>
+				<Modal.Header closeButton>
+				<Modal.Title id="contained-modal-title">
+					Contained Modal
+				</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+				Elit est explicabo ipsum eaque dolorem blanditiis doloribus sed id
+				ipsam, beatae, rem fuga id earum? Inventore et facilis obcaecati.
+				</Modal.Body>
+				<Modal.Footer>
+				<Button onClick={this.handleHide}>Close</Button>
+				</Modal.Footer>
+		  	</Modal>
 		</div>
       
     );

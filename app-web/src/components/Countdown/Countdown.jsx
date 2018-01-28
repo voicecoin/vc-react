@@ -84,7 +84,7 @@ class Countdown extends Component {
         return (
             <div>
                 <Row>
-                    <Col mdOffset={2} md={8} xsOffset={1} xs={10}>
+                    <Col md={12} mdOffset={0} xsOffset={1} xs={10}>
                         <div style={style.block}>
                             <div style={style.number}>{this.state.days}</div>
                             <div style={style.text}>DAYS</div>
