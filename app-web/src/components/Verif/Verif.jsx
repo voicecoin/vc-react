@@ -28,7 +28,8 @@ class Verif extends Component {
 		this.handleChange = this.handleChange.bind(this);
 	
 		this.state = {
-		  value: ''
+			value: '',
+			showLogout: true
 		};
 	}
 
@@ -89,9 +90,7 @@ class Verif extends Component {
 							VC Token
 						</Col>
 						<Col mdOffset={4} md={2} style={style.menu.items} >
-							<div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>
-								LOG OUT
-							</div>
+							{this.state.showLogout ? <div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>LOG OUT</div> : null}
 						</Col>
 					</div>
 				</Row>
@@ -100,7 +99,7 @@ class Verif extends Component {
 				
 				<div className="app-tab">
 					<Col md={10} mdOffset={1}  xsOffset={1} xs={10}>
-						<div className='left s-text m-bottom'>PURCHASE TOKENS WITH</div>
+						<div className='left s-text m-bottom white'>PURCHASE TOKENS WITH</div>
 						<div className="app-btn f-left" onClick={this.jumpToPurchase}>BITCOIN</div>
 					</Col> 
 				</div>

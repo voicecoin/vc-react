@@ -1,0 +1,15 @@
+.ft-wrapper{
+    padding: 50px 0px;
+}
+
+.ft-l-line{
+    height: 1px;
+    width: auto;
+    background-color: #555;
+}
+
+.ft-s-line{
+    height: 2px;
+    width: 100px;
+    background-color: #ccc;
+}

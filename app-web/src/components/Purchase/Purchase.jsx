@@ -14,9 +14,20 @@ import Header from '../Header/Header'
 import './Purchase.css';
 
 class Purchase extends Component {
+	constructor(){
+		super()
+
+		this.state = {
+			showLogout: true
+		}
+	}
 
 	jumpToVerif = () => {
 		this.props.history.push('./verification')
+	}
+
+	logout = () => {
+		this.props.history.push('./')
 	}
 
 	render() {
@@ -61,9 +72,7 @@ class Purchase extends Component {
 						VC Token
 					</Col>
 					<Col mdOffset={4} md={2} style={style.menu.items} >
-						<div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>
-							LOG OUT
-						</div>
+						{this.state.showLogout ? <div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>LOG OUT</div> : null}
 					</Col>
 				</div>
 			</Row>
@@ -72,7 +81,7 @@ class Purchase extends Component {
 
 			<div className="app-tab">
 				<Col md={8} mdOffset={1}  xsOffset={1} xs={10}>
-					<div className='left s-text m-bottom'>PURCHASE TOKENS WITH</div>
+					<div className='left s-text m-bottom white'>PURCHASE TOKENS WITH</div>
 					<div className="app-btn f-left">BITCOIN</div>
 					<div className="app-btn f-left">LITECOIN</div>
 					<div className="app-btn f-left">RIPPLE</div>
@@ -80,7 +89,7 @@ class Purchase extends Component {
 				</Col> 
 
 				<Col md={3} mdOffset={0} xsOffset={1} xs={10}>
-					<div className='left s-text m-bottom'>VERIFY YOUR IDENTITY</div>
+					<div className='left s-text m-bottom white'>VERIFY YOUR IDENTITY</div>
 					<div className="app-btn f-left bg-red" onClick={this.jumpToVerif}>VERIFICATION</div>
 				</Col> 
 			</div>

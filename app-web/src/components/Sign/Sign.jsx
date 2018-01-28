@@ -26,7 +26,8 @@ class Sign extends Component {
 			logPwd: '',
 			signName: '',
 			signEmail: '',
-			signPwd: ''
+			signPwd: '',
+			showLogout: false
 		}
 	}
 
@@ -131,16 +132,14 @@ class Sign extends Component {
     }
 
     return (
-		<div className='of'>
+		<div className='of m-bottom-60'>
 			<Row className='no-margin'>
 				<div style={style.menu}>
 					<Col md={4} style={style.menu.logo} >
 						VC Token
 					</Col>
 					<Col mdOffset={4} md={2} style={style.menu.items} >
-						<div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>
-							LOG OUT
-						</div>
+						{this.state.showLogout ? <div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>LOG OUT</div> : null}
 					</Col>
 				</div>
 			</Row>

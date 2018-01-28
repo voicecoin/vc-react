@@ -6,6 +6,7 @@ import HomeRoute from './router'
 import Verif from '../../components/Verif/Verif'
 import Purchase from '../../components/Purchase/Purchase'
 import Sign from '../../components/Sign/Sign'
+import Footer from '../../components/Footer/Footer'
 
 //style
 import './Home.css';
@@ -25,6 +26,7 @@ class Home extends Component {
 		return (
 			<div style={style}>
 				<HomeRoute/>	
+				<Footer/>
 			</div>
 		);
   }

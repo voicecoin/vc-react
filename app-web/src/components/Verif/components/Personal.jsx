@@ -68,7 +68,6 @@ class Declar extends Component {
 							<HelpBlock>Validation is based on string length.</HelpBlock>
 						</FormGroup>
 					</Col>
-
 					
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
@@ -88,7 +87,6 @@ class Declar extends Component {
 							<HelpBlock>Validation is based on string length.</HelpBlock>
 						</FormGroup>
 					</Col>
-
 					
 					<Col md={12} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
@@ -109,8 +107,6 @@ class Declar extends Component {
 						</FormGroup>
 					</Col>
 
-
-					
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
@@ -130,7 +126,6 @@ class Declar extends Component {
 						</FormGroup>
 					</Col>
 
-					
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
@@ -252,7 +247,8 @@ class Declar extends Component {
 						</FormGroup>
 					</Col>
 
-				</Col>	
+				</Col>
+				
 			</div>
 		)
 	}
