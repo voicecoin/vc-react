@@ -8,6 +8,7 @@ import { Row,
 	InputGroup, 
 	Glyphicon, 
 } from 'react-bootstrap';
+import QRCode from 'qrcode.react'
 //components
 import Header from '../Header/Header'
 //services
@@ -142,7 +143,7 @@ class Purchase extends Component {
 
 					<Col mdOffset={0} md={5} xsOffset={1} xs={10} className='app-card'>
 						<div className='left m-bottom'>
-							<span className='pur-number left'>1.000002</span>
+							<span className='pur-number left'>{this.state.curPrice.v2c}</span>
 							{this.state.curPrice.name}
 						</div>
 						<div className='left bold'>{'1 ' + this.state.curPrice.name + ' = ' + this.state.curPrice.c2v + ' TOKEN'}</div>
@@ -168,7 +169,6 @@ class Purchase extends Component {
 									type="text" 
 									className='input-basic'
 									placeholder='TOKENS'
-									// this.coinNum * this.state.curPrice.c2v
 									value={ this.state.isToken ? this.state.tokenNum : this.state.coinNum * this.state.curPrice.c2v}
 									onFocus={ () => this.state.isToken = true }
 									onChange={ (e) => this.handleChange(e, 'tokenNum')}
@@ -187,14 +187,14 @@ class Purchase extends Component {
 									type="text" 
 									className='input-basic'
 									placeholder={ this.state.curPrice.name }
-									value={ this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum}
+									value={ this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum }
 									onFocus={ () => this.state.isToken = false } 
 									onChange={ (e) => this.handleChange(e, 'coinNum') }
 									/>
 								</InputGroup>
 							</Col>
 							<Col className='m-top black bold m-bottom-20' md={5}>
-								PURCHASE TOKENS USING 0.00000000 BTC
+								PURCHASE TOKENS USING { this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum } { this.state.curPrice.name }
 							</Col>
 						</div>
 

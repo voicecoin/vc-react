@@ -138,7 +138,7 @@ class Sign extends Component {
 
 		sign: {
 			backgroundColor: '#fff',
-			height: '650px',
+			height: '630px',
 			padding: '3% 5%',
 			borderRadius: '0px 2px 2px 0px',
 			header: {

@@ -21,6 +21,7 @@ class Home extends Component {
 		const style = {
 			backgroundImage: "url(" + Img+ ")",
 			backgroundSize: 'cover',
+			backgroundPosition: 'center'
 		}
 
 		return (
