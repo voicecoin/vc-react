@@ -11,24 +11,26 @@ import { Row,
 	HelpBlock
 } from 'react-bootstrap';
 
+import { faCoffee } from '@fortawesome/fontawesome-free-solid'
+
+import fontawesome from '@fortawesome/fontawesome'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+
 import './Footer.css'
 
 class Footer extends Component {
 	constructor() {
 		super();
-	
 	}
-
 
 	render(){
 		return (
-            <div className='of bg-l-black'>
+            <div className='of bg-l-black p-t-50'>
                 <Col 
-					mdOffset={1} 
-					md={10} 
-                    xs={12}
-                    className='ft-wrapper left white'
-					>
+                mdOffset={1} 
+                md={10} 
+                xs={12}
+                className='ft-wrapper left white'>
                     <Col md={3} xs={12} className='p-r-50 m-bottom-60'>
                         <h4 className='m-bottom-20'>ABOUT US</h4>
                         <div className='ft-s-line m-bottom-40'></div>
@@ -61,9 +63,25 @@ class Footer extends Component {
                         </div>
 
                         <div className='m-bottom-20'>
-                            <p>info@ubiquicoin.com </p>
-                            <p>www.ubiquicoin.com</p>
+                            <p>info@voic.com</p>
+                            <p>www.voic.com</p>
                         </div>
+                    </Col>
+                </Col>
+
+                <Col
+                mdOffset={1} 
+                md={10} 
+                xs={12}
+                className='white'>
+                    <Col 
+                    md={8} 
+                    xs={12}>
+                        <h5 className='m-bottom-20 left'>VOIC Limited, 2017-2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
+                    </Col>
+                    <Col
+                    md={4} 
+                    xs={12}>
                     </Col>
                 </Col>
             </div>

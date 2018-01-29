@@ -8,9 +8,11 @@ import { Row,
 	InputGroup, 
 	Glyphicon, 
 } from 'react-bootstrap';
-
+//components
 import Header from '../Header/Header'
-
+//services
+import purchaseApi from '../Purchase/api'
+//styling
 import './Purchase.css';
 import Logo from '../../vendor/img/logo.png'
 
@@ -19,8 +21,38 @@ class Purchase extends Component {
 		super()
 
 		this.state = {
-			showLogout: true
+			showLogout: true,
+			currencies: [],
+			curPrice: {},
+			prices: {},
+			tokenNum: 0,
+			coinNum: 0,
+			isToken: true
 		}
+	}
+	
+	componentWillMount = () => {
+		let self = this;
+
+		purchaseApi.getCurrencies().then(function(data){
+			self.setState({ currencies: data })
+		})
+
+		purchaseApi.getPrices().then(function(data){
+			self.setState({ prices: data })
+			self.setState({ curPrice: data[0] })
+		})
+	}
+
+	selectCurCoin = (name) => {
+		let cur = this.state.prices.find(function(v){
+			return v.name === name
+		})
+		this.setState({ curPrice:cur })
+	}
+
+	handleChange(e, name){	
+		this.setState({ [name]: e.target.value })
 	}
 
 	jumpToVerif = () => {
@@ -28,6 +60,7 @@ class Purchase extends Component {
 	}
 
 	logout = () => {
+		localStorage.removeItem('token')
 		this.props.history.push('./')
 	}
 
@@ -41,17 +74,11 @@ class Purchase extends Component {
 				color: '#fff',
 				backgroundColor: '#0065ae',
 				height: '70px',
-				// logo
-				// logo
-				// logo
 				logo: {
 					paddingTop: '10px',
 					height: '100%',
 					float: 'left'
 				},
-				// items
-				// items
-				// items
 				items: {
 					padding: '0px',
 					height: '100%'
@@ -62,7 +89,6 @@ class Purchase extends Component {
 					display: 'InlineBlock',
 				}
 			},
-
 		}
 
 		return (
@@ -83,10 +109,11 @@ class Purchase extends Component {
 			<div className="app-tab">
 				<Col md={8} mdOffset={1}  xsOffset={1} xs={10}>
 					<div className='left s-text m-bottom white'>PURCHASE TOKENS WITH</div>
-					<div className="app-btn f-left">BITCOIN</div>
-					<div className="app-btn f-left">LITECOIN</div>
-					<div className="app-btn f-left">RIPPLE</div>
-					<div className="app-btn f-left">FLAT</div>
+					{
+						this.state.currencies.map((v) => {
+							return <div className="app-btn f-left" onClick={this.selectCurCoin.bind(this, v.symbol)}>{v.name}</div>
+						})
+					}
 				</Col> 
 
 				<Col md={3} mdOffset={0} xsOffset={1} xs={10}>
@@ -107,16 +134,18 @@ class Purchase extends Component {
 						<span className='pur-number left'>1</span>
 						TOKEN
 					</div>
-					<div className='left bold'>1 TOKEN = 0.00008801 BTC</div>
+					<div className='left bold'>
+						{ '1 TOKEN = ' + this.state.curPrice.v2c + ' ' + this.state.curPrice.name }
+					</div>
 					<div className='left'>Calculated on January 24, 2018, 20:30 (1/25/2018, 02:30 UTC)</div>
 					</Col>
 
 					<Col mdOffset={0} md={5} xsOffset={1} xs={10} className='app-card'>
 						<div className='left m-bottom'>
 							<span className='pur-number left'>1.000002</span>
-							TOKEN
+							{this.state.curPrice.name}
 						</div>
-						<div className='left bold'>1 TOKEN = 0.00008801 BTC</div>
+						<div className='left bold'>{'1 ' + this.state.curPrice.name + ' = ' + this.state.curPrice.c2v + ' TOKEN'}</div>
 						<div className='left'>Calculated on January 24, 2018, 20:30 (1/25/2018, 02:30 UTC)</div>
 					</Col>
 				</div>
@@ -135,7 +164,15 @@ class Purchase extends Component {
 									<InputGroup.Addon className='input-addon grey'>
 										<Glyphicon glyph="globe"/>				
 									</InputGroup.Addon>
-									<FormControl type="text" className='input-basic'/>
+									<FormControl 
+									type="text" 
+									className='input-basic'
+									placeholder='TOKENS'
+									// this.coinNum * this.state.curPrice.c2v
+									value={ this.state.isToken ? this.state.tokenNum : this.state.coinNum * this.state.curPrice.c2v}
+									onFocus={ () => this.state.isToken = true }
+									onChange={ (e) => this.handleChange(e, 'tokenNum')}
+									/>
 								</InputGroup>
 							</Col>
 							<Col className='m-top m-bottom-20' md={1}>
@@ -146,7 +183,14 @@ class Purchase extends Component {
 									<InputGroup.Addon className='input-addon grey'>
 										<Glyphicon glyph="piggy-bank"/>				
 									</InputGroup.Addon>
-									<FormControl type="text" className='input-basic'/>
+									<FormControl 
+									type="text" 
+									className='input-basic'
+									placeholder={ this.state.curPrice.name }
+									value={ this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum}
+									onFocus={ () => this.state.isToken = false } 
+									onChange={ (e) => this.handleChange(e, 'coinNum') }
+									/>
 								</InputGroup>
 							</Col>
 							<Col className='m-top black bold m-bottom-20' md={5}>

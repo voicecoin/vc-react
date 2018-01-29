@@ -51,6 +51,7 @@ class Verif extends Component {
 	}
 
 	logout = () => {
+		localStorage.removeItem('token')
 		this.props.history.push('./')
 	}
 
@@ -60,17 +61,11 @@ class Verif extends Component {
 				color: '#fff',
 				backgroundColor: '#0065ae',
 				height: '70px',
-				// logo
-				// logo
-				// logo
 				logo: {
 					paddingTop: '10px',
 					height: '100%',
 					float: 'left',
 				},
-				// items
-				// items
-				// items
 				items: {
 					padding: '0px',
 					height: '100%'
