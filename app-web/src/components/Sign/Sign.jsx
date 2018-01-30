@@ -49,7 +49,7 @@ class Sign extends Component {
 	handleHide = () => {
 		this.setState({ show: false });
 		this.props.history.push('../')
-	  }
+	}
 	
 	handleShow = () => {
 		this.setState({ show: true });

@@ -7,5 +7,9 @@ export default {
 
     getPrices: () => {
         return HTTP.get('/v1/Market/prices')
+    },
+
+    purchase: (cur) => {
+        return HTTP.get('/v1/IcoInfo/address/' + cur)
     }
 }
