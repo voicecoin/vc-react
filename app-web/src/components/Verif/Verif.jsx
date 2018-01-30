@@ -34,7 +34,7 @@ class Verif extends Component {
 	}
 
 	componentDidMount(){
-
+		
 	}
 
 	getValidationState() {
