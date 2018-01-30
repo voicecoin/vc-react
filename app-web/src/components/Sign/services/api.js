@@ -2,10 +2,7 @@ import { HTTP } from '../../../util/http'
 
 export default {
     login: (username, pwd) => {
-        return HTTP.post('/v1/Account/token?username=' +
-            username + '&password=' +
-            pwd,
-            null)
+        return HTTP.post('/v1/Account/token', {username: username, password: pwd})
     },
 
     sign: (data) => {

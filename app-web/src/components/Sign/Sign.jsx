@@ -65,10 +65,10 @@ class Sign extends Component {
 	}
 
 	getEmailValidationState(){
-		if(this.state.signEmail === '')return null
+		if(this.state.signEmail === '') return null
 		if(this.validateEmail(this.state.signEmail)){
 			return 'success'
-		}else return 'error'
+		} else return 'error'
 	}
 
 	signup(){
@@ -87,7 +87,6 @@ class Sign extends Component {
 		signApi.login(this.state.logEmail, this.state.logPwd)
 		.then(function(data){
 			localStorage.setItem('token', data)
-			alert('Login successed!')
 			self.props.history.push('/purchase')
 		}, function(data){
 			alert(data.data)
