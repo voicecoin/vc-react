@@ -31,6 +31,7 @@ class Purchase extends Component {
 			prices: {},
 			tokenNum: null,
 			coinNum: null,
+			QRstr: '',
 			isToken: true,
 			showModal: false
 		}
@@ -60,9 +61,11 @@ class Purchase extends Component {
 
 	purchaseToken = () => {
 		let cur = this.state.curPrice.name;
-		this.setState({ showModal: true });
+		let self = this;
+		
 		purchaseApi.purchase(cur).then(function(data){
-			// this.state.showModal = true
+			self.setState({ QRstr: data })
+			self.setState({ showModal: true });
 			console.log(data)
 		})
 	}
@@ -131,7 +134,7 @@ class Purchase extends Component {
 
 				<div className="app-tab">
 					<Col md={8} mdOffset={1}  xsOffset={1} xs={10}>
-						<div className='left s-text m-bottom white'>PURCHASE TOKENS WITH</div>
+						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS WITH</div>
 						{
 							this.state.currencies.map((v) => {
 								return <div className="app-btn f-left" onClick={this.selectCurCoin.bind(this, v.symbol)}>{v.name}</div>
@@ -140,16 +143,16 @@ class Purchase extends Component {
 					</Col> 
 
 					<Col md={3} mdOffset={0} xsOffset={1} xs={10}>
-						<div className='left s-text m-bottom white'>VERIFY YOUR IDENTITY</div>
+						<div className='left s-text m-bottom white bold'>VERIFY YOUR IDENTITY</div>
 						<div className="app-btn f-left bg-red" onClick={this.jumpToVerif}>VERIFICATION</div>
 					</Col> 
 				</div>
 
-				<div className="pur-main grey">
+				<div className="pur-main dark-grey">
 					<div className='of'>
 						<Col 
-						mdOffset={1} 
-						md={5} 
+						mdOffset={2} 
+						md={4} 
 						xsOffset={1} 
 						xs={10}
 						className='app-card'>
@@ -163,7 +166,7 @@ class Purchase extends Component {
 						<div className='left'>Calculated on {dataToTime}</div>
 						</Col>
 
-						<Col mdOffset={0} md={5} xsOffset={1} xs={10} className='app-card'>
+						<Col mdOffset={0} md={4} xsOffset={1} xs={10} className='app-card'>
 							<div className='left m-bottom'>
 								<span className='pur-number left'>{this.state.curPrice.v2c}</span>
 								{this.state.curPrice.name}
@@ -175,8 +178,8 @@ class Purchase extends Component {
 
 					<div className='of'>
 						<Col 
-						mdOffset={1} 
-						md={10} 
+						mdOffset={2} 
+						md={8} 
 						xsOffset={1}
 						xs={10}
 						className='app-card'
@@ -256,20 +259,20 @@ class Purchase extends Component {
 
 					<div className="pur-wallet of white">
 						<Col md={10} mdOffset={1} xs={10} xsOffset={1} className="pur-l-card app-card bg-light-blue">
-							<Col className='no-padding  m-bottom-20' md={1} xs={12}>
-								<div className='bold b-text'>12</div>
+							<Col className='no-padding  m-bottom-0' md={1} xs={12}>
+								<div className='bold b-text m-top-10'>12</div>
 								<div className='light'>jan 2018</div>
 							</Col>
-							<Col className='no-padding left m-bottom-20' md={3} xs={12}>
-								<div className='bold'>PURCHASING USING FIAT</div>
+							<Col className='no-padding left m-bottom-20 ' md={3} xs={12}>
+								<div className='bold m-top-10'>PURCHASING USING FIAT</div>
 								<div className='light'>2.00 USD</div>
 							</Col>
 							<Col className='no-padding left m-bottom-20' md={3} xs={12}>
-								<div className='bold'>UNFULFILLED</div>
+								<div className='bold m-top-10'>UNFULFILLED</div>
 								<div className='light'>No Blockchain Transaction</div>
 							</Col>
 							<Col className='no-padding left m-bottom-20' md={3} xs={12}>
-								<div className='bold'>NO TOKENS</div>
+								<div className='bold m-top-10'>NO TOKENS</div>
 								<div className='light'>No Blockchain Transaction</div>
 							</Col>
 							<Col className='no-padding' md={2} xs={12} className='f-left bg-red pur-btn'>
@@ -286,16 +289,17 @@ class Purchase extends Component {
 				>
 					<Modal.Header closeButton>
 						<Modal.Title id="contained-modal-title">
-							Contained Modal
+							Purchase Address
 						</Modal.Title>
 					</Modal.Header>
 
 					<Modal.Body>
-						<QRCode value="http://facebook.github.io/react/" />,
+						<p>Please scan this QRCode to pay</p>
+						<QRCode value={ this.state.QRstr } />,
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button onClick={this.handleHide}>Close</Button>
+						<Button onClick={ this.handleHide }>Close</Button>
 					</Modal.Footer>
 				</Modal>
 

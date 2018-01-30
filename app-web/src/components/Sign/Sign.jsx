@@ -86,6 +86,7 @@ class Sign extends Component {
 		let self = this;
 		signApi.login(this.state.logEmail, this.state.logPwd)
 		.then(function(data){
+			localStorage.setItem('token', data)
 			alert('Login successed!')
 			self.props.history.push('/purchase')
 		}, function(data){
