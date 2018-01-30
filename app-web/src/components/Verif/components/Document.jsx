@@ -10,7 +10,9 @@ import { Row,
 	ControlLabel,
 	HelpBlock
 } from 'react-bootstrap';
+import Dropzone from 'react-dropzone'
 
+import verifApi from '../api'
 
 class Document extends Component {
 	constructor(props, context) {
@@ -19,7 +21,8 @@ class Document extends Component {
 		this.handleChange = this.handleChange.bind(this);
 	
 		this.state = {
-		  value: ''
+		  value: '',
+		  files: []
 		};
 	}
 
@@ -35,11 +38,24 @@ class Document extends Component {
 	this.setState({ value: e.target.value });
 	}
 
+	onDrop(files) {
+		this.setState({
+		  files
+		});
+
+		const formData = new FormData();
+		formData.append('file', files[0])
+		
+		verifApi.uploadFile(formData).then((data) => {
+			console.log(data)
+		})
+	}
+
 	render(){
 		return (
 			<div className="ver-indent of">
 				<Col 
-				mdOffset={1} 
+				mdOffset={1}
 				md={10} 
 				xsOffset={1}
 				xs={10}
@@ -52,8 +68,24 @@ class Document extends Component {
 							<FormGroup
 							controlId="formControlsFile">
 								<ControlLabel className='grey m-bottom'>SIMPLE AGREEMENT FOR FUTURE TOKENS</ControlLabel>
-								<FormControl type="file">
-								</FormControl>
+								{/* Dropzone */}
+								{/* Dropzone */}
+								{/* Dropzone */}
+								<section>
+									<div className="dropzone">
+										<Dropzone onDrop={this.onDrop.bind(this)}>
+											<p className='app-dz-text'>Try dropping some files here, or click to select files to upload.</p>
+										</Dropzone>
+									</div>
+									<aside>
+									<h5 className='bold'>Dropped files</h5>
+									<ul>
+										{
+										this.state.files.map(f => <li className='blue bold' key={f.name}>{f.name} - {f.size} bytes</li>)
+										}
+									</ul>
+									</aside>
+								</section>
 							</FormGroup>
 						</Col>
 

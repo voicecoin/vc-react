@@ -12,7 +12,6 @@ import { Row,
 } from 'react-bootstrap';
 
 import Header from '../Header/Header'
-
 import Declar from './components/Declar'
 import Indent from './components/Indent'
 import Residence from './components/Residence'

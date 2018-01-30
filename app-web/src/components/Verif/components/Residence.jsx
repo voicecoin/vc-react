@@ -10,7 +10,7 @@ import { Row,
 	ControlLabel,
 	HelpBlock
 } from 'react-bootstrap';
-
+import Dropzone from 'react-dropzone'
 
 class Residence extends Component {
 	constructor(props, context) {
@@ -19,7 +19,8 @@ class Residence extends Component {
 		this.handleChange = this.handleChange.bind(this);
 	
 		this.state = {
-		  value: ''
+		  value: '',
+		  files: []
 		};
 	}
 
@@ -31,10 +32,18 @@ class Residence extends Component {
 		return null;
 	  }
 	
-	  handleChange(e) {
+	handleChange(e) {
 		this.setState({ value: e.target.value });
-	  }
+	}
 
+	
+	onDrop(files) {
+		this.setState({
+			files
+		});
+
+		console.log(files)
+	}
 
 	render(){
 		return (
@@ -53,8 +62,24 @@ class Residence extends Component {
 							<FormGroup
 							controlId="formControlsFile">
 								<ControlLabel className='grey m-bottom'>PROOF OF RESIDENCE</ControlLabel>
-								<FormControl type="file">
-								</FormControl>
+								{/* Dropzone */}
+								{/* Dropzone */}
+								{/* Dropzone */}
+								<section>
+									<div className="dropzone">
+										<Dropzone onDrop={this.onDrop.bind(this)}>
+											<p className='app-dz-text'>Try dropping some files here, or click to select files to upload.</p>
+										</Dropzone>
+									</div>
+									<aside>
+									<h5 className='bold'>Dropped files</h5>
+									<ul>
+										{
+										this.state.files.map(f => <li className='blue bold' key={f.name}>{f.name} - {f.size} bytes</li>)
+										}
+									</ul>
+									</aside>
+								</section>
 							</FormGroup>
 						</Col>
 

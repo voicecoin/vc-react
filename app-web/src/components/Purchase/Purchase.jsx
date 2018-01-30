@@ -12,6 +12,7 @@ import { Row,
 	Button 
 } from 'react-bootstrap';
 import QRCode from 'qrcode.react'
+
 //components
 import Header from '../Header/Header'
 //services
@@ -288,14 +289,15 @@ class Purchase extends Component {
 				onHide={this.handleHide}
 				>
 					<Modal.Header closeButton>
-						<Modal.Title id="contained-modal-title">
-							Purchase Address
+						<Modal.Title id="contained-modal-title" className='bold'>
+							TRANSFER INFORMATION
 						</Modal.Title>
 					</Modal.Header>
 
 					<Modal.Body>
 						<p>Please scan this QRCode to pay</p>
-						<QRCode value={ this.state.QRstr } />,
+						<QRCode value={ this.state.QRstr } />
+						<div className='bold'>{ this.state.QRstr }</div>
 					</Modal.Body>
 
 					<Modal.Footer>
