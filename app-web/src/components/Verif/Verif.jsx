@@ -33,6 +33,10 @@ class Verif extends Component {
 		};
 	}
 
+	componentDidMount(){
+
+	}
+
 	getValidationState() {
 		const length = this.state.value.length;
 		if (length > 10) return 'success';

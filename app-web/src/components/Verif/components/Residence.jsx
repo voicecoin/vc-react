@@ -12,6 +12,8 @@ import { Row,
 } from 'react-bootstrap';
 import Dropzone from 'react-dropzone'
 
+import verifApi from '../api'
+
 class Residence extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -43,6 +45,15 @@ class Residence extends Component {
 		});
 
 		console.log(files)
+	}
+
+	uploadFile(){
+		const formData = new FormData();
+		formData.append('file', this.state.files[0])
+		
+		verifApi.uploadFile(formData).then((data) => {
+			console.log(data)
+		})
 	}
 
 	render(){

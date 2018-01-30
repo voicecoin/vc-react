@@ -43,8 +43,11 @@ class Document extends Component {
 		  files
 		});
 
+	}
+
+	uploadFile(){
 		const formData = new FormData();
-		formData.append('file', files[0])
+		formData.append('file', this.state.files[0])
 		
 		verifApi.uploadFile(formData).then((data) => {
 			console.log(data)
@@ -88,7 +91,6 @@ class Document extends Component {
 								</section>
 							</FormGroup>
 						</Col>
-
 					</Col>
 
 					<Col md={6} xs={12}>
@@ -105,7 +107,7 @@ class Document extends Component {
 				xsOffset={1}
 				xs={10}
 				>
-					<div className='verif-save-btn bg-blue white m-bottom-40'>SAVE SECTION</div>
+					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={this.uploadFile.bind(this)}>SAVE SECTION</div>
 				</Col>	
 			</div>
 		)
