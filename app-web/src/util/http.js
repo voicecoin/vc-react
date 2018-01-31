@@ -19,6 +19,9 @@ HTTP.interceptors.response.use(function(response){
 	return response.data;
 }, function(error) {
 	let response = error.response;
+
+	if(response == null) return Promise.reject(response);
+	
 	let status = response.status;
 
 	if (status === 400) {

@@ -49,7 +49,7 @@ class Document extends Component {
 		const formData = new FormData();
 		formData.append('file', this.state.files[0])
 		
-		verifApi.uploadFile(formData).then((data) => {
+		verifApi.uploadDocumentSignature(formData).then((data) => {
 			console.log(data)
 		})
 	}
