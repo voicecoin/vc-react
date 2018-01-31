@@ -35,17 +35,16 @@ class Document extends Component {
 	  }
 	
 	handleChange(e) {
-	this.setState({ value: e.target.value });
+		this.setState({ value: e.target.value });
 	}
 
 	onDrop(files) {
 		this.setState({
-		  files
-		});
-
+			files
+		  });
 	}
 
-	uploadFile(){
+	uploadDocumentSignature(){
 		const formData = new FormData();
 		formData.append('file', this.state.files[0])
 		
@@ -107,7 +106,7 @@ class Document extends Component {
 				xsOffset={1}
 				xs={10}
 				>
-					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={this.uploadFile.bind(this)}>SAVE SECTION</div>
+					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={() => this.uploadDocumentSignature()}>SAVE SECTION</div>
 				</Col>	
 			</div>
 		)

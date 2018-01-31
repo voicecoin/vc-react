@@ -25,4 +25,5 @@
 .verif-save-btn{
     padding: 15px 0px;
     border-radius: 3px;
+    cursor: pointer;
 }

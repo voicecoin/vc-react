@@ -11,6 +11,7 @@ import { Row,
 	HelpBlock
 } from 'react-bootstrap';
 
+import verifApi from '../api'
 
 class Declar extends Component {
 	constructor(props, context) {
@@ -19,22 +20,28 @@ class Declar extends Component {
 		this.handleChange = this.handleChange.bind(this);
 	
 		this.state = {
-		  value: ''
+			firstName: '',
+			lastName:''
 		};
 	}
 
-	getValidationState() {
-		const length = this.state.value.length;
+	getValidationState(property) {
+		const length = property.length;
 		if (length > 10) return 'success';
 		else if (length > 5) return 'warning';
 		else if (length > 0) return 'error';
 		return null;
 	  }
 	
-	  handleChange(e) {
+	handleChange(e, data) {
 		this.setState({ value: e.target.value });
 	  }
 
+	uploadPersonalInformation(){
+		verifApi.uploadPersonalInformation(this.state).then((data) => {
+			console.log(data)
+		})
+	}
 
 	render(){
 		return (
@@ -53,13 +60,12 @@ class Declar extends Component {
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
+						validationState={this.getValidationState(this.state.firstName)}
 						>
 							<ControlLabel className='grey m-bottom '>GIVEN NAME</ControlLabel>
 							<FormControl
 								type="text"
-								value={this.state.value}
+								value={this.state.firstName}
 								placeholder="Enter text"
 								onChange={this.handleChange}
 								className='input-noaddon'
@@ -72,13 +78,13 @@ class Declar extends Component {
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
+						validationState={this.getValidationState(this.state.lastName)}
 						 
 						>
 							<ControlLabel className='grey m-bottom '>SUR NAME</ControlLabel>
 							<FormControl
 								type="text"
-								value={this.state.value}
+								value={this.state.lastName}
 								placeholder="Enter text"
 								onChange={this.handleChange}
 								className='input-noaddon'
@@ -91,8 +97,6 @@ class Declar extends Component {
 					<Col md={12} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
 						>
 							<ControlLabel className='grey m-bottom '>ADDRESS</ControlLabel>
 							<FormControl
@@ -110,8 +114,6 @@ class Declar extends Component {
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
 						>
 							<ControlLabel className='grey m-bottom '>POSTAL CODE</ControlLabel>
 							<FormControl
@@ -129,8 +131,6 @@ class Declar extends Component {
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
 						>
 							<ControlLabel className='grey m-bottom '>CITY</ControlLabel>
 							<FormControl
@@ -148,8 +148,6 @@ class Declar extends Component {
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
 						>
 							<ControlLabel className='grey m-bottom '>COUNTRY</ControlLabel>
 							<FormControl
@@ -165,8 +163,6 @@ class Declar extends Component {
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
 						>
 							<ControlLabel className='grey m-bottom' >STATE</ControlLabel>
 							<FormControl
@@ -182,8 +178,6 @@ class Declar extends Component {
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
 						>
 							<ControlLabel className='grey m-bottom'>NATIONALITY</ControlLabel>
 							<FormControl
@@ -199,8 +193,6 @@ class Declar extends Component {
 					<Col md={2} xs={12} className='left m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
 						>
 							<ControlLabel className='grey m-bottom '>BIRTH DATE</ControlLabel>
 							<FormControl
@@ -216,8 +208,6 @@ class Declar extends Component {
 					<Col md={2} xs={12} className='left m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
 						>
 							<ControlLabel className='grey m-bottom '>MONTH</ControlLabel>
 							<FormControl
@@ -233,8 +223,6 @@ class Declar extends Component {
 					<Col md={2} xs={12} className='left m-bottom-40' >
 						<FormGroup
 						controlId="formBasicText"
-						validationState={this.getValidationState()}
-						 
 						>
 							<ControlLabel className='grey m-bottom '>DAY </ControlLabel>
 							<FormControl
@@ -254,7 +242,7 @@ class Declar extends Component {
 				xsOffset={1}
 				xs={10}
 				>
-					<div className='verif-save-btn bg-blue white m-bottom-40'>SAVE SECTION</div>
+					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={this.uploadPersonalInformation.bind(this)}>SAVE SECTION</div>
 				</Col>
 			</div>
 		)
