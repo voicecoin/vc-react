@@ -130,21 +130,23 @@ class Sign extends Component {
 			backgroundColor: '#3b96d5',
 			borderRadius: '2px 0px 0px 2px',
 			header: {
-			fontSize: '30px',
-			margin: '30px 0 50px 0px',
+			fontSize: '25px',
+			fontWeight: 600,
+			margin: '0px 0px 20px 0px',
 			textAlign:'left'
 			}
 		},
 
 		sign: {
 			backgroundColor: '#fff',
-			height: '630px',
+			height: '650px',
 			padding: '3% 5%',
 			borderRadius: '0px 2px 2px 0px',
 			header: {
 				color: '#3b96d5',
-				fontSize: '30px',
-				margin: '30px 0 50px 0px',
+				fontSize: '25px',
+				fontWeight: 600,
+				margin: '0px 0px 20px 0px',
 				textAlign:'left'
 			}
 			

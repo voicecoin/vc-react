@@ -15,7 +15,8 @@
     margin-right: 5px;
     margin-bottom: 5px;
     border-radius: 2px;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: 600;
     transition: 0.3s
 }
   
@@ -73,7 +74,7 @@
 }
 
 .app-btn-lg{
-    width: 300px !important;
+    width: 20rem !important;
 }
 
 .app-dz-text{

@@ -33,8 +33,14 @@ class Purchase extends Component {
 			tokenNum: null,
 			coinNum: null,
 			QRstr: '',
+			//coupon
+			coupons: [],
+			couponLink: '',
+			curCp: {},
+			sendEmail: '',
 			isToken: true,
-			showModal: false
+			showModal: false,
+			showCPModal: false
 		}
 	}
 	
@@ -71,12 +77,50 @@ class Purchase extends Component {
 		})
 	}
 
+	showCPModal = () => {
+		let self = this;
+		self.state.showCPModal = true;
+
+		purchaseApi.getCoupon().then(function(data){
+			self.setState({ coupons: data });
+			self.setState({ curCp: data[0] })
+			getFirstCoupon.call(self, data[0].id);
+		})
+
+		let getFirstCoupon = (id) => {
+			purchaseApi.getCouponLink(id).then((data) => {
+				this.setState({ couponLink: data })
+			})
+		}
+	}
+
+	handleCouponChange = (e) => {
+		let self = this;
+		let curCp = e.target.value;
+		self.setState({ curCp : curCp });
+		purchaseApi.getCouponLink(curCp.id).then((data) => {
+			self.setState({ couponLink: data})
+		})
+	}
+
+	sendCoupon = () => {
+		
+		// purchaseApi.sendEmail(this.state.sendEmail)
+		// .then((data) => {
+
+		// })
+	}
+
 	handleChange(e, name){	
 		this.setState({ [name]: e.target.value })
 	}
 
 	handleHide = () => {
 		this.setState({ showModal: false });
+	}
+
+	handleCPHide = () => {
+		this.setState({ showCPModal: false });
 	}
 	
 
@@ -90,7 +134,7 @@ class Purchase extends Component {
 	}
 
 	render() {
-		const style={
+		const style = {
 			text:{
 				marginBottom: '10px'
 			},
@@ -117,6 +161,7 @@ class Purchase extends Component {
 		}
 		const time = new Date();
 		let dataToTime = <Moment>{time}</Moment>
+		
 
 		return (
 			<div>
@@ -224,7 +269,10 @@ class Purchase extends Component {
 								</Col>
 							</div>
 
-							<Col className='m-top' mdOffset={8} md={4}>
+							<Col className='m-top' mdOffset={4} md={4}>
+								<div className="app-btn f-left app-btn-lg" onClick={this.showCPModal.bind(this)}>INVITE</div>
+							</Col>
+							<Col className='m-top' mdOffset={0} md={4}>
 								<div className="app-btn f-left app-btn-lg" onClick={this.purchaseToken.bind(this)}>PURCHASE</div>
 							</Col>
 						</Col>
@@ -302,6 +350,46 @@ class Purchase extends Component {
 
 					<Modal.Footer>
 						<Button onClick={ this.handleHide }>Close</Button>
+					</Modal.Footer>
+				</Modal>
+
+				<Modal
+				show={this.state.showCPModal}
+				onHide={this.handleCPHide}
+				>
+					<Modal.Header closeButton>
+						<Modal.Title id="contained-modal-title" className='bold'>
+							TRANSFER INFORMATION
+						</Modal.Title>
+					</Modal.Header>
+
+					<Modal.Body>
+						<p>Choose your coupon type:</p>
+						<FormControl
+							componentClass="select"
+							className='input-noaddon'
+							onChange={(e) => this.handleCouponChange(e)}
+							>
+							{
+								this.state.coupons.map((c) => {
+									return <option value={c}>{c.code}</option>
+								})
+							}
+						</FormControl>
+						<p>{this.state.curCp.description}</p>
+						<p>{this.state.couponLink}</p>
+						<FormControl
+							type="text" 
+							className='input-noaddon'
+							value={this.state.sendEmail}
+							onChange={(e) => this.handleChange(e, 'sendEmail')}
+							>
+						</FormControl>
+						<p onClick={ this.sendCoupon.bind(this) }>SEND TO FRIENDS</p>
+					</Modal.Body>
+
+					<Modal.Footer>
+						<Button onClick={ this.handleCPHide }>Close</Button>
 					</Modal.Footer>
 				</Modal>
 

@@ -14,7 +14,7 @@ class Header extends Component {
 
 		this.state = {
 			info: {},
-			barWidth: '50px'
+			barWidth: '',
 		}
 
 		let self = this
@@ -22,6 +22,9 @@ class Header extends Component {
 			console.log(data)
 			self.setState({
 				info: data
+			})
+			self.setState({
+				barWidth: data.percent
 			})
         })
 	}
@@ -32,13 +35,13 @@ class Header extends Component {
 
 
     render(){
-        
+		
 		const style = {
             wrapper: {
 				color: '#fff',
                 paddingBottom: '30px',
 				content: {
-					marginBottom: '50px'
+					
 				}
 			},
 			
@@ -47,7 +50,8 @@ class Header extends Component {
 				position: 'relative !important',
 				width: this.state.barWidth,
 				height: '20px'
-			}
+			},
+
 		}
 
         return (
@@ -57,11 +61,12 @@ class Header extends Component {
 					{/***** content *****/}
 					{/***** content *****/}
 					<Row style={style.wrapper.content} className='no-margin'>
-						<Col mdOffset={3} md={6}>
+						<Col mdOffset={3} md={6} >
 							<p className='h-wrapper-header'>PROGRESSIVE COIN SALES (BIQ)</p>
 							<div className="h-wrapper-progress ">
 								<div className='bg-blue f-left' style={style.progressBar}>
-									<div className="raiseAmount">
+									<div style={ style.raiseAmount } className="raiseAmount bg-blue">
+										<p className='raise-number n-text'>{this.state.info.sold}</p>
 									</div>
 								</div>
 							</div>
