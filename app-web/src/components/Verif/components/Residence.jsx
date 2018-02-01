@@ -18,8 +18,6 @@ class Residence extends Component {
 	constructor(props, context) {
 		super(props, context);
 	
-		this.handleChange = this.handleChange.bind(this);
-	
 		this.state = {
 		  value: '',
 		  files: []
@@ -60,8 +58,8 @@ class Residence extends Component {
 		return (
 			<div className="ver-indent of">
 				<Col 
-				mdOffset={1} 
-				md={10} 
+				mdOffset={2} 
+				md={8} 
 				xsOffset={1}
 				xs={10}
 				className='app-card'>
@@ -119,7 +117,7 @@ class Residence extends Component {
 				</Col>	
 
 				<Col 
-				mdOffset={8} 
+				mdOffset={7} 
 				md={3} 
 				xsOffset={1}
 				xs={10}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+//CONPONENTS
 import { Row, 
 	Col,
 	form, 
@@ -10,7 +10,13 @@ import { Row,
 	ControlLabel,
 	HelpBlock
 } from 'react-bootstrap';
+import Dropzone from 'react-dropzone'
+import DayPickerInput from 'react-day-picker/DayPickerInput';
 
+//SERVICE
+import verifApi from '../api'
+//STYLE
+import 'react-day-picker/lib/style.css';
 
 class Indent extends Component {
 	constructor(props, context) {
@@ -19,7 +25,9 @@ class Indent extends Component {
 		this.handleChange = this.handleChange.bind(this);
 	
 		this.state = {
-		  value: ''
+			value: '',
+			frontSidePhoto: [],
+			backSidePhoto: []
 		};
 	}
 
@@ -29,19 +37,35 @@ class Indent extends Component {
 		else if (length > 5) return 'warning';
 		else if (length > 0) return 'error';
 		return null;
-	  }
+	}
 	
-	  handleChange(e) {
+	handleChange(e) {
 		this.setState({ value: e.target.value });
-	  }
+	}
+	
+	onDrop(side, files) {
+		this.setState({
+			[side] : files
+		});
+
+	}
+
+	uploadDocumentSignature(){
+		const formData = new FormData();
+		formData.append('file', this.state.files[0])
+		
+		verifApi.uploadDocumentSignature(formData).then((data) => {
+			console.log(data)
+		})
+	}
 
 
 	render(){
 		return (
 			<div className="ver-indent of">
 				<Col 
-				mdOffset={1} 
-				md={10} 
+				mdOffset={2} 
+				md={8} 
 				xsOffset={1}
 				xs={10}
 				className='app-card'>
@@ -53,8 +77,24 @@ class Indent extends Component {
 							<FormGroup
 							controlId="formControlsFile">
 								<ControlLabel className='grey m-bottom'>FRONT SIDE PHOTO ID DOCUMENT</ControlLabel>
-								<FormControl type="file">
-								</FormControl>
+								{/* Dropzone */}
+								{/* Dropzone */}
+								{/* Dropzone */}
+								<section>
+									<div className="dropzone">
+										<Dropzone onDrop={this.onDrop.bind(this, 'frontSidePhoto')}>
+											<p className='app-dz-text'>Try dropping some files here, or click to select files to upload.</p>
+										</Dropzone>
+									</div>
+									<aside>
+									<h5 className='bold'>Dropped files</h5>
+									<ul>
+										{
+										this.state.frontSidePhoto.map(f => <li className='blue bold' key={f.name}>{f.name} - {f.size} bytes</li>)
+										}
+									</ul>
+									</aside>
+								</section>
 							</FormGroup>
 						</Col>
 
@@ -62,8 +102,24 @@ class Indent extends Component {
 							<FormGroup
 							controlId="formControlsFile">
 								<ControlLabel className='grey m-bottom'>BACK SIDE PHOTO ID DOCUMENT</ControlLabel>
-								<FormControl type="file">
-								</FormControl>
+								{/* Dropzone */}
+								{/* Dropzone */}
+								{/* Dropzone */}
+								<section>
+									<div className="dropzone">
+										<Dropzone onDrop={this.onDrop.bind(this, 'backSidePhoto')}>
+											<p className='app-dz-text'>Try dropping some files here, or click to select files to upload.</p>
+										</Dropzone>
+									</div>
+									<aside>
+									<h5 className='bold'>Dropped files</h5>
+									<ul>
+										{
+										this.state.backSidePhoto.map(f => <li className='blue bold' key={f.name}>{f.name} - {f.size} bytes</li>)
+										}
+									</ul>
+									</aside>
+								</section>
 							</FormGroup>
 						</Col>
 
@@ -230,7 +286,7 @@ class Indent extends Component {
 				</Col>	
 
 				<Col 
-				mdOffset={8} 
+				mdOffset={7} 
 				md={3} 
 				xsOffset={1}
 				xs={10}

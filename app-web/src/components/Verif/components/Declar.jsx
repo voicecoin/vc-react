@@ -11,6 +11,8 @@ import { Row,
 	HelpBlock
 } from 'react-bootstrap';
 
+import verifApi from '../api'
+
 
 class Declar extends Component {
 	constructor(props, context) {
@@ -40,8 +42,8 @@ class Declar extends Component {
 		return (
 			<div className="ver-declar of">
 				<Col 
-				mdOffset={1} 
-				md={10} 
+				mdOffset={2} 
+				md={8} 
 				xsOffset={1}
 				xs={10}
 				className='app-card'>
@@ -59,7 +61,8 @@ class Declar extends Component {
 									className='input-noaddon'
 								>
 									<option value="select">Select Declaration #1</option>
-									<option value="other">...</option>
+									<option value="other">I am a U.S. citizen</option>
+									<option value="other">I am not a U.S. citizen</option>
 								</FormControl>
 							</FormGroup>
 						</Col>
@@ -75,7 +78,8 @@ class Declar extends Component {
 									className='input-noaddon'
 								>
 									<option value="select">Select Declaration #2</option>
-									<option value="other">...</option>
+									<option value="other">I am a U.S. resident alien</option>
+									<option value="other">I am not a U.S. resident alien</option>
 								</FormControl>
 							</FormGroup>
 						</Col>
@@ -91,7 +95,8 @@ class Declar extends Component {
 									className='input-noaddon'
 								>
 									<option value="select">Select Declaration #3</option>
-									<option value="other">...</option>
+									<option value="other">I am a U.S. tax person for any other reason</option>
+									<option value="other">I am not a U.S. tax person for any other reason</option>
 								</FormControl>
 							</FormGroup>
 						</Col>
@@ -106,7 +111,7 @@ class Declar extends Component {
 				</Col>
 
 				<Col 
-				mdOffset={8} 
+				mdOffset={7} 
 				md={3} 
 				xsOffset={1}
 				xs={10}

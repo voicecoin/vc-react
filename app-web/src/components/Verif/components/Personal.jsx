@@ -10,18 +10,25 @@ import { Row,
 	ControlLabel,
 	HelpBlock
 } from 'react-bootstrap';
-
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+//SERVICE
 import verifApi from '../api'
 
 class Declar extends Component {
 	constructor(props, context) {
 		super(props, context);
-	
-		this.handleChange = this.handleChange.bind(this);
-	
+
 		this.state = {
 			firstName: '',
-			lastName:''
+			lastName:'',
+			address: '',
+			postCode: '',
+			city: '',
+			country: '',
+			state: '',
+			nationality: '',
+			birthdate: null,
 		};
 	}
 
@@ -33,22 +40,42 @@ class Declar extends Component {
 		return null;
 	  }
 	
-	handleChange(e, data) {
-		this.setState({ value: e.target.value });
+	handleChange(e, key, per) {
+		this.setState({ [key]: e.target.value });
 	  }
 
-	uploadPersonalInformation(){
-		verifApi.uploadPersonalInformation(this.state).then((data) => {
+	uploadPersonalInformation() {
+		let data = {
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
+			address: this.state.address,
+			postCode: this.state.postCode,
+			city: this.state.city,
+			country: this.state.city,
+			state: this.state.state,
+			nationality: this.state.nationality,
+			birthdate: this.state.birthdate,
+			month: this.state.month,
+			day: this.state.day
+		}
+
+		verifApi.uploadPersonalInformation(data)
+		.then((data) => {
 			console.log(data)
 		})
+	}
+
+	getDayChange(d) {
+		console.log(d)
+		this.setState({ birthdate: d });
 	}
 
 	render(){
 		return (
             <div className="ver-perinfo of">
 				<Col 
-				mdOffset={1} 
-				md={10} 
+				mdOffset={2} 
+				md={8} 
 				xsOffset={1}
 				xs={10}
 				className='app-card'
@@ -67,7 +94,7 @@ class Declar extends Component {
 								type="text"
 								value={this.state.firstName}
 								placeholder="Enter text"
-								onChange={this.handleChange}
+								onChange={(e) => this.handleChange(e, 'firstName')}
 								className='input-noaddon'
 							/>
 							<FormControl.Feedback />
@@ -86,7 +113,7 @@ class Declar extends Component {
 								type="text"
 								value={this.state.lastName}
 								placeholder="Enter text"
-								onChange={this.handleChange}
+								onChange={(e) => this.handleChange(e, 'lastName')}
 								className='input-noaddon'
 							/>
 							<FormControl.Feedback />
@@ -103,7 +130,7 @@ class Declar extends Component {
 								type="text"
 								value={this.state.value}
 								placeholder="Enter text"
-								onChange={this.handleChange}
+								onChange={(e) => this.handleChange(e, 'address')}
 								className='input-noaddon'
 							/>
 							<FormControl.Feedback />
@@ -120,7 +147,7 @@ class Declar extends Component {
 								type="text"
 								value={this.state.value}
 								placeholder="Enter text"
-								onChange={this.handleChange}
+								onChange={(e) => this.handleChange(e, 'postCode')}
 								className='input-noaddon'
 							/>
 							<FormControl.Feedback />
@@ -137,7 +164,7 @@ class Declar extends Component {
 								type="text"
 								value={this.state.value}
 								placeholder="Enter text"
-								onChange={this.handleChange}
+								onChange={(e) => this.handleChange(e, 'city')}
 								className='input-noaddon'
 							/>
 							<FormControl.Feedback />
@@ -153,9 +180,12 @@ class Declar extends Component {
 							<FormControl
 								componentClass="select"
 								className='input-noaddon'
+								onChange={(e) => this.handleChange(e, 'country')}
 							>
 								<option value="select">select</option>
         						<option value="other">...</option>
+								<option value="other">a</option>
+								<option value="other">b</option>
 							</FormControl>
 						</FormGroup>
 					</Col>
@@ -168,6 +198,7 @@ class Declar extends Component {
 							<FormControl
 								componentClass="select"
 								className='input-noaddon'
+								onChange={(e) => this.handleChange(e, 'state')}
 							>
 								<option value="select">select</option>
         						<option value="other">...</option>
@@ -183,6 +214,7 @@ class Declar extends Component {
 							<FormControl
 								componentClass="select"
 								className='input-noaddon'
+								onChange={(e) => this.handleChange(e, 'nationality')}
 							>
 								<option value="select">select</option>
         						<option value="other">...</option>
@@ -191,53 +223,20 @@ class Declar extends Component {
 					</Col>
 
 					<Col md={2} xs={12} className='left m-bottom-40' >
+						
 						<FormGroup
 						controlId="formBasicText"
 						>
 							<ControlLabel className='grey m-bottom '>BIRTH DATE</ControlLabel>
-							<FormControl
-								componentClass="select"
-								className='input-noaddon'
-							>
-								<option value="select">select</option>
-        						<option value="other">...</option>
-							</FormControl>
-						</FormGroup>
-					</Col>
-
-					<Col md={2} xs={12} className='left m-bottom-40' >
-						<FormGroup
-						controlId="formBasicText"
-						>
-							<ControlLabel className='grey m-bottom '>MONTH</ControlLabel>
-							<FormControl
-								componentClass="select"
-								className='input-noaddon'
-							>
-								<option value="select">select</option>
-        						<option value="other">...</option>
-							</FormControl>
-						</FormGroup>
-					</Col>
-
-					<Col md={2} xs={12} className='left m-bottom-40' >
-						<FormGroup
-						controlId="formBasicText"
-						>
-							<ControlLabel className='grey m-bottom '>DAY </ControlLabel>
-							<FormControl
-								componentClass="select"
-								className='input-noaddon'
-							>
-								<option value="select">select</option>
-        						<option value="other">...</option>
-							</FormControl>
+							<DayPickerInput 
+							onDayChange={ (d) => this.getDayChange(d) }
+							format='parseDate'/>
 						</FormGroup>
 					</Col>
 
 				</Col>
 				<Col 
-				mdOffset={8} 
+				mdOffset={7} 
 				md={3} 
 				xsOffset={1}
 				xs={10}

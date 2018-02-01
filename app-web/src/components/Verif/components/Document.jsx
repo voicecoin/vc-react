@@ -41,7 +41,9 @@ class Document extends Component {
 	onDrop(files) {
 		this.setState({
 			files
-		  });
+		});
+
+		console.log(this.state)
 	}
 
 	uploadDocumentSignature(){
@@ -57,8 +59,8 @@ class Document extends Component {
 		return (
 			<div className="ver-indent of">
 				<Col 
-				mdOffset={1}
-				md={10} 
+				mdOffset={2}
+				md={8} 
 				xsOffset={1}
 				xs={10}
 				className='app-card'>
@@ -101,7 +103,7 @@ class Document extends Component {
 				</Col>
 
 				<Col 
-				mdOffset={8} 
+				mdOffset={7} 
 				md={3} 
 				xsOffset={1}
 				xs={10}
