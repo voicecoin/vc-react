@@ -1,13 +1,15 @@
 .h-wrapper-header{
-    font-size: 30px;
+    font-size: 25px;
     margin-top: 10%;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .h-wrapper-text{
     font-size: 12px;
     text-align: left;
     margin-top: 5px;
+    font-weight: bold;
 }
 
 .h-wrapper-progress{
@@ -18,5 +20,5 @@
 }
 
 .h-countdown{
-    margin: 40px 0px 20px 0px;
+    margin: 20px 0px 10px 0px;
 }

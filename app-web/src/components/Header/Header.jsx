@@ -38,7 +38,7 @@ class Header extends Component {
 				color: '#fff',
                 paddingBottom: '30px',
 				content: {
-					marginBottom: '50px'
+					
 				}
 			},
 			
