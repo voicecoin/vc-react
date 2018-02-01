@@ -68,16 +68,18 @@ class Countdown extends Component {
         const style = {
             block: {
                 display: 'inline-block',
-                height: '110px',
-                width: '120px',
+                height: '90px',
+                width: '105px',
                 backgroundColor: '#3398dcb3',
                 border: '1px solid #ffffff33',
                 marginBottom: '10px',
-                marginRight: '20px'
+                marginRight: '20px',
+                borderRadius: '1px'
             },
             number: {
-                fontSize: '42px',
-                padding:'10px 0px'
+                fontSize: '38px',
+                padding:'5px 0px',
+                fontWeight: 600
             },
             text: {
                 fontSize: '11px',
