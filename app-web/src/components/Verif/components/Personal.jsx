@@ -25,11 +25,20 @@ class Declar extends Component {
 			address: '',
 			postCode: '',
 			city: '',
-			country: '',
+			country: {},
 			state: '',
 			nationality: '',
 			birthdate: null,
+			countries: [],
+			states: []
 		};
+	}
+
+	componentWillMount = () => {
+		let self = this
+		verifApi.getCountries().then(function(data){
+			self.setState({ countries: data.items })
+		})
 	}
 
 	getValidationState(property) {
@@ -42,6 +51,15 @@ class Declar extends Component {
 	
 	handleChange(e, key, per) {
 		this.setState({ [key]: e.target.value });
+	  }
+
+	handleChangeOnCountry(e, key, per) {
+		let self = this
+		let country = e.target.value.code
+		this.setState({ [key]: country });
+		verifApi.getStates(country).then(function(data){
+			self.setState({ states: data.items })
+		})
 	  }
 
 	uploadPersonalInformation() {
@@ -180,12 +198,14 @@ class Declar extends Component {
 							<FormControl
 								componentClass="select"
 								className='input-noaddon'
-								onChange={(e) => this.handleChange(e, 'country')}
-							>
+								value={this.state.country}
+								onChange={(e) => this.handleChangeOnCountry(e, 'country')}>
 								<option value="select">select</option>
-        						<option value="other">...</option>
-								<option value="other">a</option>
-								<option value="other">b</option>
+								{
+									this.state.countries.map((c) => {
+										return <option value={c}>{c.name}</option>
+									})
+								}
 							</FormControl>
 						</FormGroup>
 					</Col>
@@ -198,10 +218,13 @@ class Declar extends Component {
 							<FormControl
 								componentClass="select"
 								className='input-noaddon'
-								onChange={(e) => this.handleChange(e, 'state')}
-							>
+								onChange={(e) => this.handleChange(e, 'state')}>
 								<option value="select">select</option>
-        						<option value="other">...</option>
+        						{
+									this.state.states.map((c) => {
+										return <option value={c}>{c.name}</option>
+									})
+								}
 							</FormControl>
 						</FormGroup>
 					</Col>

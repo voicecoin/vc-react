@@ -25,5 +25,13 @@ export default {
 
     uploadDeclarations: (model) => {
         return HTTP.post('/v1/Verification/Declarations', model)
+    },
+
+    getCountries: () => {
+        return HTTP.get('/v1/Verification/countries')
+    },
+
+    getStates: (country) => {
+        return HTTP.get('/v1/Verification/' + country + '/States')
     }
 }

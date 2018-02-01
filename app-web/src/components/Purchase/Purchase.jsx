@@ -355,8 +355,7 @@ class Purchase extends Component {
 
 				<Modal
 				show={this.state.showCPModal}
-				onHide={this.handleCPHide}
-				>
+				onHide={this.handleCPHide}>
 					<Modal.Header closeButton>
 						<Modal.Title id="contained-modal-title" className='bold'>
 							TRANSFER INFORMATION
@@ -368,8 +367,7 @@ class Purchase extends Component {
 						<FormControl
 							componentClass="select"
 							className='input-noaddon'
-							onChange={(e) => this.handleCouponChange(e)}
-							>
+							onChange={(e) => this.handleCouponChange(e)}>
 							{
 								this.state.coupons.map((c) => {
 									return <option value={c}>{c.code}</option>
