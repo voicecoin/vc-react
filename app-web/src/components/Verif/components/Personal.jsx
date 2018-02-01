@@ -149,7 +149,7 @@ class Declar extends Component {
 						<FormGroup
 						controlId="formBasicText"
 						>
-							<ControlLabel className='grey m-bottom '>COUNTRY</ControlLabel>
+							<ControlLabel className='grey m-bottom'>COUNTRY</ControlLabel>
 							<FormControl
 								componentClass="select"
 								className='input-noaddon'

@@ -44,10 +44,14 @@ class Countdown extends Component {
         }
 
         function getTimeRemaining(t){
-            var seconds = Math.floor( (t/1000) % 60 );
-            var minutes = Math.floor( (t/1000/60) % 60 );
-            var hours = Math.floor( (t/(1000*60*60)) % 24 );
-            var days = Math.floor( t/(1000*60*60*24) );
+            var seconds = Math.floor( (t/1000) % 60 ).toString();
+            var minutes = Math.floor( (t/1000/60) % 60 ).toString();
+            var hours = Math.floor( (t/(1000*60*60)) % 24 ).toString();
+            var days = Math.floor( t/(1000*60*60*24) ).toString();
+            if(seconds.length == 1)seconds = '0' + seconds;
+            if(minutes.length == 1)minutes = '0' + minutes;
+            if(hours.length == 1)hours = '0' + hours;
+            if(days.length == 1)days = '0' + days;
     
             return {
                 'total': t,
