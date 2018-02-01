@@ -79,11 +79,11 @@ class Purchase extends Component {
 
 	showCPModal = () => {
 		let self = this;
+		self.state.showCPModal = true;
 
 		purchaseApi.getCoupon().then(function(data){
 			self.setState({ coupons: data });
 			self.setState({ curCp: data[0] })
-			self.state.showCPModal = true;
 			getFirstCoupon.call(self, data[0].id);
 		})
 
