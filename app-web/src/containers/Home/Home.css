@@ -81,3 +81,8 @@
 .app-dz-text{
     margin: 10px;
 }
+
+.app-panel-body {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}

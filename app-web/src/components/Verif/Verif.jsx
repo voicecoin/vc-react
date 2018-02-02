@@ -89,7 +89,7 @@ class Verif extends Component {
 							<img src={Logo} alt="#"/>
 						</Col>
 						<Col mdOffset={4} md={2} style={style.menu.items} >
-							{this.state.showLogout ? <div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>LOG OUT</div> : null}
+							{this.state.showLogout ? <div style={style.menu.item} className='app-btn f-right m-right-20 bold' onClick={this.logout}>LOGOUT</div> : null}
 						</Col>
 					</div>
 				</Row>
