@@ -10,8 +10,10 @@ import { Row,
 	ControlLabel,
 	HelpBlock
 } from 'react-bootstrap';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+ 
+import 'react-datepicker/dist/react-datepicker.css';
 //SERVICE
 import verifApi from '../api'
 
@@ -22,13 +24,16 @@ class Declar extends Component {
 		this.state = {
 			firstName: '',
 			lastName:'',
-			address: '',
-			postCode: '',
-			city: '',
-			country: {},
-			state: '',
+			address: {
+				addressLine1: '',
+				zipcode: '',
+				city: '',
+				county: '',
+				state: '',
+				country: ''
+			},
 			nationality: '',
-			birthdate: null,
+			birthday: moment(),
 			countries: [],
 			states: [],
 			nationalities: []
@@ -45,14 +50,18 @@ class Declar extends Component {
 
 	getValidationState(property) {
 		const length = property.length;
-		if (length > 10) return 'success';
-		else if (length > 5) return 'warning';
+		if (length > 2) return 'success';
+		else if (length > 1) return 'warning';
 		else if (length > 0) return 'error';
 		return null;
 	  }
 	
 	handleChange(e, key, per) {
 		this.setState({ [key]: e.target.value });
+	  }
+
+	handleAddressChange(e, key, per) {
+		this.setState({ address: {[key]: e.target.value }});
 	  }
 
 	handleChangeOnCountry(e) {
@@ -69,12 +78,8 @@ class Declar extends Component {
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
 			address: this.state.address,
-			postCode: this.state.postCode,
-			city: this.state.city,
-			country: this.state.city,
-			state: this.state.state,
 			nationality: this.state.nationality,
-			birthdate: this.state.birthdate,
+			birthday: this.state.birthday,
 			month: this.state.month,
 			day: this.state.day
 		}
@@ -85,122 +90,114 @@ class Declar extends Component {
 		})
 	}
 
-	getDayChange(d) {
+	setBirthday(d) {
 		console.log(d)
-		this.setState({ birthdate: d });
+		this.setState({ birthday: d });
 	}
 
 	render(){
 		return (
             <div className="ver-perinfo of">
-				<Col 
-				mdOffset={2} 
-				md={8} 
-				xsOffset={1}
-				xs={10}
-				className='app-card'
-				>
+				<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>
 					<div className="b-text black left m-bottom-40">
 						Personal Information
 					</div>
 
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
-						<FormGroup
-						controlId="formBasicText"
-						validationState={this.getValidationState(this.state.firstName)}
-						>
+						<FormGroup controlId="formBasicText" validationState={this.getValidationState(this.state.firstName)}>
 							<ControlLabel className='grey m-bottom '>GIVEN NAME</ControlLabel>
 							<FormControl
 								type="text"
 								value={this.state.firstName}
-								placeholder="Enter text"
+								placeholder="GIVEN NAME"
 								onChange={(e) => this.handleChange(e, 'firstName')}
-								className='input-noaddon'
-							/>
+								className='input-noaddon'/>
 							<FormControl.Feedback />
-							<HelpBlock>Validation is based on string length.</HelpBlock>
+							<HelpBlock></HelpBlock>
 						</FormGroup>
 					</Col>
 					
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
-						<FormGroup
-						controlId="formBasicText"
-						validationState={this.getValidationState(this.state.lastName)}
-						 
-						>
-							<ControlLabel className='grey m-bottom '>SUR NAME</ControlLabel>
+						<FormGroup controlId="formBasicText" validationState={this.getValidationState(this.state.lastName)}>
+							<ControlLabel className='grey m-bottom '>SURNAME</ControlLabel>
 							<FormControl
 								type="text"
 								value={this.state.lastName}
-								placeholder="Enter text"
+								placeholder="SURNAME"
 								onChange={(e) => this.handleChange(e, 'lastName')}
 								className='input-noaddon'
 							/>
 							<FormControl.Feedback />
-							<HelpBlock>Validation is based on string length.</HelpBlock>
+							<HelpBlock></HelpBlock>
 						</FormGroup>
 					</Col>
 					
 					<Col md={12} xs={12} className='left p-r-50 m-bottom-40' >
-						<FormGroup
-						controlId="formBasicText"
-						>
-							<ControlLabel className='grey m-bottom '>ADDRESS</ControlLabel>
+						<FormGroup controlId="formBasicText" >
+							<ControlLabel className='grey m-bottom '>ADDRESS LINE 1</ControlLabel>
 							<FormControl
 								type="text"
-								value={this.state.value}
-								placeholder="Enter text"
-								onChange={(e) => this.handleChange(e, 'address')}
+								value={this.state.address.addressLine1}
+								placeholder="STREET"
+								onChange={(e) => this.handleAddressChange(e, 'addressLine1')}
 								className='input-noaddon'
 							/>
 							<FormControl.Feedback />
-							<HelpBlock>Validation is based on string length.</HelpBlock>
+							<HelpBlock></HelpBlock>
+						</FormGroup>
+					</Col>
+
+					<Col md={12} xs={12} className='left p-r-50 m-bottom-40' >
+						<FormGroup controlId="formBasicText" >
+							<ControlLabel className='grey m-bottom '>ADDRESS LINE 2</ControlLabel>
+							<FormControl
+								type="text"
+								value={this.state.address.addressLine2}
+								placeholder="APT#"
+								onChange={(e) => this.handleAddressChange(e, 'addressLine2')}
+								className='input-noaddon'
+							/>
+							<FormControl.Feedback />
+							<HelpBlock></HelpBlock>
 						</FormGroup>
 					</Col>
 
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
-						<FormGroup
-						controlId="formBasicText"
-						>
+						<FormGroup controlId="formBasicText" >
 							<ControlLabel className='grey m-bottom '>POSTAL CODE</ControlLabel>
 							<FormControl
 								type="text"
-								value={this.state.value}
+								value={this.state.address.zipcode}
 								placeholder="Enter text"
-								onChange={(e) => this.handleChange(e, 'postCode')}
+								onChange={(e) => this.handleAddressChange(e, 'zipcode')}
 								className='input-noaddon'
 							/>
 							<FormControl.Feedback />
-							<HelpBlock>Validation is based on string length.</HelpBlock>
+							<HelpBlock></HelpBlock>
 						</FormGroup>
 					</Col>
 
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
-						<FormGroup
-						controlId="formBasicText"
-						>
+						<FormGroup controlId="formBasicText">
 							<ControlLabel className='grey m-bottom '>CITY</ControlLabel>
 							<FormControl
 								type="text"
-								value={this.state.value}
+								value={this.state.address.city}
 								placeholder="Enter text"
-								onChange={(e) => this.handleChange(e, 'city')}
-								className='input-noaddon'
-							/>
+								onChange={(e) => this.handleAddressChange(e, 'city')}
+								className='input-noaddon'/>
 							<FormControl.Feedback />
-							<HelpBlock>Validation is based on string length.</HelpBlock>
+							<HelpBlock></HelpBlock>
 						</FormGroup>
 					</Col>
 
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
-						<FormGroup
-						controlId="formBasicText"
-						>
+						<FormGroup controlId="formBasicText">
 							<ControlLabel className='grey m-bottom'>COUNTRY</ControlLabel>
 							<FormControl
 								componentClass="select"
 								className='input-noaddon'
-								value={this.state.country}
+								value={this.state.address.country}
 								onChange={(e) => this.handleChangeOnCountry(e)}>
 								<option value="select">select</option>
 								{
@@ -214,17 +211,17 @@ class Declar extends Component {
 
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 						<FormGroup
-						controlId="formBasicText"
-						>
+						controlId="formBasicText">
 							<ControlLabel className='grey m-bottom' >STATE</ControlLabel>
-							<FormControl
-								componentClass="select"
-								className='input-noaddon'
-								onChange={(e) => this.handleChange(e, 'state')}>
+							<FormControl 
+								componentClass="select" 
+								className='input-noaddon' 
+								value={this.state.address.state}
+								onChange={(e) => this.handleAddressChange(e, 'state')}>
 								<option value="select">select</option>
         						{
 									this.state.states.map((c) => {
-										return <option value={c}>{c.name}</option>
+										return <option value={c.abbr}>{c.name}</option>
 									})
 								}
 							</FormControl>
@@ -232,14 +229,9 @@ class Declar extends Component {
 					</Col>
 
 					<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
-						<FormGroup
-						controlId="formBasicText"
-						>
+						<FormGroup controlId="formBasicText">
 							<ControlLabel className='grey m-bottom'>NATIONALITY</ControlLabel>
-							<FormControl
-								componentClass="select"
-								className='input-noaddon'
-								onChange={(e) => this.handleChange(e, 'nationality')}>
+							<FormControl componentClass="select" className='input-noaddon' onChange={(e) => this.handleChange(e, 'nationality')}>
 								<option value="select">select</option>
         						{
 									this.state.nationalities.map((c) => {
@@ -251,23 +243,20 @@ class Declar extends Component {
 					</Col>
 
 					<Col md={2} xs={12} className='left m-bottom-40' >
-						
-						<FormGroup
-						controlId="formBasicText"
-						>
+						<FormGroup controlId="formBasicText">
 							<ControlLabel className='grey m-bottom '>BIRTH DATE</ControlLabel>
-							<DayPickerInput 
-							onDayChange={ (d) => this.getDayChange(d) }
-							format='parseDate'/>
+							<DatePicker peekNextMonth
+								showMonthDropdown
+								showYearDropdown
+								dropdownMode="select"
+								selected={this.state.birthday}
+								onChange={ (d) => this.setBirthday(d) }/>
 						</FormGroup>
 					</Col>
 
 				</Col>
-				<Col 
-				mdOffset={7} 
-				md={3} 
-				xsOffset={1}
-				xs={10}>
+
+				<Col mdOffset={7} md={3} xsOffset={1} xs={10}>
 					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={this.uploadPersonalInformation.bind(this)}>SAVE SECTION</div>
 				</Col>
 			</div>
