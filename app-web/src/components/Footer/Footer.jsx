@@ -11,11 +11,7 @@ import { Row,
 	HelpBlock
 } from 'react-bootstrap';
 
-import { faCoffee } from '@fortawesome/fontawesome-free-solid'
-
-import fontawesome from '@fortawesome/fontawesome'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-
+import 'font-awesome/css/font-awesome.min.css';
 import './Footer.css'
 
 class Footer extends Component {
@@ -76,14 +72,15 @@ class Footer extends Component {
                     md={10} 
                     xs={12}
                     className='white bg-black'>
-                        <Col 
-                        md={8} 
-                        xs={12}>
-                            <h5 className='m-bottom-20 left'>VOIC Limited, 2017-2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
+                        <Col md={8} xs={12}>
+                            <h5 className='m-top-20 m-bottom-20 left'>VOIC Limited, 2017-2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
                         </Col>
-                        <Col
-                        md={4} 
-                        xs={12}>
+                        <Col className='ft-icons' md={4} xs={12}>
+                            <i className="fa fa-linkedin ft-icon"></i>
+                            <i className="fa fa-twitter ft-icon"></i>
+                            <i className="fa fa-instagram ft-icon"></i>
+                            <i className="fa fa-facebook ft-icon"></i>
+                            <i className="fa fa-weibo ft-icon"></i>
                         </Col>
                     </Col>
                 </div>
