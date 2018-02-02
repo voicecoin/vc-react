@@ -30,8 +30,9 @@
 }
 
 .app-checkbox{
+    font-size: 12px;
     color: #aaa;
-    textAlign: left;
+    text-align: left;
     transition: 0.3s
 }
 

@@ -88,8 +88,8 @@ class Sign extends Component {
 		.then(function(data){
 			localStorage.setItem('token', data)
 			self.props.history.push('/purchase')
-		}, function(data){
-			alert(data.data)
+		}, function(response){
+			alert(response.data)
 		})
 	}
 	
@@ -125,8 +125,8 @@ class Sign extends Component {
 
 		log: {
 			opacity: '0.95',
-			height: '650px',
-			padding: '3% 5%',
+			height: '550px',
+			padding: '5rem',
 			backgroundColor: '#3b96d5',
 			borderRadius: '2px 0px 0px 2px',
 			header: {
@@ -139,8 +139,8 @@ class Sign extends Component {
 
 		sign: {
 			backgroundColor: '#fff',
-			height: '650px',
-			padding: '3% 5%',
+			height: '550px',
+			padding: '5rem',
 			borderRadius: '0px 2px 2px 0px',
 			header: {
 				color: '#3b96d5',
@@ -261,7 +261,9 @@ class Sign extends Component {
 					</div>
 
 					<div className='app-checkbox left m-bottom-20' >
+						<Checkbox>I am either not a U.S. Citizen or I am an Accredited Investor</Checkbox>
 						<Checkbox>I have read and accept the White Paper</Checkbox>
+						<Checkbox>I have read and accept the SAFT</Checkbox>
 					</div>
 
 					{/* <div className='app-checkbox left m-bottom-20'>
