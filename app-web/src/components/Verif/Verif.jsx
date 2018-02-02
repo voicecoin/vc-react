@@ -22,8 +22,8 @@ import './Verif.css';
 import Logo from '../../vendor/img/logo.png'
 
 class Verif extends Component {
-	constructor(props, context) {
-		super(props, context);
+	constructor(context) {
+		super(context);
 	
 		this.handleChange = this.handleChange.bind(this);
 	

@@ -40,6 +40,7 @@ class Purchase extends Component {
 			couponLink: '',
 			curCp: {},
 			sendEmail: '',
+			contri: {},
 			isToken: true,
 			showInstructionModalWhenLogin: true,
 			showModal: false,
@@ -60,6 +61,14 @@ class Purchase extends Component {
 			self.setState({ prices: data })
 			self.setState({ curPrice: data[0] })
 		})
+
+		purchaseApi.getContri().then((data) => {
+			self.setState({ contri: data })
+		})
+	}
+
+	componentDidMount(){
+		console.log(this.props.num)
 	}
 
 	selectCurCoin = (name) => {
