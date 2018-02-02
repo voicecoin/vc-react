@@ -9,7 +9,9 @@ import { Row,
 	InputGroup, 
 	Glyphicon,
 	Modal,
-	Button 
+	Button, 
+	Panel,
+	PanelBody
 } from 'react-bootstrap';
 import QRCode from 'qrcode.react'
 
@@ -39,6 +41,7 @@ class Purchase extends Component {
 			curCp: {},
 			sendEmail: '',
 			isToken: true,
+			showInstructionModalWhenLogin: true,
 			showModal: false,
 			showCPModal: false
 		}
@@ -171,7 +174,7 @@ class Purchase extends Component {
 							<img src={Logo} alt="#"/>
 						</Col>
 						<Col mdOffset={4} md={2} style={style.menu.items} >
-							{this.state.showLogout ? <div style={style.menu.item} className='f-right m-right-20 bold' onClick={this.logout}>LOG OUT</div> : null}
+							{this.state.showLogout ? <div style={style.menu.item} className='app-btn f-right m-right-20 bold' onClick={this.logout}>LOGOUT</div> : null}
 						</Col>
 					</div>
 				</Row>
@@ -332,10 +335,36 @@ class Purchase extends Component {
 
 				</div>
 
+				<Modal show={this.state.showInstructionModalWhenLogin}>
+					<Modal.Header>
+						<Modal.Title id="contained-modal-title" className='bold'>
+							INSTRUCTIONS
+						</Modal.Title>
+					</Modal.Header>
+
+					<Modal.Body>
+						<Panel>
+							<Panel.Body className="app-panel-body">
+								<h4>PURCHASING TOKENS</h4>
+								<p>To purchase tokens please select cryptocurrency you would like to use or select 'CURRENCY', to wire money via your bank, and then enter the number of tokens you want to purchase. A conversion will be presented to you. If you approve of the purchase, select the 'PURCHASE' button. A 'promise' will be entered on your behalf and will be displayed at the bottom of the page. You will then need to carry out the instructions that will be presented to you.</p>
+							</Panel.Body>
+						</Panel>
+						<Panel>
+							<Panel.Body className="app-panel-body">
+								<h4>IDENTITY VERIFICATION</h4>
+								<p>You are not required to verify your identity before purchasing tokens. However, before tokens will be delivered, you must verify your identity. You will have until February 28, 2018 to verify your identity.</p>
+							</Panel.Body>
+						</Panel>
+					</Modal.Body>
+
+					<Modal.Footer>
+						<Button onClick={ () => { this.setState({showInstructionModalWhenLogin: false}) }}>Close</Button>
+					</Modal.Footer>
+				</Modal>
+
 				<Modal
 				show={this.state.showModal}
-				onHide={this.handleHide}
-				>
+				onHide={this.handleHide}>
 					<Modal.Header closeButton>
 						<Modal.Title id="contained-modal-title" className='bold'>
 							TRANSFER INFORMATION

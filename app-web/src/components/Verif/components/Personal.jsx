@@ -30,14 +30,16 @@ class Declar extends Component {
 			nationality: '',
 			birthdate: null,
 			countries: [],
-			states: []
+			states: [],
+			nationalities: []
 		};
 	}
 
 	componentWillMount = () => {
 		let self = this
 		verifApi.getCountries().then(function(data){
-			self.setState({ countries: data.items })
+			self.setState({ countries: data.items });
+			self.setState({ nationalities: data.items.map(x => x.nationality) });
 		})
 	}
 
@@ -53,10 +55,10 @@ class Declar extends Component {
 		this.setState({ [key]: e.target.value });
 	  }
 
-	handleChangeOnCountry(e, key, per) {
+	handleChangeOnCountry(e) {
 		let self = this
-		let country = e.target.value.code
-		this.setState({ [key]: country });
+		let country = e.target.value
+		this.setState({ country: country });
 		verifApi.getStates(country).then(function(data){
 			self.setState({ states: data.items })
 		})
@@ -199,11 +201,11 @@ class Declar extends Component {
 								componentClass="select"
 								className='input-noaddon'
 								value={this.state.country}
-								onChange={(e) => this.handleChangeOnCountry(e, 'country')}>
+								onChange={(e) => this.handleChangeOnCountry(e)}>
 								<option value="select">select</option>
 								{
 									this.state.countries.map((c) => {
-										return <option value={c}>{c.name}</option>
+										return <option value={c.code}>{c.name}</option>
 									})
 								}
 							</FormControl>
@@ -237,10 +239,13 @@ class Declar extends Component {
 							<FormControl
 								componentClass="select"
 								className='input-noaddon'
-								onChange={(e) => this.handleChange(e, 'nationality')}
-							>
+								onChange={(e) => this.handleChange(e, 'nationality')}>
 								<option value="select">select</option>
-        						<option value="other">...</option>
+        						{
+									this.state.nationalities.map((c) => {
+										return <option value={c}>{c}</option>
+									})
+								}
 							</FormControl>
 						</FormGroup>
 					</Col>
@@ -262,8 +267,7 @@ class Declar extends Component {
 				mdOffset={7} 
 				md={3} 
 				xsOffset={1}
-				xs={10}
-				>
+				xs={10}>
 					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={this.uploadPersonalInformation.bind(this)}>SAVE SECTION</div>
 				</Col>
 			</div>
