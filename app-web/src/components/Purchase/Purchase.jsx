@@ -59,6 +59,10 @@ class Purchase extends Component {
 		})
 	}
 
+	componentDidMount(){
+		console.log(this.props.num)
+	}
+
 	selectCurCoin = (name) => {
 		let cur = this.state.prices.find(function(v){
 			return v.name === name

@@ -16,6 +16,7 @@ export default () =>
 			<Switch>
 				<Route path='/' exact component={Sign}></Route>
 				<Route path='/purchase' exact component={Purchase}></Route>
+				<Route path='/purchase/cn' exact render={()=><Purchase num="2" />} ></Route>
 				<Route path='/verification' exact component={Verif}></Route>
 				<Route path='/activation/:key' exact component={Sign}></Route>
 			</Switch>	
