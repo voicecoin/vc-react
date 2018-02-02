@@ -114,6 +114,10 @@ class Purchase extends Component {
 		// })
 	}
 
+	applyCouponCode = () => {
+
+	}
+
 	handleChange(e, name){	
 		this.setState({ [name]: e.target.value })
 	}
@@ -231,10 +235,9 @@ class Purchase extends Component {
 						md={8} 
 						xsOffset={1}
 						xs={10}
-						className='app-card'
-						>	
-							<div className='m-top m-bottom-20 of'>
-								<Col md={3} className='m-bottom-20'>
+						className='app-card'>	
+							<Col md={8} className='m-top m-bottom-20 of'>
+								<Col md={5} className='m-bottom-20'>
 									<InputGroup bsSize="large">
 										<InputGroup.Addon className='input-addon grey'>
 											<Glyphicon glyph="globe"/>				
@@ -245,14 +248,13 @@ class Purchase extends Component {
 										placeholder='TOKENS'
 										value={ this.state.isToken ? this.state.tokenNum : this.state.coinNum * this.state.curPrice.c2v}
 										onFocus={ () => this.state.isToken = true }
-										onChange={ (e) => this.handleChange(e, 'tokenNum')}
-										/>
+										onChange={ (e) => this.handleChange(e, 'tokenNum')}/>
 									</InputGroup>
 								</Col>
 								<Col className='m-top m-bottom-20' md={1}>
 									or
 								</Col>
-								<Col md={3} className='m-bottom-20'>
+								<Col md={5} className='m-bottom-20'>
 									<InputGroup bsSize="large">
 										<InputGroup.Addon className='input-addon grey'>
 											<Glyphicon glyph="piggy-bank"/>				
@@ -263,21 +265,38 @@ class Purchase extends Component {
 										placeholder={ this.state.curPrice.name }
 										value={ this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum }
 										onFocus={ () => this.state.isToken = false } 
-										onChange={ (e) => this.handleChange(e, 'coinNum') }
-										/>
+										onChange={ (e) => this.handleChange(e, 'coinNum') }/>
 									</InputGroup>
 								</Col>
 								<Col className='m-top black bold m-bottom-20' md={5}>
 									PURCHASE TOKENS USING { this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum } { this.state.curPrice.name }
 								</Col>
-							</div>
 
-							<Col className='m-top' mdOffset={4} md={4}>
-								<div className="app-btn f-left app-btn-lg" onClick={this.showCPModal.bind(this)}>INVITE</div>
+								<Col className='m-top' mdOffset={1} md={5}>
+									<div className="app-btn f-right app-btn-lg" onClick={this.purchaseToken.bind(this)}>PURCHASE</div>
+								</Col>
 							</Col>
-							<Col className='m-top' mdOffset={0} md={4}>
-								<div className="app-btn f-left app-btn-lg" onClick={this.purchaseToken.bind(this)}>PURCHASE</div>
+
+							<Col md={4}>
+								<Col className='m-top m-bottom-20' mdOffset={2} md={10}>
+									{/* <div className="app-btn f-left app-btn-lg" onClick={this.showCPModal.bind(this)}>INVITE</div> */}
+									<InputGroup bsSize="large">
+										<InputGroup.Addon className='input-addon grey'>
+											<Glyphicon glyph="gift"/>				
+										</InputGroup.Addon>
+										<FormControl 
+											type="text" 
+											className='input-basic'
+											placeholder="Input Coupon Code"
+											value={ this.state.couponCode }/>
+									</InputGroup>
+									
+								</Col>
+								<Col className='m-top' mdOffset={2} md={10}>
+									<div className="app-btn f-right app-btn-lg" onClick={this.applyCouponCode}>APPLY</div>
+								</Col>
 							</Col>
+							
 						</Col>
 					</div>
 
