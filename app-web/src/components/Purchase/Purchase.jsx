@@ -42,7 +42,7 @@ class Purchase extends Component {
 			couponCode: '',
 			sendEmail: '',
 			contri: {},
-			isToken: true,
+			isTokenFocused: true,
 			showInstructionModalWhenLogin: true,
 			showModal: false,
 			showCPModal: false
@@ -252,22 +252,22 @@ class Purchase extends Component {
 												type="text" 
 												className='input-basic'
 												placeholder='TOKENS'
-												value={ this.state.isToken ? this.state.tokenNum : this.state.coinNum * this.state.curPrice.c2v}
-												onFocus={ () => this.state.isToken = true }
+												value={ this.state.isTokenFocused ? this.state.tokenNum : this.state.coinNum * this.state.curPrice.c2v}
+												onFocus={ () => this.state.isTokenFocused = true }
 												onChange={ (e) => this.handleChange(e, 'tokenNum')}/>
 											</InputGroup>
 										</Col>
-										<Col className='m-top m-bottom-20' md={2}>
+										<Col className='m-top m-bottom-20' md={1}>
 											Equals
 										</Col>
-										<Col md={5} className='m-bottom-20'>
+										<Col md={4} className='m-bottom-20'>
 											<InputGroup bsSize="large">
 												<InputGroup.Addon className='input-addon grey'>
 													<Glyphicon glyph="piggy-bank"/>				
 												</InputGroup.Addon>
 												<FormControl type="text" className='input-basic' placeholder={ this.state.curPrice.name }
-													value={ this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum }
-													onFocus={ () => this.state.isToken = false } 
+													value={ this.state.isTokenFocused ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum }
+													onFocus={ () => this.state.isTokenFocused = false } 
 													onChange={ (e) => this.handleChange(e, 'coinNum') }/>
 											</InputGroup>
 										</Col>
@@ -277,7 +277,7 @@ class Purchase extends Component {
 									<Col className='m-top black bold m-bottom-20' md={7}>
 										<p>IF YOU HAVE GOT A COUPON, PLEASE INPUT YOUR CODE</p>
 									</Col>
-									<Col className='m-top m-bottom-20' md={5}>
+									<Col className='m-top m-bottom-20' md={4}>
 										{/* <div className="app-btn f-left app-btn-lg" onClick={this.showCPModal.bind(this)}>INVITE</div> */}
 										<InputGroup bsSize="large">
 											<InputGroup.Addon className='input-addon grey'>
@@ -296,7 +296,7 @@ class Purchase extends Component {
 								<Row>
 									<Col className='m-top black bold m-bottom-20' md={7}>
 										<p>
-											PURCHASE {this.state.tokenNum} TOKENS USING { this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum } { this.state.curPrice.name }
+											PURCHASE {this.state.tokenNum} TOKENS USING { this.state.tokenNum * this.state.curPrice.v2c } { this.state.curPrice.name }
 										</p>
 									</Col>
 									<Col className='m-top' md={5}>

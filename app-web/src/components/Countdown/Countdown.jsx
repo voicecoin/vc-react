@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Grid, Row, Col } from 'react-bootstrap';
+import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 
 class Countdown extends Component {
     constructor(props){
@@ -88,31 +88,29 @@ class Countdown extends Component {
         }
 
         return (
-            <div>
-                <Row>
-                    <Col md={12} mdOffset={0} xsOffset={1} xs={10}>
-                        <div style={style.block}>
-                            <div style={style.number}>{this.state.days}</div>
-                            <div style={style.text}>DAYS</div>
-                        </div>
+            <Row>
+                <Col style={style.block}>
+                    <div style={style.number}>{this.state.days}</div>
+                    <div style={style.text}>DAYS</div>
+                </Col>
 
-                        <div style={style.block}>
-                            <div style={style.number}>{this.state.hours}</div>
-                            <div style={style.text}>HOURS</div>
-                        </div>
+                <Col style={style.block}>
+                    <div style={style.number}>{this.state.hours}</div>
+                    <div style={style.text}>HOURS</div>
+                </Col>
+                
+                <Clearfix visibleXsBlock/>
 
-                        <div style={style.block}>
-                            <div style={style.number}>{this.state.minutes}</div>
-                            <div style={style.text}>MINUTES</div>
-                        </div>
+                <Col style={style.block}>
+                    <div style={style.number}>{this.state.minutes}</div>
+                    <div style={style.text}>MINUTES</div>
+                </Col>
 
-                        <div style={style.block}>
-                            <div style={style.number}>{this.state.seconds}</div>
-                            <div style={style.text}>SECONDS</div>
-                        </div>
-                    </Col>
-                </Row>
-            </div>
+                <Col style={style.block}>
+                    <div style={style.number}>{this.state.seconds}</div>
+                    <div style={style.text}>SECONDS</div>
+                </Col>
+            </Row>
         )
     }
 }

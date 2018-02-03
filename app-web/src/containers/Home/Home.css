@@ -55,6 +55,7 @@
     /* border-color: #fff; */
     box-shadow: none;
     font-size: 14px !important;
+    height: 47px !important;
 }
 
 .input-basic:focus{
