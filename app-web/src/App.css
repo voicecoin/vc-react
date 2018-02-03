@@ -95,7 +95,7 @@ body{
 
 .m-bottom{
   margin-bottom: 5px;
-  overflow-wrap: break-word;
+  overflow: hidden;
 }
 
 .m-bottom-10{

@@ -39,6 +39,7 @@ class Purchase extends Component {
 			coupons: [],
 			couponLink: '',
 			curCp: {},
+			couponCode: '',
 			sendEmail: '',
 			contri: {},
 			isToken: true,
@@ -108,23 +109,23 @@ class Purchase extends Component {
 
 	handleCouponChange = (e) => {
 		let self = this;
-		let curCp = e.target.value;
-		self.setState({ curCp : curCp });
-		purchaseApi.getCouponLink(curCp.id).then((data) => {
-			self.setState({ couponLink: data})
-		})
-	}
+		let couponCode = e.target.value;
+		self.setState({ couponCode : couponCode });
 
-	sendCoupon = () => {
+		// valide coupon code
+		if(couponCode.length == 6) {
+			purchaseApi.validateCoupon(couponCode).then((data) => {
+				if(data === true){
+					alert("Correct")
+				} else {
+					alert("Invalid Coupon")
+				}
+			});
+		}
 		
-		// purchaseApi.sendEmail(this.state.sendEmail)
-		// .then((data) => {
-
-		// })
-	}
-
-	applyCouponCode = () => {
-
+		/*purchaseApi.getCouponLink(curCp.id).then((data) => {
+			self.setState({ couponLink: data})
+		})*/
 	}
 
 	handleChange(e, name){	
@@ -169,7 +170,7 @@ class Purchase extends Component {
 					height: '100%'
 				},
 				item: {
-					paddingTop: '20px',
+					paddingTop: '25px',
 					height: '100%',
 					display: 'InlineBlock',
 				}
@@ -194,7 +195,7 @@ class Purchase extends Component {
 
 				<Header/>
 
-				<div className="app-tab">
+				<Row className="app-tab">
 					<Col md={8} mdOffset={1}  xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS WITH</div>
 						{
@@ -206,162 +207,158 @@ class Purchase extends Component {
 
 					<Col md={3} mdOffset={0} xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>VERIFY YOUR IDENTITY</div>
-						<div className="app-btn f-left bg-red" onClick={this.jumpToVerif}>VERIFICATION</div>
+						<div className="app-btn f-left" onClick={this.jumpToVerif}>VERIFICATION</div>
 					</Col> 
-				</div>
+				</Row>
 
-				<div className="pur-main dark-grey">
-					<div className='of'>
-						<Col 
-						mdOffset={2} 
-						md={4} 
-						xsOffset={1} 
-						xs={10}
-						className='app-card'>
-						<div className='left m-bottom'>
-							<span className='pur-number left'>1</span>
-							TOKEN
-						</div>
-						<div className='left bold'>
-							{ '1 TOKEN = ' + this.state.curPrice.v2c + ' ' + this.state.curPrice.name }
-						</div>
-						<div className='left'>Calculated on {dataToTime}</div>
-						</Col>
-
-						<Col mdOffset={0} md={4} xsOffset={1} xs={10} className='app-card'>
+				<Row className="pur-main dark-grey">
+					<Col>
+						<Row className='of'>
+							<Col 
+							mdOffset={2} 
+							md={4} 
+							xsOffset={1} 
+							xs={10}
+							className='app-card'>
 							<div className='left m-bottom'>
-								<span className='pur-number left'>{this.state.curPrice.v2c}</span>
-								{this.state.curPrice.name}
+								<span className='pur-number left'>1</span>
+								TOKEN
 							</div>
-							<div className='left bold'>{'1 ' + this.state.curPrice.name + ' = ' + this.state.curPrice.c2v + ' TOKEN'}</div>
+							<div className='left bold'>
+								{ '1 TOKEN = ' + this.state.curPrice.v2c + ' ' + this.state.curPrice.name }
+							</div>
 							<div className='left'>Calculated on {dataToTime}</div>
-						</Col>
-					</div>
-
-					<div className='of'>
-						<Col 
-						mdOffset={2} 
-						md={8} 
-						xsOffset={1}
-						xs={10}
-						className='app-card'>	
-							<Col md={8} className='m-top m-bottom-20 of'>
-								<Col md={5} className='m-bottom-20'>
-									<InputGroup bsSize="large">
-										<InputGroup.Addon className='input-addon grey'>
-											<Glyphicon glyph="globe"/>				
-										</InputGroup.Addon>
-										<FormControl 
-										type="text" 
-										className='input-basic'
-										placeholder='TOKENS'
-										value={ this.state.isToken ? this.state.tokenNum : this.state.coinNum * this.state.curPrice.c2v}
-										onFocus={ () => this.state.isToken = true }
-										onChange={ (e) => this.handleChange(e, 'tokenNum')}/>
-									</InputGroup>
-								</Col>
-								<Col className='m-top m-bottom-20' md={1}>
-									or
-								</Col>
-								<Col md={5} className='m-bottom-20'>
-									<InputGroup bsSize="large">
-										<InputGroup.Addon className='input-addon grey'>
-											<Glyphicon glyph="piggy-bank"/>				
-										</InputGroup.Addon>
-										<FormControl 
-										type="text" 
-										className='input-basic'
-										placeholder={ this.state.curPrice.name }
-										value={ this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum }
-										onFocus={ () => this.state.isToken = false } 
-										onChange={ (e) => this.handleChange(e, 'coinNum') }/>
-									</InputGroup>
-								</Col>
-								<Col className='m-top black bold m-bottom-20' md={5}>
-									PURCHASE TOKENS USING { this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum } { this.state.curPrice.name }
-								</Col>
-
-								<Col className='m-top' mdOffset={1} md={5}>
-									<div className="app-btn f-right app-btn-lg" onClick={this.purchaseToken.bind(this)}>PURCHASE</div>
-								</Col>
 							</Col>
 
-							<Col md={4}>
-								<Col className='m-top m-bottom-20' mdOffset={2} md={10}>
-									{/* <div className="app-btn f-left app-btn-lg" onClick={this.showCPModal.bind(this)}>INVITE</div> */}
-									<InputGroup bsSize="large">
-										<InputGroup.Addon className='input-addon grey'>
-											<Glyphicon glyph="gift"/>				
-										</InputGroup.Addon>
-										<FormControl 
-											type="text" 
-											className='input-basic'
-											placeholder="Input Coupon Code"
-											value={ this.state.couponCode }/>
-									</InputGroup>
-									
+							<Col mdOffset={0} md={4} xsOffset={1} xs={10} className='app-card'>
+								<div className='left m-bottom'>
+									<span className='pur-number left'>{this.state.curPrice.v2c}</span>
+									{this.state.curPrice.name}
+								</div>
+								<div className='left bold'>{'1 ' + this.state.curPrice.name + ' = ' + this.state.curPrice.c2v + ' TOKEN'}</div>
+								<div className='left'>Calculated on {dataToTime}</div>
+							</Col>
+						</Row>
+
+						<Row className='of'>
+							<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>	
+								<Row>
+										<Col md={5} className='m-bottom-20'>
+											<InputGroup bsSize="large">
+												<InputGroup.Addon className='input-addon grey'>
+													<Glyphicon glyph="globe"/>				
+												</InputGroup.Addon>
+												<FormControl 
+												type="text" 
+												className='input-basic'
+												placeholder='TOKENS'
+												value={ this.state.isToken ? this.state.tokenNum : this.state.coinNum * this.state.curPrice.c2v}
+												onFocus={ () => this.state.isToken = true }
+												onChange={ (e) => this.handleChange(e, 'tokenNum')}/>
+											</InputGroup>
+										</Col>
+										<Col className='m-top m-bottom-20' md={2}>
+											Equals
+										</Col>
+										<Col md={5} className='m-bottom-20'>
+											<InputGroup bsSize="large">
+												<InputGroup.Addon className='input-addon grey'>
+													<Glyphicon glyph="piggy-bank"/>				
+												</InputGroup.Addon>
+												<FormControl type="text" className='input-basic' placeholder={ this.state.curPrice.name }
+													value={ this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum }
+													onFocus={ () => this.state.isToken = false } 
+													onChange={ (e) => this.handleChange(e, 'coinNum') }/>
+											</InputGroup>
+										</Col>
+								</Row>
+
+								<Row>
+									<Col className='m-top black bold m-bottom-20' md={7}>
+										<p>IF YOU HAVE GOT A COUPON, PLEASE INPUT YOUR CODE</p>
+									</Col>
+									<Col className='m-top m-bottom-20' md={5}>
+										{/* <div className="app-btn f-left app-btn-lg" onClick={this.showCPModal.bind(this)}>INVITE</div> */}
+										<InputGroup bsSize="large">
+											<InputGroup.Addon className='input-addon grey'>
+												<Glyphicon glyph="gift"/>				
+											</InputGroup.Addon>
+											<FormControl 
+												type="text" 
+												className='input-basic'
+												placeholder="Coupon Code"
+												value={ this.state.couponCode }
+												onChange={(e) => this.handleCouponChange(e)}/>
+										</InputGroup>
+									</Col>
+								</Row>
+
+								<Row>
+									<Col className='m-top black bold m-bottom-20' md={7}>
+										<p>
+											PURCHASE {this.state.tokenNum} TOKENS USING { this.state.isToken ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum } { this.state.curPrice.name }
+										</p>
+									</Col>
+									<Col className='m-top' md={5}>
+										<div className="app-btn f-left app-btn-lg" onClick={this.purchaseToken.bind(this)}>PURCHASE</div>
+									</Col>
+								</Row>
+							</Col>
+						</Row>
+
+						<Row className="pur-coins of">
+							<Col mdOffset={1} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
+								<div className='n-text m-bottom'>Bitcoin</div>
+								<div className='light'>$0.00 USD</div>
+								<div className='light'> 0.00000000 Coins</div>
+							</Col>
+							<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
+								<div className='n-text m-bottom'>Bitcoin</div>
+								<div className='light'>$0.00 USD</div>
+								<div className='light'>0.00000000 Coins</div>
+							</Col>
+							<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
+								<div className='n-text m-bottom'>Bitcoin</div>	
+								<div className='light'>$0.00 USD</div>
+								<div className='light'>0.00000000 Coins</div>
+							</Col>
+							<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
+								<div className='n-text m-bottom'>Bitcoin</div>
+								<div className='light'>$0.00 USD</div>
+								<div className='light'>0.00000000 Coins</div>
+							</Col>
+							<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
+								<div className='n-text m-bottom'>Bitcoin</div>
+								<div className='light'>$0.00 USD</div>
+								<div className='light'>0.00000000 Coins</div>
+							</Col>
+						</Row>
+
+						<Row className="pur-wallet of white">
+							<Col md={10} mdOffset={1} xs={10} xsOffset={1} className="pur-l-card app-card bg-light-blue">
+								<Col className='no-padding  m-bottom-0' md={1} xs={12}>
+									<div className='bold b-text m-top-10'>12</div>
+									<div className='light'>jan 2018</div>
 								</Col>
-								<Col className='m-top' mdOffset={2} md={10}>
-									<div className="app-btn f-right app-btn-lg" onClick={this.applyCouponCode}>APPLY</div>
+								<Col className='no-padding left m-bottom-20 ' md={3} xs={12}>
+									<div className='bold m-top-10'>PURCHASING USING FIAT</div>
+									<div className='light'>2.00 USD</div>
+								</Col>
+								<Col className='no-padding left m-bottom-20' md={3} xs={12}>
+									<div className='bold m-top-10'>UNFULFILLED</div>
+									<div className='light'>No Blockchain Transaction</div>
+								</Col>
+								<Col className='no-padding left m-bottom-20' md={3} xs={12}>
+									<div className='bold m-top-10'>NO TOKENS</div>
+									<div className='light'>No Blockchain Transaction</div>
+								</Col>
+								<Col className='no-padding' md={2} xs={12} className='f-left bg-red pur-btn'>
+									WALLET INFORMATION
 								</Col>
 							</Col>
-							
-						</Col>
-					</div>
-
-					<div className="pur-coins of">
-						<Col mdOffset={1} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
-							<div className='n-text m-bottom'>Bitcoin</div>
-							<div className='light'>$0.00 USD</div>
-							<div className='light'> 0.00000000 Coins</div>
-						</Col>
-						<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
-							<div className='n-text m-bottom'>Bitcoin</div>
-							<div className='light'>$0.00 USD</div>
-							<div className='light'>0.00000000 Coins</div>
-						</Col>
-						<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
-							<div className='n-text m-bottom'>Bitcoin</div>	
-							<div className='light'>$0.00 USD</div>
-							<div className='light'>0.00000000 Coins</div>
-						</Col>
-						<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
-							<div className='n-text m-bottom'>Bitcoin</div>
-							<div className='light'>$0.00 USD</div>
-							<div className='light'>0.00000000 Coins</div>
-						</Col>
-						<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
-							<div className='n-text m-bottom'>Bitcoin</div>
-							<div className='light'>$0.00 USD</div>
-							<div className='light'>0.00000000 Coins</div>
-						</Col>
-					</div>
-
-					<div className="pur-wallet of white">
-						<Col md={10} mdOffset={1} xs={10} xsOffset={1} className="pur-l-card app-card bg-light-blue">
-							<Col className='no-padding  m-bottom-0' md={1} xs={12}>
-								<div className='bold b-text m-top-10'>12</div>
-								<div className='light'>jan 2018</div>
-							</Col>
-							<Col className='no-padding left m-bottom-20 ' md={3} xs={12}>
-								<div className='bold m-top-10'>PURCHASING USING FIAT</div>
-								<div className='light'>2.00 USD</div>
-							</Col>
-							<Col className='no-padding left m-bottom-20' md={3} xs={12}>
-								<div className='bold m-top-10'>UNFULFILLED</div>
-								<div className='light'>No Blockchain Transaction</div>
-							</Col>
-							<Col className='no-padding left m-bottom-20' md={3} xs={12}>
-								<div className='bold m-top-10'>NO TOKENS</div>
-								<div className='light'>No Blockchain Transaction</div>
-							</Col>
-							<Col className='no-padding' md={2} xs={12} className='f-left bg-red pur-btn'>
-								WALLET INFORMATION
-							</Col>
-						</Col>
-					</div>
-
-				</div>
+						</Row>
+					</Col>
+				</Row>
 
 				<Modal show={this.state.showInstructionModalWhenLogin}>
 					<Modal.Header>
@@ -440,7 +437,6 @@ class Purchase extends Component {
 							onChange={(e) => this.handleChange(e, 'sendEmail')}
 							>
 						</FormControl>
-						<p onClick={ this.sendCoupon.bind(this) }>SEND TO FRIENDS</p>
 					</Modal.Body>
 
 					<Modal.Footer>

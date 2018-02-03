@@ -33,7 +33,9 @@ class Sign extends Component {
 			showLogout: false,
 			show: false,
 			showErrorMessageModel: false,
-			errorMessage: ''
+			errorMessage: '',
+			showSignupMessageModel: false,
+			signupMessage: ''
 		}
 	}
 
@@ -74,13 +76,17 @@ class Sign extends Component {
 	}
 
 	signup(){
+		let self = this;
 		let data = {
 			fullName: this.state.signName,
 			email: this.state.signEmail,
 			password: this.state.signPwd
 		}
+
 		signApi.sign(data).then(function(data){
-			alert('Sign up successed!')
+			self.setState({signupMessage: data, showSignupMessageModel: true})
+		}, function(response){
+			self.setState({signupMessage: response.data, showSignupMessageModel: true})
 		})
 	}
 
@@ -306,8 +312,19 @@ class Sign extends Component {
 				<Modal.Body>
 					<p>{this.state.errorMessage}</p>
 				</Modal.Body>
-			</Modal>			
-	    </div>
+			</Modal>	
+
+			<Modal show={this.state.showSignupMessageModel} onHide={() => { this.setState({showSignupMessageModel: false}) }}>
+				<Modal.Header closeButton>
+					<Modal.Title id="contained-modal-title" className='bold'>
+						Signup
+					</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					<p>{this.state.signupMessage}</p>
+				</Modal.Body>
+			</Modal>		
+	  </div>
     );
   }
 }

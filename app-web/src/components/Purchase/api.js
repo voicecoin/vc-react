@@ -13,6 +13,10 @@ export default {
         return HTTP.get('/v1/IcoInfo/address/' + cur)
     },
 
+    validateCoupon: (code) => {
+        return HTTP.get('/v1/Coupon/validate/' + code)
+    },
+
     getCoupon: () => {
         return HTTP.get('/v1/Coupon/available')
     },
