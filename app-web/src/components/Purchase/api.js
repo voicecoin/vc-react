@@ -5,12 +5,12 @@ export default {
         return HTTP.get('/v1/IcoInfo/currencies')
     },
 
-    getPrices: () => {
-        return HTTP.get('/v1/Market/prices')
+    getPrices: (coupon) => {
+        return HTTP.get('/v1/Market/prices?coupon=' + coupon)
     },
 
-    purchase: (cur) => {
-        return HTTP.get('/v1/IcoInfo/address/' + cur)
+    purchase: (cur, coupon) => {
+        return HTTP.get('/v1/IcoInfo/address/' + cur + '?coupon=' + coupon)
     },
 
     validateCoupon: (code) => {

@@ -23,15 +23,10 @@ class Login extends Component {
 		super();
 
 		this.state = {
-			logEmail: '',
-			logPwd: '',
-			signName: '',
-			signEmail: '',
-			signPwd: '',
-			showLogout: false,
-			showActivationModel: false,
-			showErrorMessageModel: false,
-			errorMessage: ''
+      email: '',
+      emailValidationMessage: '',
+      password: '',
+      passwordValidationMessage: ''
 		}
 	}
 
@@ -39,58 +34,56 @@ class Login extends Component {
 		let self = this;
 
 	}
-
-	handleActivationHide = () => {
-		this.setState({ showActivationModel: false });
-		this.props.history.push('../')
-	}
 	
-	validateEmail(email){
-		var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    	return re.test(String(email).toLowerCase());
-	}
+	emailValidationState(){
+		if(this.state.email === '') return null
+		return signApi.validateEmail(this.state.email) ? 'success' : 'error'; 
+  }
+  
+  onEmailChange(e){
+    this.setState({ email: e.target.value, emailValidationMessage: '', passwordValidationMessage: '' })
+  }
 
-	validatePwd(pwd){
-		
-	}
+  passwordValidation(){
+    if(this.state.password.length == 0) return null;
+    return this.state.password.length > 5 ? 'success' : 'error';
+  }
 
-	getEmailValidationState(){
-		if(this.state.signEmail === '') return null
-		return this.validateEmail(this.state.signEmail) ? 'success' : 'error'; 
-	}
-
-	handleChange(e, name){	
-		this.setState({ [name]: e.target.value })
-	}
+	onPasswordChange(e){	
+		this.setState({ password: e.target.value, emailValidationMessage: '', passwordValidationMessage: '' })
+  }
 
   login = () => {
 		let self = this;
-		signApi.login(this.state.logEmail, this.state.logPwd)
-		.then(function(data){
-			localStorage.setItem('token', data)
-			self.props.history.push('/purchase')
-		}, function(response){
-			self.setState({errorMessage: response.data, showErrorMessageModel: true})
-		})
+		signApi.login(this.state.email, this.state.password)
+      .then(function(data){
+        localStorage.setItem('token', data)
+        self.props.history.push('/purchase')
+      }, function(response){
+        self.setState({passwordValidationMessage: response.data})
+      })
   }
   
   render() {
     const style = {
 
-		log: {
-        opacity: '0.95',
-        height: '500px',
-        padding: '3rem',
-        backgroundColor: '#3b96d5',
-        borderRadius: '5px 0px 0px 5px',
-        header: {
-        fontSize: '25px',
-        fontWeight: 600,
-        margin: '0px 0px 20px 0px',
-        textAlign:'left'
-        }
-      },
-    }
+      log: {
+          opacity: '0.95',
+          height: '500px',
+          padding: '3rem',
+          backgroundColor: '#3b96d5',
+          borderRadius: '5px 0px 0px 5px',
+          header: {
+            fontSize: '25px',
+            fontWeight: 600,
+            margin: '0px 0px 20px 0px',
+            textAlign:'left'
+          },
+          helpBlock: {
+            color: 'yellow'
+          }
+        },
+      }
 
     return (
       <Row style={style.log}>
@@ -98,59 +91,39 @@ class Login extends Component {
           Login
         </div>
 
-        <InputGroup className='app-input' bsSize="large">
-          <InputGroup.Addon className='input-addon border-white'>
-            <Glyphicon glyph="envelope" className='white'/>				
-          </InputGroup.Addon>
-          <FormControl 
-          placeholder='Please enter the email'
-          type="email" 
-          className='input-basic white ph-white border-white' 
-          value={this.state.email}
-          onChange={(e) => this.handleChange(e, 'logEmail')}/>
-        </InputGroup>
+        <FormGroup>
+          <InputGroup bsSize="large">
+            <InputGroup.Addon className='input-addon white border-white'>
+            <Glyphicon glyph="envelope"/>				
+            </InputGroup.Addon>
+            <FormControl 
+            type="email" 
+            className='input-basic white ph-white border-white'
+            placeholder='please enter the email'
+            value={this.state.email}
+            onChange={(e) => this.onEmailChange(e)}/>
+          </InputGroup>
+          <HelpBlock>{this.state.emailValidationMessage}</HelpBlock>
+        </FormGroup>
 
-        <InputGroup className='app-input' bsSize="large">
-          <InputGroup.Addon className='input-addon border-white'>
-            <Glyphicon glyph="lock" className='white'/>
-          </InputGroup.Addon>
-          <FormControl 
-          type="password" 
-          className='input-basic white ph-white border-white'
-          placeholder='Please enter the password' 
-          value={this.state.pwd}
-          onChange={(e) => this.handleChange(e, 'logPwd')}/>
-        </InputGroup>
+        <FormGroup>
+          <InputGroup bsSize="large">
+            <InputGroup.Addon className='input-addon white border-white'>
+              <Glyphicon glyph="lock" />
+            </InputGroup.Addon>
+            <FormControl 
+            type="password" 
+            className='input-basic white ph-white border-white'
+            placeholder='please enter the password'
+            value={this.state.password}
+            onChange={(e) => this.onPasswordChange(e)}/>
+          </InputGroup>
+          <HelpBlock style={style.log.helpBlock}>{this.state.passwordValidationMessage}</HelpBlock>
+        </FormGroup>
 
         <div style={style.log.btn} className='sign-btn' onClick={this.login.bind(this)}>
           LOGIN
         </div>
-
-    
-        <Modal show={this.state.showActivationModel} onHide={this.handleActivationHide}>
-          <Modal.Header>
-          <Modal.Title id="contained-modal-title">
-            Account Activation
-          </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Your account has been activated successfully. 
-          </Modal.Body>
-          <Modal.Footer>
-          <Button onClick={this.handleActivationHide}>Close</Button>
-          </Modal.Footer>
-        </Modal>
-
-        <Modal show={this.state.showErrorMessageModel} onHide={() => { this.setState({showErrorMessageModel: false}) }}>
-          <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title" className='bold'>
-              Error Occurred
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <p>{this.state.errorMessage}</p>
-          </Modal.Body>
-        </Modal>
       </Row>
     );
   }

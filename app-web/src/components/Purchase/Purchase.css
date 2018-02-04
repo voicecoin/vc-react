@@ -11,6 +11,19 @@
 .pur-wallet{
 }
 
+.pur-transfer{
+    text-align: center;
+}
+
+.pur-transfer-qrcode{
+    margin: 30px;
+}
+
+.pur-transfer-hint{
+    margin: 10px;
+    color: grey;
+}
+
 .pur-l-card{
     border-radius: 5px !important;
 }

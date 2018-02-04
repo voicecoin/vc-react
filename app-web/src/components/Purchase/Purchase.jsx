@@ -11,10 +11,11 @@ import { Row,
 	Modal,
 	Button, 
 	Panel,
-	PanelBody
+	PanelBody,
+	HelpBlock
 } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import QRCode from 'qrcode.react'
-
 //components
 import Header from '../Header/Header'
 //services
@@ -42,10 +43,11 @@ class Purchase extends Component {
 			couponCode: '',
 			sendEmail: '',
 			contri: {},
-			isTokenFocused: true,
 			showInstructionModalWhenLogin: true,
+			showCPModal: false,
 			showModal: false,
-			showCPModal: false
+			couponValidationState: null,
+			couponValidationMessage: ''
 		}
 	}
 	
@@ -81,12 +83,11 @@ class Purchase extends Component {
 
 	purchaseToken = () => {
 		let cur = this.state.curPrice.name;
+		let coupon = this.state.couponCode;
 		let self = this;
-		
+		self.setState({showModal: true})
 		purchaseApi.purchase(cur).then(function(data){
 			self.setState({ QRstr: data })
-			self.setState({ showModal: true });
-			console.log(data)
 		})
 	}
 
@@ -110,16 +111,28 @@ class Purchase extends Component {
 	handleCouponChange = (e) => {
 		let self = this;
 		let couponCode = e.target.value;
-		self.setState({ couponCode : couponCode });
-
+		self.setState({ couponCode : couponCode})
+		
+		if(couponCode.length < 6) {
+			self.setState({ couponValidationState: null, couponValidationMessage: ''})
+			return;
+		}
+		
 		// valide coupon code
 		if(couponCode.length == 6) {
 			purchaseApi.validateCoupon(couponCode).then((data) => {
 				if(data === true){
-					alert("Correct")
+					self.setState({couponValidationState: 'success', couponValidationMessage: ''})
 				} else {
-					alert("Invalid Coupon")
+					self.setState({ couponValidationState: 'error', couponValidationMessage: ''})
 				}
+			}).then((data)=> {
+				
+				// refresh price
+				purchaseApi.getPrices(couponCode).then(function(data){
+					self.setState({ prices: data })
+				})
+
 			});
 		}
 		
@@ -128,18 +141,21 @@ class Purchase extends Component {
 		})*/
 	}
 
-	handleChange(e, name){	
-		this.setState({ [name]: e.target.value })
+	onCoinAmountChange(e, name){	
+		this.setState({ coinNum: e.target.value, tokenNum:  e.target.value * this.state.curPrice.c2v })
 	}
 
-	handleHide = () => {
-		this.setState({ showModal: false });
+	onTokenAmountChange(e, name){	
+		this.setState({ tokenNum: e.target.value, coinNum: e.target.value * this.state.curPrice.v2c })
 	}
 
 	handleCPHide = () => {
 		this.setState({ showCPModal: false });
 	}
 	
+	handleHide = () => {
+		this.setState({ showModal: false });
+	}
 
 	jumpToVerif = () => {
 		this.props.history.push('./verification')
@@ -244,59 +260,64 @@ class Purchase extends Component {
 							<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>	
 								<Row>
 										<Col md={5} className='m-bottom-20'>
-											<InputGroup bsSize="large">
-												<InputGroup.Addon className='input-addon grey'>
-													<Glyphicon glyph="globe"/>				
-												</InputGroup.Addon>
-												<FormControl 
-												type="text" 
-												className='input-basic'
-												placeholder='TOKENS'
-												value={ this.state.isTokenFocused ? this.state.tokenNum : this.state.coinNum * this.state.curPrice.c2v}
-												onFocus={ () => this.state.isTokenFocused = true }
-												onChange={ (e) => this.handleChange(e, 'tokenNum')}/>
-											</InputGroup>
+											<FormGroup>
+												<InputGroup bsSize="large">
+													<InputGroup.Addon className='input-addon grey'>
+														<Glyphicon glyph="globe"/>				
+													</InputGroup.Addon>
+													<FormControl 
+													type="text" 
+													className='input-basic'
+													placeholder='TOKENS'
+													value={ this.state.tokenNum }
+													onChange={ (e) => this.onTokenAmountChange(e)}/>
+												</InputGroup>
+											</FormGroup>
 										</Col>
 										<Col className='m-top m-bottom-20' md={1}>
 											Equals
 										</Col>
-										<Col md={4} className='m-bottom-20'>
-											<InputGroup bsSize="large">
-												<InputGroup.Addon className='input-addon grey'>
-													<Glyphicon glyph="piggy-bank"/>				
-												</InputGroup.Addon>
-												<FormControl type="text" className='input-basic' placeholder={ this.state.curPrice.name }
-													value={ this.state.isTokenFocused ? this.state.tokenNum * this.state.curPrice.v2c : this.state.coinNum }
-													onFocus={ () => this.state.isTokenFocused = false } 
-													onChange={ (e) => this.handleChange(e, 'coinNum') }/>
-											</InputGroup>
+										<Col md={6} className='m-bottom-20'>
+											<FormGroup>
+												<InputGroup bsSize="large">
+													<InputGroup.Addon className='input-addon grey'>
+														<Glyphicon glyph="piggy-bank"/>				
+													</InputGroup.Addon>
+													<FormControl type="text" className='input-basic' placeholder={ this.state.curPrice.name }
+														value={ this.state.coinNum }
+														onChange={ (e) => this.onCoinAmountChange(e) }/>
+												</InputGroup>
+											</FormGroup>
 										</Col>
 								</Row>
 
 								<Row>
-									<Col className='m-top black bold m-bottom-20' md={7}>
+									<Col className='m-top black bold m-bottom-20' md={6}>
 										<p>IF YOU HAVE GOT A COUPON, PLEASE INPUT YOUR CODE</p>
 									</Col>
-									<Col className='m-top m-bottom-20' md={4}>
-										{/* <div className="app-btn f-left app-btn-lg" onClick={this.showCPModal.bind(this)}>INVITE</div> */}
-										<InputGroup bsSize="large">
-											<InputGroup.Addon className='input-addon grey'>
-												<Glyphicon glyph="gift"/>				
-											</InputGroup.Addon>
-											<FormControl 
-												type="text" 
-												className='input-basic'
-												placeholder="Coupon Code"
-												value={ this.state.couponCode }
-												onChange={(e) => this.handleCouponChange(e)}/>
-										</InputGroup>
+									<Col className='m-top m-bottom-20' md={6}>
+										<FormGroup validationState={this.state.couponValidationState}>
+											<InputGroup bsSize="large">
+												<InputGroup.Addon className='input-addon grey'>
+													<Glyphicon glyph="gift"/>				
+												</InputGroup.Addon>
+												<FormControl 
+													type="text" 
+													className='input-basic'
+													placeholder="Coupon Code"
+													value={ this.state.couponCode }
+													onChange={(e) => this.handleCouponChange(e)}/>
+												<FormControl.Feedback />
+											</InputGroup>
+											<HelpBlock>{this.state.couponValidationMessage}</HelpBlock>
+										</FormGroup>
 									</Col>
 								</Row>
 
 								<Row>
-									<Col className='m-top black bold m-bottom-20' md={7}>
+									<Col className='m-top black bold m-bottom-20' md={6}>
 										<p>
-											PURCHASE {this.state.tokenNum} TOKENS USING { this.state.tokenNum * this.state.curPrice.v2c } { this.state.curPrice.name }
+											PURCHASE {this.state.tokenNum} TOKENS USING { this.state.coinNum} { this.state.curPrice.name }
 										</p>
 									</Col>
 									<Col className='m-top' md={5}>
@@ -360,6 +381,27 @@ class Purchase extends Component {
 					</Col>
 				</Row>
 
+				<Modal
+					show={this.state.showModal}
+					onHide={this.handleHide}>
+					<Modal.Header closeButton>
+						<Modal.Title id="contained-modal-title" className='bold'>
+							TRANSFER INFORMATION
+						</Modal.Title>
+					</Modal.Header>
+
+					<Modal.Body className='pur-transfer'>
+						<h4>Please scan this QRCode to contribute</h4>
+						<div className="pur-transfer-qrcode"><QRCode value={ this.state.QRstr } /></div>
+						<div className='bold'>{ this.state.QRstr }</div>
+						<p className='pur-transfer-hint'>PURCHASE {this.state.tokenNum} TOKENS USING { this.state.coinNum} { this.state.curPrice.name }</p>
+					</Modal.Body>
+
+					<Modal.Footer>
+						<Button onClick={ this.handleHide }>Close</Button>
+					</Modal.Footer>
+				</Modal>
+
 				<Modal show={this.state.showInstructionModalWhenLogin}>
 					<Modal.Header>
 						<Modal.Title id="contained-modal-title" className='bold'>
@@ -384,26 +426,6 @@ class Purchase extends Component {
 
 					<Modal.Footer>
 						<Button onClick={ () => { this.setState({showInstructionModalWhenLogin: false}) }}>Close</Button>
-					</Modal.Footer>
-				</Modal>
-
-				<Modal
-				show={this.state.showModal}
-				onHide={this.handleHide}>
-					<Modal.Header closeButton>
-						<Modal.Title id="contained-modal-title" className='bold'>
-							TRANSFER INFORMATION
-						</Modal.Title>
-					</Modal.Header>
-
-					<Modal.Body>
-						<p>Please scan this QRCode to pay</p>
-						<QRCode value={ this.state.QRstr } />
-						<div className='bold'>{ this.state.QRstr }</div>
-					</Modal.Body>
-
-					<Modal.Footer>
-						<Button onClick={ this.handleHide }>Close</Button>
 					</Modal.Footer>
 				</Modal>
 
