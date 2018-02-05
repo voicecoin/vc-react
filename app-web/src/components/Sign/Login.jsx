@@ -102,7 +102,7 @@ class Login extends Component {
         <FormGroup>
           <InputGroup bsSize="large">
             <InputGroup.Addon className='input-addon white border-white'>
-            <Glyphicon glyph="envelope"/>				
+              <i className="fa fa-envelope ft-icon"></i>				
             </InputGroup.Addon>
             <FormControl 
             type="email" 
@@ -117,7 +117,7 @@ class Login extends Component {
         <FormGroup>
           <InputGroup bsSize="large">
             <InputGroup.Addon className='input-addon white border-white'>
-              <Glyphicon glyph="lock" />
+            <i className="fa fa-key ft-icon"></i>
             </InputGroup.Addon>
             <FormControl 
             type="password" 
@@ -129,7 +129,7 @@ class Login extends Component {
           <HelpBlock style={style.log.helpBlock}>{this.state.passwordValidationMessage}</HelpBlock>
         </FormGroup>
 
-        <div style={style.log.btn} className='sign-btn' onClick={this.login.bind(this)}>
+        <div style={style.log.btn} className='sign-btn' onClick={this.props.login(this.state.email, this.state.password)}>
           LOGIN
         </div>
 

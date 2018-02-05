@@ -29,14 +29,43 @@ class Sign extends Component {
 		super();
 
 		this.state = {
-			
 		}
 	}
 
-	componentDidMount(){
+	login = (email, pwd) => {
 		let self = this;
+		signApi.login(email, pwd)
+		.then(function(data){
+			localStorage.setItem('token', data)
+			self.props.history.push('/purchase')
+		}, function(response){
+			self.setState({passwordValidationMessage: response.data})
+		})
 	}
 
+	signup = (signupData) => {
+		let self = this;
+
+    // check data
+		if(signupData.fullName.length < 3 ||
+			signupData.email.length < 5 ||
+			signupData.password.length < 6) return;
+
+    if(!self.state.checkedAccreditedInvestor) self.setState({checkedAccreditedInvestorValidation: 'error'})
+		if(!self.state.checkedWhitePaper)	self.setState({checkedWhitePaperValidation: 'error'})
+		if(!self.state.checkedSaft) self.setState({checkedSaftValidation: 'error'})
+
+		if(!self.state.checkedAccreditedInvestor ||
+			!self.state.checkedWhitePaper ||
+			!self.state.checkedSaft) return;
+
+		signApi.sign(signupData).then(function(data){
+			self.setState({signupMessage: data})
+		}, function(response){
+			self.setState({signupMessage: response.data})
+		})
+	}
+	  
   render() {
     const style = {
 			menu: {
@@ -83,11 +112,14 @@ class Sign extends Component {
 					<div style={style.wrapper}>
 						
 						<Col mdOffset={2} md={4} xsOffset={1} xs={10}>
-							<Login activationCode={this.props.match.params.key} />
+							<Login 
+							activationCode={this.props.match.params.key} 
+							login={this.login}/>
 						</Col>
 
 						<Col mdOffset={0} md={4} xsOffset={1} xs={10}>
-							<Register />
+							<Register 
+							signup={this.signup}/>
 						</Col>
 					
 					</div>

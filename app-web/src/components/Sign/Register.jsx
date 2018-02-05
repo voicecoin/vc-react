@@ -14,13 +14,13 @@ import {Alert,
 		Checkbox,
 		HelpBlock } from 'react-bootstrap';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome'
-
 import AlertSimple from '../ReactAlert/AlertSimple'
 
 //services
 import signApi from './services/api'
 //style
 import './Sign.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 class Register extends Component {
 	constructor(){
@@ -46,33 +46,7 @@ class Register extends Component {
 
 	}
 
-	signup(){
-		let self = this;
-		let signupData = {
-			fullName: this.state.fullName,
-			email: this.state.email,
-			password: this.state.password
-		}
 
-    // check data
-		if(signupData.fullName.length < 3 ||
-			signupData.email.length < 5 ||
-			signupData.password.length < 6) return;
-
-    if(!self.state.checkedAccreditedInvestor) self.setState({checkedAccreditedInvestorValidation: 'error'})
-		if(!self.state.checkedWhitePaper)	self.setState({checkedWhitePaperValidation: 'error'})
-		if(!self.state.checkedSaft) self.setState({checkedSaftValidation: 'error'})
-
-		if(!self.state.checkedAccreditedInvestor ||
-			!self.state.checkedWhitePaper ||
-			!self.state.checkedSaft) return;
-
-		signApi.sign(signupData).then(function(data){
-			self.setState({signupMessage: data})
-		}, function(response){
-			self.setState({signupMessage: response.data})
-		})
-	}
 
   fullNameValidationState(){
     if(this.state.fullName.length == 0) return null;
@@ -108,8 +82,8 @@ class Register extends Component {
 	onTermChecked(e, name){
     // clear error
 		this.setState({ [name]: !this.state[name], [name + 'Validation']: null})
-	}
-
+  }
+  
   render() {
     const style = {
 		
@@ -137,7 +111,7 @@ class Register extends Component {
         <FormGroup validationState={this.fullNameValidationState()}>
           <InputGroup bsSize="large">
             <InputGroup.Addon className='input-addon grey'>
-              <Glyphicon glyph="pencil"/>				
+              <i className="fa fa-pencil ft-icon"></i>
             </InputGroup.Addon>
             <FormControl 
             type="text" 
@@ -152,7 +126,7 @@ class Register extends Component {
         <FormGroup validationState={this.emailValidationState()}>
           <InputGroup bsSize="large">
             <InputGroup.Addon className='input-addon grey'>
-            <Glyphicon glyph="envelope"/>				
+              <i className="fa fa-envelope ft-icon"></i>
             </InputGroup.Addon>
             <FormControl 
             type="email" 
@@ -167,7 +141,7 @@ class Register extends Component {
         <FormGroup validationState={this.passwordValidation()}>
           <InputGroup bsSize="large">
             <InputGroup.Addon className='input-addon grey'>
-              <Glyphicon glyph="lock" />
+            <i className="fa fa-key ft-icon"></i>
             </InputGroup.Addon>
             <FormControl 
             type="password" 
@@ -195,7 +169,13 @@ class Register extends Component {
           <Checkbox>Remember me</Checkbox>
         </div> */}
 
-        <div style={style.sign.btn} className='sign-btn' onClick={this.signup.bind(this)}>
+        <div style={style.sign.btn} 
+        className='sign-btn' 
+        onClick={this.props.signup({
+          fullName: this.state.fullName,
+          email: this.state.email,
+          password: this.state.password
+        })}>
           REGISTER
         </div>
         

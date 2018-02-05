@@ -79,6 +79,11 @@ class Purchase extends Component {
 			return v.name === name
 		})
 		this.setState({ curPrice:cur })
+		this.setState({ 
+			tokenNum: this.state.tokenNum, 
+			coinNum: this.state.tokenNum * this.state.curPrice.v2c 
+		})
+
 	}
 
 	purchaseToken = () => {
@@ -142,11 +147,17 @@ class Purchase extends Component {
 	}
 
 	onCoinAmountChange(e, name){	
-		this.setState({ coinNum: e.target.value, tokenNum:  e.target.value * this.state.curPrice.c2v })
+		this.setState({ 
+			coinNum: e.target.value, 
+			tokenNum:  e.target.value * this.state.curPrice.c2v 
+		})
 	}
 
 	onTokenAmountChange(e, name){	
-		this.setState({ tokenNum: e.target.value, coinNum: e.target.value * this.state.curPrice.v2c })
+		this.setState({ 
+			tokenNum: e.target.value, 
+			coinNum: e.target.value * this.state.curPrice.v2c 
+		})
 	}
 
 	handleCPHide = () => {
@@ -263,7 +274,7 @@ class Purchase extends Component {
 											<FormGroup>
 												<InputGroup bsSize="large">
 													<InputGroup.Addon className='input-addon grey'>
-														<Glyphicon glyph="globe"/>				
+														<i className="fa fa-globe ft-icon"></i>				
 													</InputGroup.Addon>
 													<FormControl 
 													type="text" 
@@ -281,7 +292,7 @@ class Purchase extends Component {
 											<FormGroup>
 												<InputGroup bsSize="large">
 													<InputGroup.Addon className='input-addon grey'>
-														<Glyphicon glyph="piggy-bank"/>				
+														<i className="fa fa-usd ft-icon"></i>				
 													</InputGroup.Addon>
 													<FormControl type="text" className='input-basic' placeholder={ this.state.curPrice.name }
 														value={ this.state.coinNum }
@@ -299,7 +310,7 @@ class Purchase extends Component {
 										<FormGroup validationState={this.state.couponValidationState}>
 											<InputGroup bsSize="large">
 												<InputGroup.Addon className='input-addon grey'>
-													<Glyphicon glyph="gift"/>				
+													<i className="fa fa-gift ft-icon"></i>
 												</InputGroup.Addon>
 												<FormControl 
 													type="text" 

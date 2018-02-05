@@ -25,8 +25,8 @@ class Home extends Component {
 		}
 
 		return (
-			<Grid fluid style={style}>
-				<HomeRoute/>	
+			<Grid fluid className='no-padding' style={style}>
+				<HomeRoute/>
 				<Footer/>
 			</Grid>
 		);
