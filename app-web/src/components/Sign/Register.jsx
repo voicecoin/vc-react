@@ -171,7 +171,7 @@ class Register extends Component {
 
         <div style={style.sign.btn} 
         className='sign-btn' 
-        onClick={this.props.signup({
+        onClick={ () => this.props.signup({
           fullName: this.state.fullName,
           email: this.state.email,
           password: this.state.password

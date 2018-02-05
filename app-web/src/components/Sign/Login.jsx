@@ -129,7 +129,7 @@ class Login extends Component {
           <HelpBlock style={style.log.helpBlock}>{this.state.passwordValidationMessage}</HelpBlock>
         </FormGroup>
 
-        <div style={style.log.btn} className='sign-btn' onClick={this.props.login(this.state.email, this.state.password)}>
+        <div style={style.log.btn} className='sign-btn' onClick={ () => this.props.login(this.state.email, this.state.password) }>
           LOGIN
         </div>
 

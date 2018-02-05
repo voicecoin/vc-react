@@ -94,7 +94,7 @@ class Sign extends Component {
     }
 
     return (
-			<Row>
+			<Row className='no-margin'>
 				<Col className='of m-bottom-60'>
 					<Row className='no-margin'>
 						<div style={style.menu}>
