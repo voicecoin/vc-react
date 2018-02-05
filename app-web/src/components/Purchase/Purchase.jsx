@@ -86,7 +86,7 @@ class Purchase extends Component {
 		let coupon = this.state.couponCode;
 		let self = this;
 		self.setState({showModal: true})
-		purchaseApi.purchase(cur).then(function(data){
+		purchaseApi.purchase(cur, coupon).then(function(data){
 			self.setState({ QRstr: data })
 		})
 	}

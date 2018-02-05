@@ -15,8 +15,8 @@ import { Grid,
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome'
 
 import Header from '../Header/Header'
-import Register from '../../components/Sign/Register'
-import Login from '../../components/Sign/Login'
+import Register from './Register'
+import Login from './Login'
 
 //services
 import signApi from './services/api'
@@ -29,25 +29,14 @@ class Sign extends Component {
 		super();
 
 		this.state = {
-
+			
 		}
 	}
 
 	componentDidMount(){
 		let self = this;
-		if(this.props.match.params.key){
-			signApi.activate(this.props.match.params.key)
-			.then(function(data){
-				self.setState({ showActivationModel: true });
-			})
-		}
 	}
 
-	handleActivationHide = () => {
-		this.setState({ showActivationModel: false });
-		this.props.history.push('../')
-	}
-	
   render() {
     const style = {
 			menu: {
@@ -88,12 +77,13 @@ class Sign extends Component {
 							</Col>
 						</div>
 					</Row>
-
+						
 					<Header/>
-
+					
 					<div style={style.wrapper}>
+						
 						<Col mdOffset={2} md={4} xsOffset={1} xs={10}>
-							<Login />
+							<Login activationCode={this.props.match.params.key} />
 						</Col>
 
 						<Col mdOffset={0} md={4} xsOffset={1} xs={10}>

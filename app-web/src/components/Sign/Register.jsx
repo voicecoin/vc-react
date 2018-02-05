@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //libs
-import { Grid, 
+import {Alert,
+    Grid, 
 		Row, 
 		Col, 
 		form, 
@@ -13,6 +14,8 @@ import { Grid,
 		Checkbox,
 		HelpBlock } from 'react-bootstrap';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome'
+
+import AlertSimple from '../ReactAlert/AlertSimple'
 
 //services
 import signApi from './services/api'
@@ -31,7 +34,6 @@ class Register extends Component {
       password: '',
       passwordValidationMessage: '',
       isEmailExisted: false,
-			showSignupMessageModel: false,
 			signupMessage: '',
       checkedAccreditedInvestor: false,
       checkedWhitePaper: false,
@@ -66,9 +68,9 @@ class Register extends Component {
 			!self.state.checkedSaft) return;
 
 		signApi.sign(signupData).then(function(data){
-			self.setState({signupMessage: data, showSignupMessageModel: true})
+			self.setState({signupMessage: data})
 		}, function(response){
-			self.setState({signupMessage: response.data, showSignupMessageModel: true})
+			self.setState({signupMessage: response.data})
 		})
 	}
 
@@ -133,9 +135,7 @@ class Register extends Component {
         </div>
 
         <FormGroup validationState={this.fullNameValidationState()}>
-          <InputGroup 
-          className='app-input' 
-          style={style.sign.input} bsSize="large">
+          <InputGroup bsSize="large">
             <InputGroup.Addon className='input-addon grey'>
               <Glyphicon glyph="pencil"/>				
             </InputGroup.Addon>
@@ -198,6 +198,8 @@ class Register extends Component {
         <div style={style.sign.btn} className='sign-btn' onClick={this.signup.bind(this)}>
           REGISTER
         </div>
+        
+        <AlertSimple bsStyle="success" content={this.state.signupMessage} />
       </Row>
     );
   }

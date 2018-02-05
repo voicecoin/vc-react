@@ -13,6 +13,8 @@ import { Grid,
 		HelpBlock } from 'react-bootstrap';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome'
 
+import AlertSimple from '../ReactAlert/AlertSimple'
+
 //services
 import signApi from './services/api'
 //style
@@ -26,13 +28,19 @@ class Login extends Component {
       email: '',
       emailValidationMessage: '',
       password: '',
-      passwordValidationMessage: ''
+      passwordValidationMessage: '',
+      activationMessage: ''
 		}
 	}
 
 	componentDidMount(){
 		let self = this;
-
+		if(this.props.activationCode){
+			signApi.activate(this.props.activationCode)
+				.then(function(data){
+					self.setState({ activationMessage: data });
+				})
+		}
 	}
 	
 	emailValidationState(){
@@ -124,6 +132,8 @@ class Login extends Component {
         <div style={style.log.btn} className='sign-btn' onClick={this.login.bind(this)}>
           LOGIN
         </div>
+
+        <AlertSimple bsStyle="success" content={this.state.activationMessage} />
       </Row>
     );
   }
