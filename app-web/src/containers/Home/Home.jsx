@@ -25,10 +25,10 @@ class Home extends Component {
 		}
 
 		return (
-			<div style={style}>
+			<Grid fluid style={style}>
 				<HomeRoute/>	
 				<Footer/>
-			</div>
+			</Grid>
 		);
   }
 }

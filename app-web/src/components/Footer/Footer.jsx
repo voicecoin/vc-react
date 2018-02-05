@@ -22,7 +22,7 @@ class Footer extends Component {
 	render(){
 		return (
             <div>
-                <div className='of bg-l-black p-t-50'>
+                <Row className='of bg-l-black p-t-50'>
                     <Col 
                     mdOffset={1} 
                     md={10} 
@@ -65,8 +65,8 @@ class Footer extends Component {
                             </div>
                         </Col>
                     </Col>
-                </div>
-                <div className='of bg-black'>
+                </Row>
+                <Row className='of bg-black'>
                     <Col
                     mdOffset={1} 
                     md={10} 
@@ -83,7 +83,7 @@ class Footer extends Component {
                             <i className="fa fa-weibo ft-icon"></i>
                         </Col>
                     </Col>
-                </div>
+                </Row>
             </div>
 
 		)
