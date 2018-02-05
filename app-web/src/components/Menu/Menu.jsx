@@ -8,8 +8,10 @@ import { Row,
 	InputGroup, 
 	Glyphicon,
 	ControlLabel,
-	HelpBlock
+	HelpBlock,
 } from 'react-bootstrap';
+
+import Logo from '../../vendor/img/logo.png'
 
 class Menu extends Component {
     render(){
@@ -41,8 +43,14 @@ class Menu extends Component {
                     <Col md={4} style={style.menu.logo} >
                         <img src={Logo} alt="#"/>
                     </Col>
-                    <Col mdOffset={4} md={2} style={style.menu.items} >
-                        {this.state.showLogout ? <div style={style.menu.item} className='app-btn f-right m-right-20 bold' onClick={this.logout}>LOGOUT</div> : null}
+                    <Col mdOffset={2} md={2} style={style.menu.items} >
+                        { 
+							this.props.showLogout ? 
+							<div style={style.menu.item} className='app-btn f-right m-right-20 bold'>{this.props.username}</div> 
+							: null }
+                    </Col>
+                    <Col md={2} style={style.menu.items} >
+                        { this.props.showLogout ? <div style={style.menu.item} className='app-btn f-right m-right-20 bold' onClick={this.logout}>LOGOUT</div> : null }
                     </Col>
                 </div>
             </Row>

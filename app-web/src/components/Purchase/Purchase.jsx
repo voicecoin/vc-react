@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-
-import Moment from 'react-moment';
+import React, { Component } from 'react'
+import Moment from 'react-moment'
 import { Row, 
 	Col,
 	form, 
@@ -18,13 +17,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import QRCode from 'qrcode.react'
 //components
 import Header from '../Header/Header'
-
+import Menu from '../Menu/Menu'
 import Contribution from './Contribution'
-
 //services
 import purchaseApi from '../Purchase/api'
 //styling
-import './Purchase.css';
+import './Purchase.css'
 import Logo from '../../vendor/img/logo.png'
 
 class Purchase extends Component {
@@ -32,20 +30,23 @@ class Purchase extends Component {
 		super()
 
 		this.state = {
-			showLogout: true,
+			userInfo: {},
 			currencies: [],
 			curPrice: {},
 			prices: {},
 			tokenNum: null,
 			coinNum: null,
 			QRstr: '',
-			//coupon
+			// COUPON
 			coupons: [],
 			couponLink: '',
 			curCp: {},
 			couponCode: '',
 			sendEmail: '',
 			contri: {},
+			contributionStat: {},
+			// FLAGS
+			showLogout: true,
 			showInstructionModalWhenLogin: true,
 			showCPModal: false,
 			showModal: false,
@@ -53,11 +54,10 @@ class Purchase extends Component {
 			couponValidationMessage: ''
 		}
 	}
-	
+
+	// LIFE-CYCLE Func	
 	componentWillMount = () => {
 		let self = this;
-
-		let t = new Date();
 
 		purchaseApi.getCurrencies().then(function(data){
 			self.setState({ currencies: data })
@@ -68,13 +68,15 @@ class Purchase extends Component {
 			self.setState({ curPrice: data[0] })
 		})
 
-		purchaseApi.getContri().then((data) => {
-			self.setState({ contri: data })
+		let username = localStorage.getItem('username')
+		this.setState({
+			username: username
 		})
+
 	}
 
 	componentDidMount(){
-		console.log(this.props.num)
+
 	}
 
 	selectCurCoin = (name) => {
@@ -99,6 +101,63 @@ class Purchase extends Component {
 		})
 	}
 
+	//func handle value change
+	onCoinAmountChange(e, name){	
+		this.setState({ 
+			coinNum: e.target.value, 
+			tokenNum:  e.target.value * this.state.curPrice.c2v 
+		})
+	}
+
+	onTokenAmountChange(e, name){	
+		this.setState({ 
+			tokenNum: e.target.value, 
+			coinNum: e.target.value * this.state.curPrice.v2c 
+		})
+	}
+
+	handleCouponChange = (e) => {
+		let self = this;
+		let couponCode = e.target.value;
+		self.setState({ couponCode : couponCode})
+		
+		if(couponCode.length < 6) {
+			self.setState({ couponValidationState: null, couponValidationMessage: ''})
+			return;
+		}
+		
+		// valide coupon code
+		if(couponCode.length == 6) {
+			purchaseApi.validateCoupon(couponCode)
+			.then((data) => {
+				if(data === true){
+					self.setState({couponValidationState: 'success', couponValidationMessage: ''})
+				} else {
+					self.setState({ couponValidationState: 'error', couponValidationMessage: ''})
+				}
+			}).then((data) => {
+				// refresh price
+				purchaseApi.getPrices(couponCode).then(function(data){
+					self.setState({ prices: data })
+				})
+
+			});
+		}
+		
+		/*purchaseApi.getCouponLink(curCp.id).then((data) => {
+			self.setState({ couponLink: data})
+		})*/
+	}
+
+	handleCPHide = () => {
+		this.setState({ showCPModal: false });
+	}
+	
+	handleHide = () => {
+		this.setState({ showModal: false });
+	}
+
+	//func control modal
 	showCPModal = () => {
 		let self = this;
 		self.state.showCPModal = true;
@@ -116,61 +175,7 @@ class Purchase extends Component {
 		}
 	}
 
-	handleCouponChange = (e) => {
-		let self = this;
-		let couponCode = e.target.value;
-		self.setState({ couponCode : couponCode})
-		
-		if(couponCode.length < 6) {
-			self.setState({ couponValidationState: null, couponValidationMessage: ''})
-			return;
-		}
-		
-		// valide coupon code
-		if(couponCode.length == 6) {
-			purchaseApi.validateCoupon(couponCode).then((data) => {
-				if(data === true){
-					self.setState({couponValidationState: 'success', couponValidationMessage: ''})
-				} else {
-					self.setState({ couponValidationState: 'error', couponValidationMessage: ''})
-				}
-			}).then((data)=> {
-				
-				// refresh price
-				purchaseApi.getPrices(couponCode).then(function(data){
-					self.setState({ prices: data })
-				})
-
-			});
-		}
-		
-		/*purchaseApi.getCouponLink(curCp.id).then((data) => {
-			self.setState({ couponLink: data})
-		})*/
-	}
-
-	onCoinAmountChange(e, name){	
-		this.setState({ 
-			coinNum: e.target.value, 
-			tokenNum:  e.target.value * this.state.curPrice.c2v 
-		})
-	}
-
-	onTokenAmountChange(e, name){	
-		this.setState({ 
-			tokenNum: e.target.value, 
-			coinNum: e.target.value * this.state.curPrice.v2c 
-		})
-	}
-
-	handleCPHide = () => {
-		this.setState({ showCPModal: false });
-	}
-	
-	handleHide = () => {
-		this.setState({ showModal: false });
-	}
-
+	//func change the route
 	jumpToVerif = () => {
 		this.props.history.push('./verification')
 	}
@@ -212,16 +217,10 @@ class Purchase extends Component {
 
 		return (
 			<div>
-				<Row className="no-margin">
-					<div style={style.menu}>
-						<Col md={4} style={style.menu.logo} >
-							<img src={Logo} alt="#"/>
-						</Col>
-						<Col mdOffset={4} md={2} style={style.menu.items} >
-							{this.state.showLogout ? <div style={style.menu.item} className='app-btn f-right m-right-20 bold' onClick={this.logout}>LOGOUT</div> : null}
-						</Col>
-					</div>
-				</Row>
+				<Menu 
+				showLogout={this.state.showLogout}
+				showUsername={this.state.showUsername}
+				username={this.state.username}/>
 
 				<Header/>
 
@@ -243,7 +242,7 @@ class Purchase extends Component {
 
 				<Row className="no-margin pur-main dark-grey">
 					<Col>
-						<Row className='of'>
+						<Row className='no-margin of'>
 							<Col 
 							mdOffset={2} 
 							md={4} 
@@ -342,6 +341,7 @@ class Purchase extends Component {
 						</Row>
 
 						<Contribution />
+
 					</Col>
 				</Row>
 

@@ -29,7 +29,7 @@ export default {
         return HTTP.get('/v1/Coupon/generate/' + email)
     },
 
-    getContri: () => {
-        return HTTP.get('v1/IcoInfo/ContributionStat')
+    getContributionStat: () => {
+        return HTTP.get('/v1/IcoInfo/ContributionStat')
     }
 }

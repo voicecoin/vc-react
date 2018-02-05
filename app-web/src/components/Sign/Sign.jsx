@@ -28,16 +28,19 @@ class Sign extends Component {
 	constructor(){
 		super();
 
-		this.state = {
-		}
+		this.state = {}
 	}
 
 	login = (email, pwd) => {
 		let self = this;
+
 		signApi.login(email, pwd)
 		.then(function(data){
 			localStorage.setItem('token', data)
-			self.props.history.push('/purchase')
+			signApi.userInfo().then((data) => {
+                localStorage.setItem('username', data.name)
+                self.props.history.push('/purchase')
+            })
 		}, function(response){
 			self.setState({passwordValidationMessage: response.data})
 		})
@@ -46,12 +49,12 @@ class Sign extends Component {
 	signup = (signupData) => {
 		let self = this;
 
-    // check data
+    	// check data
 		if(signupData.fullName.length < 3 ||
 			signupData.email.length < 5 ||
 			signupData.password.length < 6) return;
 
-    if(!self.state.checkedAccreditedInvestor) self.setState({checkedAccreditedInvestorValidation: 'error'})
+   		if(!self.state.checkedAccreditedInvestor) self.setState({checkedAccreditedInvestorValidation: 'error'})
 		if(!self.state.checkedWhitePaper)	self.setState({checkedWhitePaperValidation: 'error'})
 		if(!self.state.checkedSaft) self.setState({checkedSaftValidation: 'error'})
 
