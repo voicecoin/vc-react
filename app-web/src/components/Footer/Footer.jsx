@@ -22,7 +22,7 @@ class Footer extends Component {
 	render(){
 		return (
             <div>
-                <Row className='of bg-l-black p-t-50'>
+                <Row className='no-margin of bg-l-black p-t-50'>
                     <Col 
                     mdOffset={1} 
                     md={10} 
@@ -66,7 +66,7 @@ class Footer extends Component {
                         </Col>
                     </Col>
                 </Row>
-                <Row className='of bg-black'>
+                <Row className='no-margin of bg-black'>
                     <Col
                     mdOffset={1} 
                     md={10} 

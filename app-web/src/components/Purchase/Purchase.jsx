@@ -18,6 +18,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import QRCode from 'qrcode.react'
 //components
 import Header from '../Header/Header'
+
+import Contribution from './Contribution'
+
 //services
 import purchaseApi from '../Purchase/api'
 //styling
@@ -209,7 +212,7 @@ class Purchase extends Component {
 
 		return (
 			<div>
-				<Row>
+				<Row className="no-margin">
 					<div style={style.menu}>
 						<Col md={4} style={style.menu.logo} >
 							<img src={Logo} alt="#"/>
@@ -222,7 +225,7 @@ class Purchase extends Component {
 
 				<Header/>
 
-				<Row className="app-tab">
+				<Row className="no-margin app-tab">
 					<Col md={8} mdOffset={1}  xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS WITH</div>
 						{
@@ -238,7 +241,7 @@ class Purchase extends Component {
 					</Col> 
 				</Row>
 
-				<Row className="pur-main dark-grey">
+				<Row className="no-margin pur-main dark-grey">
 					<Col>
 						<Row className='of'>
 							<Col 
@@ -267,7 +270,7 @@ class Purchase extends Component {
 							</Col>
 						</Row>
 
-						<Row className='of'>
+						<Row className='no-margin of'>
 							<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>	
 								<Row>
 										<Col md={5} className='m-bottom-20'>
@@ -338,44 +341,7 @@ class Purchase extends Component {
 							</Col>
 						</Row>
 
-						<Row className="pur-coins of">
-							<Col mdOffset={1} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
-								<div className='n-text m-bottom'>Bitcoin</div>
-								<div className='light'>$0.00 USD</div>
-								<div className='light'> 0.00000000 Coins</div>
-							</Col>
-							<Col mdOffset={0} md={2} xsOffset={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card">
-								<div className='n-text m-bottom'>Ethereum</div>
-								<div className='light'>$0.00 USD</div>
-								<div className='light'>0.00000000 Coins</div>
-							</Col>
-						</Row>
-
-						<Row className="pur-wallet of white">
-							<Col md={10} mdOffset={1} xs={10} xsOffset={1} className="pur-l-card app-card bg-light-blue">
-								<Row>
-									<Col className='no-padding  m-bottom-0' md={1} xs={12}>
-										<div className='bold b-text m-top-10'>12</div>
-										<div className='light'>jan 2018</div>
-									</Col>
-									<Col className='no-padding left m-bottom-20 ' md={3} xs={12}>
-										<div className='bold m-top-10'>PURCHASING USING FIAT</div>
-										<div className='light'>2.00 USD</div>
-									</Col>
-									<Col className='no-padding left m-bottom-20' md={3} xs={12}>
-										<div className='bold m-top-10'>UNFULFILLED</div>
-										<div className='light'>No Blockchain Transaction</div>
-									</Col>
-									<Col className='no-padding left m-bottom-20' md={3} xs={12}>
-										<div className='bold m-top-10'>NO TOKENS</div>
-										<div className='light'>No Blockchain Transaction</div>
-									</Col>
-									<Col className='no-padding' md={2} xs={12} className='f-left bg-red pur-btn'>
-										WALLET INFORMATION
-									</Col>
-								</Row>
-							</Col>
-						</Row>
+						<Contribution />
 					</Col>
 				</Row>
 
