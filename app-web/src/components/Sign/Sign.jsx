@@ -24,6 +24,10 @@ import Logo from '../../vendor/img/logo.png'
 class Sign extends Component {
 	constructor(){
 		super();
+		
+		this.state = {
+			showLogout: false
+		}
 	}
 
 	login = (email, pwd) => {

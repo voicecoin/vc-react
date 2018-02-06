@@ -17,7 +17,7 @@ import Indent from './components/Indent'
 import Residence from './components/Residence'
 import Document from './components/Document'
 import Personal from './components/Personal'
-import Menu from '../Menu/Menu'
+import Navbar from '../Navbar/Navbar'
 // STYLE
 import './Verif.css';
 import Logo from '../../vendor/img/logo.png'
@@ -90,7 +90,7 @@ class Verif extends Component {
 
 		return (
 			<div>
-				<Menu 
+				<Navbar 
 				showLogout={this.state.showLogout}
 				showUsername={this.state.showUsername}
 				username={this.state.username}

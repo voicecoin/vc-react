@@ -88,7 +88,7 @@ class Contribution extends Component {
 						{
 							this.state.contributionStat.length !== 0 ? this.state.contributionStat.items.map((s) => {
 								return (
-									<Col md={2} xs={8} className="app-card f-left bg-light-blue white pur-l-card m-right-20">
+									<Col md={2} mdOffset={0} xs={8} xsOffset={2} className="app-card f-left bg-light-blue white pur-l-card m-right-20">
 										<div className='n-text m-bottom'>{s.currency}</div>
 										<div className='light'>${s.amountUsd} USD</div>
 										<div className='light'> {s.amount} Coins</div>

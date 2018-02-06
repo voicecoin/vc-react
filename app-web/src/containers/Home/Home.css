@@ -73,6 +73,24 @@
 }
 
 .home-menu-logo{
+    height: 50px;
+    padding: 7px;
+}
+
+.navbar-toggle{
+    border-color: #fff !important;
+}
+
+.navbar-toggle:hover{
+    background-color: #2EA0F1 !important;
+}
+
+.navbar-collapse{
+    border-color: #fff !important;
+}
+
+.navbar-item{
+    color: #fff !important;
 }
 
 .app-btn-lg{

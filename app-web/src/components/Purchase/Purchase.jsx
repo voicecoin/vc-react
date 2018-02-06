@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import QRCode from 'qrcode.react'
 //components
 import Header from '../Header/Header'
-import Menu from '../Menu/Menu'
+import Navbar from '../Navbar/Navbar'
 import Contribution from './Contribution'
 //services
 import purchaseApi from '../Purchase/api'
@@ -213,7 +213,7 @@ class Purchase extends Component {
 
 		return (
 			<div>
-				<Menu 
+				<Navbar 
 				showLogout={this.state.showLogout}
 				showUsername={this.state.showUsername}
 				username={this.state.username}
