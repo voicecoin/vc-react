@@ -39,7 +39,7 @@ class Document extends Component {
 	}
 
 	onDrop(files) {
-		this.setState({ files });
+		this.setState({ files});
 	}
 
 	uploadDocumentSignature(){

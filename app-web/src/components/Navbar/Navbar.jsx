@@ -25,22 +25,9 @@ class iNavbar extends Component {
 				borderRadius: '0px',
 				border: 'none',
 				color: '#fff',
-				collapse: {
-					borderColor: '#fff !important'
-				},
-				logo: {
-					paddingTop: '10px',
-					height: '100%',
-					float: 'left',
-				},
 				item: {
 					color: '#fff !important'
 				},
-				// item: {
-				// 	paddingTop: '20px',
-				// 	height: '100%',
-				// 	display: 'InlineBlock',
-				// }
 			}
 		}
 
@@ -60,8 +47,7 @@ class iNavbar extends Component {
 								<span className='navbar-item'>{ this.props.username }</span>
 							</NavItem> : null
 						}
-						
-						<NavItem eventKey={2} href="#" className={style.menu.item}>
+						<NavItem eventKey={2} href="#" className={style.menu.item} onClick={this.props.logout} >
 							<span className='navbar-item'>{ this.props.showLogout ? 'LOGOUT' : null }</span>
 						</NavItem>
 					</Nav>
