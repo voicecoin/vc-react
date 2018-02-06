@@ -269,36 +269,36 @@ class Purchase extends Component {
 						<Row className='no-margin of'>
 							<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>	
 								<Row>
-										<Col md={5} className='m-bottom-20'>
-											<FormGroup>
-												<InputGroup bsSize="large">
-													<InputGroup.Addon className='input-addon grey'>
-														<i className="fa fa-globe ft-icon"></i>				
-													</InputGroup.Addon>
-													<FormControl 
-													type="text" 
-													className='input-basic'
-													placeholder='TOKENS'
-													value={ this.state.tokenNum }
-													onChange={ (e) => this.onTokenAmountChange(e)}/>
-												</InputGroup>
-											</FormGroup>
-										</Col>
-										<Col className='m-top m-bottom-20' md={1}>
-											Equals
-										</Col>
-										<Col md={6} className='m-bottom-20'>
-											<FormGroup>
-												<InputGroup bsSize="large">
-													<InputGroup.Addon className='input-addon grey'>
-														<i className="fa fa-usd ft-icon"></i>				
-													</InputGroup.Addon>
-													<FormControl type="text" className='input-basic' placeholder={ this.state.curPrice.name }
-														value={ this.state.coinNum }
-														onChange={ (e) => this.onCoinAmountChange(e) }/>
-												</InputGroup>
-											</FormGroup>
-										</Col>
+								<Col md={5} className='m-bottom-20'>
+									<FormGroup>
+										<InputGroup bsSize="large">
+											<InputGroup.Addon className='input-addon grey'>
+												<i className="fa fa-globe"></i>				
+											</InputGroup.Addon>
+											<FormControl 
+											type="text" 
+											className='input-basic'
+											placeholder='TOKENS'
+											value={ this.state.tokenNum }
+											onChange={ (e) => this.onTokenAmountChange(e)}/>
+										</InputGroup>
+									</FormGroup>
+								</Col>
+								<Col className='m-top m-bottom-20' md={1}>
+									Equals
+								</Col>
+								<Col md={6} className='m-bottom-20'>
+									<FormGroup>
+										<InputGroup bsSize="large">
+											<InputGroup.Addon className='input-addon grey'>
+												<i className="fa fa-usd"></i>				
+											</InputGroup.Addon>
+											<FormControl type="text" className='input-basic' placeholder={ this.state.curPrice.name }
+												value={ this.state.coinNum }
+												onChange={ (e) => this.onCoinAmountChange(e) }/>
+										</InputGroup>
+									</FormGroup>
+								</Col>
 								</Row>
 
 								<Row>
@@ -309,7 +309,7 @@ class Purchase extends Component {
 										<FormGroup validationState={this.state.couponValidationState}>
 											<InputGroup bsSize="large">
 												<InputGroup.Addon className='input-addon grey'>
-													<i className="fa fa-gift ft-icon"></i>
+													<i className="fa fa-gift"></i>
 												</InputGroup.Addon>
 												<FormControl 
 													type="text" 

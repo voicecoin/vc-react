@@ -85,6 +85,10 @@
     background-color: #2EA0F1 !important;
 }
 
+.navbar-toggle:focus{
+    background-color: #2EA0F1 !important;
+}
+
 .navbar-collapse{
     border-color: #fff !important;
 }
