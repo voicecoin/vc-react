@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-//component
+// COMPONENT
 import Countdown from '../Countdown/Countdown'
-//api
+// SERVICES
 import headerApi from './api'
-//style
+// STYLE
 import './Header.css';
 import Img from '../../vendor/img/vc.jpg'
 
@@ -40,9 +40,6 @@ class Header extends Component {
             wrapper: {
 				color: '#fff',
                 paddingBottom: '30px',
-				content: {
-					
-				}
 			},
 			
 			progressBar: {
@@ -57,9 +54,6 @@ class Header extends Component {
         return (
             <div>
 				<div style={style.wrapper}>
-					{/***** content *****/}
-					{/***** content *****/}
-					{/***** content *****/}
 					<Row style={style.wrapper.content} className='no-margin'>
 						<Col mdOffset={3} md={6} >
 							<p className='h-wrapper-header'>PROGRESSIVE COIN SALES (BIQ)</p>

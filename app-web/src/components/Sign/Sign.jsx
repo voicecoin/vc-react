@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//libs
+// COMPONENTS
 import { Grid, 
 		Row, 
 		Col, 
@@ -12,23 +12,18 @@ import { Grid,
 		Button,
 		Checkbox,
 		HelpBlock } from 'react-bootstrap';
-import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome'
-
 import Header from '../Header/Header'
 import Register from './Register'
 import Login from './Login'
-
-//services
+// SERVICES
 import signApi from './services/api'
-//style
+// STYLE
 import './Sign.css';
 import Logo from '../../vendor/img/logo.png'
 
 class Sign extends Component {
 	constructor(){
 		super();
-
-		this.state = {}
 	}
 
 	login = (email, pwd) => {
@@ -45,58 +40,35 @@ class Sign extends Component {
 			self.setState({passwordValidationMessage: response.data})
 		})
 	}
-
-	signup = (signupData) => {
-		let self = this;
-
-    	// check data
-		if(signupData.fullName.length < 3 ||
-			signupData.email.length < 5 ||
-			signupData.password.length < 6) return;
-
-   		if(!self.state.checkedAccreditedInvestor) self.setState({checkedAccreditedInvestorValidation: 'error'})
-		if(!self.state.checkedWhitePaper)	self.setState({checkedWhitePaperValidation: 'error'})
-		if(!self.state.checkedSaft) self.setState({checkedSaftValidation: 'error'})
-
-		if(!self.state.checkedAccreditedInvestor ||
-			!self.state.checkedWhitePaper ||
-			!self.state.checkedSaft) return;
-
-		signApi.sign(signupData).then(function(data){
-			self.setState({signupMessage: data})
-		}, function(response){
-			self.setState({signupMessage: response.data})
-		})
-	}
 	  
-  render() {
-    const style = {
-			menu: {
-				color: '#fff',
-				backgroundColor: '#0065ae',
-				height: '70px',
-				logo: {
-					paddingTop: '10px',
-					height: '100%',
-					float: 'left'
+	render() {
+		const style = {
+				menu: {
+					color: '#fff',
+					backgroundColor: '#0065ae',
+					height: '70px',
+					logo: {
+						paddingTop: '10px',
+						height: '100%',
+						float: 'left'
+					},
+					items: {
+						padding: '0px',
+						height: '100%'
+					},
+					item: {
+						paddingTop: '20px',
+						height: '100%',
+						display: 'InlineBlock'
+					}
 				},
-				items: {
-					padding: '0px',
-					height: '100%'
-				},
-				item: {
-					paddingTop: '20px',
-					height: '100%',
-					display: 'InlineBlock'
+
+				wrapper: {
+					color: '#fff'
 				}
-			},
+		}
 
-			wrapper: {
-				color: '#fff'
-			}
-    }
-
-    return (
+		return (
 			<Row className='no-margin'>
 				<Col className='of m-bottom-60'>
 					<Row className='no-margin'>
@@ -113,7 +85,6 @@ class Sign extends Component {
 					<Header/>
 					
 					<div style={style.wrapper}>
-						
 						<Col mdOffset={2} md={4} xsOffset={1} xs={10}>
 							<Login 
 							activationCode={this.props.match.params.key} 
@@ -121,15 +92,13 @@ class Sign extends Component {
 						</Col>
 
 						<Col mdOffset={0} md={4} xsOffset={1} xs={10}>
-							<Register 
-							signup={this.signup}/>
+							<Register />
 						</Col>
-					
 					</div>
 				</Col>
 			</Row>
-    );
-  }
+		);
+	}
 }
 
 export default Sign;

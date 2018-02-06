@@ -15,10 +15,6 @@ class Countdown extends Component {
         }
     }
 
-    componentDidMount(){
-        
-    }
-
     componentWillReceiveProps(nextProps){
         if(this.props.endDate !== nextProps.endDate){
             this.updateClock(nextProps.endDate);

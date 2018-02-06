@@ -11,7 +11,7 @@ import { Row,
 	HelpBlock
 } from 'react-bootstrap';
 import Dropzone from 'react-dropzone'
-
+// SERVICES
 import verifApi from '../api'
 
 class Residence extends Component {

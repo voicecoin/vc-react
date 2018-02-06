@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//libs
+// LIBS
 import { Grid, 
 		Row, 
 		Col, 
@@ -13,9 +13,9 @@ import { Grid,
 		HelpBlock } from 'react-bootstrap';
 import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome'
 import AlertSimple from '../ReactAlert/AlertSimple'
-//services
+// SERVICES
 import signApi from './services/api'
-//style
+// STYLE
 import './Sign.css';
 
 class Login extends Component {
@@ -23,11 +23,11 @@ class Login extends Component {
 		super();
 
 		this.state = {
-      email: '',
-      emailValidationMessage: '',
-      password: '',
-      passwordValidationMessage: '',
-      activationMessage: ''
+            email: '',
+            emailValidationMessage: '',
+            password: '',
+            passwordValidationMessage: '',
+            activationMessage: ''
 		}
 	}
 
@@ -46,14 +46,14 @@ class Login extends Component {
 		if(this.state.email === '') return null
 		return signApi.validateEmail(this.state.email) ? 'success' : 'error'; 
     }
-  
-    onEmailChange(e){
-        this.setState({ email: e.target.value, emailValidationMessage: '', passwordValidationMessage: '' })
-    }
 
     passwordValidation(){
         if(this.state.password.length == 0) return null;
         return this.state.password.length > 5 ? 'success' : 'error';
+    }
+      
+    onEmailChange(e){
+        this.setState({ email: e.target.value, emailValidationMessage: '', passwordValidationMessage: '' })
     }
 
     onPasswordChange(e){	
@@ -65,7 +65,7 @@ class Login extends Component {
         const style = {
             log: {
                     opacity: '0.95',
-                    height: '500px',
+                    height: '550px',
                     padding: '3rem',
                     backgroundColor: '#3b96d5',
                     borderRadius: '5px 0px 0px 5px',
@@ -82,50 +82,50 @@ class Login extends Component {
         }
 
         return (
-        <Row style={style.log}>
-            <div style={style.log.header}> 
-                Login
-            </div>
+            <Row style={style.log}>
+                <div style={style.log.header}> 
+                    Login
+                </div>
 
-            <FormGroup>
-                <InputGroup bsSize="large">
-                    <InputGroup.Addon className='input-addon white border-white'>
-                        <i className="fa fa-envelope ft-icon"></i>				
-                    </InputGroup.Addon>
-                    <FormControl 
-                        type="email" 
-                        className='input-basic white ph-white border-white'
-                        placeholder='please enter the email'
-                        value={this.state.email}
-                        onChange={(e) => this.onEmailChange(e)}/>
-                </InputGroup>
-                <HelpBlock>{this.state.emailValidationMessage}</HelpBlock>
-            </FormGroup>
-
-            <FormGroup>
-                <InputGroup bsSize="large">
-                    <InputGroup.Addon className='input-addon white border-white'>
-                        <i className="fa fa-key ft-icon"></i>
-                    </InputGroup.Addon>
-                    <FormControl 
-                        type="password" 
-                        className='input-basic white ph-white border-white'
-                        placeholder='please enter the password'
-                        value={this.state.password}
-                        onChange={(e) => this.onPasswordChange(e)}/>
+                <FormGroup>
+                    <InputGroup bsSize="large">
+                        <InputGroup.Addon className='input-addon white border-white'>
+                            <i className="fa fa-envelope ft-icon"></i>				
+                        </InputGroup.Addon>
+                        <FormControl 
+                            type="email" 
+                            className='input-basic white ph-white border-white'
+                            placeholder='please enter the email'
+                            value={this.state.email}
+                            onChange={(e) => this.onEmailChange(e)}/>
                     </InputGroup>
-                    <HelpBlock style={style.log.helpBlock}>{this.state.passwordValidationMessage}</HelpBlock>
-            </FormGroup>
+                    <HelpBlock>{this.state.emailValidationMessage}</HelpBlock>
+                </FormGroup>
 
-            <div 
-            style={style.log.btn} 
-            className='sign-btn' 
-            onClick={ () => this.props.login(this.state.email, this.state.password) }>
-                LOGIN
-            </div>
+                <FormGroup>
+                    <InputGroup bsSize="large">
+                        <InputGroup.Addon className='input-addon white border-white'>
+                            <i className="fa fa-key ft-icon"></i>
+                        </InputGroup.Addon>
+                        <FormControl 
+                            type="password" 
+                            className='input-basic white ph-white border-white'
+                            placeholder='please enter the password'
+                            value={this.state.password}
+                            onChange={(e) => this.onPasswordChange(e)}/>
+                        </InputGroup>
+                        <HelpBlock style={style.log.helpBlock}>{this.state.passwordValidationMessage}</HelpBlock>
+                </FormGroup>
 
-            <AlertSimple bsStyle="success" content={this.state.activationMessage} />
-        </Row>
+                <div 
+                style={style.log.btn} 
+                className='sign-btn' 
+                onClick={ () => this.props.login(this.state.email, this.state.password) }>
+                    LOGIN
+                </div>
+
+                <AlertSimple bsStyle="success" content={this.state.activationMessage} />
+            </Row>
         );
     }
 }

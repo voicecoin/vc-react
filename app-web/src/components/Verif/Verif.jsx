@@ -10,7 +10,7 @@ import { Row,
 	ControlLabel,
 	HelpBlock
 } from 'react-bootstrap';
-//components
+// COMPONENTS
 import Header from '../Header/Header'
 import Declar from './components/Declar'
 import Indent from './components/Indent'
@@ -18,13 +18,13 @@ import Residence from './components/Residence'
 import Document from './components/Document'
 import Personal from './components/Personal'
 import Menu from '../Menu/Menu'
-//style
+// STYLE
 import './Verif.css';
 import Logo from '../../vendor/img/logo.png'
 
 class Verif extends Component {
-	constructor(context) {
-		super(context);
+	constructor() {
+		super();
 	
 		this.handleChange = this.handleChange.bind(this);
 	
@@ -37,6 +37,7 @@ class Verif extends Component {
 	}
 
 	componentWillMount(){
+		// GET USERNAME FROM LOCALSTORAGE
 		let username = localStorage.getItem('username')
 		this.setState({
 			username: username
@@ -94,7 +95,6 @@ class Verif extends Component {
 				showUsername={this.state.showUsername}
 				username={this.state.username}
 				logout={this.logout}/>
-				
 
 				<Header/>
 				

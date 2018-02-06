@@ -16,9 +16,9 @@ import moment from 'moment';
  
 import 'react-datepicker/dist/react-datepicker.css';
 
-//SERVICE
+// SERVICES
 import verifApi from '../api'
-//STYLE
+// STYLE
 import 'react-day-picker/lib/style.css';
 
 class Indent extends Component {

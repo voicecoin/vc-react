@@ -12,10 +12,10 @@ import { Row,
 } from 'react-bootstrap';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
- 
-import 'react-datepicker/dist/react-datepicker.css';
-//SERVICE
+// SERVICES
 import verifApi from '../api'
+// STYLE
+import 'react-datepicker/dist/react-datepicker.css';
 
 class Declar extends Component {
 	constructor(props, context) {
