@@ -38,7 +38,7 @@ class Sign extends Component {
 		.then(function(data){
 			localStorage.setItem('token', data)
 			signApi.userInfo().then((data) => {
-                localStorage.setItem('username', data.name)
+                localStorage.setItem('username', data.name || '')
                 self.props.history.push('/purchase')
             })
 		}, function(response){

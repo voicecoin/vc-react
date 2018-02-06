@@ -23,11 +23,11 @@ class Login extends Component {
 		super();
 
 		this.state = {
-            email: '',
-            emailValidationMessage: '',
-            password: '',
-            passwordValidationMessage: '',
-            activationMessage: ''
+      email: '',
+      emailValidationMessage: '',
+      password: '',
+      passwordValidationMessage: '',
+      activationMessage: ''
 		}
 	}
 

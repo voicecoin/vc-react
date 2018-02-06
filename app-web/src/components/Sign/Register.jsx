@@ -46,8 +46,6 @@ class Register extends Component {
 
 	}
 
-
-
   fullNameValidationState(){
     if(this.state.fullName.length == 0) return null;
     return this.state.fullName.length > 2 ? 'success' : 'error';
@@ -164,10 +162,6 @@ class Register extends Component {
             checked={this.state.checkedSaft} 
             onChange={(e) => this.onTermChecked(e, 'checkedSaft')}>I have read and accept the <a href="#" target="_blank">SAFT</a></Checkbox>
         </FormGroup>
-
-        {/* <div className='app-checkbox left m-bottom-20'>
-          <Checkbox>Remember me</Checkbox>
-        </div> */}
 
         <div style={style.sign.btn} 
         className='sign-btn' 

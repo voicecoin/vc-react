@@ -49,6 +49,7 @@ class Purchase extends Component {
 			showLogout: true,
 			showInstructionModalWhenLogin: true,
 			showCPModal: false,
+			showUsername: true,
 			showModal: false,
 			couponValidationState: null,
 			couponValidationMessage: ''
@@ -143,10 +144,6 @@ class Purchase extends Component {
 
 			});
 		}
-		
-		/*purchaseApi.getCouponLink(curCp.id).then((data) => {
-			self.setState({ couponLink: data})
-		})*/
 	}
 
 	handleCPHide = () => {
@@ -213,14 +210,14 @@ class Purchase extends Component {
 		}
 		const time = new Date();
 		let dataToTime = <Moment>{time}</Moment>
-		
 
 		return (
 			<div>
 				<Menu 
 				showLogout={this.state.showLogout}
 				showUsername={this.state.showUsername}
-				username={this.state.username}/>
+				username={this.state.username}
+				logout={this.logout}/>
 
 				<Header/>
 

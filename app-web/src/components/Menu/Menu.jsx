@@ -43,14 +43,25 @@ class Menu extends Component {
                     <Col md={4} style={style.menu.logo} >
                         <img src={Logo} alt="#"/>
                     </Col>
-                    <Col mdOffset={2} md={2} style={style.menu.items} >
+                    <Col mdOffset={4} md={1} style={style.menu.items} >
                         { 
-							this.props.showLogout ? 
-							<div style={style.menu.item} className='app-btn f-right m-right-20 bold'>{this.props.username}</div> 
+							this.props.showUsername ? 
+							<div 
+							style={style.menu.item} 
+							className='app-btn f-right m-right-20 bold'>
+							{this.props.username || ''}
+							</div> 
 							: null }
                     </Col>
-                    <Col md={2} style={style.menu.items} >
-                        { this.props.showLogout ? <div style={style.menu.item} className='app-btn f-right m-right-20 bold' onClick={this.logout}>LOGOUT</div> : null }
+                    <Col md={1} style={style.menu.items} >
+                        { 
+							this.props.showLogout ? 
+							<div 
+							style={style.menu.item} 
+							className='app-btn f-right m-right-20 bold' 
+							onClick={this.props.logout}>LOGOUT
+							</div> 
+							: null }
                     </Col>
                 </div>
             </Row>

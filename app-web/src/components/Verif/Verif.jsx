@@ -10,14 +10,15 @@ import { Row,
 	ControlLabel,
 	HelpBlock
 } from 'react-bootstrap';
-
+//components
 import Header from '../Header/Header'
 import Declar from './components/Declar'
 import Indent from './components/Indent'
 import Residence from './components/Residence'
 import Document from './components/Document'
 import Personal from './components/Personal'
-
+import Menu from '../Menu/Menu'
+//style
 import './Verif.css';
 import Logo from '../../vendor/img/logo.png'
 
@@ -29,12 +30,17 @@ class Verif extends Component {
 	
 		this.state = {
 			value: '',
-			showLogout: true
+			username: '',
+			showLogout: true,
+			showUsername: true
 		};
 	}
 
-	componentDidMount(){
-		
+	componentWillMount(){
+		let username = localStorage.getItem('username')
+		this.setState({
+			username: username
+		})
 	}
 
 	getValidationState() {
@@ -83,16 +89,12 @@ class Verif extends Component {
 
 		return (
 			<div>
-				<Row className='no-margin'>
-					<div style={style.menu}>
-						<Col md={4} style={style.menu.logo} >
-							<img src={Logo} alt="#"/>
-						</Col>
-						<Col mdOffset={4} md={2} style={style.menu.items} >
-							{this.state.showLogout ? <div style={style.menu.item} className='app-btn f-right m-right-20 bold' onClick={this.logout}>LOGOUT</div> : null}
-						</Col>
-					</div>
-				</Row>
+				<Menu 
+				showLogout={this.state.showLogout}
+				showUsername={this.state.showUsername}
+				username={this.state.username}
+				logout={this.logout}/>
+				
 
 				<Header/>
 				
