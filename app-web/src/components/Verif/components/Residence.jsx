@@ -56,24 +56,16 @@ class Residence extends Component {
 
 	render(){
 		return (
-			<div className="ver-indent of">
-				<Col 
-				mdOffset={2} 
-				md={8} 
-				xsOffset={1}
-				xs={10}
-				className='app-card'>
-					<div className="b-text black left m-bottom-40">
-					Residence Verification
-					</div>
-					<Col md={6} xs={12}>
-						<Col md={12} xs={12} className='left p-r-50 m-bottom-20' >
-							<FormGroup
-							controlId="formControlsFile">
+			<Row className="ver-indent of no-margin">
+				<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>
+					<Row className="no-margin">
+						<Col className="b-text black left m-bottom-40">Residence Verification</Col>
+					</Row>
+
+					<Row className="no-margin">
+						<Col md={6} xs={12} className='left p-r-50 m-bottom-20'>
+							<FormGroup controlId="formControlsFile">
 								<ControlLabel className='grey m-bottom'>PROOF OF RESIDENCE</ControlLabel>
-								{/* Dropzone */}
-								{/* Dropzone */}
-								{/* Dropzone */}
 								<section>
 									<div className="dropzone">
 										<Dropzone onDrop={this.onDrop.bind(this)}>
@@ -92,39 +84,32 @@ class Residence extends Component {
 							</FormGroup>
 						</Col>
 
-					</Col>
-
-					<Col md={6} xs={12}>
-						<p className='black left m-bottom-20'>
-						Valid Proof of Residence Documents include: 
-						</p>
-						<p className='black left m-bottom-20'>
-						A bank account statement. 
-						A utility bill (electricity, water, internet, etc.). 
-						A government-issued document (tax statement, certificate of residency, etc.). 
-						</p>
-						<p className='black left m-bottom-20'>
-						High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each). 
-						</p>
-						<p className='black left m-bottom-20'>
-						Your NAME, ADDRESS, ISSUE DATE and ISSUER are clearly visible. The submitted proof of residence document is NOT OLDER THAN THREE MONTHS. You submit color photographs or scanned images in HIGH QUALITY (at least 300 DPI)	
-						</p>
-						<p className='black left m-bottom-20'>
-						Limitations On Acceptable Document Types May Apply.
-						</p>
-					</Col>
-
+						<Col md={6} xs={12}>
+							<p className='black left m-bottom-20'>
+							Valid Proof of Residence Documents include: 
+							</p>
+							<p className='black left m-bottom-20'>
+							A bank account statement. 
+							A utility bill (electricity, water, internet, etc.). 
+							A government-issued document (tax statement, certificate of residency, etc.). 
+							</p>
+							<p className='black left m-bottom-20'>
+							High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each). 
+							</p>
+							<p className='black left m-bottom-20'>
+							Your NAME, ADDRESS, ISSUE DATE and ISSUER are clearly visible. The submitted proof of residence document is NOT OLDER THAN THREE MONTHS. You submit color photographs or scanned images in HIGH QUALITY (at least 300 DPI)	
+							</p>
+							<p className='black left m-bottom-20'>
+							Limitations On Acceptable Document Types May Apply.
+							</p>
+						</Col>
+					</Row>
 				</Col>	
-
-				<Col 
-				mdOffset={7} 
-				md={3} 
-				xsOffset={1}
-				xs={10}
-				>
+				
+				<Col mdOffset={7} md={3} xsOffset={1} xs={10}>
 					<div className='verif-save-btn bg-blue white m-bottom-40'>SAVE SECTION</div>
 				</Col>
-			</div>
+			</Row>
 		)
 	}
 }
