@@ -34,6 +34,7 @@ class Purchase extends Component {
 			currencies: [],
 			curPrice: {},
 			prices: {},
+			originalPrices: {},
 			tokenNum: null,
 			coinNum: null,
 			QRstr: '',
@@ -67,6 +68,7 @@ class Purchase extends Component {
 		purchaseApi.getPrices().then(function(data){
 			self.setState({ prices: data })
 			self.setState({ curPrice: data[0] })
+			self.setState({ originalPrices: data})
 		})
 
 		let username = localStorage.getItem('username')
@@ -97,8 +99,9 @@ class Purchase extends Component {
 		let coupon = this.state.couponCode;
 		let self = this;
 		self.setState({showModal: true})
-		purchaseApi.purchase(cur, coupon).then(function(data){
-			self.setState({ QRstr: data })
+		purchaseApi.purchase({ tokenAmount: self.state.tokenNum, currency: cur, couponCode: coupon})
+		.then(function(data){
+			self.setState({ QRstr: data.address })
 		})
 	}
 
@@ -122,8 +125,11 @@ class Purchase extends Component {
 		let couponCode = e.target.value;
 		self.setState({ couponCode : couponCode})
 		
-		if(couponCode.length < 6) {
+		if(couponCode.length != 6) {
 			self.setState({ couponValidationState: null, couponValidationMessage: ''})
+			self.setState({ prices: self.state.originalPrices })
+			self.setState({ curPrice:  self.state.originalPrices.find(x => x.name == self.state.curPrice.name) })
+			self.selectCurCoin(self.state.curPrice.name);
 			return;
 		}
 		
@@ -135,11 +141,16 @@ class Purchase extends Component {
 					self.setState({couponValidationState: 'success', couponValidationMessage: ''})
 				} else {
 					self.setState({ couponValidationState: 'error', couponValidationMessage: ''})
+
+					self.setState({ prices: self.state.originalPrices })
+					self.setState({ curPrice:  self.state.originalPrices.find(x => x.name == self.state.curPrice.name) })
 				}
 			}).then((data) => {
 				// refresh price
 				purchaseApi.getPrices(couponCode).then(function(data){
 					self.setState({ prices: data })
+					self.setState({ curPrice:  data.find(x => x.name == self.state.curPrice.name) })
+					self.selectCurCoin(self.state.curPrice.name);
 				})
 
 			});
@@ -352,10 +363,24 @@ class Purchase extends Component {
 					</Modal.Header>
 
 					<Modal.Body className='pur-transfer'>
-						<h4>Please scan this QRCode to contribute</h4>
-						<div className="pur-transfer-qrcode"><QRCode value={ this.state.QRstr } /></div>
-						<div className='bold'>{ this.state.QRstr }</div>
-						<p className='pur-transfer-hint'>PURCHASE {this.state.tokenNum} TOKENS USING { this.state.coinNum} { this.state.curPrice.name }</p>
+						<Panel>
+							<Panel.Body>
+							<p>Promise data has been uploaded successfully...</p>
+							<p>Please fulfill the promise as soon as possible...</p>
+							</Panel.Body>
+						</Panel>
+
+						<Panel>
+							<div className="pur-transfer-qrcode"><QRCode value={ this.state.QRstr } /></div>
+							<div className='bold'>{ this.state.QRstr }</div>
+							<p className='pur-transfer-hint'>PURCHASE {this.state.tokenNum} TOKENS USING { this.state.coinNum} { this.state.curPrice.name }</p>
+						</Panel>
+
+						<Panel>
+							<Panel.Body className="app-panel-body">
+								Conversion price is established at the time your transfer is confirmed. You are not guaranteed to receive the exchange rate displayed at the time of your promise.
+							</Panel.Body>
+						</Panel>
 					</Modal.Body>
 
 					<Modal.Footer>
@@ -395,7 +420,7 @@ class Purchase extends Component {
 				onHide={this.handleCPHide}>
 					<Modal.Header closeButton>
 						<Modal.Title id="contained-modal-title" className='bold'>
-							TRANSFER INFORMATION
+							COUPON
 						</Modal.Title>
 					</Modal.Header>
 

@@ -27,6 +27,7 @@ class Contribution extends Component {
 
 		this.state = {
 			currencies: [],
+			purchases: [],
 			contri: {},
 			contributionStat: []
 		}
@@ -47,6 +48,10 @@ class Contribution extends Component {
 
 		purchaseApi.getContributionStat().then((data) => {
 			self.setState({ contributionStat: data })
+		})
+
+		purchaseApi.getPurchases().then((data) => {
+			self.setState({ purchases: data })
 		})
 	}
 
@@ -101,27 +106,30 @@ class Contribution extends Component {
 
 				<Row className="no-margin pur-wallet of white">
 					<Col md={8} mdOffset={2} xs={10} xsOffset={1} className="pur-l-card app-card bg-light-blue">
-						<Row className="no-margin">
-							<Col className='no-padding  m-bottom-0' md={1} xs={12}>
-								<div className='bold b-text m-top-10'>12</div>
-								<div className='light'>jan 2018</div>
-							</Col>
-							<Col className='no-padding left m-bottom-20 ' md={3} xs={12}>
-								<div className='bold m-top-10'>PURCHASING USING FIAT</div>
-								<div className='light'>2.00 USD</div>
-							</Col>
-							<Col className='no-padding left m-bottom-20' md={3} xs={12}>
-								<div className='bold m-top-10'>UNFULFILLED</div>
-								<div className='light'>No Blockchain Transaction</div>
-							</Col>
-							<Col className='no-padding left m-bottom-20' md={3} xs={12}>
-								<div className='bold m-top-10'>NO TOKENS</div>
-								<div className='light'>No Blockchain Transaction</div>
-							</Col>
-							<Col className='no-padding' md={2} xs={12} className='f-left bg-red pur-btn'>
-								WALLET INFORMATION
-							</Col>
-						</Row>
+					{
+						this.state.purchases.length > 0 ? this.state.purchases.map((s) => {
+						return (
+									<Row className="no-margin">
+									<Col className='no-padding  m-bottom-0' md={2} xs={12}>
+										<div className='bold b-text m-top-10'><Moment format="DD">{s.updatedTime}</Moment></div>
+										<div className='light'><Moment format="YYYY/MM">{s.updatedTime}</Moment></div>
+									</Col>
+									<Col className='no-padding left m-bottom-20 ' md={4} xs={12}>
+										<div className='bold m-top-10'>PURCHASING USING {s.currency}</div>
+										<div className='light'>{s.amount} {s.currency}</div>
+									</Col>
+									<Col className='no-padding left m-bottom-20' md={4} xs={12}>
+										<div className='bold m-top-10'>{s.status.toUpperCase()}</div>
+										<div className='light'>{s.tokenAmount} TOKENS</div>
+									</Col>
+									<Col className='no-padding' md={2} xs={12} className='f-left bg-red pur-btn'>
+										WALLET INFORMATION
+									</Col>
+								</Row>
+							)
+						}) : null
+					}
+
 					</Col>
 				</Row>
 			</div>
