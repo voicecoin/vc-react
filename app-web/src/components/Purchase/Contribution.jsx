@@ -93,9 +93,9 @@ class Contribution extends Component {
 					{
 						this.state.contributionStat.length !== 0 ? this.state.contributionStat.items.map((s) => {
 						return (
-							<Col md={2} mdOffset={0} xs={8} xsOffset={2} className="app-card f-left bg-light-blue white pur-l-card m-right-20">
-								<div className='n-text m-bottom'>{s.currency}</div>
-								<div className='light'>${s.amountUsd} USD</div>
+							<Col md={3} mdOffset={0} xs={8} xsOffset={2} className="app-card-s app-card f-left bg-light-blue white pur-l-card m-right-20">
+								<div className='n-text m-bottom-10'>{s.currency}</div>
+								<div className='light m-bottom-10'>${s.amountUsd} USD</div>
 								<div className='light'> {s.amount} Coins</div>
 							</Col>
 						)
@@ -112,7 +112,7 @@ class Contribution extends Component {
 									<Row className="no-margin">
 									<Col className='no-padding  m-bottom-0' md={2} xs={12}>
 										<div className='bold b-text m-top-10'><Moment format="DD">{s.updatedTime}</Moment></div>
-										<div className='light'><Moment format="YYYY/MM">{s.updatedTime}</Moment></div>
+										<div className='light'><Moment format="MMMM, YYYY">{s.updatedTime}</Moment></div>
 									</Col>
 									<Col className='no-padding left m-bottom-20 ' md={4} xs={12}>
 										<div className='bold m-top-10'>PURCHASING USING {s.currency}</div>
