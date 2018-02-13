@@ -25,18 +25,42 @@ class Declar extends Component {
 		};
 	}
 
+	componentWillMount = () => {
+		let self = this
+
+		verifApi.getDeclarations().then(function(data){
+			self.setState({
+				declaration1: data.declaration1,
+				declaration2: data.declaration2,
+				declaration3: data.declaration3
+			})
+		})
+	}
+
 	getValidationState() {
 		const length = this.state.value.length;
 		if (length > 10) return 'success';
 		else if (length > 5) return 'warning';
 		else if (length > 0) return 'error';
 		return null;
-	  }
+	}
 	
-	  handleChange(e) {
-		this.setState({ value: e.target.value });
-	  }
+	uploadDeclarations() {
+		let data = {
+			declaration1: this.state.declaration1,
+			declaration2: this.state.declaration2,
+			declaration3: this.state.declaration3
+		}
 
+		verifApi.uploadDeclarations(data)
+		.then((data) => {
+			console.log(data)
+		})
+	}
+
+	handleChange(e, key) {
+		this.setState({ [key]: e.target.value });
+	}
 
 	render(){
 		return (
@@ -54,30 +78,38 @@ class Declar extends Component {
 								validationState={this.getValidationState()}>
 									<FormControl
 										componentClass="select"
-										className='input-noaddon'>
+										className='input-noaddon'
+										value={this.state.declaration1}
+										onChange={(e) => this.handleChange(e, 'declaration1')}>
 										<option value="select">Select Declaration #1</option>
-										<option value="other">I am a U.S. citizen</option>
-										<option value="other">I am not a U.S. citizen</option>
+										<option>I am a U.S. citizen</option>
+										<option>I am not a U.S. citizen</option>
 									</FormControl>
 								</FormGroup>
 							</Col>
 
 							<Col className='left p-r-50 m-bottom-20' >
 								<FormGroup controlId="formBasicText" validationState={this.getValidationState()} >
-									<FormControl componentClass="select" className='input-noaddon'>
+									<FormControl componentClass="select" 
+											className='input-noaddon'
+											value={this.state.declaration2}
+											onChange={(e) => this.handleChange(e, 'declaration2')}>
 										<option value="select">Select Declaration #2</option>
-										<option value="other">I am a U.S. resident alien</option>
-										<option value="other">I am not a U.S. resident alien</option>
+										<option>I am a U.S. resident alien</option>
+										<option>I am not a U.S. resident alien</option>
 									</FormControl>
 								</FormGroup>
 							</Col>
 
 							<Col className='left p-r-50 m-bottom-20' >
 								<FormGroup controlId="formBasicText" validationState={this.getValidationState()}>
-									<FormControl componentClass="select" className='input-noaddon'>
+									<FormControl componentClass="select" 
+											className='input-noaddon'
+											value={this.state.declaration3}
+											onChange={(e) => this.handleChange(e, 'declaration3')}>
 										<option value="select">Select Declaration #3</option>
-										<option value="other">I am a U.S. tax person for any other reason</option>
-										<option value="other">I am not a U.S. tax person for any other reason</option>
+										<option>I am a U.S. tax person for any other reason</option>
+										<option>I am not a U.S. tax person for any other reason</option>
 									</FormControl>
 								</FormGroup>
 							</Col>
@@ -92,7 +124,7 @@ class Declar extends Component {
 				</Col>
 
 				<Col mdOffset={7} md={3} xsOffset={1} xs={10}>
-					<div className='verif-save-btn bg-blue white m-bottom-40'>SAVE SECTION</div>
+					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={this.uploadDeclarations.bind(this)}>SAVE SECTION</div>
 				</Col>
 			</Row>
 		)

@@ -101,7 +101,7 @@ class Verif extends Component {
 				<div className="app-tab">
 					<Col md={10} mdOffset={1}  xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS</div>
-						<div className="app-btn f-left" onClick={this.jumpToPurchase}>PURCHASE</div>
+						<div className="app-btn f-left" onClick={this.jumpToPurchase}>BACK PURCHASE</div>
 					</Col> 
 				</div>
 

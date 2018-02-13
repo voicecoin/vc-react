@@ -21,9 +21,14 @@
     border-radius: 2px;
     font-size: 13px;
     font-weight: 600;
-    transition: 0.3s
+    transition: 0.3s;
+    text-transform: uppercase;
 }
-  
+
+.app-btn-highlight {
+    background-color: #2EA0F1;
+}
+
 .app-btn:hover{
     cursor: pointer;
     background-color: #2EA0F1;
@@ -99,6 +104,7 @@
 
 .navbar-item{
     color: #fff !important;
+    text-transform: uppercase;
 }
 
 .app-btn-lg{

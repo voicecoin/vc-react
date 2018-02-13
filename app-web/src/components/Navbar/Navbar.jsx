@@ -31,7 +31,7 @@ class iNavbar extends Component {
 			}
 		}
 
-        return (
+    return (
 			<Navbar style={style.menu} inverse collapseOnSelect className='bg-blue'>
 				<Navbar.Header>
 					<Navbar.Brand>
@@ -41,6 +41,12 @@ class iNavbar extends Component {
 				</Navbar.Header>
 				<Navbar.Collapse style={style.collapse}>
 					<Nav pullRight>
+						<NavItem eventKey={3} href="#" className={style.menu.item}>
+							<span className='navbar-item'>PRICING</span>
+						</NavItem>
+						<NavItem eventKey={4} href="#" className={style.menu.item}>
+							<span className='navbar-item'>FAQ</span>
+						</NavItem>
 						{
 							this.props.showUsername && this.props.username? 
 							<NavItem eventKey={1} href="#" >
@@ -53,7 +59,7 @@ class iNavbar extends Component {
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
-        )
+    	)
     }
 }
 

@@ -45,11 +45,11 @@ class Residence extends Component {
 		console.log(files)
 	}
 
-	uploadFile(){
+	uploadResidenceVerification(){
 		const formData = new FormData();
 		formData.append('file', this.state.files[0])
 		
-		verifApi.uploadFile(formData).then((data) => {
+		verifApi.uploadResidenceVerification(formData).then((data) => {
 			console.log(data)
 		})
 	}
@@ -107,7 +107,7 @@ class Residence extends Component {
 				</Col>	
 				
 				<Col mdOffset={7} md={3} xsOffset={1} xs={10}>
-					<div className='verif-save-btn bg-blue white m-bottom-40'>SAVE SECTION</div>
+					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={() => this.uploadResidenceVerification()}>SAVE SECTION</div>
 				</Col>
 			</Row>
 		)

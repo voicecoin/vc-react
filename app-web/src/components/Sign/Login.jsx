@@ -11,7 +11,6 @@ import { Grid,
 		Modal,
 		Button,
 		HelpBlock } from 'react-bootstrap';
-import { FontAwesomeIcon, } from '@fortawesome/react-fontawesome'
 import AlertSimple from '../ReactAlert/AlertSimple'
 // SERVICES
 import signApi from './services/api'

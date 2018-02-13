@@ -42,6 +42,15 @@ class Declar extends Component {
 
 	componentWillMount = () => {
 		let self = this
+
+		verifApi.getPersonalInformation().then(function(data){
+			self.setState({firstName: data.firstName})
+			self.setState({lastName: data.lastName})
+			self.setState({nationality: data.nationality})
+			self.setState({birthday: moment(data.birthday)})
+			self.setState({address: data.address})
+		})
+
 		verifApi.getCountries().then(function(data){
 			self.setState({ countries: data.items });
 			self.setState({ nationalities: data.items.map(x => x.nationality) });
@@ -61,17 +70,19 @@ class Declar extends Component {
 	  }
 
 	handleAddressChange(e, key, per) {
-		this.setState({ address: {[key]: e.target.value }});
-	  }
+		var address = Object.assign({}, this.state.address, {[key]: e.target.value});
+		this.setState({ address: address});
+	}
 
 	handleChangeOnCountry(e) {
 		let self = this
 		let country = e.target.value
-		this.setState({ country: country });
+		var address = Object.assign({}, this.state.address, {country: e.target.value});
+		this.setState({ address: address});
 		verifApi.getStates(country).then(function(data){
 			self.setState({ states: data.items })
 		})
-	  }
+	}
 
 	uploadPersonalInformation() {
 		let data = {
@@ -79,9 +90,7 @@ class Declar extends Component {
 			lastName: this.state.lastName,
 			address: this.state.address,
 			nationality: this.state.nationality,
-			birthday: this.state.birthday,
-			month: this.state.month,
-			day: this.state.day
+			birthday: this.state.birthday
 		}
 
 		verifApi.uploadPersonalInformation(data)
@@ -91,7 +100,6 @@ class Declar extends Component {
 	}
 
 	setBirthday(d) {
-		console.log(d)
 		this.setState({ birthday: d });
 	}
 
@@ -106,14 +114,13 @@ class Declar extends Component {
 					<Row>
 						<Col md={6} xs={12} className='left p-r-50 m-bottom-20' >
 							<FormGroup controlId="formBasicText" validationState={this.getValidationState(this.state.firstName)}>
-								<ControlLabel className='grey m-bottom '>GIVEN NAME</ControlLabel>
+								<ControlLabel className='grey m-bottom'>GIVEN NAME</ControlLabel>
 								<FormControl
 									type="text"
 									value={this.state.firstName}
 									placeholder="GIVEN NAME"
 									onChange={(e) => this.handleChange(e, 'firstName')}
 									className='input-noaddon'/>
-								<FormControl.Feedback />
 								<HelpBlock></HelpBlock>
 							</FormGroup>
 						</Col>
@@ -128,7 +135,6 @@ class Declar extends Component {
 									onChange={(e) => this.handleChange(e, 'lastName')}
 									className='input-noaddon'
 								/>
-								<FormControl.Feedback />
 								<HelpBlock></HelpBlock>
 							</FormGroup>
 						</Col>
@@ -139,11 +145,10 @@ class Declar extends Component {
 								<FormControl
 									type="text"
 									value={this.state.address.addressLine1}
-									placeholder="STREET"
+									placeholder="Address"
 									onChange={(e) => this.handleAddressChange(e, 'addressLine1')}
 									className='input-noaddon'
 								/>
-								<FormControl.Feedback />
 								<HelpBlock></HelpBlock>
 							</FormGroup>
 						</Col>
@@ -158,7 +163,6 @@ class Declar extends Component {
 									onChange={(e) => this.handleAddressChange(e, 'addressLine2')}
 									className='input-noaddon'
 								/>
-								<FormControl.Feedback />
 								<HelpBlock></HelpBlock>
 							</FormGroup>
 						</Col>
@@ -173,7 +177,6 @@ class Declar extends Component {
 									onChange={(e) => this.handleAddressChange(e, 'zipcode')}
 									className='input-noaddon'
 								/>
-								<FormControl.Feedback />
 								<HelpBlock></HelpBlock>
 							</FormGroup>
 						</Col>
@@ -187,7 +190,6 @@ class Declar extends Component {
 									placeholder="City"
 									onChange={(e) => this.handleAddressChange(e, 'city')}
 									className='input-noaddon'/>
-								<FormControl.Feedback />
 								<HelpBlock></HelpBlock>
 							</FormGroup>
 						</Col>

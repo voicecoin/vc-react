@@ -30,8 +30,31 @@ class Indent extends Component {
 		this.state = {
 			value: '',
 			frontSidePhoto: [],
-			backSidePhoto: []
+			backSidePhoto: [],
+			documentTypeId: null,
+			idDocumentTypes: [],
+			documentNumber: null,
+			issueDate: null,
+			expiryDate: null
 		};
+	}
+
+	componentWillMount = () => {
+		let self = this
+
+		verifApi.getIdDocumentTypes().then(function(data){
+			self.setState({ idDocumentTypes: data.items });
+		})
+
+		verifApi.getIdentificationVerification().then(function(data){
+			self.setState({ 
+				documentNumber: data.documentNumber, 
+				documentTypeId: data.documentTypeId,
+				issueDate: data.issueDate, 
+				expiryDate: data.expiryDate 
+			});
+		})
+
 	}
 
 	getValidationState() {
@@ -42,8 +65,16 @@ class Indent extends Component {
 		return null;
 	}
 	
-	handleChange(e) {
-		this.setState({ value: e.target.value });
+	handleChange(e, key) {
+		this.setState({ [key]: e.target.value });
+	}
+
+	setIssueDate(d) {
+		this.setState({ issueDate: d });
+	}
+
+	setExpiryDate(d) {
+		this.setState({ expiryDate: d });
 	}
 	
 	onDrop(side, files) {
@@ -55,9 +86,20 @@ class Indent extends Component {
 
 	uploadDocumentSignature(){
 		const formData = new FormData();
-		formData.append('file', this.state.files[0])
+		formData.append('frontSidePhoto', this.state.frontSidePhoto[0])
+		formData.append('backSidePhoto', this.state.backSidePhoto[0])
+		formData.append('documentNumber', this.state.documentNumber)
+		formData.append('documentTypeId', this.state.documentTypeId)
+		if(this.state.issueDate != null) {
+			formData.append('issueDate', this.state.issueDate.format())
+		}
 		
-		verifApi.uploadDocumentSignature(formData).then((data) => {
+		if(this.state.expiryDate != null) {
+			formData.append('expiryDate', this.state.expiryDate.format())
+		}
+		
+		
+		verifApi.uploadIdentificationVerification(formData).then((data) => {
 			console.log(data)
 		})
 	}
@@ -117,14 +159,19 @@ class Indent extends Component {
 
 								<Col className='left p-r-50 m-bottom-20' >
 									<FormGroup
-									controlId="formBasicText"
-									validationState={this.getValidationState()}>
+									controlId="formBasicText">
 										<ControlLabel className='grey m-bottom'>ID DOCUMENT TYPE</ControlLabel>
 										<FormControl
 											componentClass="select"
-											className='input-noaddon'>
+											className='input-noaddon'
+											value={this.state.documentTypeId}
+											onChange={(e) => this.handleChange(e, 'documentTypeId')}>
 											<option value="select">select</option>
-											<option value="other">...</option>
+											{
+												this.state.idDocumentTypes.map((c) => {
+													return <option value={c.id}>{c.term}</option>
+												})
+											}
 										</FormControl>
 									</FormGroup>
 								</Col>
@@ -136,12 +183,11 @@ class Indent extends Component {
 										<ControlLabel className='grey m-bottom'>ID DOCUMENT NUMBER</ControlLabel>
 										<FormControl
 											type="text"
-											value={this.state.value}
+											value={this.state.documentNumber}
 											placeholder="ID DOCUMENT NUMBER"
-											onChange={this.handleChange}
+											onChange={(e) => this.handleChange(e, 'documentNumber')}
 											className='input-noaddon'
 										/>
-										<FormControl.Feedback />
 									</FormGroup>
 								</Col>
 
@@ -152,8 +198,8 @@ class Indent extends Component {
 											showMonthDropdown
 											showYearDropdown
 											dropdownMode="select"
-											selected={this.state.birthday}
-											onChange={ (d) => this.setBirthday(d) }
+											selected={this.state.issueDate}
+											onChange={(d) => this.setIssueDate(d)}
 											className="form-control" />
 									</FormGroup>
 								</Col>
@@ -165,8 +211,8 @@ class Indent extends Component {
 											showMonthDropdown
 											showYearDropdown
 											dropdownMode="select"
-											selected={this.state.birthday}
-											onChange={ (d) => this.setBirthday(d) }
+											selected={this.state.expiryDate}
+											onChange={(e) => this.setExpiryDate(e)}
 											className="form-control" />
 									</FormGroup>
 								</Col>
@@ -193,7 +239,7 @@ class Indent extends Component {
 				</Col>	
 										
 				<Col mdOffset={7} md={3} xsOffset={1} xs={10}>
-					<div className='verif-save-btn bg-blue white m-bottom-40'>SAVE SECTION</div>
+					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={this.uploadDocumentSignature.bind(this)}>SAVE SECTION</div>
 				</Col>
 			</Row>
 		)

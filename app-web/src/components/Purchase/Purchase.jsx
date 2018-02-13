@@ -13,8 +13,9 @@ import { Row,
 	PanelBody,
 	HelpBlock
 } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import QRCode from 'qrcode.react'
+
 //components
 import Header from '../Header/Header'
 import Navbar from '../Navbar/Navbar'
@@ -95,14 +96,32 @@ class Purchase extends Component {
 	}
 
 	purchaseToken = () => {
+		let self = this;
+		if(this.state.tokenNum == null) {
+			this.setState({tokenNum: 0})
+		}
+
+		if(this.state.tokenNum <= 0) {
+			return;
+		}
+
 		let cur = this.state.curPrice.name;
 		let coupon = this.state.couponCode;
-		let self = this;
 		self.setState({showModal: true})
 		purchaseApi.purchase({ tokenAmount: self.state.tokenNum, currency: cur, couponCode: coupon})
 		.then(function(data){
 			self.setState({ QRstr: data.address })
 		})
+	}
+
+	tokenAmountValidationState(){
+		if(this.state.tokenNum == null) return;
+
+		if(this.state.tokenNum <= 0){
+			return 'error'
+		} else {
+			return 'success'
+		}
 	}
 
 	//func handle value change
@@ -116,7 +135,7 @@ class Purchase extends Component {
 	onTokenAmountChange(e, name){	
 		this.setState({ 
 			tokenNum: e.target.value, 
-			coinNum: e.target.value * this.state.curPrice.v2c 
+			coinNum: e.target.value * this.state.curPrice.v2c
 		})
 	}
 
@@ -221,7 +240,7 @@ class Purchase extends Component {
 		}
 		const time = new Date();
 		let dataToTime = <Moment>{time}</Moment>
-
+		let self = this
 		return (
 			<div>
 				<Navbar 
@@ -237,7 +256,7 @@ class Purchase extends Component {
 						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS WITH</div>
 						{
 							this.state.currencies.map((v) => {
-								return <div className="app-btn f-left" onClick={this.selectCurCoin.bind(this, v.symbol)}>{v.name}</div>
+								return <div className={"app-btn f-left" + (v.symbol == self.state.curPrice.name ? " app-btn-highlight" : "")} onClick={this.selectCurCoin.bind(this, v.symbol)}>{v.name}</div>
 							})
 						}
 					</Col> 
@@ -281,7 +300,7 @@ class Purchase extends Component {
 							<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>	
 								<Row>
 								<Col md={5} className='m-bottom-20'>
-									<FormGroup>
+									<FormGroup validationState={this.tokenAmountValidationState()}>
 										<InputGroup bsSize="large">
 											<InputGroup.Addon className='input-addon grey'>
 												<i className="fa fa-globe"></i>				
@@ -299,7 +318,7 @@ class Purchase extends Component {
 									Equals
 								</Col>
 								<Col md={6} className='m-bottom-20'>
-									<FormGroup>
+									<FormGroup validationState={this.tokenAmountValidationState()}>
 										<InputGroup bsSize="large">
 											<InputGroup.Addon className='input-addon grey'>
 												<i className="fa fa-usd"></i>				
@@ -372,8 +391,10 @@ class Purchase extends Component {
 
 						<Panel>
 							<div className="pur-transfer-qrcode"><QRCode value={ this.state.QRstr } /></div>
-							<div className='bold'>{ this.state.QRstr }</div>
-							<p className='pur-transfer-hint'>PURCHASE {this.state.tokenNum} TOKENS USING { this.state.coinNum} { this.state.curPrice.name }</p>
+							<div className='bold'>{ this.state.QRstr } <i className="fa fa-clone ft-icon"></i></div>
+							<p className='pur-transfer-hint'>
+								PURCHASE {this.state.tokenNum} TOKENS USING { this.state.coinNum} { this.state.curPrice.name }
+							</p>
 						</Panel>
 
 						<Panel>

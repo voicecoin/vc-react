@@ -18,7 +18,6 @@ import AlertSimple from '../ReactAlert/AlertSimple'
 import signApi from './services/api'
 // STYLE
 import './Sign.css';
-import 'font-awesome/css/font-awesome.min.css';
 
 class Register extends Component {
 	constructor(){
