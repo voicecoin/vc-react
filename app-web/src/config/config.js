@@ -1,5 +1,5 @@
 let config = {
-    dataUrl: 'http://7b59f9e3.ngrok.io'
+    dataUrl: 'http://api.voicecoin.com'
 };
 
 if(config.env == 'development') {

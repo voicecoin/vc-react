@@ -60,8 +60,8 @@ class Footer extends Component {
                             </div>
 
                             <div className='m-bottom-20'>
-                                <p>info@voic.com</p>
-                                <p>www.voic.com</p>
+                                <p>support@voiccoin.com</p>
+                                <p>www.voicecoin.com</p>
                             </div>
                         </Col>
                     </Col>
@@ -73,7 +73,7 @@ class Footer extends Component {
                     xs={12}
                     className='white bg-black'>
                         <Col md={8} xs={12}>
-                            <h5 className='m-top-20 m-bottom-20 left'>VOIC Limited, 2017-2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
+                            <h5 className='m-top-20 m-bottom-20 left'>Voiceweb Foundation, 2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
                         </Col>
                         <Col className='ft-icons' md={4} xs={12}>
                             <i className="fa fa-linkedin ft-icon"></i>
