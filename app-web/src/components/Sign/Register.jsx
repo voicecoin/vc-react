@@ -117,11 +117,14 @@ class Register extends Component {
 					padding: '3rem',
 					borderRadius: '0px 5px 5px 0px',
 					header: {
-						color: '#3b96d5',
+						color: '#686868',
 						fontSize: '25px',
 						fontWeight: 600,
 						margin: '0px 0px 20px 0px',
 						textAlign:'left'
+					},
+					term: {
+						color: '#605079'
 					}
 				},
 			}
@@ -180,13 +183,13 @@ class Register extends Component {
 				<FormGroup className='app-checkbox left m-bottom-20' >
 				<Checkbox validationState={this.state.checkedAccreditedInvestorValidation} 
 					checked={this.state.checkedAccreditedInvestor} 
-					onChange={(e) => this.onTermChecked(e, 'checkedAccreditedInvestor')}>I am either not a U.S. Citizen or I am an <a href="#" target="_blank">Accredited Investor</a></Checkbox>
+					onChange={(e) => this.onTermChecked(e, 'checkedAccreditedInvestor')}>I am either not a U.S. Citizen or I am an <a href="#" target="_blank" style={style.sign.term}>Accredited Investor</a></Checkbox>
 				<Checkbox validationState={this.state.checkedWhitePaperValidation} 
 					checked={this.state.checkedWhitePaper} 
-					onChange={(e) => this.onTermChecked(e, 'checkedWhitePaper')}>I have read and accept the <a href="#" target="_blank">White Paper</a></Checkbox>
+					onChange={(e) => this.onTermChecked(e, 'checkedWhitePaper')}>I have read and accept the <a href="#" target="_blank" style={style.sign.term}>White Paper</a></Checkbox>
 				<Checkbox validationState={this.state.checkedSaftValidation} 
 					checked={this.state.checkedSaft} 
-					onChange={(e) => this.onTermChecked(e, 'checkedSaft')}>I have read and accept the <a href="#" target="_blank">SAFT</a></Checkbox>
+					onChange={(e) => this.onTermChecked(e, 'checkedSaft')}>I have read and accept the <a href="#" target="_blank" style={style.sign.term}>SAFT</a></Checkbox>
 				</FormGroup>
 
 				<div 

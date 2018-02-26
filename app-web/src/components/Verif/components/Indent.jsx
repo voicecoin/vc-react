@@ -239,7 +239,7 @@ class Indent extends Component {
 				</Col>	
 										
 				<Col mdOffset={7} md={3} xsOffset={1} xs={10}>
-					<div className='verif-save-btn bg-blue white m-bottom-40' onClick={this.uploadDocumentSignature.bind(this)}>SAVE SECTION</div>
+					<div className='verif-save-btn app-btn white m-bottom-40' onClick={this.uploadDocumentSignature.bind(this)}>SAVE SECTION</div>
 				</Col>
 			</Row>
 		)

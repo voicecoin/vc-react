@@ -251,7 +251,7 @@ class Purchase extends Component {
 
 				<Header/>
 
-				<Row className="no-margin app-tab">
+				<Row className="no-margin app-tab main-bg-color">
 					<Col md={8} mdOffset={1}  xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS WITH</div>
 						{

@@ -9,6 +9,14 @@ body{
   letter-spacing: 0.5px;
 }
 
+.main-bg-color {
+  background-color: #605079;
+}
+
+.main-bg-color-light {
+  background-color: #605079 !important;
+}
+
 .of{
   overflow: auto
 }
@@ -54,7 +62,7 @@ body{
 }
 
 .bg-l-black{
-  background-color: #111;
+  background-color:#041127;
 }
 
 .bg-white{

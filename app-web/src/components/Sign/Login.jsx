@@ -66,13 +66,14 @@ class Login extends Component {
                     opacity: '0.95',
                     height: '550px',
                     padding: '3rem',
-                    backgroundColor: '#3b96d5',
+                    backgroundColor: 'white',
                     borderRadius: '5px 0px 0px 5px',
                     header: {
                         fontSize: '25px',
                         fontWeight: 600,
                         margin: '0px 0px 20px 0px',
-                        textAlign:'left'
+                        textAlign:'left',
+                        color: '#686868'
                     },
                     helpBlock: {
                         color: 'yellow'
@@ -88,12 +89,12 @@ class Login extends Component {
 
                 <FormGroup>
                     <InputGroup bsSize="large">
-                        <InputGroup.Addon className='input-addon white border-white'>
+                        <InputGroup.Addon className='input-addon'>
                             <i className="fa fa-envelope ft-icon"></i>				
                         </InputGroup.Addon>
                         <FormControl 
                             type="email" 
-                            className='input-basic white ph-white border-white'
+                            className='input-basic'
                             placeholder='please enter the email'
                             value={this.state.email}
                             onChange={(e) => this.onEmailChange(e)}/>
@@ -103,12 +104,12 @@ class Login extends Component {
 
                 <FormGroup>
                     <InputGroup bsSize="large">
-                        <InputGroup.Addon className='input-addon white border-white'>
+                        <InputGroup.Addon className='input-addon'>
                             <i className="fa fa-key ft-icon"></i>
                         </InputGroup.Addon>
                         <FormControl 
                             type="password" 
-                            className='input-basic white ph-white border-white'
+                            className='input-basic'
                             placeholder='please enter the password'
                             value={this.state.password}
                             onChange={(e) => this.onPasswordChange(e)}/>

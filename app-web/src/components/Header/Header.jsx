@@ -6,7 +6,7 @@ import Countdown from '../Countdown/Countdown'
 import headerApi from './api'
 // STYLE
 import './Header.css';
-import Img from '../../vendor/img/vc.jpg'
+import Img from '../../vendor/img/background.png'
 
 class Header extends Component {
     constructor(){
@@ -56,10 +56,10 @@ class Header extends Component {
 				<div style={style.wrapper}>
 					<Row style={style.wrapper.content} className='no-margin'>
 						<Col mdOffset={3} md={6} >
-							<p className='h-wrapper-header'>PROGRESSIVE COIN SALES (BIQ)</p>
+							<p className='h-wrapper-header'>PROGRESSIVE COIN SALES (VC)</p>
 							<div className="h-wrapper-progress ">
-								<div className='bg-blue f-left' style={style.progressBar}>
-									<div style={ style.raiseAmount } className="raiseAmount bg-blue">
+								<div className='main-bg-color f-left' style={style.progressBar}>
+									<div style={ style.raiseAmount } className="raiseAmount main-bg-color">
 										<p className='raise-number n-text'>{this.state.info.sold}</p>
 									</div>
 								</div>

@@ -93,7 +93,7 @@ class Contribution extends Component {
 					{
 						this.state.contributionStat.length !== 0 ? this.state.contributionStat.items.map((s) => {
 						return (
-							<Col md={3} mdOffset={0} xs={8} xsOffset={2} className="app-card-s app-card f-left bg-light-blue white pur-l-card m-right-20">
+							<Col md={3} mdOffset={0} xs={8} xsOffset={2} className="app-card-s app-card f-left main-bg-color-light white pur-l-card m-right-20">
 								<div className='n-text m-bottom-10'>{s.currency}</div>
 								<div className='light m-bottom-10'>${s.amountUsd} USD</div>
 								<div className='light'> {s.amount} Coins</div>
@@ -105,7 +105,7 @@ class Contribution extends Component {
 				</Row>
 
 				<Row className="no-margin pur-wallet of white">
-					<Col md={8} mdOffset={2} xs={10} xsOffset={1} className="pur-l-card app-card bg-light-blue">
+					<Col md={8} mdOffset={2} xs={10} xsOffset={1} className="pur-l-card app-card main-bg-color-light">
 					{
 						this.state.purchases.length > 0 ? this.state.purchases.map((s) => {
 						return (

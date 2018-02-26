@@ -98,7 +98,7 @@ class Verif extends Component {
 
 				<Header/>
 				
-				<div className="app-tab">
+				<div className="app-tab main-bg-color">
 					<Col md={10} mdOffset={1}  xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS</div>
 						<div className="app-btn f-left" onClick={this.jumpToPurchase}>BACK PURCHASE</div>

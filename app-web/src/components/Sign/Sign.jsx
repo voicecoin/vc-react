@@ -49,7 +49,6 @@ class Sign extends Component {
 		const style = {
 				menu: {
 					color: '#fff',
-					backgroundColor: '#0065ae',
 					height: '70px',
 					logo: {
 						paddingTop: '10px',
@@ -76,7 +75,7 @@ class Sign extends Component {
 			<Row className='no-margin'>
 				<Col className='of m-bottom-60'>
 					<Row className='no-margin'>
-						<div style={style.menu}>
+						<div style={style.menu} className="main-bg-color">
 							<Col md={4} style={style.menu.logo} >
 								<img className='home-menu-logo' src={Logo} alt="#"/>
 							</Col>

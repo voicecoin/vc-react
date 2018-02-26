@@ -66,7 +66,7 @@ class Countdown extends Component {
                 display: 'inline-block',
                 height: '90px',
                 width: '105px',
-                backgroundColor: '#3398dcb3',
+                backgroundColor: '#605079',
                 border: '1px solid #ffffff33',
                 marginBottom: '10px',
                 marginRight: '20px',

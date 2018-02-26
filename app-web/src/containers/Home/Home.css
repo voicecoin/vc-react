@@ -14,7 +14,7 @@
     width: 150px;
     height: 50px;
     display: inline-block;
-    background-color: #0065ae;
+    background-color: #4d4061;
     padding: 15px 0px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -26,12 +26,12 @@
 }
 
 .app-btn-highlight {
-    background-color: #2EA0F1;
+    background-color: #7f6aa0;
 }
 
 .app-btn:hover{
     cursor: pointer;
-    background-color: #2EA0F1;
+    background-color: #7f6aa0;
 }
 
 .app-input{
@@ -46,7 +46,6 @@
 }
 
 .app-tab{
-    background-color: #3b96d5;
     opacity: 0.9;
     overflow: auto;
     padding: 15px 0px;

@@ -32,7 +32,7 @@ class iNavbar extends Component {
 		}
 
     return (
-			<Navbar style={style.menu} inverse collapseOnSelect className='bg-blue'>
+			<Navbar style={style.menu} inverse collapseOnSelect className='main-bg-color'>
 				<Navbar.Header>
 					<Navbar.Brand>
 						<img className='home-menu-logo' src={Logo} alt="#"/>
