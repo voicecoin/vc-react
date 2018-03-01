@@ -12,6 +12,7 @@ import { Grid,
 		Button,
 		Checkbox,
 		HelpBlock } from 'react-bootstrap';
+import Navbar from '../Navbar/Navbar'
 import Header from '../Header/Header'
 import Register from './Register'
 import Login from './Login'
@@ -74,17 +75,11 @@ class Sign extends Component {
 		return (
 			<Row className='no-margin'>
 				<Col className='of m-bottom-60'>
-					<Row className='no-margin'>
-						<div style={style.menu} className="main-bg-color">
-							<Col md={4} style={style.menu.logo} >
-								<img className='home-menu-logo' src={Logo} alt="#"/>
-							</Col>
-							<Col mdOffset={4} md={2} style={style.menu.items} >
-								{this.state.showLogout ? <div style={style.menu.item} className='app-btn f-right m-right-20 bold' onClick={this.logout}>LOGOUT</div> : null}
-							</Col>
-						</div>
-					</Row>
-						
+					<Navbar 
+						showLogout={this.state.showLogout}
+						showUsername={this.state.showUsername}
+						username={this.state.username}
+						logout={this.logout}/>
 					<Header/>
 					
 					<div style={style.wrapper}>

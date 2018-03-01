@@ -28,7 +28,6 @@
 
 .raiseAmount{
     top: -10px;
-    left: calc( 100% - 75px);
     position: relative;
     width: 150px;
     height: 40px;

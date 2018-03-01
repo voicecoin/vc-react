@@ -31,7 +31,7 @@ class Footer extends Component {
                         <Col md={3} xs={12} className='p-r-50 m-bottom-60'>
                             <h4 className='m-bottom-20'>ABOUT US</h4>
                             <div className='ft-s-line m-bottom-40'></div>
-                            <p>The first decentralized digital currency to be backed by a financial guarantee that scales with the size of the ICO, built on a proven infrastructure, with an equitable revenue share structure, all designed to optimize and implement the goals of the global financial revolution. The future has arrived.</p>
+                            <p>Voiceweb blockchain works for decentralized voice internet,  blockchain and artificial intelligence technologies. Next generation world wide web.</p>
                         </Col>
                         <Col md={3} xs={12} className='p-r-50 m-bottom-60'>
                             <h4 className='m-bottom-20'>PAPPERS</h4>
@@ -48,20 +48,20 @@ class Footer extends Component {
                             <div className='ft-s-line m-bottom-40'></div>
                             <div className='m-bottom-10'>White Papper</div>
                             <div className='ft-l-line m-bottom-10'></div>
-                            <div className='m-bottom-10'>SAFT</div>
+                            <div className='m-bottom-10'><a href="/Voiceweb Gist.pdf" class="white" target="_blank">GIST</a></div>
                             <div className='ft-l-line m-bottom-10'></div>
                         </Col>
                         <Col md={3} xs={12} className='p-r-50 m-bottom-60'>
                             <h4 className='m-bottom-20'>CONTACT</h4>
                             <div className='ft-s-line m-bottom-40'></div>
                             <div className='m-bottom-20'>
-                                <p>Suite 1, Burns House</p>
-                                <p>19 Town Range, Gibraltar</p>
+                                <p></p>
+                                <p></p>
                             </div>
 
                             <div className='m-bottom-20'>
-                                <p>support@voiccoin.com</p>
-                                <p>www.voicecoin.com</p>
+                                <p><a href="mailto:support@voicecoin.com" class="white">support@voiccoin.com</a></p>
+                                <p><a href="http://voicecoin.com" class="white" target="_blank">www.voicecoin.com</a></p>
                             </div>
                         </Col>
                     </Col>
@@ -72,15 +72,14 @@ class Footer extends Component {
                     md={10} 
                     xs={12}
                     className='white bg-black'>
-                        <Col md={8} xs={12}>
+                        <Col md={5} xs={12}>
                             <h5 className='m-top-20 m-bottom-20 left'>Voiceweb Foundation, 2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
                         </Col>
                         <Col className='ft-icons' md={4} xs={12}>
-                            <i className="fa fa-linkedin ft-icon"></i>
-                            <i className="fa fa-twitter ft-icon"></i>
-                            <i className="fa fa-instagram ft-icon"></i>
-                            <i className="fa fa-facebook ft-icon"></i>
-                            <i className="fa fa-weibo ft-icon"></i>
+                            <a href="https://t.me/voicecoin" target="_blank"><i className="fa fa-telegram ft-icon"></i></a>
+                            <a href="https://twitter.com/voicecoin" target="_blank"><i className="fa fa-twitter ft-icon"></i></a>
+                            <a href="https://www.linkedin.com/company/voicecoin" target="_blank"><i className="fa fa-linkedin ft-icon"></i></a>
+                            <a href="https://www.facebook.com/voicewebcoin" target="_blank"><i className="fa fa-facebook ft-icon"></i></a>
                         </Col>
                     </Col>
                 </Row>
