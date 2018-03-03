@@ -33,7 +33,7 @@ class Declar extends Component {
 				country: ''
 			},
 			nationality: '',
-			birthday: moment(),
+			birthday: null,
 			countries: [],
 			states: [],
 			nationalities: []
@@ -47,7 +47,9 @@ class Declar extends Component {
 			self.setState({firstName: data.firstName})
 			self.setState({lastName: data.lastName})
 			self.setState({nationality: data.nationality})
-			self.setState({birthday: moment(data.birthday)})
+			if(data.birthday) {
+				self.setState({birthday: moment(data.birthday)})
+			}
 			self.setState({address: data.address})
 		})
 

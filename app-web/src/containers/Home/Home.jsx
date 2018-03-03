@@ -10,7 +10,7 @@ import Footer from '../../components/Footer/Footer'
 
 //style
 import './Home.css';
-import Img from '../../vendor/img/background.png'
+import Img from '../../vendor/img/background-dark.png'
 
 class Home extends Component {
 	constructor(){
@@ -20,8 +20,9 @@ class Home extends Component {
 	render() {
 		const style = {
 			backgroundImage: "url(" + Img+ ")",
-			backgroundSize: 'contain',
-			backgroundPosition: 'bottom'
+			// backgroundSize: 'contain',
+			// backgroundPosition: 'bottom'
+			backgroundRepeat: 'round'
 		}
 
 		return (

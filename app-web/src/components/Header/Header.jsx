@@ -6,7 +6,6 @@ import Countdown from '../Countdown/Countdown'
 import headerApi from './api'
 // STYLE
 import './Header.css';
-import Img from '../../vendor/img/background.png'
 
 class Header extends Component {
     constructor(){

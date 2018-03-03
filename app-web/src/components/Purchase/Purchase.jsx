@@ -25,6 +25,7 @@ import purchaseApi from '../Purchase/api'
 //styling
 import './Purchase.css'
 import Logo from '../../vendor/img/logo.png'
+import copy from 'copy-to-clipboard';
 
 class Purchase extends Component {
 	constructor(){
@@ -50,6 +51,7 @@ class Purchase extends Component {
 			// FLAGS
 			showLogout: true,
 			showInstructionModalWhenLogin: true,
+			showWaitingForApproval: false,
 			showCPModal: false,
 			showUsername: true,
 			showModal: false,
@@ -83,6 +85,10 @@ class Purchase extends Component {
 
 	}
 
+	copyWalletAddress() {
+		copy(this.state.QRstr);
+	}
+
 	selectCurCoin = (name) => {
 		let cur = this.state.prices.find(function(v){
 			return v.name === name
@@ -107,10 +113,17 @@ class Purchase extends Component {
 
 		let cur = this.state.curPrice.name;
 		let coupon = this.state.couponCode;
-		self.setState({showModal: true})
+		
 		purchaseApi.purchase({ tokenAmount: self.state.tokenNum, currency: cur, couponCode: coupon})
 		.then(function(data){
-			self.setState({ QRstr: data.address })
+
+			if(data.toAddress) {
+				self.setState({showModal: true})
+				self.setState({ QRstr: data.toAddress })
+			} else {
+				self.setState({showWaitingForApproval: true})
+			}
+
 		})
 	}
 
@@ -367,7 +380,7 @@ class Purchase extends Component {
 							</Col>
 						</Row>
 
-						<Contribution />
+						{/* <Contribution /> */}
 
 					</Col>
 				</Row>
@@ -391,7 +404,8 @@ class Purchase extends Component {
 
 						<Panel>
 							<div className="pur-transfer-qrcode"><QRCode value={ this.state.QRstr } /></div>
-							<div className='bold'>{ this.state.QRstr } <i className="fa fa-clone ft-icon"></i></div>
+							<p className='bold'>{ this.state.QRstr }</p>
+							<Button onClick={() => this.copyWalletAddress()}>Copy Address</Button >
 							<p className='pur-transfer-hint'>
 								PURCHASE {this.state.tokenNum} TOKENS USING { this.state.coinNum} { this.state.curPrice.name }
 							</p>
@@ -436,40 +450,24 @@ class Purchase extends Component {
 					</Modal.Footer>
 				</Modal>
 
-				<Modal
-				show={this.state.showCPModal}
-				onHide={this.handleCPHide}>
-					<Modal.Header closeButton>
+				<Modal show={this.state.showWaitingForApproval}>
+					<Modal.Header>
 						<Modal.Title id="contained-modal-title" className='bold'>
-							COUPON
+							WAITING FOR APPROVAL
 						</Modal.Title>
 					</Modal.Header>
 
 					<Modal.Body>
-						<p>Choose your coupon type:</p>
-						<FormControl
-							componentClass="select"
-							className='input-noaddon'
-							onChange={(e) => this.handleCouponChange(e)}>
-							{
-								this.state.coupons.map((c) => {
-									return <option value={c}>{c.code}</option>
-								})
-							}
-						</FormControl>
-						<p>{this.state.curCp.description}</p>
-						<p>{this.state.couponLink}</p>
-						<FormControl
-							type="text" 
-							className='input-noaddon'
-							value={this.state.sendEmail}
-							onChange={(e) => this.handleChange(e, 'sendEmail')}
-							>
-						</FormControl>
+						<Panel>
+							<Panel.Body className="app-panel-body">
+								<p>We are validating your information, please wait until we approve it. 
+									Once your information is validated, you will get an email notification to continue token contibution.</p>
+							</Panel.Body>
+						</Panel>
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button onClick={ this.handleCPHide }>Close</Button>
+						<Button onClick={ () => { this.setState({showWaitingForApproval: false}) }}>Close</Button>
 					</Modal.Footer>
 				</Modal>
 
