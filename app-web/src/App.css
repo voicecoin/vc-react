@@ -10,7 +10,7 @@ body{
 }
 
 .main-bg-color {
-  background-color: #2e014d;
+  background-color: #1a022a;
 }
 
 .main-bg-color-light {
@@ -19,6 +19,18 @@ body{
 
 .of{
   overflow: auto
+}
+
+.hide {
+  display: none
+}
+
+.navbar-toggle:focus {
+  background-color: #4a0479 !important;
+}
+
+.navbar-toggle:hover {
+  background-color: #4a0479 !important;
 }
 
 .white{

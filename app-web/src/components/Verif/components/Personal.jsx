@@ -46,11 +46,15 @@ class Declar extends Component {
 		verifApi.getPersonalInformation().then(function(data){
 			self.setState({firstName: data.firstName})
 			self.setState({lastName: data.lastName})
-			self.setState({nationality: data.nationality})
 			if(data.birthday) {
 				self.setState({birthday: moment(data.birthday)})
 			}
 			self.setState({address: data.address})
+			self.setState({nationality: data.nationality})
+
+			verifApi.getStates(data.address.country).then(function(data){
+				self.setState({ states: data.items })
+			})
 		})
 
 		verifApi.getCountries().then(function(data){
@@ -224,7 +228,7 @@ class Declar extends Component {
 									value={this.state.address.state}
 									onChange={(e) => this.handleAddressChange(e, 'state')}>
 									<option value="select">select</option>
-											{
+									{
 										this.state.states.map((c) => {
 											return <option value={c.abbr}>{c.name}</option>
 										})
@@ -236,9 +240,13 @@ class Declar extends Component {
 						<Col md={6} xs={12} className='left p-r-50 m-bottom-40' >
 							<FormGroup controlId="formBasicText">
 								<ControlLabel className='grey m-bottom'>NATIONALITY</ControlLabel>
-								<FormControl componentClass="select" className='input-noaddon' onChange={(e) => this.handleChange(e, 'nationality')}>
+								<FormControl 
+									componentClass="select" 
+									className='input-noaddon'
+									value={this.state.nationality}
+									onChange={(e) => this.handleChange(e, 'nationality')}>
 									<option value="select">select</option>
-											{
+									{
 										this.state.nationalities.map((c) => {
 											return <option value={c}>{c}</option>
 										})

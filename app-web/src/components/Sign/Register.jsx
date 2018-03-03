@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // COMPONENTS
-import {Alert,
-    Grid, 
+import {Grid, 
 		Row, 
 		Col, 
 		form, 
@@ -13,7 +12,9 @@ import {Alert,
 		Button,
 		Checkbox,
 		HelpBlock } from 'react-bootstrap';
-import AlertSimple from '../ReactAlert/AlertSimple'
+
+import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
+
 // SERVICES
 import signApi from './services/api'
 // STYLE
@@ -108,12 +109,12 @@ class Register extends Component {
 			self.setState({signupMessage: response.data})
 		})
 	}
-	
+
 	render() {
-		const style = {
+		var style = {
 				sign: {
 					backgroundColor: '#fff',
-					height: '550px',
+					height: '480px',
 					padding: '3rem',
 					borderRadius: '0px 5px 5px 0px',
 					header: {
@@ -126,7 +127,7 @@ class Register extends Component {
 					term: {
 						color: '#605079'
 					}
-				},
+				}
 			}
 
 		return (
@@ -199,7 +200,15 @@ class Register extends Component {
 					REGISTER
 				</div>
 				
-				<AlertSimple bsStyle="success" content={this.state.signupMessage} />
+				{
+					this.state.signupMessage.length > 0 ? (
+						<AlertContainer>
+							<Alert type="info" timeout="10">{this.state.signupMessage}</Alert>
+						</AlertContainer>
+					) : ''
+				}
+
+
 			</Row>
 		);
 	}

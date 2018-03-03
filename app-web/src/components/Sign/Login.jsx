@@ -11,7 +11,9 @@ import { Grid,
 		Modal,
 		Button,
 		HelpBlock } from 'react-bootstrap';
-import AlertSimple from '../ReactAlert/AlertSimple'
+
+import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
+
 // SERVICES
 import signApi from './services/api'
 // STYLE
@@ -64,7 +66,7 @@ class Login extends Component {
         const style = {
             log: {
                     opacity: '0.95',
-                    height: '550px',
+                    height: '480px',
                     padding: '3rem',
                     backgroundColor: 'white',
                     borderRadius: '5px 0px 0px 5px',
@@ -124,7 +126,13 @@ class Login extends Component {
                     LOGIN
                 </div>
 
-                <AlertSimple bsStyle="success" content={this.state.activationMessage} />
+                {
+                    this.state.activationMessage.length > 0 ? (
+                        <AlertContainer>
+                            <Alert type="info" timeout="10">{this.state.activationMessage}</Alert>
+                        </AlertContainer>
+                    ) : ''
+                }
             </Row>
         );
     }

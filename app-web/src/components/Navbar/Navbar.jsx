@@ -47,6 +47,9 @@ class iNavbar extends Component {
 						<NavItem eventKey={4} href="#" className={style.menu.item}>
 							<span className='navbar-item'>FAQ</span>
 						</NavItem>
+						<NavItem eventKey={5} href="http://www.voicecoin.com" target="_blank" className={style.menu.item}>
+							<span className='navbar-item'>OVERVIEW</span>
+						</NavItem>
 						{
 							this.props.showUsername && this.props.username? 
 							<NavItem eventKey={1} href="#" >

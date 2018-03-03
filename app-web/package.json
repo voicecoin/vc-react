@@ -16,6 +16,7 @@
     "qrcode.react": "^0.7.2",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.0",
+    "react-bs-notifier": "^4.4.6",
     "react-date-picker": "^6.8.2",
     "react-datepicker": "^1.2.2",
     "react-day-picker": "^7.0.7",

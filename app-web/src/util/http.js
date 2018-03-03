@@ -25,10 +25,6 @@ HTTP.interceptors.response.use(function(response){
 	let status = response.status;
 
 	if (status === 400) {
-		// iView.Message.error(response.data);
-		/*Object.keys(response.data).forEach(function(key) {
-		iView.Message.error(response.data[key][0]);
-		});*/
 	} else if (status === 401) {
 		// iView.Notice.error({
 		// 	title : 'Session Expired',

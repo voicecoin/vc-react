@@ -18,6 +18,9 @@ import Register from './Register'
 import Login from './Login'
 // SERVICES
 import signApi from './services/api'
+
+import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
+
 // STYLE
 import './Sign.css';
 import Logo from '../../vendor/img/logo.png'
@@ -27,7 +30,8 @@ class Sign extends Component {
 		super();
 		
 		this.state = {
-			showLogout: false
+			showLogout: false,
+			passwordValidationMessage: ''
 		}
 	}
 
@@ -83,17 +87,25 @@ class Sign extends Component {
 					<Header/>
 					
 					<div style={style.wrapper}>
-						<Col mdOffset={2} md={4} xsOffset={1} xs={10}>
+						<Col mdOffset={2} md={4} xs={12}>
 							<Login 
 							activationCode={this.props.match.params.key} 
 							login={this.login}/>
 						</Col>
 
-						<Col mdOffset={0} md={4} xsOffset={1} xs={10}>
+						<Col mdOffset={0} md={4} xs={12}>
 							<Register />
 						</Col>
 					</div>
 				</Col>
+
+				{
+						this.state.passwordValidationMessage.length > 0 ? (
+								<AlertContainer>
+										<Alert type="danger" timeout="10">{this.state.passwordValidationMessage}</Alert>
+								</AlertContainer>
+						) : ''
+				}
 			</Row>
 		);
 	}
