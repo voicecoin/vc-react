@@ -24,6 +24,7 @@ import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
 // STYLE
 import './Sign.css';
 import Logo from '../../vendor/img/logo.png'
+import BackgroundImage from '../../vendor/img/background-dark.png'
 
 class Sign extends Component {
 	constructor(){
@@ -85,7 +86,7 @@ class Sign extends Component {
 						username={this.state.username}
 						logout={this.logout}/>
 					<Header/>
-					
+
 					<div style={style.wrapper}>
 						<Col mdOffset={2} md={4} xs={12}>
 							<Login 

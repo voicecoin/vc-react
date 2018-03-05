@@ -97,7 +97,7 @@ class Login extends Component {
                         <FormControl 
                             type="email" 
                             className='input-basic'
-                            placeholder='please enter the email'
+                            placeholder='Email Address'
                             value={this.state.email}
                             onChange={(e) => this.onEmailChange(e)}/>
                     </InputGroup>
@@ -112,7 +112,7 @@ class Login extends Component {
                         <FormControl 
                             type="password" 
                             className='input-basic'
-                            placeholder='please enter the password'
+                            placeholder='Password'
                             value={this.state.password}
                             onChange={(e) => this.onPasswordChange(e)}/>
                         </InputGroup>

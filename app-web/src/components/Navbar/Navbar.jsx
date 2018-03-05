@@ -41,7 +41,7 @@ class iNavbar extends Component {
 				</Navbar.Header>
 				<Navbar.Collapse style={style.collapse}>
 					<Nav pullRight>
-						<NavItem eventKey={3} href="#" className={style.menu.item}>
+						<NavItem eventKey={3} href="/pricing" className={style.menu.item}>
 							<span className='navbar-item'>PRICING</span>
 						</NavItem>
 						<NavItem eventKey={4} href="#" className={style.menu.item}>

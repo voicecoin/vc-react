@@ -144,7 +144,7 @@ class Register extends Component {
 					<FormControl 
 					type="text" 
 					className='input-basic ph-grey'
-					placeholder='Please enter the username'
+					placeholder='Your Name'
 					value={this.state.fullName}
 					onChange={(e) => this.onFullNameChange(e)}/>
 				</InputGroup>
@@ -159,7 +159,7 @@ class Register extends Component {
 					<FormControl 
 					type="email" 
 					className='input-basic ph-grey'
-					placeholder='please enter the email'
+					placeholder='Your Email Address'
 					value={this.state.email}
 					onChange={(e) => this.onEmailChange(e)}/>
 				</InputGroup>
@@ -174,7 +174,7 @@ class Register extends Component {
 					<FormControl 
 					type="password" 
 					className='input-basic ph-grey'
-					placeholder='please enter the password'
+					placeholder='Password'
 					value={this.state.password}
 					onChange={(e) => this.onPasswordChange(e)}/>
 				</InputGroup>

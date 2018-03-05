@@ -61,7 +61,7 @@ class Footer extends Component {
 
                             <div className='m-bottom-20'>
                                 <p><a href="mailto:support@voicecoin.com" class="white">support@voiccoin.com</a></p>
-                                <p><a href="http://voicecoin.com" class="white" target="_blank">www.voicecoin.com</a></p>
+                                <p><a href="http://www.voicecoin.com" class="white" target="_blank">www.voicecoin.com</a></p>
                             </div>
                         </Col>
                     </Col>
@@ -73,7 +73,8 @@ class Footer extends Component {
                     xs={12}
                     className='white bg-black'>
                         <Col md={5} xs={12}>
-                            <h5 className='m-top-20 m-bottom-20 left'>Voiceweb Foundation, 2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
+                            <h5 className='m-top-20 m-bottom-20 left'>
+                            <a href="http://www.voiceweb.com" class="white" target="_blank">Voiceweb Foundation</a>, 2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
                         </Col>
                         <Col className='ft-icons' md={4} xs={12}>
                             <a href="https://t.me/voicecoin" target="_blank"><i className="fa fa-telegram ft-icon"></i></a>
