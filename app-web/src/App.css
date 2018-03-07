@@ -9,6 +9,11 @@ body{
   letter-spacing: 0.5px;
 }
 
+.nav-bg {
+  background-color: #000000;
+  margin-top:2rem;
+}
+
 .main-bg-color {
   background-color: #1a022a;
 }

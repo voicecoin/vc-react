@@ -67,16 +67,12 @@ class Footer extends Component {
                     </Col>
                 </Row>
                 <Row className='no-margin of bg-black'>
-                    <Col
-                    mdOffset={1} 
-                    md={10} 
-                    xs={12}
-                    className='white bg-black'>
-                        <Col md={5} xs={12}>
+                    <Col mdOffset={1} md={10} xs={12} className='white bg-black'>
+                        <Col md={8} xs={12}>
                             <h5 className='m-top-20 m-bottom-20 left'>
                             <a href="http://www.voiceweb.com" class="white" target="_blank">Voiceweb Foundation</a>, 2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
                         </Col>
-                        <Col className='ft-icons' md={4} xs={12}>
+                        <Col className='ft-icons' md={2} xs={12}>
                             <a href="https://t.me/voicecoin" target="_blank"><i className="fa fa-telegram ft-icon"></i></a>
                             <a href="https://twitter.com/voicecoin" target="_blank"><i className="fa fa-twitter ft-icon"></i></a>
                             <a href="https://www.linkedin.com/company/voicecoin" target="_blank"><i className="fa fa-linkedin ft-icon"></i></a>

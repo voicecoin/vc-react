@@ -50,8 +50,8 @@ class Indent extends Component {
 			self.setState({ 
 				documentNumber: data.documentNumber, 
 				documentTypeId: data.documentTypeId,
-				issueDate: moment(data.issueDate), 
-				expiryDate: moment(data.expiryDate) 
+				issueDate: data.issueDate == null ? null : moment(data.issueDate), 
+				expiryDate: data.expiryDate == null ? null : moment(data.expiryDate) 
 			});
 		})
 
