@@ -24,6 +24,10 @@ import { FormattedMessage } from 'react-intl';
 
 class iNavbar extends Component {
 
+	changeLang(lang) {
+		localStorage.setItem('vc-react-lang', lang);
+	}
+
 	render() {
 		const style = {
 			menu: {
@@ -32,7 +36,6 @@ class iNavbar extends Component {
 				color: '#fff',
 				item: {
 					color: '#fff !important',
-					backgroundColor: 'green'
 				},
 			}
 		}
@@ -67,8 +70,8 @@ class iNavbar extends Component {
 							title="LANGUAGE"
 							className={style.menu.item}
 							id="navbar-language">
-							<MenuItem eventKey={6.1}>English</MenuItem>
-							<MenuItem eventKey={6.2}>简体中文</MenuItem>
+							<MenuItem onClick={() => { this.changeLang('en'); }}>English</MenuItem>
+							<MenuItem onClick={() => { this.changeLang('zh'); }}>简体中文</MenuItem>
 						</NavDropdown>
 						{
 							this.props.showUsername && this.props.username ?
