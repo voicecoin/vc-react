@@ -42,10 +42,16 @@ let m = {
 		'contribution.using': 'PURCHASING USING',
 		'contribution.wallet': 'WALLET INFORMATION',
 
-		'alertdismissable.run':'Take this action',
-		'alertdismissable.hide':'Hide Alert',
-		'alertdismissable.show':'Show Alert',
-		'alertdismissable.or':'or',
+		'alertdismissable.run': 'Take this action',
+		'alertdismissable.hide': 'Hide Alert',
+		'alertdismissable.show': 'Show Alert',
+		'alertdismissable.or': 'or',
+
+		'login.login.title': 'Login',
+		'login.login': 'LOGIN',
+		'login.email': 'Email Address',
+		'login.pwd': 'Password',
+
 	},
 	zh: {
 		'countdown.day': '天',
@@ -80,10 +86,15 @@ let m = {
 		'contribution.using': '购买币种',
 		'contribution.wallet': '钱包信息',
 
-		'alertdismissable.run':'执行',
-		'alertdismissable.hide':'隐藏',
-		'alertdismissable.show':'显示',
-		'alertdismissable.or':' ',
+		'alertdismissable.run': '执行',
+		'alertdismissable.hide': '隐藏',
+		'alertdismissable.show': '显示',
+		'alertdismissable.or': ' ',
+
+		'login.login.title': '登录',
+		'login.login': '登录',
+		'login.email': '电子邮件',
+		'login.pwd': '密码',
 	}
 }
 
