@@ -38,6 +38,9 @@ let m = {
 		'navbar.faq': 'FAQ',
 		'navbar.overview': 'OVERVIEW',
 		'navbar.logout': 'LOGOUT',
+
+		'contribution.using': 'PURCHASING USING',
+		'contribution.wallet': 'WALLET INFORMATION',
 	},
 	zh: {
 		'countdown.day': '天',
@@ -68,6 +71,9 @@ let m = {
 		'navbar.faq': '常见问题',
 		'navbar.overview': '总览',
 		'navbar.logout': '登出',
+
+		'contribution.using': '购买币种',
+		'contribution.wallet': '钱包信息',
 	}
 }
 

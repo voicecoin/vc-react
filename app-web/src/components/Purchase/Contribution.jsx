@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-
+import { FormattedMessage } from 'react-intl';
 import Moment from 'react-moment';
-import { Row, 
+import {
+	Row,
 	Col,
-	form, 
+	form,
 	FormGroup,
-	FormControl, 
-	InputGroup, 
+	FormControl,
+	InputGroup,
 	Glyphicon,
 	Modal,
-	Button, 
+	Button,
 	Panel,
 	PanelBody,
 	HelpBlock
@@ -21,7 +22,7 @@ import purchaseApi from '../Purchase/api'
 import './Purchase.css';
 
 class Contribution extends Component {
-	constructor(){
+	constructor() {
 		super()
 
 		this.state = {
@@ -31,16 +32,16 @@ class Contribution extends Component {
 			contributionStat: []
 		}
 	}
-	
+
 	componentWillMount = () => {
 		let self = this;
 		let t = new Date();
 
-		purchaseApi.getCurrencies().then(function(data){
+		purchaseApi.getCurrencies().then(function (data) {
 			self.setState({ currencies: data })
 		})
 
-		purchaseApi.getPrices().then(function(data){
+		purchaseApi.getPrices().then(function (data) {
 			self.setState({ prices: data })
 			self.setState({ curPrice: data[0] })
 		})
@@ -54,13 +55,13 @@ class Contribution extends Component {
 		})
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		console.log(this.props.num)
 	}
 
 	render() {
 		const style = {
-			text:{
+			text: {
 				marginBottom: '10px'
 			},
 
@@ -89,45 +90,47 @@ class Contribution extends Component {
 			<div>
 				<Row className="no-margin pur-coins of">
 					<Col md={8} mdOffset={2} xs={12} className='no-padding'>
-					{
-						this.state.contributionStat.length !== 0 ? this.state.contributionStat.items.map((s) => {
-						return (
-							<Col md={3} mdOffset={0} xs={8} xsOffset={2} className="app-card-s app-card f-left main-bg-color-light white pur-l-card m-right-20">
-								<div className='n-text m-bottom-10'>{s.currency}</div>
-								<div className='light m-bottom-10'>${s.amountUsd} USD</div>
-								<div className='light'> {s.amount} Coins</div>
-							</Col>
-						)
-						}) : null
-					}
+						{
+							this.state.contributionStat.length !== 0 ? this.state.contributionStat.items.map((s) => {
+								return (
+									<Col md={3} mdOffset={0} xs={8} xsOffset={2} className="app-card-s app-card f-left main-bg-color-light white pur-l-card m-right-20">
+										<div className='n-text m-bottom-10'>{s.currency}</div>
+										<div className='light m-bottom-10'>${s.amountUsd} USD</div>
+										<div className='light'> {s.amount} Coins</div>
+									</Col>
+								)
+							}) : null
+						}
 					</Col>
 				</Row>
 
 				<Row className="no-margin pur-wallet of white">
 					<Col md={8} mdOffset={2} xs={10} xsOffset={1} className="pur-l-card app-card main-bg-color-light">
-					{
-						this.state.purchases.length > 0 ? this.state.purchases.map((s) => {
-						return (
+						{
+							this.state.purchases.length > 0 ? this.state.purchases.map((s) => {
+								return (
 									<Row className="no-margin">
-									<Col className='no-padding  m-bottom-0' md={2} xs={12}>
-										<div className='bold b-text m-top-10'><Moment format="DD">{s.updatedTime}</Moment></div>
-										<div className='light'><Moment format="MMMM, YYYY">{s.updatedTime}</Moment></div>
-									</Col>
-									<Col className='no-padding left m-bottom-20 ' md={4} xs={12}>
-										<div className='bold m-top-10'>PURCHASING USING {s.currency}</div>
-										<div className='light'>{s.amount} {s.currency}</div>
-									</Col>
-									<Col className='no-padding left m-bottom-20' md={4} xs={12}>
-										<div className='bold m-top-10'>{s.status.toUpperCase()}</div>
-										<div className='light'>{s.tokenAmount} TOKENS</div>
-									</Col>
-									<Col className='no-padding' md={2} xs={12} className='f-left bg-red pur-btn'>
-										WALLET INFORMATION
-									</Col>
-								</Row>
-							)
-						}) : null
-					}
+										<Col className='no-padding  m-bottom-0' md={2} xs={12}>
+											<div className='bold b-text m-top-10'><Moment format="DD">{s.updatedTime}</Moment></div>
+											<div className='light'><Moment format="MMMM, YYYY">{s.updatedTime}</Moment></div>
+										</Col>
+										<Col className='no-padding left m-bottom-20 ' md={4} xs={12}>
+											<div className='bold m-top-10'>
+												<FormattedMessage id='contribution.using' defaultMessage='PURCHASING USING' /> {s.currency}
+											</div>
+											<div className='light'>{s.amount} {s.currency}</div>
+										</Col>
+										<Col className='no-padding left m-bottom-20' md={4} xs={12}>
+											<div className='bold m-top-10'>{s.status.toUpperCase()}</div>
+											<div className='light'>{s.tokenAmount} TOKENS</div>
+										</Col>
+										<Col className='no-padding' md={2} xs={12} className='f-left bg-red pur-btn'>
+											<FormattedMessage id='contribution.wallet' defaultMessage='WALLET INFORMATION' />
+										</Col>
+									</Row>
+								)
+							}) : null
+						}
 
 					</Col>
 				</Row>
