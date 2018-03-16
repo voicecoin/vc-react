@@ -41,6 +41,11 @@ let m = {
 
 		'contribution.using': 'PURCHASING USING',
 		'contribution.wallet': 'WALLET INFORMATION',
+
+		'alertdismissable.run':'Take this action',
+		'alertdismissable.hide':'Hide Alert',
+		'alertdismissable.show':'Show Alert',
+		'alertdismissable.or':'or',
 	},
 	zh: {
 		'countdown.day': '天',
@@ -74,6 +79,11 @@ let m = {
 
 		'contribution.using': '购买币种',
 		'contribution.wallet': '钱包信息',
+
+		'alertdismissable.run':'执行',
+		'alertdismissable.hide':'隐藏',
+		'alertdismissable.show':'显示',
+		'alertdismissable.or':' ',
 	}
 }
 
