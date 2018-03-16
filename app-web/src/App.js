@@ -7,7 +7,7 @@ import './App.css';
 
 import { IntlProvider } from "react-intl";
 
-let l = 'zh'
+let l = 'en'
 let m = {
 	en: {
 		'countdown.day': 'DAYS',
@@ -52,6 +52,14 @@ let m = {
 		'login.email': 'Email Address',
 		'login.pwd': 'Password',
 
+		'register.register.title': 'Register',
+		'register.register': 'REGISTER',
+		'register.cond1.1': 'I am either not a U.S. Citizen or I am an ',
+		'register.cond1.2': 'Accredited Investor',
+		'register.cond2.1': 'I have read and accept the ',
+		'register.cond2.2': 'White Paper',
+		'register.cond3.1': 'I have read and accept the ',
+		'register.cond3.2': 'SAFT',
 	},
 	zh: {
 		'countdown.day': '天',
@@ -95,6 +103,15 @@ let m = {
 		'login.login': '登录',
 		'login.email': '电子邮件',
 		'login.pwd': '密码',
+
+		'register.register.title': '用户注册',
+		'register.register': '注册',
+		'register.cond1.1': '我不是美国公民也不是美国',
+		'register.cond1.2': '合格投资人',
+		'register.cond2.1': '我已阅读并同意本项目的',
+		'register.cond2.2': '白皮书',
+		'register.cond3.1': '我已阅读并同意本项目的',
+		'register.cond3.2': 'SAFT',
 	}
 }
 
