@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-import { Row, 
+import {
+	Row,
 	Col,
-	form, 
+	form,
 	FormGroup,
-	FormControl, 
-	InputGroup, 
+	FormControl,
+	InputGroup,
 	Glyphicon,
 	ControlLabel,
 	HelpBlock,
@@ -18,9 +19,11 @@ import { Row,
 
 import Logo from '../../vendor/img/logo.png'
 
+import { FormattedMessage } from 'react-intl';
+
 class iNavbar extends Component {
-    render(){
-        const style = {
+	render() {
+		const style = {
 			menu: {
 				borderRadius: '0px',
 				border: 'none',
@@ -31,39 +34,47 @@ class iNavbar extends Component {
 			}
 		}
 
-    return (
+		return (
 			<Navbar style={style.menu} inverse collapseOnSelect className='nav-bg'>
 				<Navbar.Header>
 					<Navbar.Brand>
-							<img className='home-menu-logo' src={Logo} alt="#"/>
+						<img className='home-menu-logo' src={Logo} alt="#" />
 					</Navbar.Brand>
 					<Navbar.Toggle />
 				</Navbar.Header>
 				<Navbar.Collapse style={style.collapse}>
 					<Nav pullRight>
 						<NavItem eventKey={3} href="/pricing" className={style.menu.item}>
-							<span className='navbar-item'>PRICING</span>
+							<span className='navbar-item'>
+								<FormattedMessage id='navbar.pricing' defaultMessage='PRICING' />
+							</span>
 						</NavItem>
 						<NavItem eventKey={4} href="#" className={style.menu.item}>
-							<span className='navbar-item'>FAQ</span>
+							<span className='navbar-item'>
+								<FormattedMessage id='navbar.faq' defaultMessage='FAQ' />
+							</span>
 						</NavItem>
 						<NavItem eventKey={5} href="http://www.voicecoin.com" target="_blank" className={style.menu.item}>
-							<span className='navbar-item'>OVERVIEW</span>
+							<span className='navbar-item'>
+								<FormattedMessage id='navbar.overview' defaultMessage='OVERVIEW' />
+							</span>
 						</NavItem>
 						{
-							this.props.showUsername && this.props.username? 
-							<NavItem eventKey={1} href="#" >
-								<span className='navbar-item'>{ this.props.username }</span>
-							</NavItem> : null
+							this.props.showUsername && this.props.username ?
+								<NavItem eventKey={1} href="#" >
+									<span className='navbar-item'>{this.props.username}</span>
+								</NavItem> : null
 						}
 						<NavItem eventKey={2} href="#" className={style.menu.item} onClick={this.props.logout} >
-							<span className='navbar-item'>{ this.props.showLogout ? 'LOGOUT' : null }</span>
+							<span className='navbar-item'>
+								{this.props.showLogout ? <FormattedMessage id='navbar.logout' defaultMessage='LOGOUT' /> : null}
+							</span>
 						</NavItem>
 					</Nav>
 				</Navbar.Collapse>
 			</Navbar>
-    	)
-    }
+		)
+	}
 }
 
 export default iNavbar
