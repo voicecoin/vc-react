@@ -14,7 +14,8 @@ import {
 	Navbar,
 	NavItem,
 	NavDropdown,
-	NavbarBrand
+	NavbarBrand,
+	MenuItem
 } from 'react-bootstrap';
 
 import Logo from '../../vendor/img/logo.png'
@@ -22,6 +23,7 @@ import Logo from '../../vendor/img/logo.png'
 import { FormattedMessage } from 'react-intl';
 
 class iNavbar extends Component {
+
 	render() {
 		const style = {
 			menu: {
@@ -29,7 +31,8 @@ class iNavbar extends Component {
 				border: 'none',
 				color: '#fff',
 				item: {
-					color: '#fff !important'
+					color: '#fff !important',
+					backgroundColor: 'green'
 				},
 			}
 		}
@@ -59,6 +62,14 @@ class iNavbar extends Component {
 								<FormattedMessage id='navbar.overview' defaultMessage='OVERVIEW' />
 							</span>
 						</NavItem>
+						<NavDropdown
+							eventKey={6}
+							title="LANGUAGE"
+							className={style.menu.item}
+							id="navbar-language">
+							<MenuItem eventKey={6.1}>English</MenuItem>
+							<MenuItem eventKey={6.2}>简体中文</MenuItem>
+						</NavDropdown>
 						{
 							this.props.showUsername && this.props.username ?
 								<NavItem eventKey={1} href="#" >
