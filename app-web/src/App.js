@@ -30,6 +30,10 @@ let m = {
 		'footer.privacy': 'Privacy Policy',
 		'footer.termsofuse': 'Terms of Use',
 
+		'header.title': 'PROGRESSIVE COIN SALES (VC)',
+		'header.bar': 'PRE-ICO PROGRESSIVE COIN SALES (TOKENS)',
+		'header.timeleft': 'TIME LEFT IN PUBLIC PRE-ICO',
+
 		'navbar.pricing': 'PRICING',
 		'navbar.faq': 'FAQ',
 		'navbar.overview': 'OVERVIEW',
@@ -55,6 +59,10 @@ let m = {
 		'footer.copyright': '版权所有',
 		'footer.privacy': '隐私声明',
 		'footer.termsofuse': '使用条例',
+
+		'header.title': 'VOICECOIN预售进程',
+		'header.bar': '已经预售出的Token数量',
+		'header.timeleft': '公开预售剩余时间',
 
 		'navbar.pricing': '价格',
 		'navbar.faq': '常见问题',
