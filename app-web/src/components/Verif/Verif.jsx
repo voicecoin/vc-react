@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-import { Row, 
+import {
+	Row,
 	Col,
-	form, 
+	form,
 	FormGroup,
-	FormControl, 
-	InputGroup, 
+	FormControl,
+	InputGroup,
 	Glyphicon,
 	ControlLabel,
 	HelpBlock
@@ -25,9 +26,9 @@ import Logo from '../../vendor/img/logo.png'
 class Verif extends Component {
 	constructor() {
 		super();
-	
+
 		this.handleChange = this.handleChange.bind(this);
-	
+
 		this.state = {
 			value: '',
 			username: '',
@@ -36,7 +37,7 @@ class Verif extends Component {
 		};
 	}
 
-	componentWillMount(){
+	componentWillMount() {
 		// GET USERNAME FROM LOCALSTORAGE
 		let username = localStorage.getItem('username')
 		this.setState({
@@ -51,7 +52,7 @@ class Verif extends Component {
 		else if (length > 0) return 'error';
 		return null;
 	}
-	
+
 	handleChange(e) {
 		this.setState({ value: e.target.value });
 	}
@@ -90,31 +91,32 @@ class Verif extends Component {
 
 		return (
 			<div>
-				<Navbar 
-				showLogout={this.state.showLogout}
-				showUsername={this.state.showUsername}
-				username={this.state.username}
-				logout={this.logout}/>
+				<Navbar
+					changeLocale={this.props.changeLocale}
+					showLogout={this.state.showLogout}
+					showUsername={this.state.showUsername}
+					username={this.state.username}
+					logout={this.logout} />
 
-				<Header/>
-				
+				<Header />
+
 				<div className="app-tab main-bg-color">
-					<Col md={10} mdOffset={1}  xsOffset={1} xs={10}>
+					<Col md={10} mdOffset={1} xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS</div>
 						<div className="app-btn f-left" onClick={this.jumpToPurchase}>BACK PURCHASE</div>
-					</Col> 
+					</Col>
 				</div>
 
 				<div className="ver-main of bg-white of">
-					<Personal/>
+					<Personal />
 
-					<Indent/>
+					<Indent />
 
-					<Declar/>
+					<Declar />
 
-					<Residence/>
+					<Residence />
 
-					<Document/>
+					<Document />
 				</div>
 			</div>
 		);

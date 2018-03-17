@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import Moment from 'react-moment'
-import { Row, 
+import {
+	Row,
 	Col,
-	form, 
+	form,
 	FormGroup,
-	FormControl, 
-	InputGroup, 
+	FormControl,
+	InputGroup,
 	Glyphicon,
 	Modal,
-	Button, 
+	Button,
 	Panel,
 	PanelBody,
 	HelpBlock
@@ -28,7 +29,7 @@ import Logo from '../../vendor/img/logo.png'
 import copy from 'copy-to-clipboard';
 
 class Purchase extends Component {
-	constructor(){
+	constructor() {
 		super()
 
 		this.state = {
@@ -64,14 +65,14 @@ class Purchase extends Component {
 	componentWillMount = () => {
 		let self = this;
 
-		purchaseApi.getCurrencies().then(function(data){
+		purchaseApi.getCurrencies().then(function (data) {
 			self.setState({ currencies: data })
 		})
 
-		purchaseApi.getPrices().then(function(data){
+		purchaseApi.getPrices().then(function (data) {
 			self.setState({ prices: data })
 			self.setState({ curPrice: data[0] })
-			self.setState({ originalPrices: data})
+			self.setState({ originalPrices: data })
 		})
 
 		let username = localStorage.getItem('username')
@@ -81,7 +82,7 @@ class Purchase extends Component {
 
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 
 	}
 
@@ -90,47 +91,47 @@ class Purchase extends Component {
 	}
 
 	selectCurCoin = (name) => {
-		let cur = this.state.prices.find(function(v){
+		let cur = this.state.prices.find(function (v) {
 			return v.name === name
 		})
-		this.setState({ curPrice:cur })
-		this.setState({ 
-			tokenNum: this.state.tokenNum, 
-			coinNum: this.state.tokenNum * this.state.curPrice.v2c 
+		this.setState({ curPrice: cur })
+		this.setState({
+			tokenNum: this.state.tokenNum,
+			coinNum: this.state.tokenNum * this.state.curPrice.v2c
 		})
 
 	}
 
 	purchaseToken = () => {
 		let self = this;
-		if(this.state.tokenNum == null) {
-			this.setState({tokenNum: 0})
+		if (this.state.tokenNum == null) {
+			this.setState({ tokenNum: 0 })
 		}
 
-		if(this.state.tokenNum <= 0) {
+		if (this.state.tokenNum <= 0) {
 			return;
 		}
 
 		let cur = this.state.curPrice.name;
 		let coupon = this.state.couponCode;
-		
-		purchaseApi.purchase({ tokenAmount: self.state.tokenNum, currency: cur, couponCode: coupon})
-		.then(function(data){
 
-			if(data.toAddress) {
-				self.setState({showModal: true})
-				self.setState({ QRstr: data.toAddress })
-			} else {
-				self.setState({showWaitingForApproval: true})
-			}
+		purchaseApi.purchase({ tokenAmount: self.state.tokenNum, currency: cur, couponCode: coupon })
+			.then(function (data) {
 
-		})
+				if (data.toAddress) {
+					self.setState({ showModal: true })
+					self.setState({ QRstr: data.toAddress })
+				} else {
+					self.setState({ showWaitingForApproval: true })
+				}
+
+			})
 	}
 
-	tokenAmountValidationState(){
-		if(this.state.tokenNum == null) return;
+	tokenAmountValidationState() {
+		if (this.state.tokenNum == null) return;
 
-		if(this.state.tokenNum <= 0){
+		if (this.state.tokenNum <= 0) {
 			return 'error'
 		} else {
 			return 'success'
@@ -138,16 +139,16 @@ class Purchase extends Component {
 	}
 
 	//func handle value change
-	onCoinAmountChange(e, name){	
-		this.setState({ 
-			coinNum: e.target.value, 
-			tokenNum:  e.target.value * this.state.curPrice.c2v 
+	onCoinAmountChange(e, name) {
+		this.setState({
+			coinNum: e.target.value,
+			tokenNum: e.target.value * this.state.curPrice.c2v
 		})
 	}
 
-	onTokenAmountChange(e, name){	
-		this.setState({ 
-			tokenNum: e.target.value, 
+	onTokenAmountChange(e, name) {
+		this.setState({
+			tokenNum: e.target.value,
 			coinNum: e.target.value * this.state.curPrice.v2c
 		})
 	}
@@ -155,44 +156,44 @@ class Purchase extends Component {
 	handleCouponChange = (e) => {
 		let self = this;
 		let couponCode = e.target.value;
-		self.setState({ couponCode : couponCode})
-		
-		if(couponCode.length != 6) {
-			self.setState({ couponValidationState: null, couponValidationMessage: ''})
+		self.setState({ couponCode: couponCode })
+
+		if (couponCode.length != 6) {
+			self.setState({ couponValidationState: null, couponValidationMessage: '' })
 			self.setState({ prices: self.state.originalPrices })
-			self.setState({ curPrice:  self.state.originalPrices.find(x => x.name == self.state.curPrice.name) })
+			self.setState({ curPrice: self.state.originalPrices.find(x => x.name == self.state.curPrice.name) })
 			self.selectCurCoin(self.state.curPrice.name);
 			return;
 		}
-		
+
 		// valide coupon code
-		if(couponCode.length == 6) {
+		if (couponCode.length == 6) {
 			purchaseApi.validateCoupon(couponCode)
-			.then((data) => {
-				if(data === true){
-					self.setState({couponValidationState: 'success', couponValidationMessage: ''})
-				} else {
-					self.setState({ couponValidationState: 'error', couponValidationMessage: ''})
+				.then((data) => {
+					if (data === true) {
+						self.setState({ couponValidationState: 'success', couponValidationMessage: '' })
+					} else {
+						self.setState({ couponValidationState: 'error', couponValidationMessage: '' })
 
-					self.setState({ prices: self.state.originalPrices })
-					self.setState({ curPrice:  self.state.originalPrices.find(x => x.name == self.state.curPrice.name) })
-				}
-			}).then((data) => {
-				// refresh price
-				purchaseApi.getPrices(couponCode).then(function(data){
-					self.setState({ prices: data })
-					self.setState({ curPrice:  data.find(x => x.name == self.state.curPrice.name) })
-					self.selectCurCoin(self.state.curPrice.name);
-				})
+						self.setState({ prices: self.state.originalPrices })
+						self.setState({ curPrice: self.state.originalPrices.find(x => x.name == self.state.curPrice.name) })
+					}
+				}).then((data) => {
+					// refresh price
+					purchaseApi.getPrices(couponCode).then(function (data) {
+						self.setState({ prices: data })
+						self.setState({ curPrice: data.find(x => x.name == self.state.curPrice.name) })
+						self.selectCurCoin(self.state.curPrice.name);
+					})
 
-			});
+				});
 		}
 	}
 
 	handleCPHide = () => {
 		this.setState({ showCPModal: false });
 	}
-	
+
 	handleHide = () => {
 		this.setState({ showModal: false });
 	}
@@ -202,7 +203,7 @@ class Purchase extends Component {
 		let self = this;
 		self.state.showCPModal = true;
 
-		purchaseApi.getCoupon().then(function(data){
+		purchaseApi.getCoupon().then(function (data) {
 			self.setState({ coupons: data });
 			self.setState({ curCp: data[0] })
 			getFirstCoupon.call(self, data[0].id);
@@ -227,7 +228,7 @@ class Purchase extends Component {
 
 	render() {
 		const style = {
-			text:{
+			text: {
 				marginBottom: '10px'
 			},
 
@@ -256,28 +257,29 @@ class Purchase extends Component {
 		let self = this
 		return (
 			<div>
-				<Navbar 
-				showLogout={this.state.showLogout}
-				showUsername={this.state.showUsername}
-				username={this.state.username}
-				logout={this.logout}/>
+				<Navbar
+					changeLocale={this.props.changeLocale}
+					showLogout={this.state.showLogout}
+					showUsername={this.state.showUsername}
+					username={this.state.username}
+					logout={this.logout} />
 
-				<Header/>
+				<Header />
 
 				<Row className="no-margin app-tab main-bg-color">
-					<Col md={8} mdOffset={1}  xsOffset={1} xs={10}>
+					<Col md={8} mdOffset={1} xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS WITH</div>
 						{
 							this.state.currencies.map((v) => {
 								return <div className={"app-btn f-left" + (v.symbol == self.state.curPrice.name ? " app-btn-highlight" : "")} onClick={this.selectCurCoin.bind(this, v.symbol)}>{v.name}</div>
 							})
 						}
-					</Col> 
+					</Col>
 
 					<Col md={3} mdOffset={0} xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>VERIFY YOUR IDENTITY</div>
 						<div className="app-btn f-left" onClick={this.jumpToVerif}>VERIFICATION</div>
-					</Col> 
+					</Col>
 				</Row>
 
 				<Row className="no-margin pur-main dark-grey">
@@ -289,7 +291,7 @@ class Purchase extends Component {
 									TOKEN
 								</div>
 								<div className='left bold'>
-									{ '1 TOKEN = ' + this.state.curPrice.v2c + ' ' + this.state.curPrice.name }
+									{'1 TOKEN = ' + this.state.curPrice.v2c + ' ' + this.state.curPrice.name}
 								</div>
 								<div className='left'>Calculated on {dataToTime}</div>
 							</Col>
@@ -305,38 +307,38 @@ class Purchase extends Component {
 						</Row>
 
 						<Row className='no-margin of'>
-							<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>	
+							<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>
 								<Row>
-								<Col md={5} className='m-bottom-20'>
-									<FormGroup validationState={this.tokenAmountValidationState()}>
-										<InputGroup bsSize="large">
-											<InputGroup.Addon className='input-addon grey'>
-												<i className="fa fa-usd"></i>				
-											</InputGroup.Addon>
-											<FormControl type="text" className='input-basic' placeholder={ this.state.curPrice.name }
-												value={ this.state.coinNum }
-												onChange={ (e) => this.onCoinAmountChange(e) }/>
-										</InputGroup>
-									</FormGroup>
-								</Col>
-								<Col className='m-top m-bottom-20' md={1}>
-									Equals
-								</Col>
-								<Col md={6} className='m-bottom-20'>
-									<FormGroup validationState={this.tokenAmountValidationState()}>
+									<Col md={5} className='m-bottom-20'>
+										<FormGroup validationState={this.tokenAmountValidationState()}>
 											<InputGroup bsSize="large">
 												<InputGroup.Addon className='input-addon grey'>
-													<i className="fa fa-globe"></i>				
+													<i className="fa fa-usd"></i>
 												</InputGroup.Addon>
-												<FormControl 
-												type="text" 
-												className='input-basic'
-												placeholder='TOKENS'
-												value={ this.state.tokenNum }
-												onChange={ (e) => this.onTokenAmountChange(e)}/>
+												<FormControl type="text" className='input-basic' placeholder={this.state.curPrice.name}
+													value={this.state.coinNum}
+													onChange={(e) => this.onCoinAmountChange(e)} />
 											</InputGroup>
 										</FormGroup>
+									</Col>
+									<Col className='m-top m-bottom-20' md={1}>
+										Equals
 								</Col>
+									<Col md={6} className='m-bottom-20'>
+										<FormGroup validationState={this.tokenAmountValidationState()}>
+											<InputGroup bsSize="large">
+												<InputGroup.Addon className='input-addon grey'>
+													<i className="fa fa-globe"></i>
+												</InputGroup.Addon>
+												<FormControl
+													type="text"
+													className='input-basic'
+													placeholder='TOKENS'
+													value={this.state.tokenNum}
+													onChange={(e) => this.onTokenAmountChange(e)} />
+											</InputGroup>
+										</FormGroup>
+									</Col>
 								</Row>
 
 								<Row>
@@ -349,12 +351,12 @@ class Purchase extends Component {
 												<InputGroup.Addon className='input-addon grey'>
 													<i className="fa fa-gift"></i>
 												</InputGroup.Addon>
-												<FormControl 
-													type="text" 
+												<FormControl
+													type="text"
 													className='input-basic'
 													placeholder="Coupon Code"
-													value={ this.state.couponCode }
-													onChange={(e) => this.handleCouponChange(e)}/>
+													value={this.state.couponCode}
+													onChange={(e) => this.handleCouponChange(e)} />
 												<FormControl.Feedback />
 											</InputGroup>
 											<HelpBlock>{this.state.couponValidationMessage}</HelpBlock>
@@ -365,7 +367,7 @@ class Purchase extends Component {
 								<Row>
 									<Col className='m-top black bold m-bottom-20' md={6}>
 										<p>
-											PURCHASE {this.state.tokenNum} TOKENS USING { this.state.coinNum} { this.state.curPrice.name }
+											PURCHASE {this.state.tokenNum} TOKENS USING {this.state.coinNum} {this.state.curPrice.name}
 										</p>
 									</Col>
 									<Col className='m-top' md={5}>
@@ -392,17 +394,17 @@ class Purchase extends Component {
 					<Modal.Body className='pur-transfer'>
 						<Panel>
 							<Panel.Body>
-							<p>Promise data has been uploaded successfully...</p>
-							<p>Please fulfill the promise as soon as possible...</p>
+								<p>Promise data has been uploaded successfully...</p>
+								<p>Please fulfill the promise as soon as possible...</p>
 							</Panel.Body>
 						</Panel>
 
 						<Panel>
-							<div className="pur-transfer-qrcode"><QRCode value={ this.state.QRstr } /></div>
-							<p className='bold'>{ this.state.QRstr }</p>
+							<div className="pur-transfer-qrcode"><QRCode value={this.state.QRstr} /></div>
+							<p className='bold'>{this.state.QRstr}</p>
 							<Button onClick={() => this.copyWalletAddress()}>Copy Address</Button >
 							<p className='pur-transfer-hint'>
-								PURCHASE {this.state.tokenNum} TOKENS USING { this.state.coinNum} { this.state.curPrice.name }
+								PURCHASE {this.state.tokenNum} TOKENS USING {this.state.coinNum} {this.state.curPrice.name}
 							</p>
 						</Panel>
 
@@ -414,7 +416,7 @@ class Purchase extends Component {
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button onClick={ this.handleHide }>Close</Button>
+						<Button onClick={this.handleHide}>Close</Button>
 					</Modal.Footer>
 				</Modal>
 
@@ -441,7 +443,7 @@ class Purchase extends Component {
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button onClick={ () => { this.setState({showInstructionModalWhenLogin: false}) }}>Close</Button>
+						<Button onClick={() => { this.setState({ showInstructionModalWhenLogin: false }) }}>Close</Button>
 					</Modal.Footer>
 				</Modal>
 
@@ -455,14 +457,14 @@ class Purchase extends Component {
 					<Modal.Body>
 						<Panel>
 							<Panel.Body className="app-panel-body">
-								<p>We are validating your information, please wait until we approve it. 
+								<p>We are validating your information, please wait until we approve it.
 									Once your information is validated, you will get an email notification to continue token contibution.</p>
 							</Panel.Body>
 						</Panel>
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button onClick={ () => { this.setState({showWaitingForApproval: false}) }}>Close</Button>
+						<Button onClick={() => { this.setState({ showWaitingForApproval: false }) }}>Close</Button>
 					</Modal.Footer>
 				</Modal>
 

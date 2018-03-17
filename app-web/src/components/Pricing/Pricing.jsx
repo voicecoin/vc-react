@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 
-import { Row, 
+import {
+	Row,
 	Col,
-	form, 
+	form,
 	FormGroup,
-	FormControl, 
-	InputGroup, 
+	FormControl,
+	InputGroup,
 	Glyphicon,
 	Modal,
-	Button, 
+	Button,
 	Panel,
 	PanelBody,
 	HelpBlock
@@ -21,7 +22,7 @@ import Navbar from '../Navbar/Navbar'
 import Logo from '../../vendor/img/logo.png'
 
 class Pricing extends Component {
-	constructor(){
+	constructor() {
 		super()
 
 		this.state = {
@@ -40,7 +41,7 @@ class Pricing extends Component {
 
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 
 	}
 
@@ -51,7 +52,7 @@ class Pricing extends Component {
 
 	render() {
 		const style = {
-			text:{
+			text: {
 				marginBottom: '10px'
 			},
 
@@ -74,19 +75,20 @@ class Pricing extends Component {
 					display: 'InlineBlock',
 				}
 			},
-    }
-    
-    let self = this
-    
+		}
+
+		let self = this
+
 		return (
 			<div>
-				<Navbar 
-				showLogout={this.state.showLogout}
-				showUsername={this.state.showUsername}
-				username={this.state.username}
-				logout={this.logout}/>
+				<Navbar
+					changeLocale={this.props.changeLocale}
+					showLogout={this.state.showLogout}
+					showUsername={this.state.showUsername}
+					username={this.state.username}
+					logout={this.logout} />
 
-				<Header/>
+				<Header />
 
 				<Row className="no-margin pur-main dark-grey">
 					<Col>
