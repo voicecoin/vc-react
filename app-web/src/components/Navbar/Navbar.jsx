@@ -33,12 +33,13 @@ class iNavbar extends Component {
 		this.state = {
 			langTitle: msg[lang]['title.cap']
 		}
+
+		this.changeLang.bind(this)
 	}
 
 	changeLang(lang, title) {
-		localStorage.setItem('vc-react-lang', lang);
 		this.setState({ langTitle: title });
-		console.log(IntlProvider);
+		this.props.changeLocale(lang);
 	}
 
 	render() {

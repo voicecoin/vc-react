@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
-//router
-import HomeRoute from './router'
-//components
+
 import Verif from '../../components/Verif/Verif'
 import Purchase from '../../components/Purchase/Purchase'
 import Sign from '../../components/Sign/Sign'
+import Pricing from '../../components/Pricing/Pricing'
 import Footer from '../../components/Footer/Footer'
 
-//style
 import './Home.css';
 // import Img from '../../vendor/img/background-dark.png'
 
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';
+
+//router
+// import HomeRoute from './router'
+
 class Home extends Component {
-	constructor(){
-		super();
-	}
+  constructor() {
+    super();
+  }
 
-	componentDidMount() {
+  componentDidMount() {
     var canvas = document.getElementById("canvas"),
-			ctx = canvas.getContext('2d');
+      ctx = canvas.getContext('2d');
 
-		var width = document.getElementById('root').clientWidth;
+    var width = document.getElementById('root').clientWidth;
     canvas.width = width;
     canvas.height = window.innerHeight + 400;
 
@@ -125,29 +132,38 @@ class Home extends Component {
     tick();
   }
 
-	render() {
-		const style = {
-			// backgroundImage: "url(" + Img+ ")",
-			// backgroundSize: 'contain',
-			// backgroundPosition: 'bottom'
-			// backgroundRepeat: 'round'
-		}
+  render() {
+    const style = {
+      // backgroundImage: "url(" + Img+ ")",
+      // backgroundSize: 'contain',
+      // backgroundPosition: 'bottom'
+      // backgroundRepeat: 'round'
+    }
 
-		return (
-			<Grid fluid className='no-padding' style={style}>
-				<HomeRoute/>
-				<Footer/>
+    return (
+      <Grid fluid className='no-padding' style={style}>
+        <Router>
+          <Switch>
+            <Route path='/' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} />)}></Route>
+            <Route path='/pricing' exact render={(props) => (<Pricing {...props} changeLocale={this.props.changeLocale} />)}></Route>
+            <Route path='/purchase' exact render={(props) => (<Purchase {...props} changeLocale={this.props.changeLocale} />)}></Route>
+            <Route path='/purchase/cn' exact render={(props) => (<Purchase {...props} changeLocale={this.props.changeLocale} num="2" />)}></Route>
+            <Route path='/verification' exact render={(props) => (<Verif {...props} changeLocale={this.props.changeLocale} />)}></Route>
+            <Route path='/activation/:key' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} />)}></Route>
+          </Switch>
+        </Router>
+        <Footer />
 
-				<canvas id="canvas" style={{
-						position: 'absolute',
-						top: 0,
-						left: 0,
-						background: '#000',
-						zIndex: -1
-					}}>
-				</canvas>
-			</Grid>
-		);
+        <canvas id="canvas" style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          background: '#000',
+          zIndex: -1
+        }}>
+        </canvas>
+      </Grid>
+    );
   }
 }
 
