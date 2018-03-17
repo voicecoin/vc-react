@@ -63,7 +63,7 @@ class Footer extends Component {
 								<FormattedMessage id='footer.whitepaper' defaultMessage='White Paper' />
 							</div>
 							<div className='ft-l-line m-bottom-10'></div>
-							<div className='m-bottom-10'><a href="/Voiceweb Gist.pdf" class="white" target="_blank">
+							<div className='m-bottom-10 white'><a href="/Voiceweb Gist.pdf" target="_blank">
 								<FormattedMessage id='footer.gist' defaultMessage='GIST' />
 							</a></div>
 							<div className='ft-l-line m-bottom-10'></div>
@@ -79,8 +79,8 @@ class Footer extends Component {
 							</div>
 
 							<div className='m-bottom-20'>
-								<p><a href="mailto:support@voicecoin.com" class="white">support@voiccoin.com</a></p>
-								<p><a href="http://www.voicecoin.com" class="white" target="_blank">www.voicecoin.com</a></p>
+								<p><a href="mailto:support@voicecoin.com" className="white">support@voiccoin.com</a></p>
+								<p><a href="http://www.voicecoin.com" className="white" target="_blank">www.voicecoin.com</a></p>
 							</div>
 						</Col>
 					</Col>
@@ -89,7 +89,7 @@ class Footer extends Component {
 					<Col mdOffset={1} md={10} xs={12} className='white bg-black'>
 						<Col md={8} xs={12}>
 							<h5 className='m-top-20 m-bottom-20 left'>
-								© 2017-2018, <a href="http://www.voiceweb.com" class="white" target="_blank">
+								© 2017-2018, <a href="http://www.voiceweb.com" className="white" target="_blank">
 									<FormattedMessage id='footer.voiceweb' defaultMessage='Voiceweb Foundation' />
 								</a>,
 								<FormattedMessage id='footer.copyright' defaultMessage='All Rights Reserved.' /> |
