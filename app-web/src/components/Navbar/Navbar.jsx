@@ -19,13 +19,26 @@ import {
 } from 'react-bootstrap';
 
 import Logo from '../../vendor/img/logo.png'
+import msg from '../../config/i18';
 
-import { FormattedMessage } from 'react-intl';
+import { IntlProvider, FormattedMessage } from 'react-intl';
 
 class iNavbar extends Component {
+	constructor() {
+		super()
+		var lang = localStorage.getItem('vc-react-lang');
+		if (!lang) {
+			lang = 'en';
+		}
+		this.state = {
+			langTitle: msg[lang]['title.cap']
+		}
+	}
 
-	changeLang(lang) {
+	changeLang(lang, title) {
 		localStorage.setItem('vc-react-lang', lang);
+		this.setState({ langTitle: title });
+		console.log(IntlProvider);
 	}
 
 	render() {
@@ -66,12 +79,13 @@ class iNavbar extends Component {
 							</span>
 						</NavItem>
 						<NavDropdown
+							ref='navbarDropdown'
 							eventKey={6}
-							title="LANGUAGE"
+							title={this.state.langTitle}
 							className={style.menu.item}
 							id="navbar-language">
-							<MenuItem onClick={() => { this.changeLang('en'); }}>English</MenuItem>
-							<MenuItem onClick={() => { this.changeLang('zh'); }}>简体中文</MenuItem>
+							<MenuItem onClick={() => { this.changeLang('en', 'ENGLISH'); }}>English</MenuItem>
+							<MenuItem onClick={() => { this.changeLang('zh', '简体中文'); }}>简体中文</MenuItem>
 						</NavDropdown>
 						{
 							this.props.showUsername && this.props.username ?

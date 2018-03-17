@@ -1,5 +1,8 @@
-export default  {
+export default {
 	en: {
+		'title': 'English',
+		'title.cap': 'ENGLISH',
+
 		'countdown.day': 'DAYS',
 		'countdown.hour': 'HOURS',
 		'countdown.minute': 'MINUTES',
@@ -52,6 +55,9 @@ export default  {
 		'register.cond3.2': 'SAFT',
 	},
 	zh: {
+		'title': '简体中文',
+		'title.cap': '简体中文',
+
 		'countdown.day': '天',
 		'countdown.hour': '小时',
 		'countdown.minute': '分钟',
@@ -59,7 +65,7 @@ export default  {
 
 		'footer.aboutus': '关于我们',
 		'footer.description': '语音网络链是去中心化语音网络与区块链技术和人工智能相结合的产品。是次时代的万维网。',
-		'footer.papers': 'PAPERS',
+		'footer.papers': '文件',
 		'footer.teaser': 'Teaser',
 		'footer.primer': 'Primer',
 		'footer.proofofmajority': '工作量证明',
