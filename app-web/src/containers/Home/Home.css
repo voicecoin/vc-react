@@ -1,15 +1,15 @@
-.app-card{
+.app-card {
     border: 1px solid #eee;
     border-radius: 2px;
     padding: 30px 45px;
     margin-bottom: 30px;
 }
 
-.app-card-s{
+.app-card-s {
     padding: 15px 45px;
 }
 
-.app-btn{
+.app-btn {
     color: white;
     width: 150px;
     height: 50px;
@@ -29,35 +29,35 @@
     background-color: #7f6aa0;
 }
 
-.app-btn:hover{
+.app-btn:hover {
     cursor: pointer;
     background-color: #7f6aa0;
 }
 
-.app-input{
-      margin-bottom: 30px;
+.app-input {
+    margin-bottom: 30px;
 }
 
-.app-checkbox{
+.app-checkbox {
     font-size: 12px;
     color: #aaa;
     text-align: left;
     transition: 0.3s
 }
 
-.app-tab{
+.app-tab {
     opacity: 0.9;
     overflow: auto;
     padding: 15px 0px;
-  }
+}
 
-.input-addon{
+.input-addon {
     background-color: transparent;
     border-right: none !important;
     /* border-color: #fff; */
 }
 
-.input-basic{
+.input-basic {
     background-color: transparent;
     border-left: none;
     /* border-color: #fff; */
@@ -66,52 +66,58 @@
     height: 47px !important;
 }
 
-.input-basic:focus{
+.input-basic:focus {
     box-shadow: none;
     border-color: #ccc;
 }
 
-.input-noaddon{
+.input-noaddon {
     box-shadow: none;
 }
 
-.input-noaddon:focus{
+.input-noaddon:focus {
     box-shadow: none;
     border-color: #ccc;
 }
 
-.home-menu-logo{
+.home-menu-logo {
     height: 50px;
     padding: 7px;
 }
 
-.navbar-toggle{
+.navbar-toggle {
     border-color: #fff !important;
 }
 
-.navbar-toggle:hover{
+.navbar-toggle:hover {
     background-color: #2EA0F1 !important;
 }
 
-.navbar-toggle:focus{
+.navbar-toggle:focus {
     background-color: #2EA0F1 !important;
 }
 
-.navbar-collapse{
+.navbar-collapse {
     border-color: #fff !important;
 }
 
-.navbar-item{
+.navbar-item {
     color: #fff !important;
     text-transform: uppercase;
 }
 
-.app-btn-lg{
+.app-btn-lg {
     width: 20rem !important;
 }
 
-.app-dz-text{
-    margin: 10px;
+.dropzone>div {
+    height: 100px !important;
+}
+
+.app-dz-text {
+    margin: 16px 10px;
+    width: 180px;
+    text-align: center;
 }
 
 .app-panel-body {
@@ -119,6 +125,6 @@
     letter-spacing: 0.5px;
 }
 
-.react-datepicker{
+.react-datepicker {
     font-size: 1.2rem !important;
 }
