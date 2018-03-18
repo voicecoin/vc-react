@@ -57,6 +57,18 @@ export default {
 		'verif.save': 'SAVE SECTION',
 		'verif.dz': 'Try dropping some files here, or click to select files to upload.',
 
+		'declar.title': 'Declarations',
+		'declar.d1.1': 'Select Declaration #1',
+		'declar.d1.2': 'I am a U.S. citizen',
+		'declar.d1.3': 'I am not a U.S. citizen',
+		'declar.d2.1': 'Select Declaration #2',
+		'declar.d2.2': 'I am a U.S. resident alien',
+		'declar.d2.3': 'I am not a U.S. resident alien',
+		'declar.d3.1': 'Select Declaration #3',
+		'declar.d3.2': 'I am a U.S. tax person for any other reason',
+		'declar.d3.3': 'I am not a U.S. tax person for any other reason',
+		'declar.other': 'Under the Foreign Account Tax Compliance Act (FATCA) foreign financial institutions are obligated to report financial accounts held by U.S. taxpayers or foreign entities in which U.S. taxpayers hold a substantial ownership interest.',
+
 		'iv.title': 'Identification Verification',
 		'iv.frontId': 'FRONT SIDE PHOTO ID DOCUMENT',
 		'iv.backId': 'BACK SIDE PHOTO ID DOCUMENT',
@@ -129,6 +141,18 @@ export default {
 
 		'verif.save': '保存',
 		'verif.dz': '请将文件拖拽到这里，或者点击这里上传',
+
+		'declar.title': '声明条款',
+		'declar.d1.1': '声明条款 #1',
+		'declar.d1.2': '我是美国公民',
+		'declar.d1.3': '我不是美国公民',
+		'declar.d2.1': '声明条款 #2',
+		'declar.d2.2': '我是美国居民',
+		'declar.d2.3': '我是美国居民',
+		'declar.d3.1': '声明条款 #3',
+		'declar.d3.2': '我是美国合法纳税人',
+		'declar.d3.3': '我不是美国纳税人',
+		'declar.other': 'Under the Foreign Account Tax Compliance Act (FATCA) foreign financial institutions are obligated to report financial accounts held by U.S. taxpayers or foreign entities in which U.S. taxpayers hold a substantial ownership interest.',
 
 		'iv.title': '身份验证',
 		'iv.frontId': '证件正面照片',
