@@ -21,7 +21,7 @@ import {
 import Logo from '../../vendor/img/logo.png'
 import msg from '../../config/i18n';
 
-import { IntlProvider, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 class iNavbar extends Component {
 	constructor() {
