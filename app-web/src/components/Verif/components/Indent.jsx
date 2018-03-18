@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-//CONPONENTS
 import {
 	Row,
 	Col,
@@ -14,13 +13,12 @@ import {
 import Dropzone from 'react-dropzone'
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { FormattedMessage } from 'react-intl';
 
-import 'react-datepicker/dist/react-datepicker.css';
-
-// SERVICES
 import verifApi from '../api'
-// STYLE
+
 import 'react-day-picker/lib/style.css';
+import 'react-datepicker/dist/react-datepicker.css';
 
 class Indent extends Component {
 	constructor(props, context) {
@@ -110,21 +108,29 @@ class Indent extends Component {
 			<Row className="ver-indent of no-margin">
 				<Col mdOffset={2} md={8} xsOffset={1} xs={10} className='app-card'>
 					<Row className="no-margin">
-						<Col className="b-text black left m-bottom-40">Identification Verification</Col>
+						<Col className="b-text black left m-bottom-40">
+							<FormattedMessage id='iv.title' defaultMessage='Identification Verification' />
+						</Col>
 					</Row>
 					<Row>
 						<Col md={6} xs={12}>
 							<Col className='left p-r-50 m-bottom-20' >
 								<FormGroup controlId="formControlsFile">
-									<ControlLabel className='grey m-bottom'>FRONT SIDE PHOTO ID DOCUMENT</ControlLabel>
+									<ControlLabel className='grey m-bottom'>
+										<FormattedMessage id='iv.frontId' defaultMessage='FRONT SIDE PHOTO ID DOCUMENT' />
+									</ControlLabel>
 									<section>
 										<div className="dropzone">
 											<Dropzone onDrop={this.onDrop.bind(this, 'frontSidePhoto')}>
-												<div className='app-dz-text'>Try dropping some files here, or click to select files to upload.</div>
+												<div className='app-dz-text'>
+													<FormattedMessage id='iv.dz' defaultMessage='Try dropping some files here, or click to select files to upload.' />
+												</div>
 											</Dropzone>
 										</div>
 										<aside>
-											<h5 className='bold'>Dropped files</h5>
+											<h5 className='bold'>
+												<FormattedMessage id='iv.dropFile' defaultMessage='Dropped files' />
+											</h5>
 											<ul>
 												{
 													this.state.frontSidePhoto.map(f => <li className='blue bold' key={f.name}>{f.name} - {f.size} bytes</li>)
@@ -137,15 +143,21 @@ class Indent extends Component {
 
 							<Col className='left p-r-50 m-bottom-20' >
 								<FormGroup controlId="formControlsFile">
-									<ControlLabel className='grey m-bottom'>BACK SIDE PHOTO ID DOCUMENT</ControlLabel>
+									<ControlLabel className='grey m-bottom'>
+										<FormattedMessage id='iv.backId' defaultMessage='BACK SIDE PHOTO ID DOCUMENT' />
+									</ControlLabel>
 									<section>
 										<div className="dropzone">
 											<Dropzone onDrop={this.onDrop.bind(this, 'backSidePhoto')}>
-												<p className='app-dz-text'>Try dropping some files here, or click to select files to upload.</p>
+												<p className='app-dz-text'>
+													<FormattedMessage id='iv.dz' defaultMessage='Try dropping some files here, or click to select files to upload.' />
+												</p>
 											</Dropzone>
 										</div>
 										<aside>
-											<h5 className='bold'>Dropped files</h5>
+											<h5 className='bold'>
+												<FormattedMessage id='iv.dropFile' defaultMessage='Dropped files' />
+											</h5>
 											<ul>
 												{
 													this.state.backSidePhoto.map(f => <li className='blue bold' key={f.name}>{f.name} - {f.size} bytes</li>)
@@ -159,13 +171,17 @@ class Indent extends Component {
 							<Col className='left p-r-50 m-bottom-20' >
 								<FormGroup
 									controlId="formBasicText">
-									<ControlLabel className='grey m-bottom'>ID DOCUMENT TYPE</ControlLabel>
+									<ControlLabel className='grey m-bottom'>
+										<FormattedMessage id='iv.idType' defaultMessage='ID DOCUMENT TYPE' />
+									</ControlLabel>
 									<FormControl
 										componentClass="select"
 										className='input-noaddon'
 										value={this.state.documentTypeId}
 										onChange={(e) => this.handleChange(e, 'documentTypeId')}>
-										<option value="select">select</option>
+										<option value="select">
+											<FormattedMessage id='iv.select' defaultMessage='select' />
+										</option>
 										{
 											this.state.idDocumentTypes.map((c) => {
 												return <option value={c.id}>{c.term}</option>
@@ -179,7 +195,10 @@ class Indent extends Component {
 								<FormGroup
 									controlId="formBasicText"
 									validationState={this.getValidationState()}>
-									<ControlLabel className='grey m-bottom'>ID DOCUMENT NUMBER</ControlLabel>
+									<ControlLabel className='grey m-bottom'>
+										<FormattedMessage id='iv.idNum' defaultMessage='ID DOCUMENT NUMBER' />
+
+									</ControlLabel>
 									<FormControl
 										type="text"
 										value={this.state.documentNumber}
@@ -192,7 +211,9 @@ class Indent extends Component {
 
 							<Col className='left m-bottom-20' >
 								<FormGroup controlId="formBasicText">
-									<ControlLabel className='grey m-bottom '>ISSUE DATE</ControlLabel>
+									<ControlLabel className='grey m-bottom '>
+										<FormattedMessage id='iv.issueDate' defaultMessage='ISSUE DATE' />
+									</ControlLabel>
 									<DatePicker peekNextMonth
 										showMonthDropdown
 										showYearDropdown
@@ -205,7 +226,9 @@ class Indent extends Component {
 
 							<Col className='left m-bottom-40' >
 								<FormGroup controlId="formBasicText">
-									<ControlLabel className='grey m-bottom '>EXPIRY DATE</ControlLabel>
+									<ControlLabel className='grey m-bottom '>
+										<FormattedMessage id='iv.expiryDate' defaultMessage='EXPIRY DATE' />
+									</ControlLabel>
 									<DatePicker peekNextMonth
 										showMonthDropdown
 										showYearDropdown
@@ -219,26 +242,25 @@ class Indent extends Component {
 
 						<Col md={6} xs={12} className='black'>
 							<p className='left m-bottom-20'>
-								Valid Government-Issued Identification Documents include:
-								</p>
+								<FormattedMessage id='iv.other1' defaultMessage='Valid Government-Issued Identification Documents include:' />
+							</p>
 							<p className='left m-bottom-20'>
-								Valid Government-Issued Identification Documents include:
-								</p>
+								<FormattedMessage id='iv.other2' defaultMessage='High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each).' />
+							</p>
 							<p className='left m-bottom-20'>
-								High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each).
-								</p>
+								<FormattedMessage id='iv.other3' defaultMessage='HIGH QUALITY (colour images, 300dpi resolution or higher). VISIBLE IN THEIR ENTIRETY (watermarks are permitted). VALID, with the expiry date clearly visible.' />
+							</p>
 							<p className='left m-bottom-20'>
-								HIGH QUALITY (colour images, 300dpi resolution or higher). VISIBLE IN THEIR ENTIRETY (watermarks are permitted). VALID, with the expiry date clearly visible.
-								</p>
-							<p className='left m-bottom-20'>
-								Limitations On Acceptable Document Types May Apply.
-								</p>
+								<FormattedMessage id='iv.other4' defaultMessage='Limitations On Acceptable Document Types May Apply.' />
+							</p>
 						</Col>
 					</Row>
 				</Col>
 
 				<Col mdOffset={7} md={3} xsOffset={1} xs={10}>
-					<div className='verif-save-btn app-btn white m-bottom-40' onClick={this.uploadDocumentSignature.bind(this)}>SAVE SECTION</div>
+					<div className='verif-save-btn app-btn white m-bottom-40' onClick={this.uploadDocumentSignature.bind(this)}>
+						<FormattedMessage id='verif.save' defaultMessage='SAVE SECTION' />
+					</div>
 				</Col>
 			</Row>
 		)

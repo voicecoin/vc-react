@@ -53,6 +53,24 @@ export default {
 		'register.cond2.2': 'White Paper',
 		'register.cond3.1': 'I have read and accept the ',
 		'register.cond3.2': 'SAFT',
+
+		'verif.save': 'SAVE SECTION',
+		'verif.dz': 'Try dropping some files here, or click to select files to upload.',
+
+		'iv.title': 'Identification Verification',
+		'iv.frontId': 'FRONT SIDE PHOTO ID DOCUMENT',
+		'iv.backId': 'BACK SIDE PHOTO ID DOCUMENT',
+		'iv.dropFile': 'Dropped files',
+		'iv.idType': 'ID DOCUMENT TYPE',
+		'iv.select': 'select',
+		'iv.idNum': 'ID DOCUMENT NUMBER',
+		'iv.issueDate': 'ISSUE DATE',
+		'iv.expiryDate': 'EXPIRY DATE',
+		'iv.other1': 'Valid Government-Issued Identification Documents include:',
+		'iv.other2': 'High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each).',
+		'iv.other3': 'HIGH QUALITY (colour images, 300dpi resolution or higher). VISIBLE IN THEIR ENTIRETY (watermarks are permitted). VALID, with the expiry date clearly visible.',
+		'iv.other4': 'Limitations On Acceptable Document Types May Apply.',
+
 	},
 	zh: {
 		'title': '简体中文',
@@ -108,5 +126,23 @@ export default {
 		'register.cond2.2': '白皮书',
 		'register.cond3.1': '我已阅读并同意本项目的',
 		'register.cond3.2': 'SAFT',
+
+		'verif.save': '保存',
+		'verif.dz': '请将文件拖拽到这里，或者点击这里上传',
+
+		'iv.title': '身份验证',
+		'iv.frontId': '证件正面照片',
+		'iv.backId': '证件背面照片',
+		'iv.dropFile': '上传的文件',
+		'iv.idType': '证件类型',
+		'iv.select': '选择',
+		'iv.idNum': '证件号码',
+		'iv.issueDate': '发证日',
+		'iv.expiryDate': '到期日',
+		'iv.other1': 'Valid Government-Issued Identification Documents include:',
+		'iv.other2': 'High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each).',
+		'iv.other3': 'HIGH QUALITY (colour images, 300dpi resolution or higher). VISIBLE IN THEIR ENTIRETY (watermarks are permitted). VALID, with the expiry date clearly visible.',
+		'iv.other4': 'Limitations On Acceptable Document Types May Apply.',
+
 	}
 }
