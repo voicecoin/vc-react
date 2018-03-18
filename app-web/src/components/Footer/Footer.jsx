@@ -12,6 +12,7 @@ import {
 	HelpBlock
 } from 'react-bootstrap';
 import './Footer.css'
+import 'font-awesome/css/font-awesome.min.css';
 
 class Footer extends Component {
 	constructor() {
