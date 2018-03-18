@@ -38,6 +38,10 @@ body{
   background-color: #4a0479 !important;
 }
 
+.navbar-inverse .navbar-nav>li>a{
+  color: #fff !important;
+}
+
 .white{
   color: white !important;
 }
