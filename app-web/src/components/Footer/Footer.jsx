@@ -46,7 +46,7 @@ class Footer extends Component {
                         <Col md={3} xs={12} className='p-r-50 m-bottom-60'>
                             <h4 className='m-bottom-20'>DOCUMENTS</h4>
                             <div className='ft-s-line m-bottom-40'></div>
-                            <div className='m-bottom-10'>White Papper</div>
+                            <div className='m-bottom-10'>White Paper</div>
                             <div className='ft-l-line m-bottom-10'></div>
                             <div className='m-bottom-10'><a href="/Voiceweb Gist.pdf" class="white" target="_blank">GIST</a></div>
                             <div className='ft-l-line m-bottom-10'></div>
@@ -68,7 +68,7 @@ class Footer extends Component {
                 </Row>
                 <Row className='no-margin of bg-black'>
                     <Col mdOffset={1} md={10} xs={12} className='white bg-black'>
-                        <Col md={8} xs={12}>
+                        <Col md={9} xs={12}>
                             <h5 className='m-top-20 m-bottom-20 left'>
                             <a href="http://www.voiceweb.com" class="white" target="_blank">Voiceweb Foundation</a>, 2018 © All Rights Reserved. Privacy Policy  |  Terms of Use</h5>
                         </Col>
