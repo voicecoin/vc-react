@@ -123,13 +123,13 @@ class Indent extends Component {
 										<div className="dropzone">
 											<Dropzone onDrop={this.onDrop.bind(this, 'frontSidePhoto')}>
 												<div className='app-dz-text'>
-													<FormattedMessage id='iv.dz' defaultMessage='Try dropping some files here, or click to select files to upload.' />
+													<FormattedMessage id='verif.dz' defaultMessage='Try dropping some files here, or click to select files to upload.' />
 												</div>
 											</Dropzone>
 										</div>
 										<aside>
 											<h5 className='bold'>
-												<FormattedMessage id='iv.dropFile' defaultMessage='Dropped files' />
+												<FormattedMessage id='verif.dropFile' defaultMessage='Dropped files' />
 											</h5>
 											<ul>
 												{
@@ -150,13 +150,13 @@ class Indent extends Component {
 										<div className="dropzone">
 											<Dropzone onDrop={this.onDrop.bind(this, 'backSidePhoto')}>
 												<p className='app-dz-text'>
-													<FormattedMessage id='iv.dz' defaultMessage='Try dropping some files here, or click to select files to upload.' />
+													<FormattedMessage id='verif.dz' defaultMessage='Try dropping some files here, or click to select files to upload.' />
 												</p>
 											</Dropzone>
 										</div>
 										<aside>
 											<h5 className='bold'>
-												<FormattedMessage id='iv.dropFile' defaultMessage='Dropped files' />
+												<FormattedMessage id='verif.dropFile' defaultMessage='Dropped files' />
 											</h5>
 											<ul>
 												{

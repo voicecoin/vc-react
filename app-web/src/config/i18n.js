@@ -56,6 +56,7 @@ export default {
 
 		'verif.save': 'SAVE SECTION',
 		'verif.dz': 'Try dropping some files here, or click to select files to upload.',
+		'verif.dropFile': 'Dropped files',
 
 		'declar.title': 'Declarations',
 		'declar.d1.1': 'Select Declaration #1',
@@ -72,7 +73,6 @@ export default {
 		'iv.title': 'Identification Verification',
 		'iv.frontId': 'FRONT SIDE PHOTO ID DOCUMENT',
 		'iv.backId': 'BACK SIDE PHOTO ID DOCUMENT',
-		'iv.dropFile': 'Dropped files',
 		'iv.idType': 'ID DOCUMENT TYPE',
 		'iv.select': 'select',
 		'iv.idNum': 'ID DOCUMENT NUMBER',
@@ -141,6 +141,7 @@ export default {
 
 		'verif.save': '保存',
 		'verif.dz': '请将文件拖拽到这里，或者点击这里上传',
+		'verif.dropFile': '上传的文件',
 
 		'declar.title': '声明条款',
 		'declar.d1.1': '声明条款 #1',
@@ -157,7 +158,6 @@ export default {
 		'iv.title': '身份验证',
 		'iv.frontId': '证件正面照片',
 		'iv.backId': '证件背面照片',
-		'iv.dropFile': '上传的文件',
 		'iv.idType': '证件类型',
 		'iv.select': '选择',
 		'iv.idNum': '证件号码',
