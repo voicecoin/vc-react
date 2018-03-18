@@ -70,6 +70,10 @@ export default {
 		'declar.d3.3': 'I am not a U.S. tax person for any other reason',
 		'declar.other': 'Under the Foreign Account Tax Compliance Act (FATCA) foreign financial institutions are obligated to report financial accounts held by U.S. taxpayers or foreign entities in which U.S. taxpayers hold a substantial ownership interest.',
 
+		'doc.title': 'Document Signatures',
+		'doc.agreement': 'SIMPLE AGREEMENT FOR FUTURE TOKENS',
+		'doc.other1': 'Please print, sign, scan, and upload this document (less than 10MB). ',
+
 		'iv.title': 'Identification Verification',
 		'iv.frontId': 'FRONT SIDE PHOTO ID DOCUMENT',
 		'iv.backId': 'BACK SIDE PHOTO ID DOCUMENT',
@@ -154,6 +158,10 @@ export default {
 		'declar.d3.2': '我是美国合法纳税人',
 		'declar.d3.3': '我不是美国纳税人',
 		'declar.other': 'Under the Foreign Account Tax Compliance Act (FATCA) foreign financial institutions are obligated to report financial accounts held by U.S. taxpayers or foreign entities in which U.S. taxpayers hold a substantial ownership interest.',
+
+		'doc.title': '文档签字',
+		'doc.agreement': '未来代币的简单协议（SAFT）',
+		'doc.other1': '请打印并签字后，扫描上传文档。（文件限制：10MB）',
 
 		'iv.title': '身份验证',
 		'iv.frontId': '证件正面照片',
