@@ -16,6 +16,7 @@ import {
 } from 'react-bootstrap';
 
 import QRCode from 'qrcode.react'
+import { FormattedMessage } from 'react-intl';
 
 //components
 import Header from '../Header/Header'
@@ -263,12 +264,13 @@ class Purchase extends Component {
 					showUsername={this.state.showUsername}
 					username={this.state.username}
 					logout={this.logout} />
-
 				<Header />
 
 				<Row className="no-margin app-tab main-bg-color">
 					<Col md={8} mdOffset={1} xsOffset={1} xs={10}>
-						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS WITH</div>
+						<div className='left s-text m-bottom white bold'>
+							<FormattedMessage id='purchase.left.btn' defaultMessage='PURCHASE TOKENS WITH' />
+						</div>
 						{
 							this.state.currencies.map((v) => {
 								return <div className={"app-btn f-left" + (v.symbol == self.state.curPrice.name ? " app-btn-highlight" : "")} onClick={this.selectCurCoin.bind(this, v.symbol)}>{v.name}</div>
@@ -277,8 +279,12 @@ class Purchase extends Component {
 					</Col>
 
 					<Col md={3} mdOffset={0} xsOffset={1} xs={10}>
-						<div className='left s-text m-bottom white bold'>VERIFY YOUR IDENTITY</div>
-						<div className="app-btn f-left" onClick={this.jumpToVerif}>VERIFICATION</div>
+						<div className='left s-text m-bottom white bold'>
+							<FormattedMessage id='purchase.right.btn.up' defaultMessage='VERIFY YOUR IDENTITY' />
+						</div>
+						<div className="app-btn f-left" onClick={this.jumpToVerif}>
+							<FormattedMessage id='purchase.right.btn' defaultMessage='VERIFICATION' />
+						</div>
 					</Col>
 				</Row>
 
@@ -288,12 +294,16 @@ class Purchase extends Component {
 							<Col mdOffset={2} md={4} xsOffset={1} xs={10} className='app-card'>
 								<div className='left m-bottom'>
 									<span className='pur-number left'>1</span>
-									TOKEN
+									<FormattedMessage id='purchase.token' defaultMessage='TOKEN' />
 								</div>
 								<div className='left bold'>
-									{'1 TOKEN = ' + this.state.curPrice.v2c + ' ' + this.state.curPrice.name}
+									1 <FormattedMessage id='purchase.token' defaultMessage='TOKEN' />
+									{' = ' + this.state.curPrice.v2c + ' ' + this.state.curPrice.name}
 								</div>
-								<div className='left'>Calculated on {dataToTime}</div>
+								<div className='left'>
+									<FormattedMessage id='purchase.cal.date' defaultMessage='Calculated on ' />
+									{dataToTime}
+								</div>
 							</Col>
 
 							<Col mdOffset={0} md={4} xsOffset={1} xs={10} className='app-card'>
@@ -301,8 +311,13 @@ class Purchase extends Component {
 									<span className='pur-number left'>{this.state.curPrice.v2c}</span>
 									{this.state.curPrice.name}
 								</div>
-								<div className='left bold'>{'1 ' + this.state.curPrice.name + ' = ' + this.state.curPrice.c2v + ' TOKEN'}</div>
-								<div className='left'>Calculated on {dataToTime}</div>
+								<div className='left bold'>{'1 ' + this.state.curPrice.name + ' = ' + this.state.curPrice.c2v + ' '}
+									<FormattedMessage id='purchase.token' defaultMessage='TOKEN' />
+								</div>
+								<div className='left'>
+									<FormattedMessage id='purchase.cal.date' defaultMessage='Calculated on ' />
+									{dataToTime}
+								</div>
 							</Col>
 						</Row>
 
@@ -322,8 +337,9 @@ class Purchase extends Component {
 										</FormGroup>
 									</Col>
 									<Col className='m-top m-bottom-20' md={1}>
-										Equals
-								</Col>
+										<FormattedMessage id='purchase.equals' defaultMessage='Equals' />
+
+									</Col>
 									<Col md={6} className='m-bottom-20'>
 										<FormGroup validationState={this.tokenAmountValidationState()}>
 											<InputGroup bsSize="large">
@@ -343,7 +359,9 @@ class Purchase extends Component {
 
 								<Row>
 									<Col className='m-top black bold m-bottom-20' md={6}>
-										<p>IF YOU HAVE GOT A COUPON, PLEASE INPUT YOUR CODE</p>
+										<p>
+											<FormattedMessage id='purchase.coupon' defaultMessage='IF YOU HAVE GOT A COUPON, PLEASE INPUT YOUR CODE' />
+										</p>
 									</Col>
 									<Col className='m-top m-bottom-20' md={6}>
 										<FormGroup validationState={this.state.couponValidationState}>
@@ -367,11 +385,21 @@ class Purchase extends Component {
 								<Row>
 									<Col className='m-top black bold m-bottom-20' md={6}>
 										<p>
-											PURCHASE {this.state.tokenNum} TOKENS USING {this.state.coinNum} {this.state.curPrice.name}
+											<FormattedMessage
+												id='purchase.buy'
+												defaultMessage='PURCHASE {tokenNum} TOKENS USING {coinNum} {currency}'
+												values={{
+													tokenNum: this.state.tokenNum,
+													coinNum: this.state.coinNum,
+													currency: this.state.curPrice.name
+												}}
+											/>
 										</p>
 									</Col>
 									<Col className='m-top' md={5}>
-										<div className="app-btn f-left app-btn-lg" onClick={this.purchaseToken.bind(this)}>PURCHASE</div>
+										<div className="app-btn f-left app-btn-lg" onClick={this.purchaseToken.bind(this)}>
+											<FormattedMessage id='purchase.buy.btn' defaultMessage='PURCHASE' />
+										</div>
 									</Col>
 								</Row>
 							</Col>
@@ -387,84 +415,115 @@ class Purchase extends Component {
 					onHide={this.handleHide}>
 					<Modal.Header closeButton>
 						<Modal.Title id="contained-modal-title" className='bold'>
-							TRANSFER INFORMATION
+							<FormattedMessage id='purchase.ti.title' defaultMessage='TRANSFER INFORMATION' />
 						</Modal.Title>
 					</Modal.Header>
 
 					<Modal.Body className='pur-transfer'>
 						<Panel>
 							<Panel.Body>
-								<p>Promise data has been uploaded successfully...</p>
-								<p>Please fulfill the promise as soon as possible...</p>
+								<p>
+									<FormattedMessage id='purchase.ti.msg.success' defaultMessage='Promise data has been uploaded successfully...' />
+								</p>
+								<p>
+									<FormattedMessage id='purchase.ti.msg.wait' defaultMessage='Please fulfill the promise as soon as possible...' />
+								</p>
 							</Panel.Body>
 						</Panel>
 
 						<Panel>
 							<div className="pur-transfer-qrcode"><QRCode value={this.state.QRstr} /></div>
 							<p className='bold'>{this.state.QRstr}</p>
-							<Button onClick={() => this.copyWalletAddress()}>Copy Address</Button >
+							<Button onClick={() => this.copyWalletAddress()}>
+								<FormattedMessage id='purchase.ti.copyAddr' defaultMessage='Copy Address' />
+							</Button >
 							<p className='pur-transfer-hint'>
-								PURCHASE {this.state.tokenNum} TOKENS USING {this.state.coinNum} {this.state.curPrice.name}
+								<FormattedMessage
+									id='purchase.buy'
+									defaultMessage='PURCHASE {tokenNum} TOKENS USING {coinNum} {currency}'
+									values={{
+										tokenNum: this.state.tokenNum,
+										coinNum: this.state.coinNum,
+										currency: this.state.curPrice.name
+									}}
+								/>
 							</p>
 						</Panel>
 
 						<Panel>
 							<Panel.Body className="app-panel-body">
-								Conversion price is established at the time your transfer is confirmed. You are not guaranteed to receive the exchange rate displayed at the time of your promise.
+								<FormattedMessage id='purchase.ti.msg.convertPrice' defaultMessage='Conversion price is established at the time your transfer is confirmed. You are not guaranteed to receive the exchange rate displayed at the time of your promise.' />
+
 							</Panel.Body>
 						</Panel>
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button onClick={this.handleHide}>Close</Button>
+						<Button onClick={this.handleHide}>
+							<FormattedMessage id='purchase.close.btn' defaultMessage='Close' />
+						</Button>
 					</Modal.Footer>
 				</Modal>
 
 				<Modal show={this.state.showInstructionModalWhenLogin}>
 					<Modal.Header>
 						<Modal.Title id="contained-modal-title" className='bold'>
-							INSTRUCTIONS
+							<FormattedMessage id='purchase.inst.title' defaultMessage='INSTRUCTIONS' />
 						</Modal.Title>
 					</Modal.Header>
 
 					<Modal.Body>
 						<Panel>
 							<Panel.Body className="app-panel-body">
-								<h4>PURCHASING TOKENS</h4>
-								<p>To purchase tokens please select cryptocurrency you would like to use or select 'CURRENCY', to wire money via your bank, and then enter the number of tokens you want to purchase. A conversion will be presented to you. If you approve of the purchase, select the 'PURCHASE' button. A 'promise' will be entered on your behalf and will be displayed at the bottom of the page. You will then need to carry out the instructions that will be presented to you.</p>
+								<h4>
+									<FormattedMessage id='purchase.inst.purchase1' defaultMessage='PURCHASING TOKENS' />
+								</h4>
+								<p>
+									<FormattedMessage id='purchase.inst.purchase2' defaultMessage="To purchase tokens please select cryptocurrency you would like to use or select 'CURRENCY', to wire money via your bank, and then enter the number of tokens you want to purchase. A conversion will be presented to you. If you approve of the purchase, select the 'PURCHASE' button. A 'promise' will be entered on your behalf and will be displayed at the bottom of the page. You will then need to carry out the instructions that will be presented to you." />
+								</p>
 							</Panel.Body>
 						</Panel>
 						<Panel>
 							<Panel.Body className="app-panel-body">
-								<h4>IDENTITY VERIFICATION</h4>
-								<p>You are not required to verify your identity before purchasing tokens. However, before tokens will be delivered, you must verify your identity. You will have until February 28, 2018 to verify your identity.</p>
+								<h4>
+									<FormattedMessage id='purchase.inst.verif1' defaultMessage='IDENTITY VERIFICATION' />
+								</h4>
+								<p>
+									<FormattedMessage id='purchase.inst.verif2' defaultMessage='You are not required to verify your identity before purchasing tokens. However, before tokens will be delivered, you must verify your identity. You will have until February 28, 2018 to verify your identity.' />
+								</p>
 							</Panel.Body>
 						</Panel>
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button onClick={() => { this.setState({ showInstructionModalWhenLogin: false }) }}>Close</Button>
+						<Button onClick={() => { this.setState({ showInstructionModalWhenLogin: false }) }}>
+							<FormattedMessage id='purchase.close.btn' defaultMessage='Close' />
+						</Button>
 					</Modal.Footer>
 				</Modal>
 
 				<Modal show={this.state.showWaitingForApproval}>
 					<Modal.Header>
 						<Modal.Title id="contained-modal-title" className='bold'>
-							WAITING FOR APPROVAL
+							<FormattedMessage id='purchase.inst.wait1' defaultMessage='WAITING FOR APPROVAL' />
 						</Modal.Title>
 					</Modal.Header>
 
 					<Modal.Body>
 						<Panel>
 							<Panel.Body className="app-panel-body">
-								<p>We are validating your information, please wait until we approve it.
-									Once your information is validated, you will get an email notification to continue token contibution.</p>
+								<p>
+									<FormattedMessage id='purchase.inst.wait2' defaultMessage='We are validating your information, please wait until we approve it.' />
+									<FormattedMessage id='purchase.inst.wait3' defaultMessage='Once your information is validated, you will get an email notification to continue token contibution.' />
+								</p>
 							</Panel.Body>
 						</Panel>
 					</Modal.Body>
 
 					<Modal.Footer>
-						<Button onClick={() => { this.setState({ showWaitingForApproval: false }) }}>Close</Button>
+						<Button onClick={() => { this.setState({ showWaitingForApproval: false }) }}>
+							<FormattedMessage id='purchase.close.btn' defaultMessage='Close' />
+						</Button>
 					</Modal.Footer>
 				</Modal>
 
