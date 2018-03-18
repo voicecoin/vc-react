@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Home from './containers/Home/Home'
 import './App.css';
 import { IntlProvider } from "react-intl";
-import msg from './config/i18';
+import msg from './config/i18n';
 
 class App extends Component {
 	constructor(props) {

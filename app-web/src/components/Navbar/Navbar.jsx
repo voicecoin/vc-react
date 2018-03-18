@@ -19,7 +19,7 @@ import {
 } from 'react-bootstrap';
 
 import Logo from '../../vendor/img/logo.png'
-import msg from '../../config/i18';
+import msg from '../../config/i18n';
 
 import { IntlProvider, FormattedMessage } from 'react-intl';
 
