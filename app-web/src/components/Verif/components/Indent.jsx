@@ -180,7 +180,7 @@ class Indent extends Component {
 										value={this.state.documentTypeId}
 										onChange={(e) => this.handleChange(e, 'documentTypeId')}>
 										<option value="select">
-											<FormattedMessage id='iv.select' defaultMessage='select' />
+											<FormattedMessage id='verif.select' defaultMessage='select' />
 										</option>
 										{
 											this.state.idDocumentTypes.map((c) => {
