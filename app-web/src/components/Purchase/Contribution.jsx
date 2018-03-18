@@ -14,7 +14,6 @@ import { Row,
 	PanelBody,
 	HelpBlock
 } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //components
 //services
 import purchaseApi from '../Purchase/api'
