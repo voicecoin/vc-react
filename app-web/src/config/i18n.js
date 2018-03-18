@@ -74,6 +74,16 @@ export default {
 		'doc.agreement': 'SIMPLE AGREEMENT FOR FUTURE TOKENS',
 		'doc.other1': 'Please print, sign, scan, and upload this document (less than 10MB). ',
 
+		'residence.title': 'Residence Verification',
+		'residence.proof': 'PROOF OF RESIDENCE',
+		'residence.other1': 'Valid Proof of Residence Documents include:',
+		'residence.other2': 'A bank account statement.',
+		'residence.other3': 'A utility bill (electricity, water, internet, etc.).',
+		'residence.other4': 'A government-issued document (tax statement, certificate of residency, etc.).',
+		'residence.other5': 'High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each).',
+		'residence.other6': 'Your NAME, ADDRESS, ISSUE DATE and ISSUER are clearly visible. The submitted proof of residence document is NOT OLDER THAN THREE MONTHS. You submit color photographs or scanned images in HIGH QUALITY (at least 300 DPI)',
+		'residence.other7': 'Limitations On Acceptable Document Types May Apply.',
+
 		'iv.title': 'Identification Verification',
 		'iv.frontId': 'FRONT SIDE PHOTO ID DOCUMENT',
 		'iv.backId': 'BACK SIDE PHOTO ID DOCUMENT',
@@ -162,6 +172,16 @@ export default {
 		'doc.title': '文档签字',
 		'doc.agreement': '未来代币的简单协议（SAFT）',
 		'doc.other1': '请打印并签字后，扫描上传文档。（文件限制：10MB）',
+
+		'residence.title': '地址认证',
+		'residence.proof': '地址证明',
+		'residence.other1': 'Valid Proof of Residence Documents include:',
+		'residence.other2': 'A bank account statement.',
+		'residence.other3': 'A utility bill (electricity, water, internet, etc.).',
+		'residence.other4': 'A government-issued document (tax statement, certificate of residency, etc.).',
+		'residence.other5': 'High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each).',
+		'residence.other6': 'Your NAME, ADDRESS, ISSUE DATE and ISSUER are clearly visible. The submitted proof of residence document is NOT OLDER THAN THREE MONTHS. You submit color photographs or scanned images in HIGH QUALITY (at least 300 DPI)',
+		'residence.other7': 'Limitations On Acceptable Document Types May Apply.',
 
 		'iv.title': '身份验证',
 		'iv.frontId': '证件正面照片',
