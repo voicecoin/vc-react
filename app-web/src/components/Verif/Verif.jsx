@@ -23,6 +23,8 @@ import Navbar from '../Navbar/Navbar'
 import './Verif.css';
 import Logo from '../../vendor/img/logo.png'
 
+import { FormattedMessage } from 'react-intl';
+
 class Verif extends Component {
 	constructor() {
 		super();
@@ -102,8 +104,12 @@ class Verif extends Component {
 
 				<div className="app-tab main-bg-color">
 					<Col md={10} mdOffset={1} xsOffset={1} xs={10}>
-						<div className='left s-text m-bottom white bold'>PURCHASE TOKENS</div>
-						<div className="app-btn f-left" onClick={this.jumpToPurchase}>BACK PURCHASE</div>
+						<div className='left s-text m-bottom white bold'>
+							<FormattedMessage id='verif.purchaseTokens' defaultMessage='PURCHASE TOKENS' />
+						</div>
+						<div className="app-btn f-left" onClick={this.jumpToPurchase}>
+							<FormattedMessage id='verif.backPurchase' defaultMessage='BACK PURCHASE' />
+						</div>
 					</Col>
 				</div>
 

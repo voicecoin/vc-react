@@ -58,6 +58,8 @@ export default {
 		'verif.dz': 'Try dropping some files here, or click to select files to upload.',
 		'verif.dropFile': 'Dropped files',
 		'verif.select': 'select',
+		'verif.purchaseTokens': 'PURCHASE TOKENS',
+		'verif.backPurchase': 'BACK PURCHASE',
 
 		'doc.title': 'Document Signatures',
 		'doc.agreement': 'SIMPLE AGREEMENT FOR FUTURE TOKENS',
@@ -169,6 +171,8 @@ export default {
 		'verif.dz': '请将文件拖拽到这里，或者点击这里上传',
 		'verif.dropFile': '上传的文件',
 		'verif.select': '请选择',
+		'verif.purchaseTokens': '代币购买',
+		'verif.backPurchase': '返回',
 
 		'doc.title': '文档签字',
 		'doc.agreement': '未来代币的简单协议（SAFT）',
