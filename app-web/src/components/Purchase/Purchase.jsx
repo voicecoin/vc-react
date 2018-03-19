@@ -453,7 +453,6 @@ class Purchase extends Component {
 						<Panel>
 							<Panel.Body className="app-panel-body">
 								<FormattedMessage id='purchase.ti.msg.convertPrice' defaultMessage='Conversion price is established at the time your transfer is confirmed. You are not guaranteed to receive the exchange rate displayed at the time of your promise.' />
-
 							</Panel.Body>
 						</Panel>
 					</Modal.Body>
