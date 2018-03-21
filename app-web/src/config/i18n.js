@@ -263,15 +263,15 @@ export default {
 		'purchase.ti.msg.success': '协议数据已成功上传...',
 		'purchase.ti.msg.wait': '请尽快履行承诺...',
 		'purchase.ti.copyAddr': '复制地址',
-		'purchase.ti.msg.convertPrice': 'Conversion price is established at the time your transfer is confirmed. You are not guaranteed to receive the exchange rate displayed at the time of your promise.',
+		'purchase.ti.msg.convertPrice': '汇率在您确认转账时确定的, 不能保证是您的承诺时显示的汇率。',
 		'purchase.inst.title': '购买说明',
 		'purchase.inst.purchase1': '购买代币',
-		'purchase.inst.purchase2': "To purchase tokens please select cryptocurrency you would like to use or select 'CURRENCY', to wire money via your bank, and then enter the number of tokens you want to purchase. A conversion will be presented to you. If you approve of the purchase, select the 'PURCHASE' button. A 'promise' will be entered on your behalf and will be displayed at the bottom of the page. You will then need to carry out the instructions that will be presented to you.",
+		'purchase.inst.purchase2': "要购买代币，请选择您想要使用的加密货币或选择“货币”，通过银行汇款，然后输入您想购买的代币数量。 转换将呈现给您。 如果您批准购买，请选择“购买”按钮。 “承诺”将代您输入，并将显示在页面的底部。 然后，您需要执行将提供给您的说明。",
 		'purchase.inst.verif1': '身份认证',
-		'purchase.inst.verif2': 'You are not required to verify your identity before purchasing tokens. However, before tokens will be delivered, you must verify your identity. You will have until February 28, 2018 to verify your identity.',
+		'purchase.inst.verif2': '购买代币之前，您无需验证您的身份。 但是，在代币交付之前，您必须验证您的身份。您需在2018年2月28日前核实您的身份。',
 		'purchase.inst.wait1': '等待认证',
-		'purchase.inst.wait2': 'We are validating your information, please wait until we approve it.',
-		'purchase.inst.wait3': 'Once your information is validated, you will get an email notification to continue token contibution.',
+		'purchase.inst.wait2': '我们正在验证您的信息，请等待我们批准.',
+		'purchase.inst.wait3': '一旦您的信息得到验证，您将收到一封电子邮件通知以继续授权代币.',
 
 	}
 }
