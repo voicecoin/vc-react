@@ -234,7 +234,7 @@ export default {
 		'residence.other4': '政府签发的文件 (缴税单, 居住证, 等).',
 		'residence.other5': '我们接受高清照片或者这些文件的扫描件(每个小于10MB)',
 		'residence.other6': '您的姓名，地址，签发日期和签发机构应该清晰可见.提交的居住证明文件不得超过三个月. 您需要提交高清画质的彩色照片或扫描图像(至少300 DPI)',
-		'residence.other7': '我们可能规定可接受文件类型的限制',
+		'residence.other7': '我们可能规定可接受文件的相关限制',
 
 		'iv.title': '身份验证',
 		'iv.frontId': '证件正面照片',
@@ -244,10 +244,10 @@ export default {
 		'iv.idNum': '证件号码',
 		'iv.issueDate': '发证日',
 		'iv.expiryDate': '到期日',
-		'iv.other1': 'Valid Government-Issued Identification Documents include:',
-		'iv.other2': 'High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each).',
-		'iv.other3': 'HIGH QUALITY (colour images, 300dpi resolution or higher). VISIBLE IN THEIR ENTIRETY (watermarks are permitted). VALID, with the expiry date clearly visible.',
-		'iv.other4': 'Limitations On Acceptable Document Types May Apply.',
+		'iv.other1': '政府签发的有效身份证件包括:',
+		'iv.other2': '我们接受高清照片或者这些文件的扫描件(每个小于10MB)',
+		'iv.other3': '高清画质(彩色照片, 分辨率不低于300dpi).整体可见 (允许有水印). 有效性，有效期限清晰可见.',
+		'iv.other4': '我们可能规定可接受文件的相关限制',
 
 		'purchase.close.btn': '关闭',
 		'purchase.left.btn': '选择购买代币时使用的电子货币',
