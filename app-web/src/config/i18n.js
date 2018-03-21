@@ -229,7 +229,7 @@ export default {
 		'residence.title': '地址认证',
 		'residence.proof': '地址证明',
 		'residence.other1': 'Valid Proof of Residence Documents include:',
-		'residence.other2': 'A bank account statement.',
+		'residence.other2': 'A bank account statement.银行账户报表',
 		'residence.other3': 'A utility bill (electricity, water, internet, etc.).',
 		'residence.other4': 'A government-issued document (tax statement, certificate of residency, etc.).',
 		'residence.other5': 'High Quality Photos Or Scanned Images Of These Documents Are Acceptable (less than 10MB each).',
