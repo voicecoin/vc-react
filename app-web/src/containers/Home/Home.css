@@ -128,3 +128,10 @@
 .react-datepicker {
     font-size: 1.2rem !important;
 }
+
+input {   
+    /* Remove iOS input shadow */
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    box-shadow: none !important;
+}
