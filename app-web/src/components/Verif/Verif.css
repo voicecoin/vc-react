@@ -1,32 +1,23 @@
-.ver-perinfo{
-    padding: 50px 0px;
+.ver-perinfo {
+    padding: 50px 0 0 0;
 }
 
-.ver-declar{
+.ver-declar {}
 
-}
+.ver-indeti {}
 
-.ver-indeti{
+.ver-residence {}
 
-}
+.ver-doc {}
 
-.ver-residence{
-
-}
-
-.ver-doc{
-
-}
-
-.ver-header{
+.ver-header {
     font-size: 46px;
 }
 
-.verif-save-btn{
+.verif-save-btn {
     padding: 15px 0px;
     border-radius: 3px;
     cursor: pointer;
 }
 
-.dropzone {
-}
+.dropzone {}
