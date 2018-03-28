@@ -122,7 +122,7 @@ class Declar extends Component {
 					</Row>
 
 					<Row>
-						<Col md={6} xs={12} className='left p-r-50 m-bottom-20' >
+						<Col md={6} xs={12} className='left p-r-50' >
 							<FormGroup controlId="formBasicText" validationState={this.getValidationState(this.state.firstName)}>
 								<ControlLabel className='grey m-bottom'>
 									<FormattedMessage id='personal.givenName' defaultMessage='GIVEN NAME' />
@@ -137,7 +137,7 @@ class Declar extends Component {
 							</FormGroup>
 						</Col>
 
-						<Col md={6} xs={12} className='left p-r-50 m-bottom-20' >
+						<Col md={6} xs={12} className='left p-r-50' >
 							<FormGroup controlId="formBasicText" validationState={this.getValidationState(this.state.lastName)}>
 								<ControlLabel className='grey m-bottom '>
 									<FormattedMessage id='personal.surname' defaultMessage='SURNAME' />
@@ -153,7 +153,7 @@ class Declar extends Component {
 							</FormGroup>
 						</Col>
 
-						<Col md={12} xs={12} className='left p-r-50 m-bottom-20' >
+						<Col md={12} xs={12} className='left p-r-50' >
 							<FormGroup controlId="formBasicText" >
 								<ControlLabel className='grey m-bottom '>
 									<FormattedMessage id='personal.addr1' defaultMessage='ADDRESS LINE 1' />
@@ -169,7 +169,7 @@ class Declar extends Component {
 							</FormGroup>
 						</Col>
 
-						<Col md={12} xs={12} className='left p-r-50 m-bottom-20' >
+						<Col md={12} xs={12} className='left p-r-50' >
 							<FormGroup controlId="formBasicText" >
 								<ControlLabel className='grey m-bottom '>
 									<FormattedMessage id='personal.addr2' defaultMessage='ADDRESS LINE 2' />
@@ -185,7 +185,7 @@ class Declar extends Component {
 							</FormGroup>
 						</Col>
 
-						<Col md={6} xs={12} className='left p-r-50 m-bottom-20' >
+						<Col md={6} xs={12} className='left p-r-50' >
 							<FormGroup controlId="formBasicText" >
 								<ControlLabel className='grey m-bottom '>
 									<FormattedMessage id='personal.zipcode' defaultMessage='POSTAL CODE' />
@@ -201,7 +201,7 @@ class Declar extends Component {
 							</FormGroup>
 						</Col>
 
-						<Col md={6} xs={12} className='left p-r-50 m-bottom-20' >
+						<Col md={6} xs={12} className='left p-r-50' >
 							<FormGroup controlId="formBasicText">
 								<ControlLabel className='grey m-bottom '>
 									<FormattedMessage id='personal.city' defaultMessage='CITY' />
@@ -216,7 +216,7 @@ class Declar extends Component {
 							</FormGroup>
 						</Col>
 
-						<Col md={6} xs={12} className='left p-r-50 m-bottom-20' >
+						<Col md={6} xs={12} className='left p-r-50' >
 							<FormGroup controlId="formBasicText">
 								<ControlLabel className='grey m-bottom'>
 									<FormattedMessage id='personal.country' defaultMessage='COUNTRY' />
@@ -238,7 +238,7 @@ class Declar extends Component {
 							</FormGroup>
 						</Col>
 
-						<Col md={6} xs={12} className='left p-r-50 m-bottom-20' >
+						<Col md={6} xs={12} className='left p-r-50' >
 							<FormGroup
 								controlId="formBasicText">
 								<ControlLabel className='grey m-bottom' >
