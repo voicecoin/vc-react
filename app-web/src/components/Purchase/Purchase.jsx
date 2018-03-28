@@ -58,7 +58,8 @@ class Purchase extends Component {
 			showUsername: true,
 			showModal: false,
 			couponValidationState: null,
-			couponValidationMessage: ''
+			couponValidationMessage: '',
+			fromAddress: ""
 		}
 	}
 
@@ -115,8 +116,9 @@ class Purchase extends Component {
 
 		let cur = this.state.curPrice.name;
 		let coupon = this.state.couponCode;
+		let fromAddress = this.state.fromAddress;
 
-		purchaseApi.purchase({ tokenAmount: self.state.tokenNum, currency: cur, couponCode: coupon })
+		purchaseApi.purchase({ tokenAmount: self.state.tokenNum, currency: cur, couponCode: coupon, fromAddress: fromAddress })
 			.then(function (data) {
 
 				if (data.toAddress) {
@@ -225,6 +227,11 @@ class Purchase extends Component {
 	logout = () => {
 		localStorage.removeItem('token')
 		this.props.history.push('./')
+	}
+
+	handleWalletAddressChange = (e) => {
+		let self = this;
+		self.setState({ fromAddress: e.target.value })
 	}
 
 	render() {
@@ -360,6 +367,31 @@ class Purchase extends Component {
 								<Row>
 									<Col className='m-top black bold m-bottom-20' md={6}>
 										<p>
+											
+										</p>
+									</Col>
+									<Col className='m-top m-bottom-20' md={6}>
+										<FormGroup>
+											<InputGroup bsSize="large">
+												<InputGroup.Addon className='input-addon grey'>
+													<i className="fa fa-globe"></i>
+												</InputGroup.Addon>
+												<FormControl
+													type="text"
+													className='input-basic'
+													placeholder="YOUR WALLET ADDRESS"
+													value={this.state.fromAddress}
+													onChange={(e) => this.handleWalletAddressChange(e)} />
+												<FormControl.Feedback />
+											</InputGroup>
+											<HelpBlock></HelpBlock>
+										</FormGroup>
+									</Col>
+								</Row>
+
+								{/*<Row>
+									<Col className='m-top black bold m-bottom-20' md={6}>
+										<p>
 											<FormattedMessage id='purchase.coupon' defaultMessage='IF YOU HAVE GOT A COUPON, PLEASE INPUT YOUR CODE' />
 										</p>
 									</Col>
@@ -380,7 +412,7 @@ class Purchase extends Component {
 											<HelpBlock>{this.state.couponValidationMessage}</HelpBlock>
 										</FormGroup>
 									</Col>
-								</Row>
+								</Row>*/}
 
 								<Row>
 									<Col className='m-top black bold m-bottom-20' md={6}>
