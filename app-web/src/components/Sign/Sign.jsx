@@ -34,7 +34,12 @@ class Sign extends Component {
 
 		this.state = {
 			showLogout: false,
-			passwordValidationMessage: ''
+			passwordValidationMessage: '',
+			style: {
+				wrapper: {
+					color: '#fff'
+				}
+			}
 		}
 	}
 
@@ -53,31 +58,52 @@ class Sign extends Component {
 			})
 	}
 
-	render() {
-		const style = {
-			menu: {
-				color: '#fff',
-				height: '70px',
-				logo: {
-					paddingTop: '10px',
-					height: '100%',
-					float: 'left'
-				},
-				items: {
-					padding: '0px',
-					height: '100%'
-				},
-				item: {
-					paddingTop: '20px',
-					height: '100%',
-					display: 'InlineBlock'
-				}
-			},
-
-			wrapper: {
-				color: '#fff'
-			}
+	getMainPart = () => {
+		switch (this.props.type) {
+			case 'both':
+				return <div style={this.state.style.wrapper}>
+					<Col mdOffset={2} md={4} xs={12}>
+						{
+							this.props.match ? (
+								<Login
+									activationCode={this.props.match.params.key}
+									login={this.login} />
+							) : (
+									<Login
+										login={this.login} />
+								)
+						}
+					</Col>
+					<Col mdOffset={0} md={4} xs={12}>
+						<Register />
+					</Col>
+				</div>;
+			case 'login':
+				return <div style={this.state.style.wrapper}>
+					<Col mdOffset={4} md={4} xs={12}>
+						{
+							this.props.match ? (
+								<Login
+									activationCode={this.props.match.params.key}
+									login={this.login} />
+							) : (
+									<Login
+										login={this.login} />
+								)
+						}
+					</Col>
+				</div>;
+			case 'register':
+				return <div style={this.state.style.wrapper}>
+					<Col mdOffset={4} md={4} xs={12}>
+						<Register />
+					</Col>
+				</div>;
 		}
+	}
+
+	render() {
+
 
 		return (
 			<Row className='no-margin'>
@@ -90,24 +116,8 @@ class Sign extends Component {
 						logout={this.logout} />
 					<Header />
 
-					<div style={style.wrapper}>
-						<Col mdOffset={2} md={4} xs={12}>
-							{
-								this.props.match ? (
-									<Login
-										activationCode={this.props.match.params.key}
-										login={this.login} />
-								) : (
-										<Login
-											login={this.login} />
-									)
-							}
-						</Col>
+					{this.getMainPart()}
 
-						<Col mdOffset={0} md={4} xs={12}>
-							<Register />
-						</Col>
-					</div>
 				</Col>
 
 				{

@@ -144,14 +144,14 @@ class Home extends Component {
       <Grid fluid className='no-padding' style={style}>
         <Router>
           <Switch>
-            <Route path='/' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} />)}></Route>
+            <Route path='/' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} type="both" />)}></Route>
             <Route path='/pricing' exact render={(props) => (<Pricing {...props} changeLocale={this.props.changeLocale} />)}></Route>
             <Route path='/purchase' exact render={(props) => (<Purchase {...props} changeLocale={this.props.changeLocale} />)}></Route>
             <Route path='/purchase/cn' exact render={(props) => (<Purchase {...props} changeLocale={this.props.changeLocale} num="2" />)}></Route>
             <Route path='/verification' exact render={(props) => (<Verif {...props} changeLocale={this.props.changeLocale} />)}></Route>
             <Route path='/activation/:key' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} />)}></Route>
-            <Route path='/login' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} isLogin={true} />)}></Route>
-            <Route path='/register' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} isRegister={true} />)}></Route>
+            <Route path='/login' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} type="login" />)}></Route>
+            <Route path='/register' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} type="register" />)}></Route>
           </Switch>
         </Router>
         <Footer />
