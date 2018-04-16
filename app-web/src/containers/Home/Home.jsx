@@ -6,6 +6,7 @@ import Purchase from '../../components/Purchase/Purchase'
 import Sign from '../../components/Sign/Sign'
 import Pricing from '../../components/Pricing/Pricing'
 import Footer from '../../components/Footer/Footer'
+import Kyc from '../../components/Kyc/Kyc'
 
 import './Home.css';
 // import Img from '../../vendor/img/background-dark.png'
@@ -152,6 +153,7 @@ class Home extends Component {
             <Route path='/activation/:key' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} />)}></Route>
             <Route path='/login' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} type="login" />)}></Route>
             <Route path='/register' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} type="register" />)}></Route>
+            <Route path='/kyc' exact render={(props) => (<Kyc {...props} changeLocale={this.props.changeLocale} />)}></Route>
           </Switch>
         </Router>
         <Footer />

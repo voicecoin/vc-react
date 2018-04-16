@@ -135,6 +135,7 @@ export default {
 		'purchase.inst.wait2': 'We are validating your information, please wait until we approve it.',
 		'purchase.inst.wait3': 'Once your information is validated, you will get an email notification to continue token contibution.',
 
+		'kyc.submit': 'SUBMIT',
 	},
 	zh: {
 		'title': '简体中文',
@@ -273,5 +274,6 @@ export default {
 		'purchase.inst.wait2': '我们正在验证您的信息，请等待我们批准.',
 		'purchase.inst.wait3': '一旦您的信息得到验证，您将收到一封电子邮件通知以继续授权代币.',
 
+		'kyc.submit': '提交',
 	}
 }
