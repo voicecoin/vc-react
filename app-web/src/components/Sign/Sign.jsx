@@ -37,8 +37,17 @@ class Sign extends Component {
 			passwordValidationMessage: '',
 			style: {
 				wrapper: {
-					color: '#fff'
-				}
+					color: '#fff',
+				},
+				border1: {
+					borderRadius: '5px',
+				},
+				border2: {
+					borderRadius: '5px 0 0 5px',
+				},
+				border3: {
+					borderRadius: '0 5px 5px 0',
+				},
 			}
 		}
 	}
@@ -65,17 +74,17 @@ class Sign extends Component {
 					<Col mdOffset={2} md={4} xs={12}>
 						{
 							this.props.match ? (
-								<Login
+								<Login border={this.state.style.border2}
 									activationCode={this.props.match.params.key}
 									login={this.login} />
 							) : (
-									<Login
+									<Login border={this.state.style.border2}
 										login={this.login} />
 								)
 						}
 					</Col>
 					<Col mdOffset={0} md={4} xs={12}>
-						<Register />
+						<Register border={this.state.style.border3}/>
 					</Col>
 				</div>;
 			case 'login':
@@ -83,11 +92,11 @@ class Sign extends Component {
 					<Col mdOffset={4} md={4} xs={12}>
 						{
 							this.props.match ? (
-								<Login
+								<Login border={this.state.style.border1}
 									activationCode={this.props.match.params.key}
 									login={this.login} />
 							) : (
-									<Login
+									<Login border={this.state.style.border1}
 										login={this.login} />
 								)
 						}
@@ -96,7 +105,7 @@ class Sign extends Component {
 			case 'register':
 				return <div style={this.state.style.wrapper}>
 					<Col mdOffset={4} md={4} xs={12}>
-						<Register />
+						<Register border={this.state.style.border1} />
 					</Col>
 				</div>;
 		}

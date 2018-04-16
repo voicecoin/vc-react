@@ -71,7 +71,7 @@ class Login extends Component {
 				height: '480px',
 				padding: '3rem',
 				backgroundColor: 'white',
-				borderRadius: '5px 0px 0px 5px',
+				borderRadius: this.props.border.borderRadius,
 				header: {
 					fontSize: '25px',
 					fontWeight: 600,

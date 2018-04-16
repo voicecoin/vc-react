@@ -114,7 +114,7 @@ class Register extends Component {
 				backgroundColor: '#fff',
 				height: '480px',
 				padding: '3rem',
-				borderRadius: '0px 5px 5px 0px',
+				borderRadius: this.props.border.borderRadius,
 				header: {
 					color: '#686868',
 					fontSize: '25px',
