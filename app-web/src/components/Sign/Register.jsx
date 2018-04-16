@@ -43,7 +43,7 @@ class Register extends Component {
 
 	// FUNC() VALID CHECK
 	fullNameValidationState() {
-		if (this.state.fullName.length == 0) return null;
+		if (this.state.fullName.length === 0) return null;
 		return this.state.fullName.length > 2 ? 'success' : 'error';
 	}
 
@@ -53,7 +53,7 @@ class Register extends Component {
 	}
 
 	passwordValidation() {
-		if (this.state.password.length == 0) return null;
+		if (this.state.password.length === 0) return null;
 		return this.state.password.length > 5 ? 'success' : 'error';
 	}
 
