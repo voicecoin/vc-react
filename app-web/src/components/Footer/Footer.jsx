@@ -45,7 +45,7 @@ class Footer extends Component {
 							<div className='m-bottom-10'>
 								<FormattedMessage id='footer.teaser' defaultMessage='Teaser' />
 							</div>
-							<div className='ft-l-line m-bottom-10'></div>
+							{/*<div className='ft-l-line m-bottom-10'></div>
 							<div className='m-bottom-10'>
 								<FormattedMessage id='footer.primer' defaultMessage='Primer' />
 							</div>
@@ -53,7 +53,7 @@ class Footer extends Component {
 							<div className='m-bottom-10'>
 								<FormattedMessage id='footer.proofofmajority' defaultMessage='Proof of Majority' />
 							</div>
-							<div className='ft-l-line m-bottom-10'></div>
+							<div className='ft-l-line m-bottom-10'></div>*/}
 						</Col>
 						<Col md={3} xs={12} className='p-r-50 m-bottom-60'>
 							<h4 className='m-bottom-20'>

@@ -58,25 +58,25 @@ class iNavbar extends Component {
 			<Navbar style={style.menu} inverse collapseOnSelect className='nav-bg'>
 				<Navbar.Header>
 					<Navbar.Brand>
-						<img className='home-menu-logo' src={Logo} alt="#" />
+						<a href="/"><img className='home-menu-logo' src={Logo} alt="#" /></a>
 					</Navbar.Brand>
 					<Navbar.Toggle />
 				</Navbar.Header>
 				<Navbar.Collapse style={style.collapse}>
 					<Nav pullRight>
-						<NavItem eventKey={3} href="/pricing" className={style.menu.item}>
+						{/*<NavItem eventKey={3} href="/pricing" className={style.menu.item}>
 							<span className='navbar-item'>
 								<FormattedMessage id='navbar.pricing' defaultMessage='PRICING' />
 							</span>
-						</NavItem>
-						<NavItem eventKey={4} href="#" className={style.menu.item}>
-							<span className='navbar-item'>
-								<FormattedMessage id='navbar.faq' defaultMessage='FAQ' />
-							</span>
-						</NavItem>
+						</NavItem>*/}
 						<NavItem eventKey={5} href="http://www.voicecoin.com" target="_blank" className={style.menu.item}>
 							<span className='navbar-item'>
 								<FormattedMessage id='navbar.overview' defaultMessage='OVERVIEW' />
+							</span>
+						</NavItem>
+						<NavItem eventKey={4} href="http://www.voicecoin.com/faq.html" target="_blank" className={style.menu.item}>
+							<span className='navbar-item'>
+								<FormattedMessage id='navbar.faq' defaultMessage='FAQ' />
 							</span>
 						</NavItem>
 						<NavDropdown
