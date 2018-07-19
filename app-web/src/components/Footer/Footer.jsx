@@ -22,7 +22,7 @@ class Footer extends Component {
 	render() {
 		return (
 			<div>
-				<Row className='no-margin of bg-l-black p-t-50'>
+				<Row className='no-margin of bg-white-half p-t-50'>
 					<Col
 						mdOffset={1}
 						md={10}
@@ -59,15 +59,12 @@ class Footer extends Component {
 							<h4 className='m-bottom-20'>
 								<FormattedMessage id='footer.documents' defaultMessage='DOCUMENTS' />
 							</h4>
-							<div className='ft-s-line m-bottom-40'></div>
-							<div className='m-bottom-10'><a href="http://www.voicecoin.com/paper/voiceweb_whitepaper_cn.pdf" target="_blank">
+							<div className='m-bottom-10'><a href="http://www.voicecoin.com/paper/voiceweb_whitepaper_cn.pdf" target="_blank" className="white">
 								<FormattedMessage id='footer.whitepaper' defaultMessage='White Paper' />
 							</a></div>
-							<div className='ft-l-line m-bottom-10'></div>
-							<div className='m-bottom-10 white'><a href="/Voiceweb Gist.pdf" target="_blank">
+							<div className='m-bottom-10 white'><a href="/Voiceweb Gist.pdf" target="_blank" className="white">
 								<FormattedMessage id='footer.gist' defaultMessage='GIST' />
 							</a></div>
-							<div className='ft-l-line m-bottom-10'></div>
 						</Col>
 						<Col md={3} xs={12} className='p-r-50 m-bottom-60'>
 							<h4 className='m-bottom-20'>
@@ -86,23 +83,23 @@ class Footer extends Component {
 						</Col>
 					</Col>
 				</Row>
-				<Row className='no-margin of bg-black'>
-					<Col mdOffset={1} md={10} xs={12} className='white bg-black'>
+				<Row className='no-margin of'>
+					<Col mdOffset={1} md={10} xs={12} className='white'>
 						<Col md={8} xs={12}>
-							<h5 className='m-top-20 m-bottom-20 left'>
-								© 2017-2018, <a href="http://www.voiceweb.com" className="white" target="_blank">
+							<h5 className='m-top-20 m-bottom-20 left footer-copyright'>
+								© 2017-2018 <a href="http://www.voiceweb.com" className="white" target="_blank">
 									<FormattedMessage id='footer.voiceweb' defaultMessage='Voiceweb Foundation' />
-								</a>,
-								<FormattedMessage id='footer.copyright' defaultMessage='All Rights Reserved.' /> |
-								<FormattedMessage id='footer.privacy' defaultMessage='Privacy Policy' /> |
+								</a>
+								<FormattedMessage id='footer.copyright' defaultMessage='All Rights Reserved.' /> |&nbsp;
+								<FormattedMessage id='footer.privacy' defaultMessage='Privacy Policy' /> |&nbsp;
 								<FormattedMessage id='footer.termsofuse' defaultMessage='Terms of Use' />
 							</h5>
 						</Col>
 						<Col className='ft-icons' md={2} xs={12}>
-							<a href="https://t.me/voicecoin" target="_blank"><i className="fa fa-telegram ft-icon"></i></a>
-							<a href="https://twitter.com/voicecoin" target="_blank"><i className="fa fa-twitter ft-icon"></i></a>
-							<a href="https://www.linkedin.com/company/voicecoin" target="_blank"><i className="fa fa-linkedin ft-icon"></i></a>
-							<a href="https://www.facebook.com/voicewebcoin" target="_blank"><i className="fa fa-facebook ft-icon"></i></a>
+							<a href="https://t.me/voicecoin" target="_blank" className="white"><i className="fa fa-telegram ft-icon"></i></a>
+							<a href="https://twitter.com/voicecoin" target="_blank" className="white"><i className="fa fa-twitter ft-icon"></i></a>
+							<a href="https://www.linkedin.com/company/voicecoin" target="_blank" className="white"><i className="fa fa-linkedin ft-icon"></i></a>
+							<a href="https://www.facebook.com/voicewebcoin" target="_blank" className="white"><i className="fa fa-facebook ft-icon"></i></a>
 						</Col>
 					</Col>
 				</Row>
