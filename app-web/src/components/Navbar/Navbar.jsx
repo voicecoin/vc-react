@@ -23,6 +23,9 @@ import msg from '../../config/i18n';
 
 import { FormattedMessage } from 'react-intl';
 
+// STYLE
+import './Navbar.css';
+
 class iNavbar extends Component {
 	constructor() {
 		super()
@@ -55,7 +58,7 @@ class iNavbar extends Component {
 		}
 
 		return (
-			<Navbar style={style.menu} inverse collapseOnSelect className='nav-bg'>
+			<Navbar style={style.menu} collapseOnSelect className='nav-bg'>
 				<Navbar.Header>
 					<Navbar.Brand>
 						<a href="https://voicecoin.io/"><img className='home-menu-logo' src={Logo} alt="Voicecoin" /></a>
