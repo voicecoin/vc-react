@@ -10,8 +10,7 @@ body {
 }
 
 .nav-bg {
-  background-color: #000000;
-  margin-top:2rem;
+  margin-top: 2rem;
 }
 
 .main-bg-color {
@@ -22,7 +21,7 @@ body {
   background-color: #605079 !important;
 }
 
-.of{
+.of {
   overflow: auto
 }
 
@@ -30,168 +29,155 @@ body {
   display: none
 }
 
-.navbar-toggle:focus {
-  background-color: #4a0479 !important;
-}
-
-.navbar-toggle:hover {
-  background-color: #4a0479 !important;
-}
-
-.navbar-inverse .navbar-nav>li>a{
-  color: #fff !important;
-}
-
-.white{
+.white {
   color: white !important;
 }
 
-.light-blue{
+.light-blue {
   color: #72b6e7;
 }
 
-.grey{
+.grey {
   color: #ccc;
 }
 
-.blue{
+.blue {
   color: #0065ae;
 }
 
-.dark-grey{
+.dark-grey {
   color: #999;
 }
 
-.black{
+.black {
   color: #000;
 }
 
-.bg-red{
+.bg-red {
   background-color: #f00 !important;
 }
 
-.bg-light-blue{
+.bg-light-blue {
   background-color: #72b6e7 !important;
 }
 
-.bg-blue{
+.bg-blue {
   background-color: #0065ae;
 }
 
-.bg-black{
+.bg-black {
   background-color: #000;
 }
 
-.bg-l-black{
-  background-color:#041127;
+.bg-l-black {
+  background-color: #041127;
 }
 
-.bg-white{
+.bg-white {
   background-color: #fff;
 }
 
-.left{
+.left {
   text-align: left !important;
 }
 
-.center{
+.center {
   text-align: center !important;
 }
 
-.no-margin{
-	margin: 0px;
+.no-margin {
+  margin: 0px;
 }
 
-.no-padding{
+.no-padding {
   padding: 0px;
 }
 
-.p-t-50{
+.p-t-50 {
   padding-top: 50px;
 }
 
-.p-r-50{
+.p-r-50 {
   padding-right: 50px;
 }
 
-.f-left{
+.f-left {
   float: left
 }
 
-.f-right{
+.f-right {
   float: right
 }
 
-.m-bottom{
+.m-bottom {
   margin-bottom: 5px;
   overflow: hidden;
 }
 
-.m-bottom-10{
+.m-bottom-10 {
   margin-bottom: 10px;
 }
 
-.m-bottom-20{
+.m-bottom-20 {
   margin-bottom: 20px;
 }
 
-.m-bottom-40{
+.m-bottom-40 {
   margin-bottom: 40px;
 }
 
-.m-bottom-60{
+.m-bottom-60 {
   margin-bottom: 60px;
 }
 
-.m-top{
+.m-top {
   margin-top: 10px;
 }
 
-.m-top-20{
+.m-top-20 {
   margin-top: 20px;
 }
 
-.m-right-20{
+.m-right-20 {
   margin-right: 20px
 }
 
-.s-text{
+.s-text {
   font-size: 12px !important;
 }
 
-.n-text{
+.n-text {
   font-size: 18px !important;
 }
 
-.b-text{
+.b-text {
   font-size: 24px !important;
 }
 
-.ph-white::-webkit-input-placeholder{
+.ph-white::-webkit-input-placeholder {
   color: white
 }
 
-.ph-black::-webkit-input-placeholder{
-   color: black
+.ph-black::-webkit-input-placeholder {
+  color: black
 }
 
-.ph-grey::-webkit-input-placeholder{
+.ph-grey::-webkit-input-placeholder {
   color: #ccc;
 }
 
-.border-white{
+.border-white {
   border-color: #fff !important;
 }
 
-.light{
+.light {
   font-weight: 300;
 }
 
-.bold{
+.bold {
   font-weight: bold;
 }
 
-
-.pointer:hover{
+.pointer:hover {
   cursor: pointer;
 }

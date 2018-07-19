@@ -85,27 +85,6 @@
     padding: 2px;
 }
 
-.navbar-toggle {
-    border-color: #fff !important;
-}
-
-.navbar-toggle:hover {
-    background-color: #2EA0F1 !important;
-}
-
-.navbar-toggle:focus {
-    background-color: #2EA0F1 !important;
-}
-
-.navbar-collapse {
-    border-color: #fff !important;
-}
-
-.navbar-item {
-    color: #fff !important;
-    text-transform: uppercase;
-}
-
 .app-btn-lg {
     width: 20rem !important;
 }
