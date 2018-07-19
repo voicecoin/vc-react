@@ -162,7 +162,6 @@ class Home extends Component {
           position: 'absolute',
           top: 0,
           left: 0,
-          background: '#000',
           zIndex: -1
         }}>
         </canvas>

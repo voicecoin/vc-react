@@ -1,6 +1,7 @@
-body{
+body {
   height: 100%;
   width: 100%;
+  background: linear-gradient(141deg, #5E5CE6 0%, #8851DB 51%, #954ED8 75%);
 }
 
 .App {
