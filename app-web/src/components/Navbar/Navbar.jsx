@@ -58,7 +58,7 @@ class iNavbar extends Component {
 			<Navbar style={style.menu} inverse collapseOnSelect className='nav-bg'>
 				<Navbar.Header>
 					<Navbar.Brand>
-						<a href="/"><img className='home-menu-logo' src={Logo} alt="#" /></a>
+						<a href="https://voicecoin.io/"><img className='home-menu-logo' src={Logo} alt="Voicecoin" /></a>
 					</Navbar.Brand>
 					<Navbar.Toggle />
 				</Navbar.Header>
