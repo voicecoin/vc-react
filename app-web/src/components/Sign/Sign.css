@@ -1,12 +1,13 @@
-.sign-btn{
+.sign-btn {
     height: 50px;
     border-radius: 2px;
-    background-color: #605079;
+    background-color: #9b69e4;
     padding-top: 15px;
     transition: 0.4s;
 }
 
-.sign-btn:hover{
+.sign-btn:hover,
+.sign-btn:focus {
     cursor: pointer;
-    background-color: #8570a7 !important;
+    background-color: #fb397d !important;
 }

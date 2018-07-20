@@ -21,6 +21,10 @@ body {
   background-color: #9b69e4 !important;
 }
 
+.main-bg-color-light-2 {
+  background-color: #fb397d;
+}
+
 .of {
   overflow: auto
 }

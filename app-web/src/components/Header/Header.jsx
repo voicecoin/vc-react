@@ -57,8 +57,8 @@ class Header extends Component {
 								<FormattedMessage id='header.title' defaultMessage='PROGRESSIVE COIN SALES (VC)' />
 							</p>
 							<div className="h-wrapper-progress ">
-								<div className='main-bg-color f-left' style={style.progressBar}>
-									<div style={style.raiseAmount} className="raiseAmount main-bg-color">
+								<div className='main-bg-color-light f-left' style={style.progressBar}>
+									<div style={style.raiseAmount} className="raiseAmount main-bg-color-light">
 										<p className='raise-number n-text'>{this.state.info.sold}</p>
 									</div>
 								</div>
