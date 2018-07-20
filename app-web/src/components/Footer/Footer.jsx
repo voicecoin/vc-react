@@ -59,6 +59,7 @@ class Footer extends Component {
 							<h4 className='m-bottom-20'>
 								<FormattedMessage id='footer.documents' defaultMessage='DOCUMENTS' />
 							</h4>
+							<div className='ft-s-line m-bottom-40'></div>
 							<div className='m-bottom-10'><a href="http://www.voicecoin.com/paper/voiceweb_whitepaper_cn.pdf" target="_blank" className="white">
 								<FormattedMessage id='footer.whitepaper' defaultMessage='White Paper' />
 							</a></div>
