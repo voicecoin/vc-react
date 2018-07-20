@@ -52,7 +52,7 @@ class Header extends Component {
 			<div>
 				<div style={style.wrapper}>
 					<Row style={style.wrapper.content} className='no-margin'>
-						<Col mdOffset={3} md={6} >
+						<Col mdOffset={3} md={6} smOffset={2} sm={8} xsOffset={1} xs={10}  >
 							<p className='h-wrapper-header'>
 								<FormattedMessage id='header.title' defaultMessage='PROGRESSIVE COIN SALES (VC)' />
 							</p>
