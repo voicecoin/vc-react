@@ -11,10 +11,11 @@
 
 .app-btn {
     color: white;
+    border-radius: 2px;
     width: 150px;
     height: 50px;
     display: inline-block;
-    background-color: #4d4061;
+    background-color: #9b69e4;
     padding: 15px 0px;
     margin-right: 5px;
     margin-bottom: 5px;
@@ -29,9 +30,10 @@
     background-color: #7f6aa0;
 }
 
-.app-btn:hover {
+.app-btn:hover,
+.app-btn:focus {
     cursor: pointer;
-    background-color: #7f6aa0;
+    background-color: #fb397d !important;
 }
 
 .app-input {
