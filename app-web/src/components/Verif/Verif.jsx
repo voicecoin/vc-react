@@ -102,7 +102,7 @@ class Verif extends Component {
 
 				<Header />
 
-				<div className="app-tab main-bg-color">
+				<div className="app-tab">
 					<Col md={10} mdOffset={1} xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>
 							<FormattedMessage id='verif.purchaseTokens' defaultMessage='PURCHASE TOKENS' />
