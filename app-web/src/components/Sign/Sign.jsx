@@ -48,6 +48,9 @@ class Sign extends Component {
 				border3: {
 					borderRadius: '0 5px 5px 0',
 				},
+				border4: {
+					borderRadius: '0',
+				},
 			}
 		}
 	}
@@ -74,17 +77,17 @@ class Sign extends Component {
 					<Col mdOffset={2} md={4} xs={12}>
 						{
 							this.props.match ? (
-								<Login border={this.state.style.border2}
+								<Login border={this.state.style.border4}
 									activationCode={this.props.match.params.key}
 									login={this.login} />
 							) : (
-									<Login border={this.state.style.border2}
+									<Login border={this.state.style.border4}
 										login={this.login} />
 								)
 						}
 					</Col>
 					<Col mdOffset={0} md={4} xs={12}>
-						<Register border={this.state.style.border3}/>
+						<Register border={this.state.style.border4} />
 					</Col>
 				</div>;
 			case 'login':

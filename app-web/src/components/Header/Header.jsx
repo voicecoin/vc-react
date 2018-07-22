@@ -19,7 +19,7 @@ class Header extends Component {
 
 		let self = this
 		headerApi.getIcoInfo().then(function (data) {
-			console.log(data)
+			// console.log(data)
 			self.setState({
 				info: data
 			})

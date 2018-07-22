@@ -151,8 +151,8 @@ class Home extends Component {
             <Route path='/purchase/cn' exact render={(props) => (<Purchase {...props} changeLocale={this.props.changeLocale} num="2" />)}></Route>
             <Route path='/verification' exact render={(props) => (<Verif {...props} changeLocale={this.props.changeLocale} />)}></Route>
             <Route path='/activation/:key' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} />)}></Route>
-            <Route path='/login' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} type="login" />)}></Route>
-            <Route path='/register' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} type="register" />)}></Route>
+            <Route path='/login' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} type="both" />)}></Route>
+            <Route path='/register' exact render={(props) => (<Sign {...props} changeLocale={this.props.changeLocale} type="both" />)}></Route>
             <Route path='/kyc' exact render={(props) => (<Kyc {...props} changeLocale={this.props.changeLocale} />)}></Route>
           </Switch>
         </Router>
