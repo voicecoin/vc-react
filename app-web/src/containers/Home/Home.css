@@ -110,7 +110,7 @@
 
 input {
     /* Remove iOS input shadow */
-    -webkit-appearance: none !important;
+    /* -webkit-appearance: none !important;
     -moz-appearance: none !important;
-    box-shadow: none !important;
+    box-shadow: none !important; */
 }
