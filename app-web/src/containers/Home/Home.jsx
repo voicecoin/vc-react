@@ -26,12 +26,16 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    var body = document.body,
+      html = document.documentElement;
+
     var canvas = document.getElementById("canvas"),
       ctx = canvas.getContext('2d');
 
     var width = document.getElementById('root').clientWidth;
     canvas.width = width;
-    canvas.height = window.innerHeight + 400;
+    canvas.height = Math.max(body.scrollHeight, body.offsetHeight,
+      html.clientHeight, html.scrollHeight, html.offsetHeight, window.innerHeight);
 
     var stars = [], // Array that contains the stars
       FPS = 60, // Frames per second
