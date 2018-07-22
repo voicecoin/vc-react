@@ -273,7 +273,7 @@ class Purchase extends Component {
 					logout={this.logout} />
 				<Header />
 
-				<Row className="no-margin app-tab main-bg-color">
+				<Row className="no-margin app-tab">
 					<Col md={8} mdOffset={1} xsOffset={1} xs={10}>
 						<div className='left s-text m-bottom white bold'>
 							<FormattedMessage id='purchase.left.btn' defaultMessage='PURCHASE TOKENS WITH' />
@@ -367,7 +367,7 @@ class Purchase extends Component {
 								<Row>
 									<Col className='m-top black bold m-bottom-20' md={6}>
 										<p>
-											
+
 										</p>
 									</Col>
 									<Col className='m-top m-bottom-20' md={6}>
