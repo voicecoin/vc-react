@@ -98,7 +98,9 @@ class Indent extends Component {
 		}
 
 		verifApi.uploadIdentificationVerification(formData).then((data) => {
-			console.log(data)
+			console.log(data);
+			this.state.frontSidePhoto.push(data.frontSidePhoto);
+			this.state.backSidePhoto.push(data.backSidePhoto);
 		})
 	}
 
