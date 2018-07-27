@@ -2,23 +2,19 @@ import { HTTP } from '../../../util/http'
 
 export default {
     login: (username, pwd) => {
-        return HTTP.post('/v1/Account/token', {username: username, password: pwd})
+        return HTTP.post('/token', {username: username, password: pwd})
     },
 
     sign: (data) => {
-        return HTTP.post('/v1/Account', data)
-    },
-
-    activate: (key) => {
-        return HTTP.get('/v1/Account/activate/' + key)
+        return HTTP.post('/Account/Register', data)
     },
 
     exist: (email) => {
-        return HTTP.get('/v1/Account/exist?email=' + email)
+        return HTTP.get('/account/exist?email=' + email)
     },
 
     userInfo: () => {
-        return HTTP.get('/v1/Account')
+        return HTTP.get('/account')
     },
 
     validateEmail: (email) => {

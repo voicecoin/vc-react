@@ -1,2 +1,4 @@
-# vc-react
-Frontend of VC console
+# Voicecoin ICO UI
+Frontend of Voicecoin ICO
+
+npm start

@@ -191,7 +191,7 @@ class Register extends Component {
 						checked={this.state.checkedWhitePaper}
 						onChange={(e) => this.onTermChecked(e, 'checkedWhitePaper')}>
 						<FormattedMessage id='register.cond2.1' defaultMessage='I have read and accept the ' />
-						<a href="#" target="_blank" style={style.sign.term}>
+						<a href="https://www.voicechain.io/doc/Voicecoin_Whitepaper.pdf" target="_blank" style={style.sign.term}>
 							<FormattedMessage id='register.cond2.2' defaultMessage='White Paper' />
 						</a></Checkbox>
 					<Checkbox validationState={this.state.checkedSaftValidation}

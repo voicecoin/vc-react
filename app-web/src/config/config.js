@@ -1,9 +1,10 @@
 let config = {
-    dataUrl: 'http://api.voicecoin.com'
+    dataUrl: 'https://voicecoin.io'
+    //dataUrl: 'http://localhost:129'
 };
 
 if(config.env == 'development') {
-
+    
 }
 
 export default config;

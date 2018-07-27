@@ -72,12 +72,12 @@ class iNavbar extends Component {
 								<FormattedMessage id='navbar.pricing' defaultMessage='PRICING' />
 							</span>
 						</NavItem>*/}
-						<NavItem eventKey={5} href="http://www.voicecoin.com" target="_blank" className={style.menu.item}>
+						<NavItem eventKey={5} href="https://voicecoin.io" target="_blank" className={style.menu.item}>
 							<span className='navbar-item'>
 								<FormattedMessage id='navbar.overview' defaultMessage='OVERVIEW' />
 							</span>
 						</NavItem>
-						<NavItem eventKey={4} href="http://www.voicecoin.com/faq.html" target="_blank" className={style.menu.item}>
+						<NavItem eventKey={4} href="https://voicecoin.io/faq.html" target="_blank" className={style.menu.item}>
 							<span className='navbar-item'>
 								<FormattedMessage id='navbar.faq' defaultMessage='FAQ' />
 							</span>
