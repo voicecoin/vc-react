@@ -15,7 +15,7 @@ import {
 import { FormattedMessage } from 'react-intl';
 
 import verifApi from '../api'
-
+import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
 
 
 class Declar extends Component {
@@ -25,7 +25,8 @@ class Declar extends Component {
 		this.handleChange = this.handleChange.bind(this);
 
 		this.state = {
-			value: ''
+			value: '',
+			message: ''
 		};
 	}
 
@@ -59,6 +60,7 @@ class Declar extends Component {
 		verifApi.uploadDeclarations(data)
 			.then((data) => {
 				console.log(data)
+				this.setState({message: 'Update successfully.'})
 			})
 	}
 
@@ -66,6 +68,10 @@ class Declar extends Component {
 		this.setState({ [key]: e.target.value });
 	}
 
+	onMessageDismiss(){
+		this.setState({message: ''})
+	}
+	
 	render() {
 		return (
 			<Row className="ver-declar of no-margin">
@@ -152,6 +158,14 @@ class Declar extends Component {
 						<FormattedMessage id='verif.save' defaultMessage='SAVE SECTION' />
 					</div>
 				</Col>
+
+				{
+					this.state.message.length > 0 ? (
+						<AlertContainer>
+							<Alert type="info" timeout={3000} onDismiss={this.onMessageDismiss.bind(this)}>{this.state.message}</Alert>
+						</AlertContainer>
+					) : ''
+				}
 			</Row>
 		)
 	}

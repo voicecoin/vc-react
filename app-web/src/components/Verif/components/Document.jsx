@@ -15,6 +15,7 @@ import Dropzone from 'react-dropzone'
 import { FormattedMessage } from 'react-intl';
 
 import verifApi from '../api'
+import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
 
 class Document extends Component {
 	constructor(props, context) {
@@ -24,7 +25,8 @@ class Document extends Component {
 
 		this.state = {
 			value: '',
-			files: []
+			files: [],
+			message: ''
 		};
 	}
 
@@ -44,13 +46,29 @@ class Document extends Component {
 		this.setState({ files });
 	}
 
+	componentWillMount = () => {
+		let self = this
+
+		verifApi.getDocumentSignature().then(function (data) {
+			self.setState({
+				files: data == null ? [] : [data],
+			});
+		})
+
+	}
+
 	uploadDocumentSignature() {
 		const formData = new FormData();
 		formData.append('file', this.state.files[0])
 
 		verifApi.uploadDocumentSignature(formData).then((data) => {
 			console.log(data)
+			this.setState({message: 'Update successfully.'})
 		})
+	}
+
+	onMessageDismiss(){
+		this.setState({message: ''})
 	}
 
 	render() {
@@ -84,7 +102,7 @@ class Document extends Component {
 											</h5>
 											<ul>
 												{
-													this.state.files.map(f => <li className='blue bold' key={f.name}>{f.name} - {f.size} bytes</li>)
+													this.state.files.map(f => <li className='blue bold' key={f.name}><a href={f.path} target='_blank'>{f.name}</a> - {f.size} bytes</li>)
 												}
 											</ul>
 										</aside>
@@ -106,6 +124,14 @@ class Document extends Component {
 						<FormattedMessage id='verif.save' defaultMessage='SAVE SECTION' />
 					</div>
 				</Col>
+
+				{
+					this.state.message.length > 0 ? (
+						<AlertContainer>
+							<Alert type="info" timeout={3000} onDismiss={this.onMessageDismiss.bind(this)}>{this.state.message}</Alert>
+						</AlertContainer>
+					) : ''
+				}
 			</Row>
 		)
 	}

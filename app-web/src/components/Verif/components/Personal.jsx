@@ -18,6 +18,7 @@ import moment from 'moment';
 import verifApi from '../api'
 
 import 'react-datepicker/dist/react-datepicker.css';
+import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
 
 class Declar extends Component {
 	constructor(props, context) {
@@ -38,7 +39,8 @@ class Declar extends Component {
 			birthday: null,
 			countries: [],
 			states: [],
-			nationalities: []
+			nationalities: [],
+			message: ''
 		};
 	}
 
@@ -103,12 +105,17 @@ class Declar extends Component {
 
 		verifApi.uploadPersonalInformation(data)
 			.then((data) => {
-				console.log(data)
+				console.log(data);
+				this.setState({message: 'Update successfully.'})
 			})
 	}
 
 	setBirthday(d) {
 		this.setState({ birthday: d });
+	}
+
+	onMessageDismiss(){
+		this.setState({message: ''})
 	}
 
 	render() {
@@ -305,6 +312,14 @@ class Declar extends Component {
 						<FormattedMessage id='verif.save' defaultMessage='SAVE SECTION' />
 					</div>
 				</Col>
+
+				{
+					this.state.message.length > 0 ? (
+						<AlertContainer>
+							<Alert type="info" timeout={3000} onDismiss={this.onMessageDismiss.bind(this)}>{this.state.message}</Alert>
+						</AlertContainer>
+					) : ''
+				}
 			</Row>
 		)
 	}

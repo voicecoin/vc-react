@@ -19,6 +19,7 @@ import verifApi from '../api'
 
 import 'react-day-picker/lib/style.css';
 import 'react-datepicker/dist/react-datepicker.css';
+import { AlertList, Alert, AlertContainer } from "react-bs-notifier";
 
 class Indent extends Component {
 	constructor(props, context) {
@@ -34,7 +35,8 @@ class Indent extends Component {
 			idDocumentTypes: [],
 			documentNumber: null,
 			issueDate: null,
-			expiryDate: null
+			expiryDate: null,
+			message: ''
 		};
 	}
 
@@ -47,6 +49,8 @@ class Indent extends Component {
 
 		verifApi.getIdentificationVerification().then(function (data) {
 			self.setState({
+				frontSidePhoto: data.frontSidePhoto == null ? [] : [data.frontSidePhoto],
+				backSidePhoto: data.backSidePhoto == null ? [] : [data.backSidePhoto],
 				documentNumber: data.documentNumber,
 				documentTypeId: data.documentTypeId,
 				issueDate: data.issueDate == null ? null : moment(data.issueDate),
@@ -98,12 +102,13 @@ class Indent extends Component {
 		}
 
 		verifApi.uploadIdentificationVerification(formData).then((data) => {
-			console.log(data);
-			this.state.frontSidePhoto.push(data.frontSidePhoto);
-			this.state.backSidePhoto.push(data.backSidePhoto);
+			this.setState({message: 'Update successfully.'})
 		})
 	}
 
+	onMessageDismiss(){
+		this.setState({message: ''})
+	}
 
 	render() {
 		return (
@@ -135,7 +140,7 @@ class Indent extends Component {
 											</h5>
 											<ul>
 												{
-													this.state.frontSidePhoto.map(f => <li className='blue bold' key={f.name}>{f.name} - {f.size} bytes</li>)
+													this.state.frontSidePhoto.map(f => <li className='blue bold' key={f.name}><a href={f.path} target='_blank'>{f.name}</a> - {f.size} bytes</li>)
 												}
 											</ul>
 										</aside>
@@ -162,7 +167,7 @@ class Indent extends Component {
 											</h5>
 											<ul>
 												{
-													this.state.backSidePhoto.map(f => <li className='blue bold' key={f.name}>{f.name} - {f.size} bytes</li>)
+													this.state.backSidePhoto.map(f => <li className='blue bold' key={f.name}><a href={f.path} target='_blank'>{f.name}</a> - {f.size} bytes</li>)
 												}
 											</ul>
 										</aside>
@@ -264,6 +269,14 @@ class Indent extends Component {
 						<FormattedMessage id='verif.save' defaultMessage='SAVE SECTION' />
 					</div>
 				</Col>
+
+				{
+					this.state.message.length > 0 ? (
+						<AlertContainer>
+							<Alert type="info" timeout={3000} onDismiss={this.onMessageDismiss.bind(this)}>{this.state.message}</Alert>
+						</AlertContainer>
+					) : ''
+				}
 			</Row>
 		)
 	}

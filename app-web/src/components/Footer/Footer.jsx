@@ -97,7 +97,7 @@ class Footer extends Component {
 							</h5>
 						</Col>
 						<Col className='ft-icons' md={2} xs={12}>
-							<a href="https://t.me/voicecoin" target="_blank" className="white"><i className="fa fa-telegram ft-icon"></i></a>
+							<a href="https://t.me/voicecoin1" target="_blank" className="white"><i className="fa fa-telegram ft-icon"></i></a>
 							<a href="https://twitter.com/voicecoin" target="_blank" className="white"><i className="fa fa-twitter ft-icon"></i></a>
 							<a href="https://www.linkedin.com/company/voicecoin" target="_blank" className="white"><i className="fa fa-linkedin ft-icon"></i></a>
 							<a href="https://www.facebook.com/voicewebcoin" target="_blank" className="white"><i className="fa fa-facebook ft-icon"></i></a>
